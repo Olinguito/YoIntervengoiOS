@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7B51A62E7CD004F1B6C /* AppDelegate.swift */; };
+		EC0AF7B81A62E7CD004F1B6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7B71A62E7CD004F1B6C /* ViewController.swift */; };
+		EC0AF7BB1A62E7CD004F1B6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC0AF7B91A62E7CD004F1B6C /* Main.storyboard */; };
+		EC0AF7BD1A62E7CD004F1B6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC0AF7BC1A62E7CD004F1B6C /* Images.xcassets */; };
+		EC0AF7C01A62E7CD004F1B6C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0AF7BE1A62E7CD004F1B6C /* LaunchScreen.xib */; };
+		EC0AF7CC1A62E7CD004F1B6C /* Yo_IntervengoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7CB1A62E7CD004F1B6C /* Yo_IntervengoTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC0AF7C61A62E7CD004F1B6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC0AF7A81A62E7CD004F1B6C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC0AF7AF1A62E7CD004F1B6C;
+			remoteInfo = "Yo Intervengo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EC0AF7B01A62E7CD004F1B6C /* Yo Intervengo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yo Intervengo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC0AF7B41A62E7CD004F1B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC0AF7B51A62E7CD004F1B6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EC0AF7B71A62E7CD004F1B6C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EC0AF7BA1A62E7CD004F1B6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EC0AF7BC1A62E7CD004F1B6C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EC0AF7BF1A62E7CD004F1B6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EC0AF7C51A62E7CD004F1B6C /* Yo IntervengoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yo IntervengoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC0AF7CA1A62E7CD004F1B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC0AF7CB1A62E7CD004F1B6C /* Yo_IntervengoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yo_IntervengoTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC0AF7AD1A62E7CD004F1B6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC0AF7C21A62E7CD004F1B6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EC0AF7A71A62E7CD004F1B6C = {
+			isa = PBXGroup;
+			children = (
+				EC0AF7B21A62E7CD004F1B6C /* Yo Intervengo */,
+				EC0AF7C81A62E7CD004F1B6C /* Yo IntervengoTests */,
+				EC0AF7B11A62E7CD004F1B6C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EC0AF7B11A62E7CD004F1B6C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC0AF7B01A62E7CD004F1B6C /* Yo Intervengo.app */,
+				EC0AF7C51A62E7CD004F1B6C /* Yo IntervengoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC0AF7B21A62E7CD004F1B6C /* Yo Intervengo */ = {
+			isa = PBXGroup;
+			children = (
+				EC0AF7B51A62E7CD004F1B6C /* AppDelegate.swift */,
+				EC0AF7B71A62E7CD004F1B6C /* ViewController.swift */,
+				EC0AF7B91A62E7CD004F1B6C /* Main.storyboard */,
+				EC0AF7BC1A62E7CD004F1B6C /* Images.xcassets */,
+				EC0AF7BE1A62E7CD004F1B6C /* LaunchScreen.xib */,
+				EC0AF7B31A62E7CD004F1B6C /* Supporting Files */,
+			);
+			path = "Yo Intervengo";
+			sourceTree = "<group>";
+		};
+		EC0AF7B31A62E7CD004F1B6C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC0AF7B41A62E7CD004F1B6C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC0AF7C81A62E7CD004F1B6C /* Yo IntervengoTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC0AF7CB1A62E7CD004F1B6C /* Yo_IntervengoTests.swift */,
+				EC0AF7C91A62E7CD004F1B6C /* Supporting Files */,
+			);
+			path = "Yo IntervengoTests";
+			sourceTree = "<group>";
+		};
+		EC0AF7C91A62E7CD004F1B6C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC0AF7CA1A62E7CD004F1B6C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC0AF7AF1A62E7CD004F1B6C /* Yo Intervengo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC0AF7CF1A62E7CD004F1B6C /* Build configuration list for PBXNativeTarget "Yo Intervengo" */;
+			buildPhases = (
+				EC0AF7AC1A62E7CD004F1B6C /* Sources */,
+				EC0AF7AD1A62E7CD004F1B6C /* Frameworks */,
+				EC0AF7AE1A62E7CD004F1B6C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Yo Intervengo";
+			productName = "Yo Intervengo";
+			productReference = EC0AF7B01A62E7CD004F1B6C /* Yo Intervengo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EC0AF7C41A62E7CD004F1B6C /* Yo IntervengoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC0AF7D21A62E7CD004F1B6C /* Build configuration list for PBXNativeTarget "Yo IntervengoTests" */;
+			buildPhases = (
+				EC0AF7C11A62E7CD004F1B6C /* Sources */,
+				EC0AF7C21A62E7CD004F1B6C /* Frameworks */,
+				EC0AF7C31A62E7CD004F1B6C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC0AF7C71A62E7CD004F1B6C /* PBXTargetDependency */,
+			);
+			name = "Yo IntervengoTests";
+			productName = "Yo IntervengoTests";
+			productReference = EC0AF7C51A62E7CD004F1B6C /* Yo IntervengoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC0AF7A81A62E7CD004F1B6C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Olinguito;
+				TargetAttributes = {
+					EC0AF7AF1A62E7CD004F1B6C = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					EC0AF7C41A62E7CD004F1B6C = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = EC0AF7AF1A62E7CD004F1B6C;
+					};
+				};
+			};
+			buildConfigurationList = EC0AF7AB1A62E7CD004F1B6C /* Build configuration list for PBXProject "Yo Intervengo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EC0AF7A71A62E7CD004F1B6C;
+			productRefGroup = EC0AF7B11A62E7CD004F1B6C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC0AF7AF1A62E7CD004F1B6C /* Yo Intervengo */,
+				EC0AF7C41A62E7CD004F1B6C /* Yo IntervengoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC0AF7AE1A62E7CD004F1B6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0AF7BB1A62E7CD004F1B6C /* Main.storyboard in Resources */,
+				EC0AF7C01A62E7CD004F1B6C /* LaunchScreen.xib in Resources */,
+				EC0AF7BD1A62E7CD004F1B6C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC0AF7C31A62E7CD004F1B6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC0AF7AC1A62E7CD004F1B6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0AF7B81A62E7CD004F1B6C /* ViewController.swift in Sources */,
+				EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC0AF7C11A62E7CD004F1B6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0AF7CC1A62E7CD004F1B6C /* Yo_IntervengoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC0AF7C71A62E7CD004F1B6C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC0AF7AF1A62E7CD004F1B6C /* Yo Intervengo */;
+			targetProxy = EC0AF7C61A62E7CD004F1B6C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EC0AF7B91A62E7CD004F1B6C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC0AF7BA1A62E7CD004F1B6C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EC0AF7BE1A62E7CD004F1B6C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC0AF7BF1A62E7CD004F1B6C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EC0AF7CD1A62E7CD004F1B6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EC0AF7CE1A62E7CD004F1B6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EC0AF7D01A62E7CD004F1B6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Yo Intervengo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EC0AF7D11A62E7CD004F1B6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Yo Intervengo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EC0AF7D31A62E7CD004F1B6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Yo IntervengoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yo Intervengo.app/Yo Intervengo";
+			};
+			name = Debug;
+		};
+		EC0AF7D41A62E7CD004F1B6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Yo IntervengoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yo Intervengo.app/Yo Intervengo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC0AF7AB1A62E7CD004F1B6C /* Build configuration list for PBXProject "Yo Intervengo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC0AF7CD1A62E7CD004F1B6C /* Debug */,
+				EC0AF7CE1A62E7CD004F1B6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC0AF7CF1A62E7CD004F1B6C /* Build configuration list for PBXNativeTarget "Yo Intervengo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC0AF7D01A62E7CD004F1B6C /* Debug */,
+				EC0AF7D11A62E7CD004F1B6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EC0AF7D21A62E7CD004F1B6C /* Build configuration list for PBXNativeTarget "Yo IntervengoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC0AF7D31A62E7CD004F1B6C /* Debug */,
+				EC0AF7D41A62E7CD004F1B6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EC0AF7A81A62E7CD004F1B6C /* Project object */;
+}
