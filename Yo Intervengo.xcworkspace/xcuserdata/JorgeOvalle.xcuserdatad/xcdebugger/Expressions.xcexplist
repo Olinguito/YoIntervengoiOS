@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Yo_Intervengo.ViewController.viewDidLoad (Yo_Intervengo.ViewController)() -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "ann.title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Yo_Intervengo.ViewController.mapView (Yo_Intervengo.ViewController)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.RMMapView&gt;, layerForAnnotation : Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.RMAnnotation&gt;) -&gt; Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.RMMapLayer&gt;:ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "annotation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
