@@ -1932,6 +1932,25 @@
 
             _currentCallout.calloutOffset = anAnnotation.layer.calloutOffset;
 
+            
+            if (anAnnotation.layer.topCalloutAccessoryView)
+            {
+                if ([anAnnotation.layer.topCalloutAccessoryView isKindOfClass:[UIControl class]])
+                    [anAnnotation.layer.topCalloutAccessoryView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnCalloutAccessoryWithGestureRecognizer:)]];
+                
+                _currentCallout.topAccessoryView = anAnnotation.layer.topCalloutAccessoryView;
+            }
+            
+            if (anAnnotation.layer.bottomCalloutAccessoryView)
+            {
+                if ([anAnnotation.layer.bottomCalloutAccessoryView isKindOfClass:[UIControl class]])
+                    [anAnnotation.layer.bottomCalloutAccessoryView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnCalloutAccessoryWithGestureRecognizer:)]];
+                
+                _currentCallout.bottomAccessoryView = anAnnotation.layer.bottomCalloutAccessoryView;
+            }
+            
+            
+            
             if (anAnnotation.layer.leftCalloutAccessoryView)
             {
                 if ([anAnnotation.layer.leftCalloutAccessoryView isKindOfClass:[UIControl class]])

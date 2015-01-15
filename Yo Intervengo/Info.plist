@@ -35,8 +35,17 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Test Descr</string>
+	<string>Yo Intervengo necesita tu lozalización</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Test</string>
+	<string>Yo Intervengo necesita tu lozalización</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Roboto-Light.ttf</string>
+		<string>Roboto-Italic.ttf</string>
+		<string>Roboto-LightItalic.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>Roboto-Thin.ttf</string>
+		<string>Roboto-ThinItalic.ttf</string>
+	</array>
 </dict>
 </plist>

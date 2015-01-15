@@ -14,9 +14,44 @@
 		EC0AF7BD1A62E7CD004F1B6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC0AF7BC1A62E7CD004F1B6C /* Images.xcassets */; };
 		EC0AF7C01A62E7CD004F1B6C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0AF7BE1A62E7CD004F1B6C /* LaunchScreen.xib */; };
 		EC0AF7CC1A62E7CD004F1B6C /* Yo_IntervengoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7CB1A62E7CD004F1B6C /* Yo_IntervengoTests.swift */; };
+		EC6F29D61A674D4B00DB09EF /* loc.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29CE1A674D4B00DB09EF /* loc.png */; };
+		EC6F29D71A674D4B00DB09EF /* loc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29CF1A674D4B00DB09EF /* loc@2x.png */; };
+		EC6F29D81A674D4B00DB09EF /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29D01A674D4B00DB09EF /* menu.png */; };
+		EC6F29D91A674D4B00DB09EF /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29D11A674D4B00DB09EF /* menu@2x.png */; };
+		EC6F29DA1A674D4B00DB09EF /* Report.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29D21A674D4B00DB09EF /* Report.png */; };
+		EC6F29DB1A674D4B00DB09EF /* Report@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29D31A674D4B00DB09EF /* Report@2x.png */; };
+		EC6F29DC1A674D4B00DB09EF /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29D41A674D4B00DB09EF /* search.png */; };
+		EC6F29DD1A674D4B00DB09EF /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29D51A674D4B00DB09EF /* search@2x.png */; };
+		EC6F29DF1A67533700DB09EF /* LeftMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F29DE1A67533700DB09EF /* LeftMenu.swift */; };
 		EC790D161A63170900900192 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC790D151A63170900900192 /* ListViewController.swift */; };
 		EC790D191A633D4400900192 /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = EC790D181A633D4400900192 /* Bridge.m */; };
 		ECCCA5DE1A64D051004C5858 /* Pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5DD1A64D051004C5858 /* Pin@2x.png */; };
+		ECCCA5EE1A65AF60004C5858 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5E11A65AF60004C5858 /* LICENSE.txt */; };
+		ECCCA5EF1A65AF60004C5858 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5E21A65AF60004C5858 /* Roboto-Black.ttf */; };
+		ECCCA5F01A65AF60004C5858 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5E31A65AF60004C5858 /* Roboto-BlackItalic.ttf */; };
+		ECCCA5F11A65AF60004C5858 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5E41A65AF60004C5858 /* Roboto-Bold.ttf */; };
+		ECCCA5F21A65AF60004C5858 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5E51A65AF60004C5858 /* Roboto-BoldItalic.ttf */; };
+		ECCCA5F31A65AF60004C5858 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5E61A65AF60004C5858 /* Roboto-Italic.ttf */; };
+		ECCCA5F41A65AF60004C5858 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5E71A65AF60004C5858 /* Roboto-Light.ttf */; };
+		ECCCA5F51A65AF60004C5858 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5E81A65AF60004C5858 /* Roboto-LightItalic.ttf */; };
+		ECCCA5F61A65AF60004C5858 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5E91A65AF60004C5858 /* Roboto-Medium.ttf */; };
+		ECCCA5F71A65AF60004C5858 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5EA1A65AF60004C5858 /* Roboto-MediumItalic.ttf */; };
+		ECCCA5F81A65AF60004C5858 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5EB1A65AF60004C5858 /* Roboto-Regular.ttf */; };
+		ECCCA5F91A65AF60004C5858 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5EC1A65AF60004C5858 /* Roboto-Thin.ttf */; };
+		ECCCA5FA1A65AF60004C5858 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5ED1A65AF60004C5858 /* Roboto-ThinItalic.ttf */; };
+		ECCCA5FC1A65B173004C5858 /* CallOutTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCCA5FB1A65B173004C5858 /* CallOutTop.swift */; };
+		ECCCA6021A65B9FC004C5858 /* bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5FE1A65B9FC004C5858 /* bg1.png */; };
+		ECCCA6031A65B9FC004C5858 /* bg1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5FF1A65B9FC004C5858 /* bg1@2x.png */; };
+		ECCCA6041A65B9FC004C5858 /* img1.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA6001A65B9FC004C5858 /* img1.png */; };
+		ECCCA6051A65B9FC004C5858 /* img1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA6011A65B9FC004C5858 /* img1@2x.png */; };
+		ECCCA6071A6628D7004C5858 /* CallOutBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCCA6061A6628D7004C5858 /* CallOutBottom.swift */; };
+		ECCCA60E1A662A94004C5858 /* inter.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA6081A662A94004C5858 /* inter.png */; };
+		ECCCA60F1A662A94004C5858 /* inter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA6091A662A94004C5858 /* inter@2x.png */; };
+		ECCCA6101A662A94004C5858 /* stat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA60A1A662A94004C5858 /* stat@2x.png */; };
+		ECCCA6111A662A94004C5858 /* stat.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA60B1A662A94004C5858 /* stat.png */; };
+		ECCCA6121A662A94004C5858 /* div@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA60C1A662A94004C5858 /* div@2x.png */; };
+		ECCCA6131A662A94004C5858 /* div.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA60D1A662A94004C5858 /* div.png */; };
+		ECCCA6151A6632CA004C5858 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA6141A6632CA004C5858 /* circle.png */; };
 		ECF5CCCF1A6444ED0055077D /* Pin.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF5CCCE1A6444ED0055077D /* Pin.png */; };
 		ECF5CCD11A644CE10055077D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF5CCD01A644CE10055077D /* QuartzCore.framework */; };
 		ECF5CCD31A644CE80055077D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF5CCD21A644CE80055077D /* CoreLocation.framework */; };
@@ -48,10 +83,45 @@
 		EC0AF7C51A62E7CD004F1B6C /* Yo IntervengoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yo IntervengoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0AF7CA1A62E7CD004F1B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC0AF7CB1A62E7CD004F1B6C /* Yo_IntervengoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yo_IntervengoTests.swift; sourceTree = "<group>"; };
+		EC6F29CE1A674D4B00DB09EF /* loc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loc.png; sourceTree = "<group>"; };
+		EC6F29CF1A674D4B00DB09EF /* loc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loc@2x.png"; sourceTree = "<group>"; };
+		EC6F29D01A674D4B00DB09EF /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		EC6F29D11A674D4B00DB09EF /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		EC6F29D21A674D4B00DB09EF /* Report.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Report.png; sourceTree = "<group>"; };
+		EC6F29D31A674D4B00DB09EF /* Report@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Report@2x.png"; sourceTree = "<group>"; };
+		EC6F29D41A674D4B00DB09EF /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		EC6F29D51A674D4B00DB09EF /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
+		EC6F29DE1A67533700DB09EF /* LeftMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftMenu.swift; path = Helpers/LeftMenu.swift; sourceTree = "<group>"; };
 		EC790D151A63170900900192 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = Views/ListViewController.swift; sourceTree = "<group>"; };
 		EC790D171A633D4300900192 /* Yo Intervengo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yo Intervengo-Bridging-Header.h"; sourceTree = "<group>"; };
 		EC790D181A633D4400900192 /* Bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bridge.m; path = Helpers/Bridge.m; sourceTree = "<group>"; };
 		ECCCA5DD1A64D051004C5858 /* Pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pin@2x.png"; sourceTree = "<group>"; };
+		ECCCA5E11A65AF60004C5858 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		ECCCA5E21A65AF60004C5858 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		ECCCA5E31A65AF60004C5858 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		ECCCA5E41A65AF60004C5858 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		ECCCA5E51A65AF60004C5858 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		ECCCA5E61A65AF60004C5858 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		ECCCA5E71A65AF60004C5858 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		ECCCA5E81A65AF60004C5858 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		ECCCA5E91A65AF60004C5858 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		ECCCA5EA1A65AF60004C5858 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		ECCCA5EB1A65AF60004C5858 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		ECCCA5EC1A65AF60004C5858 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		ECCCA5ED1A65AF60004C5858 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		ECCCA5FB1A65B173004C5858 /* CallOutTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CallOutTop.swift; path = Helpers/CallOutTop.swift; sourceTree = "<group>"; };
+		ECCCA5FE1A65B9FC004C5858 /* bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg1.png; sourceTree = "<group>"; };
+		ECCCA5FF1A65B9FC004C5858 /* bg1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg1@2x.png"; sourceTree = "<group>"; };
+		ECCCA6001A65B9FC004C5858 /* img1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img1.png; sourceTree = "<group>"; };
+		ECCCA6011A65B9FC004C5858 /* img1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img1@2x.png"; sourceTree = "<group>"; };
+		ECCCA6061A6628D7004C5858 /* CallOutBottom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CallOutBottom.swift; path = Helpers/CallOutBottom.swift; sourceTree = "<group>"; };
+		ECCCA6081A662A94004C5858 /* inter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inter.png; sourceTree = "<group>"; };
+		ECCCA6091A662A94004C5858 /* inter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inter@2x.png"; sourceTree = "<group>"; };
+		ECCCA60A1A662A94004C5858 /* stat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stat@2x.png"; sourceTree = "<group>"; };
+		ECCCA60B1A662A94004C5858 /* stat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stat.png; sourceTree = "<group>"; };
+		ECCCA60C1A662A94004C5858 /* div@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "div@2x.png"; sourceTree = "<group>"; };
+		ECCCA60D1A662A94004C5858 /* div.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = div.png; sourceTree = "<group>"; };
+		ECCCA6141A6632CA004C5858 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		ECF5CCCE1A6444ED0055077D /* Pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pin.png; sourceTree = "<group>"; };
 		ECF5CCD01A644CE10055077D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ECF5CCD21A644CE80055077D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -126,6 +196,7 @@
 		EC0AF7B21A62E7CD004F1B6C /* Yo Intervengo */ = {
 			isa = PBXGroup;
 			children = (
+				ECCCA5DF1A65AE5E004C5858 /* Components */,
 				ECF5CCCC1A6444ED0055077D /* Assets */,
 				EC0AF7B51A62E7CD004F1B6C /* AppDelegate.swift */,
 				EC0AF7B71A62E7CD004F1B6C /* ViewController.swift */,
@@ -134,8 +205,6 @@
 				EC0AF7BE1A62E7CD004F1B6C /* LaunchScreen.xib */,
 				EC0AF7B31A62E7CD004F1B6C /* Supporting Files */,
 				EC790D151A63170900900192 /* ListViewController.swift */,
-				EC790D181A633D4400900192 /* Bridge.m */,
-				EC790D171A633D4300900192 /* Yo Intervengo-Bridging-Header.h */,
 			);
 			path = "Yo Intervengo";
 			sourceTree = "<group>";
@@ -165,9 +234,77 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EC6F29CD1A674D4B00DB09EF /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				EC6F29CE1A674D4B00DB09EF /* loc.png */,
+				EC6F29CF1A674D4B00DB09EF /* loc@2x.png */,
+				EC6F29D01A674D4B00DB09EF /* menu.png */,
+				EC6F29D11A674D4B00DB09EF /* menu@2x.png */,
+				EC6F29D21A674D4B00DB09EF /* Report.png */,
+				EC6F29D31A674D4B00DB09EF /* Report@2x.png */,
+				EC6F29D41A674D4B00DB09EF /* search.png */,
+				EC6F29D51A674D4B00DB09EF /* search@2x.png */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		ECCCA5DF1A65AE5E004C5858 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EC790D181A633D4400900192 /* Bridge.m */,
+				EC790D171A633D4300900192 /* Yo Intervengo-Bridging-Header.h */,
+				ECCCA5FB1A65B173004C5858 /* CallOutTop.swift */,
+				ECCCA6061A6628D7004C5858 /* CallOutBottom.swift */,
+				EC6F29DE1A67533700DB09EF /* LeftMenu.swift */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		ECCCA5E01A65AF60004C5858 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				ECCCA5E11A65AF60004C5858 /* LICENSE.txt */,
+				ECCCA5E21A65AF60004C5858 /* Roboto-Black.ttf */,
+				ECCCA5E31A65AF60004C5858 /* Roboto-BlackItalic.ttf */,
+				ECCCA5E41A65AF60004C5858 /* Roboto-Bold.ttf */,
+				ECCCA5E51A65AF60004C5858 /* Roboto-BoldItalic.ttf */,
+				ECCCA5E61A65AF60004C5858 /* Roboto-Italic.ttf */,
+				ECCCA5E71A65AF60004C5858 /* Roboto-Light.ttf */,
+				ECCCA5E81A65AF60004C5858 /* Roboto-LightItalic.ttf */,
+				ECCCA5E91A65AF60004C5858 /* Roboto-Medium.ttf */,
+				ECCCA5EA1A65AF60004C5858 /* Roboto-MediumItalic.ttf */,
+				ECCCA5EB1A65AF60004C5858 /* Roboto-Regular.ttf */,
+				ECCCA5EC1A65AF60004C5858 /* Roboto-Thin.ttf */,
+				ECCCA5ED1A65AF60004C5858 /* Roboto-ThinItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		ECCCA5FD1A65B9FC004C5858 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				ECCCA6141A6632CA004C5858 /* circle.png */,
+				ECCCA6081A662A94004C5858 /* inter.png */,
+				ECCCA6091A662A94004C5858 /* inter@2x.png */,
+				ECCCA60A1A662A94004C5858 /* stat@2x.png */,
+				ECCCA60B1A662A94004C5858 /* stat.png */,
+				ECCCA60C1A662A94004C5858 /* div@2x.png */,
+				ECCCA60D1A662A94004C5858 /* div.png */,
+				ECCCA5FE1A65B9FC004C5858 /* bg1.png */,
+				ECCCA5FF1A65B9FC004C5858 /* bg1@2x.png */,
+				ECCCA6001A65B9FC004C5858 /* img1.png */,
+				ECCCA6011A65B9FC004C5858 /* img1@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		ECF5CCCC1A6444ED0055077D /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				EC6F29CD1A674D4B00DB09EF /* Buttons */,
+				ECCCA5FD1A65B9FC004C5858 /* Images */,
+				ECCCA5E01A65AF60004C5858 /* Fonts */,
 				ECF5CCCD1A6444ED0055077D /* Pin */,
 			);
 			path = Assets;
@@ -264,11 +401,43 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECCCA5EE1A65AF60004C5858 /* LICENSE.txt in Resources */,
+				ECCCA6131A662A94004C5858 /* div.png in Resources */,
+				ECCCA5F71A65AF60004C5858 /* Roboto-MediumItalic.ttf in Resources */,
+				ECCCA6041A65B9FC004C5858 /* img1.png in Resources */,
+				EC6F29DD1A674D4B00DB09EF /* search@2x.png in Resources */,
+				EC6F29DB1A674D4B00DB09EF /* Report@2x.png in Resources */,
+				ECCCA60F1A662A94004C5858 /* inter@2x.png in Resources */,
+				ECCCA5F91A65AF60004C5858 /* Roboto-Thin.ttf in Resources */,
+				ECCCA5F81A65AF60004C5858 /* Roboto-Regular.ttf in Resources */,
 				EC0AF7BB1A62E7CD004F1B6C /* Main.storyboard in Resources */,
+				ECCCA5F41A65AF60004C5858 /* Roboto-Light.ttf in Resources */,
+				EC6F29DA1A674D4B00DB09EF /* Report.png in Resources */,
+				ECCCA5FA1A65AF60004C5858 /* Roboto-ThinItalic.ttf in Resources */,
 				ECF5CCCF1A6444ED0055077D /* Pin.png in Resources */,
+				ECCCA5F51A65AF60004C5858 /* Roboto-LightItalic.ttf in Resources */,
+				ECCCA6121A662A94004C5858 /* div@2x.png in Resources */,
+				ECCCA6101A662A94004C5858 /* stat@2x.png in Resources */,
+				ECCCA6031A65B9FC004C5858 /* bg1@2x.png in Resources */,
 				EC0AF7C01A62E7CD004F1B6C /* LaunchScreen.xib in Resources */,
+				EC6F29D81A674D4B00DB09EF /* menu.png in Resources */,
+				EC6F29DC1A674D4B00DB09EF /* search.png in Resources */,
+				ECCCA5EF1A65AF60004C5858 /* Roboto-Black.ttf in Resources */,
+				ECCCA5F11A65AF60004C5858 /* Roboto-Bold.ttf in Resources */,
+				EC6F29D61A674D4B00DB09EF /* loc.png in Resources */,
 				ECCCA5DE1A64D051004C5858 /* Pin@2x.png in Resources */,
 				EC0AF7BD1A62E7CD004F1B6C /* Images.xcassets in Resources */,
+				EC6F29D91A674D4B00DB09EF /* menu@2x.png in Resources */,
+				ECCCA6021A65B9FC004C5858 /* bg1.png in Resources */,
+				ECCCA6111A662A94004C5858 /* stat.png in Resources */,
+				ECCCA5F61A65AF60004C5858 /* Roboto-Medium.ttf in Resources */,
+				ECCCA5F21A65AF60004C5858 /* Roboto-BoldItalic.ttf in Resources */,
+				ECCCA6151A6632CA004C5858 /* circle.png in Resources */,
+				ECCCA5F31A65AF60004C5858 /* Roboto-Italic.ttf in Resources */,
+				ECCCA6051A65B9FC004C5858 /* img1@2x.png in Resources */,
+				EC6F29D71A674D4B00DB09EF /* loc@2x.png in Resources */,
+				ECCCA60E1A662A94004C5858 /* inter.png in Resources */,
+				ECCCA5F01A65AF60004C5858 /* Roboto-BlackItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +491,10 @@
 				EC790D191A633D4400900192 /* Bridge.m in Sources */,
 				EC0AF7B81A62E7CD004F1B6C /* ViewController.swift in Sources */,
 				EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */,
+				ECCCA5FC1A65B173004C5858 /* CallOutTop.swift in Sources */,
 				EC790D161A63170900900192 /* ListViewController.swift in Sources */,
+				EC6F29DF1A67533700DB09EF /* LeftMenu.swift in Sources */,
+				ECCCA6071A6628D7004C5858 /* CallOutBottom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

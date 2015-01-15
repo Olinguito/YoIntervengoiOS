@@ -16,36 +16,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uo0-qn-RFS" customClass="CSAnimationView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="78"/>
-                                <color key="backgroundColor" red="0.15686274510000001" green="0.59999999999999998" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="fadeIn"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="delay">
-                                        <integer key="value" value="0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uuw-FR-LVH">
+                                <rect key="frame" x="310" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBW-c6-sds">
+                                        <rect key="frame" x="5" y="0.0" width="600" height="600"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="07s-j4-rK2">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="dark"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="0Kh-Hd-wxy" appends="YES" id="AFU-bH-Yzs"/>
+                                </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC1-8Y-B5h">
-                                <rect key="frame" x="245" y="426" width="110" height="45"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Check">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9d-ve-JFc">
+                                <rect key="frame" x="561" y="31" width="21" height="22"/>
+                                <state key="normal" image="search.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="search:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m3X-ea-E2Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77O-uy-fEd">
+                                <rect key="frame" x="15" y="28" width="23" height="22"/>
+                                <state key="normal" image="menu.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dwX-fT-sPM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23R-Sb-C4f">
+                                <rect key="frame" x="563" y="558" width="17" height="32"/>
+                                <state key="normal" image="Report.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="newReport:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L5Y-ZJ-t2e"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8R-OH-qb4">
+                                <rect key="frame" x="16" y="563" width="22" height="22"/>
+                                <state key="normal" image="loc.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dh2-th-b8v"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                     </view>
+                    <connections>
+                        <outlet property="btnLocal" destination="X8R-OH-qb4" id="hcr-Pt-kck"/>
+                        <outlet property="btnMenu" destination="77O-uy-fEd" id="gPb-NO-gov"/>
+                        <outlet property="btnReport" destination="23R-Sb-C4f" id="bzl-Lu-qPr"/>
+                        <outlet property="btnSearch" destination="H9d-ve-JFc" id="Tlk-To-5Jf"/>
+                        <outlet property="gestureRecognizer" destination="0Kh-Hd-wxy" id="zca-OQ-ZT8"/>
+                        <outlet property="listView" destination="uuw-FR-LVH" id="LhU-6m-Mj8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="0Kh-Hd-wxy">
+                    <connections>
+                        <action selector="HandleBorderGesture:" destination="BYZ-38-t0r" id="vB0-on-01l"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="565" y="288"/>
+            <point key="canvasLocation" x="564" y="282"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Report.png" width="17" height="32"/>
+        <image name="loc.png" width="22" height="22"/>
+        <image name="menu.png" width="23" height="14"/>
+        <image name="search.png" width="21" height="20"/>
+    </resources>
 </document>

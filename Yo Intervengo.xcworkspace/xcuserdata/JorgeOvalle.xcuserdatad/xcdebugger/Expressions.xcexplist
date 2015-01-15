@@ -6,6 +6,9 @@
          contextName = "Yo_Intervengo.ViewController.viewDidLoad (Yo_Intervengo.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "menuView">
+            </PersistentString>
+            <PersistentString
                value = "ann.title">
             </PersistentString>
          </PersistentStrings>
@@ -15,6 +18,12 @@
          <PersistentStrings>
             <PersistentString
                value = "annotation">
+            </PersistentString>
+            <PersistentString
+               value = "annotation.clusteredannotations">
+            </PersistentString>
+            <PersistentString
+               value = "an">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
