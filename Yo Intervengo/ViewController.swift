@@ -36,19 +36,25 @@ class ViewController: UIViewController,RMMapViewDelegate {
         map.showsUserLocation = true
         map.tintColor = UIColor.greenColor()
         let ann = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6615,-74.0698), andTitle:"")
+        
+        
         let ann2 = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6625,-74.0698), andTitle:"")
         map.addAnnotation(ann)
         map.addAnnotation(ann2)
         map.clusterAreaSize = CGSize(width: 30, height: 40)
         map.clusteringEnabled = true
         animator = UIDynamicAnimator(referenceView: view)
-        initLoc = listView.center
         menuView = LeftMenu(frame: CGRect(x: -204, y: 0, width: 204, height: view.frame.height))
         view.insertSubview(menuView, belowSubview: btnMenu)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    override func viewWillAppear(animated: Bool) {
+        listView.center = CGPoint(x: ((self.view.frame.width*1.5)-4), y: self.view.frame.height/2)
+        initLoc = listView.center
+    }
+    
     func mapView(mapView: RMMapView!, layerForAnnotation annotation: RMAnnotation!) -> RMMapLayer! {
         if annotation.isUserLocationAnnotation{
             return nil

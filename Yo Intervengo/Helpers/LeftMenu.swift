@@ -12,6 +12,12 @@ import UIKit
 
 class LeftMenu: UIView{
     var opened = false
+    var btnRep:UIButton!
+    var btnWiki:UIButton!
+    var btnStat:UIButton!
+    var btnProf:UIButton!
+    var btnSett:UIButton!
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -21,11 +27,11 @@ class LeftMenu: UIView{
         super.init(frame: frame)
         self.backgroundColor = UIColor(red:0.200, green:0.200, blue:0.200, alpha: 0.95)
         let spacer = 10
-        let btnRep  = UIButton(frame: CGRect(x: 20, y: 76, width: 120, height: 26))
-        let btnWiki = UIButton(frame: CGRect(x: 20, y: btnRep.frame.maxY+10, width: 120, height: 26))
-        let btnStat = UIButton(frame: CGRect(x: 20, y: btnWiki.frame.maxY+10, width: 120, height: 26))
-        let btnProf = UIButton(frame: CGRect(x: 20, y: btnStat.frame.maxY+10, width: 120, height: 26))
-        let btnSett = UIButton(frame: CGRect(x: 20, y: btnProf.frame.maxY+10, width: 120, height: 26))
+        btnRep  = UIButton(frame: CGRect(x: 20, y: 76, width: 120, height: 26))
+        btnWiki = UIButton(frame: CGRect(x: 20, y: btnRep.frame.maxY+10, width: 120, height: 26))
+        btnStat = UIButton(frame: CGRect(x: 20, y: btnWiki.frame.maxY+10, width: 120, height: 26))
+        btnProf = UIButton(frame: CGRect(x: 20, y: btnStat.frame.maxY+10, width: 120, height: 26))
+        btnSett = UIButton(frame: CGRect(x: 20, y: btnProf.frame.maxY+10, width: 120, height: 26))
         
         btnRep.setTitle("...REPORTES", forState: UIControlState.Normal)
         btnWiki.setTitle("WIKI", forState: UIControlState.Normal)
@@ -60,6 +66,12 @@ class LeftMenu: UIView{
         btnProf.tag = 3;
         btnSett.tag = 4;
         
+        btnRep.addTarget(self,  action: "goBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+        btnWiki.addTarget(self, action: "goBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+        btnStat.addTarget(self, action: "goBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+        btnProf.addTarget(self, action: "goBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+        btnSett.addTarget(self, action: "goBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+        
         self.addSubview(btnRep)
         self.addSubview(btnWiki)
         self.addSubview(btnStat)
@@ -81,6 +93,16 @@ class LeftMenu: UIView{
         }
         opened = !opened
         self.pop_addAnimation(spAn, forKey: "center")
+    }
+    
+    func goBtn(sender:UIButton){
+        btnRep.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
+        btnWiki.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
+        btnStat.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
+        btnProf.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
+        btnSett.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
+        
+        (self.viewWithTag(sender.tag)as UIButton).setTitleColor(UIColor(red:0.761, green:0.286, blue:0.000, alpha: 1), forState: UIControlState.Normal)
     }
     
 }

@@ -23,7 +23,6 @@
 		EC6F29DC1A674D4B00DB09EF /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29D41A674D4B00DB09EF /* search.png */; };
 		EC6F29DD1A674D4B00DB09EF /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29D51A674D4B00DB09EF /* search@2x.png */; };
 		EC6F29DF1A67533700DB09EF /* LeftMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F29DE1A67533700DB09EF /* LeftMenu.swift */; };
-		EC790D161A63170900900192 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC790D151A63170900900192 /* ListViewController.swift */; };
 		EC790D191A633D4400900192 /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = EC790D181A633D4400900192 /* Bridge.m */; };
 		ECCCA5DE1A64D051004C5858 /* Pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5DD1A64D051004C5858 /* Pin@2x.png */; };
 		ECCCA5EE1A65AF60004C5858 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5E11A65AF60004C5858 /* LICENSE.txt */; };
@@ -92,7 +91,6 @@
 		EC6F29D41A674D4B00DB09EF /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		EC6F29D51A674D4B00DB09EF /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		EC6F29DE1A67533700DB09EF /* LeftMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftMenu.swift; path = Helpers/LeftMenu.swift; sourceTree = "<group>"; };
-		EC790D151A63170900900192 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = Views/ListViewController.swift; sourceTree = "<group>"; };
 		EC790D171A633D4300900192 /* Yo Intervengo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yo Intervengo-Bridging-Header.h"; sourceTree = "<group>"; };
 		EC790D181A633D4400900192 /* Bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bridge.m; path = Helpers/Bridge.m; sourceTree = "<group>"; };
 		ECCCA5DD1A64D051004C5858 /* Pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pin@2x.png"; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 				EC0AF7BC1A62E7CD004F1B6C /* Images.xcassets */,
 				EC0AF7BE1A62E7CD004F1B6C /* LaunchScreen.xib */,
 				EC0AF7B31A62E7CD004F1B6C /* Supporting Files */,
-				EC790D151A63170900900192 /* ListViewController.swift */,
 			);
 			path = "Yo Intervengo";
 			sourceTree = "<group>";
@@ -492,7 +489,6 @@
 				EC0AF7B81A62E7CD004F1B6C /* ViewController.swift in Sources */,
 				EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */,
 				ECCCA5FC1A65B173004C5858 /* CallOutTop.swift in Sources */,
-				EC790D161A63170900900192 /* ListViewController.swift in Sources */,
 				EC6F29DF1A67533700DB09EF /* LeftMenu.swift in Sources */,
 				ECCCA6071A6628D7004C5858 /* CallOutBottom.swift in Sources */,
 			);
