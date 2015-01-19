@@ -25,5 +25,6 @@ class Gradient: UIView{
         mapGrad.locations = [0,1]
         mapGrad.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         self.layer.insertSublayer(mapGrad, atIndex: 0)
+        self.userInteractionEnabled = false
     }
 }

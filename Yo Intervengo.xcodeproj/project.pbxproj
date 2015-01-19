@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AD47E1973A450F63AC40EF7B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 088AA865EB5056C1F0BEC02E /* libPods.a */; };
+		EC051BBC1A6CCD1A00C70D2A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */; };
 		EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7B51A62E7CD004F1B6C /* AppDelegate.swift */; };
 		EC0AF7B81A62E7CD004F1B6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7B71A62E7CD004F1B6C /* ViewController.swift */; };
 		EC0AF7BB1A62E7CD004F1B6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC0AF7B91A62E7CD004F1B6C /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 		ECCE06E71A6CA54100A35012 /* bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCE06E41A6CA54100A35012 /* bg@3x.png */; };
 		ECCE06E81A6CA54100A35012 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCE06E51A6CA54100A35012 /* bg@2x.png */; };
 		ECCE06E91A6CA54100A35012 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCE06E61A6CA54100A35012 /* bg.png */; };
+		ECCE06EB1A6CB3BB00A35012 /* BottomPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE06EA1A6CB3BB00A35012 /* BottomPager.swift */; };
 		ECF51D4F1A6C3B0000073421 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF51D4E1A6C3B0000073421 /* Gradient.swift */; };
 		ECF5CCCF1A6444ED0055077D /* Pin.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF5CCCE1A6444ED0055077D /* Pin.png */; };
 		ECF5CCD11A644CE10055077D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF5CCD01A644CE10055077D /* QuartzCore.framework */; };
@@ -85,6 +87,7 @@
 		088AA865EB5056C1F0BEC02E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DE7C65E89059CCA63606471 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		63AD3BC2E5B429E2621BC7C7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionViewCell.xib; path = XIB/CollectionViewCell.xib; sourceTree = "<group>"; };
 		EC0AF7B01A62E7CD004F1B6C /* Yo Intervengo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yo Intervengo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0AF7B41A62E7CD004F1B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC0AF7B51A62E7CD004F1B6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +148,7 @@
 		ECCE06E41A6CA54100A35012 /* bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@3x.png"; sourceTree = "<group>"; };
 		ECCE06E51A6CA54100A35012 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		ECCE06E61A6CA54100A35012 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		ECCE06EA1A6CB3BB00A35012 /* BottomPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BottomPager.swift; path = Helpers/BottomPager.swift; sourceTree = "<group>"; };
 		ECF51D4E1A6C3B0000073421 /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gradient.swift; path = Helpers/Gradient.swift; sourceTree = "<group>"; };
 		ECF5CCCE1A6444ED0055077D /* Pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pin.png; sourceTree = "<group>"; };
 		ECF5CCD01A644CE10055077D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -281,6 +285,8 @@
 				ECCCA6061A6628D7004C5858 /* CallOutBottom.swift */,
 				EC6F29DE1A67533700DB09EF /* LeftMenu.swift */,
 				ECF51D4E1A6C3B0000073421 /* Gradient.swift */,
+				ECCE06EA1A6CB3BB00A35012 /* BottomPager.swift */,
+				EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -461,6 +467,7 @@
 				ECCCA5F41A65AF60004C5858 /* Roboto-Light.ttf in Resources */,
 				EC6F29DA1A674D4B00DB09EF /* Report.png in Resources */,
 				ECCCA5FA1A65AF60004C5858 /* Roboto-ThinItalic.ttf in Resources */,
+				EC051BBC1A6CCD1A00C70D2A /* CollectionViewCell.xib in Resources */,
 				ECCE06E81A6CA54100A35012 /* bg@2x.png in Resources */,
 				ECCE06D11A6C524800A35012 /* mas.png in Resources */,
 				ECF5CCCF1A6444ED0055077D /* Pin.png in Resources */,
@@ -544,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECCE06EB1A6CB3BB00A35012 /* BottomPager.swift in Sources */,
 				EC790D191A633D4400900192 /* Bridge.m in Sources */,
 				EC0AF7B81A62E7CD004F1B6C /* ViewController.swift in Sources */,
 				EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */,

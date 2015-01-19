@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uuw-FR-LVH">
-                                <rect key="frame" x="1000" y="0.0" width="281" height="600"/>
+                                <rect key="frame" x="700" y="0.0" width="281" height="600"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBW-c6-sds">
                                         <rect key="frame" x="12" y="0.0" width="269" height="600"/>
@@ -119,6 +119,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="X8R-OH-qb4" secondAttribute="bottom" id="Kpn-gi-n2s"/>
                             <constraint firstItem="QBW-c6-sds" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="MyL-et-sYg"/>
                             <constraint firstItem="QBW-c6-sds" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="NZh-HH-wRu"/>
+                            <constraint firstItem="uuw-FR-LVH" firstAttribute="leading" secondItem="H9d-ve-JFc" secondAttribute="trailing" priority="250" constant="-12" id="Wi9-Er-AWd"/>
                             <constraint firstItem="uuw-FR-LVH" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="YAq-vj-YGZ"/>
                             <constraint firstItem="uuw-FR-LVH" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="h3f-Hi-IBN"/>
                             <constraint firstItem="uuw-FR-LVH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="24" id="i7b-gt-POa"/>
@@ -164,19 +165,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="269" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yeah????" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctG-gk-v3r">
-                                <rect key="frame" x="97" y="281" width="75.5" height="38"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Yeah????" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctG-gk-v3r">
+                                <rect key="frame" x="91" y="281" width="75.5" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="ctG-gk-v3r" secondAttribute="centerY" id="GgC-Ri-yzm"/>
+                            <constraint firstAttribute="centerX" secondItem="ctG-gk-v3r" secondAttribute="centerX" id="hry-v6-byZ"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4y-2b-cLG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1114.5" y="282"/>
+        </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="Nll-bl-oXi">
+            <objects>
+                <collectionViewController id="tQp-v6-nco" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Cp0-3g-JgR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ck1-0Y-vVw">
+                            <size key="itemSize" width="159" height="103"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QgO-Me-M18">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="159" height="103"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="tQp-v6-nco" id="yCz-Nt-bQe"/>
+                            <outlet property="delegate" destination="tQp-v6-nco" id="cuc-dW-piJ"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z2C-sK-4Uq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1102" y="1088"/>
         </scene>
     </scenes>
     <resources>

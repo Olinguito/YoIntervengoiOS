@@ -15,6 +15,7 @@ class ViewController: UIViewController,RMMapViewDelegate {
     var snaBeh: UISnapBehavior!
     var initLoc: CGPoint!
     var menuView: LeftMenu!
+    var test: BottomPager!
 
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var btnMenu: UIButton!
@@ -50,14 +51,18 @@ class ViewController: UIViewController,RMMapViewDelegate {
         let grad2 = Gradient(frame: CGRect(x: 0, y: fram.height-64, width: fram.width, height: 64), type: "Bottom")
         self.view.insertSubview(grad2, aboveSubview: map)
         
-        listView.frame.origin.x = 300
-        listView.frame = CGRectMake(1000, 0, listView.frame.size.width, listView.frame.size.height)
+        test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 200))
+        self.view.insertSubview(test, atIndex: 20)
     }
     
     func tapOnAnnotation(annotation: RMAnnotation!, onMap map: RMMapView!) {
         println("Tap en annotation")
+        test.show()
     }
     
+    func singleTapOnMap(map: RMMapView!, at point: CGPoint) {
+        test.hide()
+    }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
