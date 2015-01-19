@@ -15,7 +15,7 @@ class ViewController: UIViewController,RMMapViewDelegate {
     var snaBeh: UISnapBehavior!
     var initLoc: CGPoint!
     var menuView: LeftMenu!
-    
+
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var btnMenu: UIButton!
     @IBOutlet weak var btnSearch: UIButton!
@@ -36,8 +36,6 @@ class ViewController: UIViewController,RMMapViewDelegate {
         map.showsUserLocation = true
         map.tintColor = UIColor.greenColor()
         let ann = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6615,-74.0698), andTitle:"")
-        
-        
         let ann2 = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6625,-74.0698), andTitle:"")
         map.addAnnotation(ann)
         map.addAnnotation(ann2)
@@ -46,7 +44,25 @@ class ViewController: UIViewController,RMMapViewDelegate {
         animator = UIDynamicAnimator(referenceView: view)
         menuView = LeftMenu(frame: CGRect(x: -204, y: 0, width: 204, height: view.frame.height))
         view.insertSubview(menuView, belowSubview: btnMenu)
+        let fram = self.view.frame.size
+        let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: fram.width, height: 64), type: "Top")
+        self.view.insertSubview(grad1, aboveSubview: map)
+        let grad2 = Gradient(frame: CGRect(x: 0, y: fram.height-64, width: fram.width, height: 64), type: "Bottom")
+        self.view.insertSubview(grad2, aboveSubview: map)
+        
+        listView.frame.origin.x = 300
+        listView.frame = CGRectMake(1000, 0, listView.frame.size.width, listView.frame.size.height)
     }
+    
+    func tapOnAnnotation(annotation: RMAnnotation!, onMap map: RMMapView!) {
+        println("Tap en annotation")
+    }
+    
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -70,7 +86,7 @@ class ViewController: UIViewController,RMMapViewDelegate {
         {
             //map.setCenterCoordinate(annotation.coordinate, animated: true)
             let marker = RMMarker(UIImage: UIImage(named: "Pin"))
-            marker.canShowCallout = true
+            //marker.canShowCallout = true
             let top = CallOutTop(frame: CGRect(x: 0, y: 0, width: 269, height: 75))
             let bottom =  CallOutBottom(frame: CGRect(x: 0, y: 0, width: 269, height: 52))
             marker.topCalloutAccessoryView = top
@@ -89,21 +105,27 @@ class ViewController: UIViewController,RMMapViewDelegate {
         }else if sender.state == UIGestureRecognizerState.Ended{
             animator.removeBehavior(attachmentBeh)
             if location.x < view.frame.width/2{
-                snaBeh = UISnapBehavior(item: listView, snapToPoint: view.center)
+                snaBeh = UISnapBehavior(item: listView, snapToPoint: CGPoint(x: view.center.x - 12, y: view.center.y))
             }else{
                 snaBeh = UISnapBehavior(item: listView, snapToPoint: initLoc)
             }
             animator.addBehavior(snaBeh)
         }
     }
+    
     @IBAction func getMenu(sender: AnyObject) {
         menuView.interact()
     }
+    
     @IBAction func getLocation(sender: AnyObject) {
+        map.setCenterCoordinate(map.userLocation.coordinate, animated: true);
     }
     @IBAction func search(sender: AnyObject) {
     }
     @IBAction func newReport(sender: AnyObject) {
+
     }
+    
+    
 }
 

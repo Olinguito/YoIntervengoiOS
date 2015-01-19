@@ -3,6 +3,31 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "Yo_Intervengo.ViewController.newReport (Yo_Intervengo.ViewController)(Swift.AnyObject) -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "bubbleMenu.menuItemImages">
+            </PersistentString>
+            <PersistentString
+               value = "images.count">
+            </PersistentString>
+            <PersistentString
+               value = "bubbleMenu">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LIVBubbleMenu initWithPoint:radius:menuItems:inView:]:LIVBubbleMenu.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "menuItems[0]">
+            </PersistentString>
+            <PersistentString
+               value = "_menuItemImages[0]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Yo_Intervengo.ViewController.viewDidLoad (Yo_Intervengo.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -10,6 +35,17 @@
             </PersistentString>
             <PersistentString
                value = "ann.title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LIVBubbleMenu show]:LIVBubbleMenu.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_menuItemImages">
+            </PersistentString>
+            <PersistentString
+               value = "[_menuItemImages count]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
