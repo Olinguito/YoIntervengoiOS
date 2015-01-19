@@ -29,14 +29,14 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         
         let coll = UICollectionViewFlowLayout()
         coll.scrollDirection = UICollectionViewScrollDirection.Horizontal
-        coll.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        coll.itemSize = CGSize(width: 90, height: 90)
+        coll.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        coll.itemSize = CGSize(width: 274, height: 180)
+        
         collectionView = UICollectionView(frame: blurView.frame, collectionViewLayout: coll)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clearColor()
         collectionView.pagingEnabled = true
-
         collectionView.registerNib(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
         self.addSubview(collectionView)
     }
@@ -59,6 +59,10 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         }
     }
     
+    func go2Page (page:NSIndexPath){
+        collectionView.scrollToItemAtIndexPath(page, atScrollPosition:UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
+    }
+    
     //collection delegate
         
     
@@ -75,6 +79,20 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
        /* cell.textLabel?.text = "\(indexPath.section):\(indexPath.row)"
         cell.imageView?.image = UIImage(named: "Pin")*/
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath){
+        var s = CGFloat((90.0*M_PI)/180)
+        var rotation = CATransform3DMakeRotation(s, 0.0, 0.7, 0.4)
+        rotation.m34 = -1.0/600.0
+        cell.layer.shadowColor = UIColor.blackColor().CGColor
+        cell.layer.shadowOffset = CGSizeMake(0, 0.5)
+        UIView.beginAnimations("rotation", context: nil)
+        UIView.setAnimationDuration(0.8)
+        cell.layer.transform = CATransform3DIdentity
+        cell.alpha = 1
+        cell.layer.shadowOffset = CGSizeMake(0, 0)
+        UIView.commitAnimations()
     }
     
     

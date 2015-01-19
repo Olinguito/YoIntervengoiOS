@@ -24,8 +24,7 @@ class ViewController: UIViewController,RMMapViewDelegate {
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let source = RMMapboxSource(mapID: "olinguito.c389ab51")
-        //RMConfiguration(path: "pk.eyJ1Ijoib2xpbmd1aXRvIiwiYSI6IkVGeE41bE0ifQ.TrGnR7v_7HRJUsiM2h_3dQ")
+//        let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
         let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
@@ -34,12 +33,13 @@ class ViewController: UIViewController,RMMapViewDelegate {
         view.insertSubview(map, belowSubview: listView)
         map.setCenterCoordinate(CLLocationCoordinate2DMake(4.6615,-74.0688), animated: true)
         map.setZoom(11, animated: true)
+        map.minZoom = 11
         map.showsUserLocation = true
         map.tintColor = UIColor.greenColor()
-        let ann = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6615,-74.0698), andTitle:"")
-        let ann2 = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6625,-74.0698), andTitle:"")
+        let ann = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6615,-74.0698), andTitle:"1")
+        let ann2 = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6625,-74.0698), andTitle:"3")
         map.addAnnotation(ann)
-        map.addAnnotation(ann2)
+       // map.addAnnotation(ann2)
         map.clusterAreaSize = CGSize(width: 30, height: 40)
         map.clusteringEnabled = true
         animator = UIDynamicAnimator(referenceView: view)
@@ -50,14 +50,27 @@ class ViewController: UIViewController,RMMapViewDelegate {
         self.view.insertSubview(grad1, aboveSubview: map)
         let grad2 = Gradient(frame: CGRect(x: 0, y: fram.height-64, width: fram.width, height: 64), type: "Bottom")
         self.view.insertSubview(grad2, aboveSubview: map)
-        
-        test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 200))
+        test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 240))
         self.view.insertSubview(test, atIndex: 20)
     }
+//        func scrollToItemAtIndexPath(indexPath: NSIndexPath, atScrollPosition scrollPosition: UICollectionViewScrollPosition, animated: Bool)
     
     func tapOnAnnotation(annotation: RMAnnotation!, onMap map: RMMapView!) {
-        println("Tap en annotation")
-        test.show()
+        if annotation.isClusterAnnotation{
+            var zoom = map.zoom
+            var initZ = zoom
+            while(annotation.clusteredAnnotations.count > 1){
+                zoom += 1
+                map.setZoom(zoom, animated: false)
+            }
+            map.setZoom(initZ, animated: false)
+            map.setZoom(zoom, atCoordinate: annotation.clusteredAnnotations[0].coordinate, animated: true)
+        }else{
+            map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(annotation.coordinate).x, y: map.coordinateToPixel(annotation.coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
+            test.show()
+            test.go2Page(NSIndexPath(forRow: annotation.title.toInt()!, inSection: 0))
+        }
+    
     }
     
     func singleTapOnMap(map: RMMapView!, at point: CGPoint) {
