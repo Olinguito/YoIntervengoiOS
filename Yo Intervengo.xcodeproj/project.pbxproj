@@ -15,6 +15,7 @@
 		EC0AF7BD1A62E7CD004F1B6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC0AF7BC1A62E7CD004F1B6C /* Images.xcassets */; };
 		EC0AF7C01A62E7CD004F1B6C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0AF7BE1A62E7CD004F1B6C /* LaunchScreen.xib */; };
 		EC0AF7CC1A62E7CD004F1B6C /* Yo_IntervengoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7CB1A62E7CD004F1B6C /* Yo_IntervengoTests.swift */; };
+		EC6D494F1A6DD60F009B644E /* mock-01.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6D494E1A6DD60E009B644E /* mock-01.png */; };
 		EC6F29D61A674D4B00DB09EF /* loc.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29CE1A674D4B00DB09EF /* loc.png */; };
 		EC6F29D71A674D4B00DB09EF /* loc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29CF1A674D4B00DB09EF /* loc@2x.png */; };
 		EC6F29D81A674D4B00DB09EF /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29D01A674D4B00DB09EF /* menu.png */; };
@@ -71,6 +72,7 @@
 		ECF5CCD31A644CE80055077D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF5CCD21A644CE80055077D /* CoreLocation.framework */; };
 		ECF5CCD51A644CF50055077D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF5CCD41A644CF50055077D /* libsqlite3.dylib */; };
 		ECF5CCD71A644CFE0055077D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF5CCD61A644CFE0055077D /* libz.dylib */; };
+		ECFC63BC1A6DBB66003058C4 /* LayoutPager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFC63BB1A6DBB66003058C4 /* LayoutPager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,7 @@
 		EC0AF7C51A62E7CD004F1B6C /* Yo IntervengoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yo IntervengoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0AF7CA1A62E7CD004F1B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC0AF7CB1A62E7CD004F1B6C /* Yo_IntervengoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yo_IntervengoTests.swift; sourceTree = "<group>"; };
+		EC6D494E1A6DD60E009B644E /* mock-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mock-01.png"; sourceTree = "<group>"; };
 		EC6F29CE1A674D4B00DB09EF /* loc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loc.png; sourceTree = "<group>"; };
 		EC6F29CF1A674D4B00DB09EF /* loc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loc@2x.png"; sourceTree = "<group>"; };
 		EC6F29D01A674D4B00DB09EF /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 		ECF5CCD21A644CE80055077D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ECF5CCD41A644CF50055077D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		ECF5CCD61A644CFE0055077D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		ECFC63BA1A6DBB66003058C4 /* LayoutPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LayoutPager.h; path = Helpers/LayoutPager.h; sourceTree = "<group>"; };
+		ECFC63BB1A6DBB66003058C4 /* LayoutPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LayoutPager.m; path = Helpers/LayoutPager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +292,8 @@
 				ECF51D4E1A6C3B0000073421 /* Gradient.swift */,
 				ECCE06EA1A6CB3BB00A35012 /* BottomPager.swift */,
 				EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */,
+				ECFC63BA1A6DBB66003058C4 /* LayoutPager.h */,
+				ECFC63BB1A6DBB66003058C4 /* LayoutPager.m */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -314,6 +321,7 @@
 		ECCCA5FD1A65B9FC004C5858 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				EC6D494E1A6DD60E009B644E /* mock-01.png */,
 				ECCCA6141A6632CA004C5858 /* circle.png */,
 				ECCCA6081A662A94004C5858 /* inter.png */,
 				ECCCA6091A662A94004C5858 /* inter@2x.png */,
@@ -495,6 +503,7 @@
 				ECCE06E31A6CA50400A35012 /* logo@3x.png in Resources */,
 				ECCCA5F21A65AF60004C5858 /* Roboto-BoldItalic.ttf in Resources */,
 				ECCCA6151A6632CA004C5858 /* circle.png in Resources */,
+				EC6D494F1A6DD60F009B644E /* mock-01.png in Resources */,
 				ECCE06D51A6C524800A35012 /* solicitud.png in Resources */,
 				ECCCA5F31A65AF60004C5858 /* Roboto-Italic.ttf in Resources */,
 				ECCCA6051A65B9FC004C5858 /* img1@2x.png in Resources */,
@@ -555,6 +564,7 @@
 				EC790D191A633D4400900192 /* Bridge.m in Sources */,
 				EC0AF7B81A62E7CD004F1B6C /* ViewController.swift in Sources */,
 				EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */,
+				ECFC63BC1A6DBB66003058C4 /* LayoutPager.m in Sources */,
 				ECCCA5FC1A65B173004C5858 /* CallOutTop.swift in Sources */,
 				ECF51D4F1A6C3B0000073421 /* Gradient.swift in Sources */,
 				EC6F29DF1A67533700DB09EF /* LeftMenu.swift in Sources */,

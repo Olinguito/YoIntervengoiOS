@@ -3,16 +3,32 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "Yo_Intervengo.ViewController.newReport (Yo_Intervengo.ViewController)(Swift.AnyObject) -&gt; ():ViewController.swift">
+         contextName = "-[LayoutPager layoutAttributesForItemAtIndexPath:]:LayoutPager.m">
          <PersistentStrings>
             <PersistentString
-               value = "bubbleMenu.menuItemImages">
+               value = "attr.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Yo_Intervengo.ViewController.mapView (Yo_Intervengo.ViewController)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.RMMapView&gt;, layerForAnnotation : Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.RMAnnotation&gt;) -&gt; Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.RMMapLayer&gt;:ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "annotation">
             </PersistentString>
             <PersistentString
-               value = "images.count">
+               value = "annotation.clusteredannotations">
             </PersistentString>
             <PersistentString
-               value = "bubbleMenu">
+               value = "an">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LayoutPager frameForItemAtIndexPath:]:LayoutPager.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.itemSize.width">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -28,17 +44,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Yo_Intervengo.ViewController.viewDidLoad (Yo_Intervengo.ViewController)() -&gt; ():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "menuView">
-            </PersistentString>
-            <PersistentString
-               value = "ann.title">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "-[LIVBubbleMenu show]:LIVBubbleMenu.m">
          <PersistentStrings>
             <PersistentString
@@ -50,16 +55,27 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Yo_Intervengo.ViewController.mapView (Yo_Intervengo.ViewController)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.RMMapView&gt;, layerForAnnotation : Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.RMAnnotation&gt;) -&gt; Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.RMMapLayer&gt;:ViewController.swift">
+         contextName = "Yo_Intervengo.ViewController.viewDidLoad (Yo_Intervengo.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "annotation">
+               value = "menuView">
             </PersistentString>
             <PersistentString
-               value = "annotation.clusteredannotations">
+               value = "ann.title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Yo_Intervengo.ViewController.newReport (Yo_Intervengo.ViewController)(Swift.AnyObject) -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "images.count">
             </PersistentString>
             <PersistentString
-               value = "an">
+               value = "bubbleMenu">
+            </PersistentString>
+            <PersistentString
+               value = "bubbleMenu.menuItemImages">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

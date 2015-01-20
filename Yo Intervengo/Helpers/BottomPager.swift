@@ -9,19 +9,24 @@
 import Foundation
 import UIKit
 
+@objc protocol BottomPagerDelegate{
+    optional func pageSetted(index:NSIndexPath)
+}
 
 class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    var delegate:BottomPagerDelegate?
     var opened = false
     let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
     var collectionView:UICollectionView!
-    
+    var loc:[RMAnnotation]!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, array:Array<RMAnnotation>) {
         super.init(frame: frame)
+        loc = array
         let blurView: UIVisualEffectView = UIVisualEffectView(effect: blurEffect)
         blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
         blurView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
@@ -29,9 +34,9 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         
         let coll = UICollectionViewFlowLayout()
         coll.scrollDirection = UICollectionViewScrollDirection.Horizontal
-        coll.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+       coll.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         coll.itemSize = CGSize(width: 274, height: 180)
-        
+
         collectionView = UICollectionView(frame: blurView.frame, collectionViewLayout: coll)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -39,6 +44,14 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         collectionView.pagingEnabled = true
         collectionView.registerNib(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
         self.addSubview(collectionView)
+        
+        let shadowW = frame.width*0.07
+        
+        var left = Gradient(frame: CGRect(x: 0, y: 0, width: shadowW, height: frame.size.height), type: "Left")
+        addSubview(left)
+        
+        var right = Gradient(frame: CGRect(x: frame.size.width - shadowW, y: 0, width: shadowW , height: frame.size.height), type: "Right")
+        addSubview(right)
     }
     
     func show(){
@@ -63,21 +76,27 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         collectionView.scrollToItemAtIndexPath(page, atScrollPosition:UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
     }
     
-    //collection delegate
-        
+    //Collection delegate
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return loc.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as UICollectionViewCell
 //        cell.backgroundColor = UIColor.greenColor()
        /* cell.textLabel?.text = "\(indexPath.section):\(indexPath.row)"
         cell.imageView?.image = UIImage(named: "Pin")*/
+
+        var rotation = CATransform3DMakeRotation(CGFloat((180.0*M_PI)/180), 0.2, 0.1, 0.2)
+        rotation.m34 = -1.0/1200.0
+        cell.layer.shadowColor = UIColor.blackColor().CGColor
+        cell.layer.shadowOffset = CGSizeMake(0, 1.0)
+        cell.layer.transform = CATransform3DIdentity
+        cell.alpha = 0
         return cell
     }
     
@@ -94,6 +113,22 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         cell.layer.shadowOffset = CGSizeMake(0, 0)
         UIView.commitAnimations()
     }
+        
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        var visibleRect = CGRect(x: self.collectionView.contentOffset.x, y: self.collectionView.contentOffset.y, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
+        var visiblePoint = CGPointMake(CGRectGetMidX(visibleRect), CGRectGetMidY(visibleRect));
+        var visibleIndexPath = self.collectionView.indexPathForItemAtPoint(visiblePoint)
+        go2Page(visibleIndexPath!)
+        self.delegate?.pageSetted!(visibleIndexPath!)
+    }
     
-    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate{
+            var visibleRect = CGRect(x: self.collectionView.contentOffset.x, y: self.collectionView.contentOffset.y, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
+            var visiblePoint = CGPointMake(CGRectGetMidX(visibleRect), CGRectGetMidY(visibleRect));
+            var visibleIndexPath = self.collectionView.indexPathForItemAtPoint(visiblePoint)
+            go2Page(visibleIndexPath!)
+            self.delegate?.pageSetted!(visibleIndexPath!)
+        }
+    }
 }

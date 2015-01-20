@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,RMMapViewDelegate {
+class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     weak var map: RMMapView!
     var animator:UIDynamicAnimator!
     var attachmentBeh: UIAttachmentBehavior!
@@ -16,6 +16,8 @@ class ViewController: UIViewController,RMMapViewDelegate {
     var initLoc: CGPoint!
     var menuView: LeftMenu!
     var test: BottomPager!
+    var loc:[RMAnnotation]! = []
+    
 
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var btnMenu: UIButton!
@@ -24,22 +26,31 @@ class ViewController: UIViewController,RMMapViewDelegate {
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
+        let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
-        let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
+        //let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
         map = RMMapView(frame: view.frame, andTilesource: source)
         map.delegate = self
-        view.insertSubview(map, belowSubview: listView)
+        view.insertSubview(map, belowSubview: btnReport)
         map.setCenterCoordinate(CLLocationCoordinate2DMake(4.6615,-74.0688), animated: true)
         map.setZoom(11, animated: true)
         map.minZoom = 11
         map.showsUserLocation = true
         map.tintColor = UIColor.greenColor()
-        let ann = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6615,-74.0698), andTitle:"1")
-        let ann2 = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6625,-74.0698), andTitle:"3")
-        map.addAnnotation(ann)
-       // map.addAnnotation(ann2)
+        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6015,-74.0698), andTitle:"0"))
+        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6625,-74.0628), andTitle:"1"))
+        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6135,-74.0638), andTitle:"2"))
+        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6245,-74.0658), andTitle:"3"))
+        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6355,-74.0678), andTitle:"4"))
+        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6665,-74.0728), andTitle:"5"))
+        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6675,-74.0698), andTitle:"6"))
+        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.8385,-74.0598), andTitle:"7"))
+        
+        for ann in loc{
+            map.addAnnotation(ann)
+        }
+        
         map.clusterAreaSize = CGSize(width: 30, height: 40)
         map.clusteringEnabled = true
         animator = UIDynamicAnimator(referenceView: view)
@@ -50,10 +61,11 @@ class ViewController: UIViewController,RMMapViewDelegate {
         self.view.insertSubview(grad1, aboveSubview: map)
         let grad2 = Gradient(frame: CGRect(x: 0, y: fram.height-64, width: fram.width, height: 64), type: "Bottom")
         self.view.insertSubview(grad2, aboveSubview: map)
-        test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 240))
-        self.view.insertSubview(test, atIndex: 20)
+        test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 240), array: loc)
+        test.delegate = self
+        self.view.insertSubview(test, belowSubview: listView)
+        //test.show()
     }
-//        func scrollToItemAtIndexPath(indexPath: NSIndexPath, atScrollPosition scrollPosition: UICollectionViewScrollPosition, animated: Bool)
     
     func tapOnAnnotation(annotation: RMAnnotation!, onMap map: RMMapView!) {
         if annotation.isClusterAnnotation{
@@ -102,13 +114,12 @@ class ViewController: UIViewController,RMMapViewDelegate {
         }
         else
         {
-            //map.setCenterCoordinate(annotation.coordinate, animated: true)
             let marker = RMMarker(UIImage: UIImage(named: "Pin"))
             //marker.canShowCallout = true
-            let top = CallOutTop(frame: CGRect(x: 0, y: 0, width: 269, height: 75))
-            let bottom =  CallOutBottom(frame: CGRect(x: 0, y: 0, width: 269, height: 52))
-            marker.topCalloutAccessoryView = top
-            marker.bottomCalloutAccessoryView = bottom
+            //let top = CallOutTop(frame: CGRect(x: 0, y: 0, width: 269, height: 75))
+            //let bottom =  CallOutBottom(frame: CGRect(x: 0, y: 0, width: 269, height: 52))
+            //marker.topCalloutAccessoryView = top
+            //marker.bottomCalloutAccessoryView = bottom
             return marker
         }
     }
@@ -144,6 +155,9 @@ class ViewController: UIViewController,RMMapViewDelegate {
 
     }
     
+    func pageSetted(index:NSIndexPath){
+        map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(loc[index.row].coordinate).x, y: map.coordinateToPixel(loc[index.row].coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
+    }
     
 }
 

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,44 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uuw-FR-LVH">
-                                <rect key="frame" x="700" y="0.0" width="281" height="600"/>
-                                <subviews>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBW-c6-sds">
-                                        <rect key="frame" x="12" y="0.0" width="269" height="600"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="07s-j4-rK2">
-                                            <rect key="frame" x="0.0" y="0.0" width="269" height="600"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DgU-lX-BJM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="269" height="600"/>
-                                                    <connections>
-                                                        <segue destination="0y7-pi-P37" kind="embed" id="8DD-od-PWT"/>
-                                                    </connections>
-                                                </containerView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="DgU-lX-BJM" secondAttribute="bottom" id="FgU-uI-9fq"/>
-                                                <constraint firstAttribute="trailing" secondItem="DgU-lX-BJM" secondAttribute="trailing" id="K4d-UH-tZs"/>
-                                                <constraint firstItem="DgU-lX-BJM" firstAttribute="top" secondItem="07s-j4-rK2" secondAttribute="top" id="WiA-Oc-vHe"/>
-                                                <constraint firstItem="DgU-lX-BJM" firstAttribute="leading" secondItem="07s-j4-rK2" secondAttribute="leading" id="gPB-ls-IyV"/>
-                                            </constraints>
-                                        </view>
-                                        <blurEffect style="dark"/>
-                                    </visualEffectView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="QBW-c6-sds" secondAttribute="trailing" id="DoC-ne-Ya5"/>
-                                    <constraint firstItem="QBW-c6-sds" firstAttribute="leading" secondItem="uuw-FR-LVH" secondAttribute="leading" constant="12" id="Q17-HK-ohj"/>
-                                    <constraint firstItem="QBW-c6-sds" firstAttribute="top" secondItem="uuw-FR-LVH" secondAttribute="top" id="fSn-TC-LpX"/>
-                                    <constraint firstAttribute="bottom" secondItem="QBW-c6-sds" secondAttribute="bottom" id="hSY-Kb-c9U"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="0Kh-Hd-wxy" appends="YES" id="AFU-bH-Yzs"/>
-                                </connections>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23R-Sb-C4f">
                                 <rect key="frame" x="529" y="530" width="71" height="70"/>
                                 <constraints>
@@ -108,6 +71,44 @@
                                     <action selector="getLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dh2-th-b8v"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uuw-FR-LVH">
+                                <rect key="frame" x="700" y="0.0" width="281" height="600"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBW-c6-sds">
+                                        <rect key="frame" x="12" y="0.0" width="269" height="600"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="07s-j4-rK2">
+                                            <rect key="frame" x="0.0" y="0.0" width="269" height="600"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DgU-lX-BJM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="269" height="600"/>
+                                                    <connections>
+                                                        <segue destination="0y7-pi-P37" kind="embed" id="8DD-od-PWT"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="DgU-lX-BJM" secondAttribute="bottom" id="FgU-uI-9fq"/>
+                                                <constraint firstAttribute="trailing" secondItem="DgU-lX-BJM" secondAttribute="trailing" id="K4d-UH-tZs"/>
+                                                <constraint firstItem="DgU-lX-BJM" firstAttribute="top" secondItem="07s-j4-rK2" secondAttribute="top" id="WiA-Oc-vHe"/>
+                                                <constraint firstItem="DgU-lX-BJM" firstAttribute="leading" secondItem="07s-j4-rK2" secondAttribute="leading" id="gPB-ls-IyV"/>
+                                            </constraints>
+                                        </view>
+                                        <blurEffect style="dark"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="QBW-c6-sds" secondAttribute="trailing" id="DoC-ne-Ya5"/>
+                                    <constraint firstItem="QBW-c6-sds" firstAttribute="leading" secondItem="uuw-FR-LVH" secondAttribute="leading" constant="12" id="Q17-HK-ohj"/>
+                                    <constraint firstItem="QBW-c6-sds" firstAttribute="top" secondItem="uuw-FR-LVH" secondAttribute="top" id="fSn-TC-LpX"/>
+                                    <constraint firstAttribute="bottom" secondItem="QBW-c6-sds" secondAttribute="bottom" id="hSY-Kb-c9U"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="0Kh-Hd-wxy" appends="YES" id="AFU-bH-Yzs"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -165,16 +166,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="269" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Yeah????" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctG-gk-v3r">
-                                <rect key="frame" x="91" y="281" width="75.5" height="38"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="mock-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jda-2m-OM0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Jda-2m-OM0" secondAttribute="height" multiplier="2:3" id="MkG-cZ-JO4"/>
+                                    <constraint firstAttribute="width" secondItem="Jda-2m-OM0" secondAttribute="height" multiplier="40:71" id="l3W-Qi-Jgc"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="MkG-cZ-JO4"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="ctG-gk-v3r" secondAttribute="centerY" id="GgC-Ri-yzm"/>
-                            <constraint firstAttribute="centerX" secondItem="ctG-gk-v3r" secondAttribute="centerX" id="hry-v6-byZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Jda-2m-OM0" secondAttribute="trailing" id="VvI-ji-9c6"/>
+                            <constraint firstItem="Jda-2m-OM0" firstAttribute="leading" secondItem="mY7-D2-T7j" secondAttribute="leading" id="wGR-AY-DFw"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -188,6 +195,7 @@
         <image name="loc.png" width="22" height="22"/>
         <image name="mas.png" width="71" height="70"/>
         <image name="menu.png" width="23" height="14"/>
+        <image name="mock-01.png" width="641" height="1137"/>
         <image name="search.png" width="21" height="20"/>
     </resources>
 </document>
