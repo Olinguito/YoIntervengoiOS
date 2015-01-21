@@ -15,6 +15,9 @@
 		EC0AF7BD1A62E7CD004F1B6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC0AF7BC1A62E7CD004F1B6C /* Images.xcassets */; };
 		EC0AF7C01A62E7CD004F1B6C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0AF7BE1A62E7CD004F1B6C /* LaunchScreen.xib */; };
 		EC0AF7CC1A62E7CD004F1B6C /* Yo_IntervengoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7CB1A62E7CD004F1B6C /* Yo_IntervengoTests.swift */; };
+		EC4EECC11A70429F0034C0EB /* Pin2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4EECBF1A70429F0034C0EB /* Pin2@2x.png */; };
+		EC4EECC21A70429F0034C0EB /* Pin2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4EECC01A70429F0034C0EB /* Pin2.png */; };
+		EC4EECC51A7045940034C0EB /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4EECC41A7045940034C0EB /* FilterVC.swift */; };
 		EC6D494F1A6DD60F009B644E /* mock-01.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6D494E1A6DD60E009B644E /* mock-01.png */; };
 		EC6F29D61A674D4B00DB09EF /* loc.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29CE1A674D4B00DB09EF /* loc.png */; };
 		EC6F29D71A674D4B00DB09EF /* loc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC6F29CF1A674D4B00DB09EF /* loc@2x.png */; };
@@ -72,7 +75,6 @@
 		ECF5CCD31A644CE80055077D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF5CCD21A644CE80055077D /* CoreLocation.framework */; };
 		ECF5CCD51A644CF50055077D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF5CCD41A644CF50055077D /* libsqlite3.dylib */; };
 		ECF5CCD71A644CFE0055077D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF5CCD61A644CFE0055077D /* libz.dylib */; };
-		ECF952E61A701FCB00D6A874 /* Tets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF952E51A701FCB00D6A874 /* Tets.swift */; };
 		ECFC63BC1A6DBB66003058C4 /* LayoutPager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFC63BB1A6DBB66003058C4 /* LayoutPager.m */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +103,9 @@
 		EC0AF7C51A62E7CD004F1B6C /* Yo IntervengoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yo IntervengoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0AF7CA1A62E7CD004F1B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC0AF7CB1A62E7CD004F1B6C /* Yo_IntervengoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yo_IntervengoTests.swift; sourceTree = "<group>"; };
+		EC4EECBF1A70429F0034C0EB /* Pin2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pin2@2x.png"; sourceTree = "<group>"; };
+		EC4EECC01A70429F0034C0EB /* Pin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pin2.png; sourceTree = "<group>"; };
+		EC4EECC41A7045940034C0EB /* FilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterVC.swift; path = Views/FilterVC.swift; sourceTree = "<group>"; };
 		EC6D494E1A6DD60E009B644E /* mock-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mock-01.png"; sourceTree = "<group>"; };
 		EC6F29CE1A674D4B00DB09EF /* loc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loc.png; sourceTree = "<group>"; };
 		EC6F29CF1A674D4B00DB09EF /* loc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loc@2x.png"; sourceTree = "<group>"; };
@@ -159,7 +164,6 @@
 		ECF5CCD21A644CE80055077D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ECF5CCD41A644CF50055077D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		ECF5CCD61A644CFE0055077D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		ECF952E51A701FCB00D6A874 /* Tets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tets.swift; sourceTree = "<group>"; };
 		ECFC63BA1A6DBB66003058C4 /* LayoutPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LayoutPager.h; path = Helpers/LayoutPager.h; sourceTree = "<group>"; };
 		ECFC63BB1A6DBB66003058C4 /* LayoutPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LayoutPager.m; path = Helpers/LayoutPager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,6 +235,7 @@
 		EC0AF7B21A62E7CD004F1B6C /* Yo Intervengo */ = {
 			isa = PBXGroup;
 			children = (
+				EC4EECC31A7044FB0034C0EB /* Views */,
 				ECCCA5DF1A65AE5E004C5858 /* Components */,
 				ECF5CCCC1A6444ED0055077D /* Assets */,
 				EC0AF7B51A62E7CD004F1B6C /* AppDelegate.swift */,
@@ -268,6 +273,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EC4EECC31A7044FB0034C0EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EC4EECC41A7045940034C0EB /* FilterVC.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		EC6F29CD1A674D4B00DB09EF /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,7 +309,6 @@
 				EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */,
 				ECFC63BA1A6DBB66003058C4 /* LayoutPager.h */,
 				ECFC63BB1A6DBB66003058C4 /* LayoutPager.m */,
-				ECF952E51A701FCB00D6A874 /* Tets.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -368,6 +380,8 @@
 		ECF5CCCD1A6444ED0055077D /* Pin */ = {
 			isa = PBXGroup;
 			children = (
+				EC4EECBF1A70429F0034C0EB /* Pin2@2x.png */,
+				EC4EECC01A70429F0034C0EB /* Pin2.png */,
 				ECCE06CB1A6C524800A35012 /* mas.png */,
 				ECCE06CC1A6C524800A35012 /* mas@2x.png */,
 				ECCE06CD1A6C524800A35012 /* report.png */,
@@ -475,6 +489,7 @@
 				ECCE06D31A6C524800A35012 /* report.png in Resources */,
 				ECCE06E91A6CA54100A35012 /* bg.png in Resources */,
 				EC0AF7BB1A62E7CD004F1B6C /* Main.storyboard in Resources */,
+				EC4EECC11A70429F0034C0EB /* Pin2@2x.png in Resources */,
 				ECCCA5F41A65AF60004C5858 /* Roboto-Light.ttf in Resources */,
 				EC6F29DA1A674D4B00DB09EF /* Report.png in Resources */,
 				ECCCA5FA1A65AF60004C5858 /* Roboto-ThinItalic.ttf in Resources */,
@@ -512,6 +527,7 @@
 				ECCCA6051A65B9FC004C5858 /* img1@2x.png in Resources */,
 				EC6F29D71A674D4B00DB09EF /* loc@2x.png in Resources */,
 				ECCCA60E1A662A94004C5858 /* inter.png in Resources */,
+				EC4EECC21A70429F0034C0EB /* Pin2.png in Resources */,
 				ECCCA5F01A65AF60004C5858 /* Roboto-BlackItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC4EECC51A7045940034C0EB /* FilterVC.swift in Sources */,
 				ECCE06EB1A6CB3BB00A35012 /* BottomPager.swift in Sources */,
 				EC790D191A633D4400900192 /* Bridge.m in Sources */,
 				EC0AF7B81A62E7CD004F1B6C /* ViewController.swift in Sources */,
@@ -570,7 +587,6 @@
 				ECFC63BC1A6DBB66003058C4 /* LayoutPager.m in Sources */,
 				ECCCA5FC1A65B173004C5858 /* CallOutTop.swift in Sources */,
 				ECF51D4F1A6C3B0000073421 /* Gradient.swift in Sources */,
-				ECF952E61A701FCB00D6A874 /* Tets.swift in Sources */,
 				EC6F29DF1A67533700DB09EF /* LeftMenu.swift in Sources */,
 				ECCCA6071A6628D7004C5858 /* CallOutBottom.swift in Sources */,
 			);

@@ -26,7 +26,7 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-       // let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
+        //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
         let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
@@ -39,13 +39,21 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
         map.showsUserLocation = true
         map.tintColor = UIColor.greenColor()
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6015,-74.0698), andTitle:"0"))
+        loc[0].userInfo = "Pin"
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6625,-74.0628), andTitle:"1"))
+        loc[1].userInfo = "Pin"
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6135,-74.0638), andTitle:"2"))
+        loc[2].userInfo = "Pin2"
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6245,-74.0658), andTitle:"3"))
+        loc[3].userInfo = "Pin2"
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6355,-74.0678), andTitle:"4"))
+        loc[4].userInfo = "Pin"
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6665,-74.0728), andTitle:"5"))
+        loc[5].userInfo = "Pin"
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6675,-74.0698), andTitle:"6"))
+        loc[6].userInfo = "Pin2"
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.8385,-74.0598), andTitle:"7"))
+        loc[7].userInfo = "Pin2"
         
         for ann in loc{
             map.addAnnotation(ann)
@@ -114,7 +122,7 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
         }
         else
         {
-            let marker = RMMarker(UIImage: UIImage(named: "Pin"))
+            let marker = RMMarker(UIImage: UIImage(named: annotation.userInfo as String))
             //marker.canShowCallout = true
             //let top = CallOutTop(frame: CGRect(x: 0, y: 0, width: 269, height: 75))
             //let bottom =  CallOutBottom(frame: CGRect(x: 0, y: 0, width: 269, height: 52))
