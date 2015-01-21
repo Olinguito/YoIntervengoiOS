@@ -166,7 +166,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="mock-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jda-2m-OM0">
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="mock-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jda-2m-OM0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jda-2m-OM0" secondAttribute="height" multiplier="2:3" id="MkG-cZ-JO4"/>
@@ -175,23 +175,12 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="MkG-cZ-JO4"/>
+                                        <exclude reference="l3W-Qi-Jgc"/>
                                     </mask>
                                 </variation>
                             </imageView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EYA-nn-b7a">
-                                <rect key="frame" x="13" y="170" width="291" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="291" id="YcN-7Q-Wiz"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Todos"/>
-                                    <segment title="Reportes"/>
-                                    <segment title="Solicitudes"/>
-                                </segments>
-                                <color key="tintColor" red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </segmentedControl>
                             <searchBar contentMode="redraw" misplaced="YES" placeholder="Escribe blablabla" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GPm-l0-dzf">
-                                <rect key="frame" x="0.0" y="33" width="320" height="44"/>
+                                <rect key="frame" x="12" y="33" width="320" height="44"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" red="0.92941176469999998" green="0.36078431370000003" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
@@ -216,16 +205,34 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pFr-NK-fAe">
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pFr-NK-fAe">
                                 <rect key="frame" x="13" y="215" width="291" height="268"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="291" id="0fn-eb-bQG"/>
                                     <constraint firstAttribute="height" constant="268" id="Ll7-C8-E9m"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0fn-eb-bQG"/>
+                                        <exclude reference="Ll7-C8-E9m"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <segue destination="8n8-VB-Aia" kind="embed" id="10H-iN-Yy4"/>
                                 </connections>
                             </containerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EYA-nn-b7a">
+                                <rect key="frame" x="22" y="126" width="291" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="291" id="YcN-7Q-Wiz"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Todos"/>
+                                    <segment title="Reportes"/>
+                                    <segment title="Solicitudes"/>
+                                </segments>
+                                <color key="tintColor" red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <constraints>
                             <constraint firstItem="EYA-nn-b7a" firstAttribute="top" secondItem="GPm-l0-dzf" secondAttribute="bottom" constant="49" id="18K-E0-3nc"/>
@@ -238,6 +245,14 @@
                             <constraint firstItem="GPm-l0-dzf" firstAttribute="leading" secondItem="mY7-D2-T7j" secondAttribute="leading" constant="12" id="i03-Z5-7t3"/>
                             <constraint firstItem="Jda-2m-OM0" firstAttribute="leading" secondItem="mY7-D2-T7j" secondAttribute="leading" id="wGR-AY-DFw"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="VvI-ji-9c6"/>
+                                <exclude reference="wGR-AY-DFw"/>
+                                <exclude reference="5i6-9t-Koj"/>
+                                <exclude reference="9gZ-nO-vHY"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -272,25 +287,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTK-Th-IWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1620" y="139"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="zTd-R7-AqV">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8T4-53-IyO" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ZaF-2l-8SI"/>
-                        <viewControllerLayoutGuide type="bottom" id="7A1-TC-mjT"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ac3-UU-ITM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1cJ-Mp-sg1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1228" y="951"/>
         </scene>
     </scenes>
     <resources>
