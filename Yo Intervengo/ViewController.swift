@@ -26,10 +26,10 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
+       // let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
-        //let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
+        let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
         map = RMMapView(frame: view.frame, andTilesource: source)
         map.delegate = self
         view.insertSubview(map, belowSubview: btnReport)
@@ -58,9 +58,9 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
         view.insertSubview(menuView, belowSubview: btnMenu)
         let fram = self.view.frame.size
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: fram.width, height: 64), type: "Top")
-        self.view.insertSubview(grad1, aboveSubview: map)
+        //self.view.insertSubview(grad1, aboveSubview: map)
         let grad2 = Gradient(frame: CGRect(x: 0, y: fram.height-64, width: fram.width, height: 64), type: "Bottom")
-        self.view.insertSubview(grad2, aboveSubview: map)
+        //self.view.insertSubview(grad2, aboveSubview: map)
         test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 240), array: loc)
         test.delegate = self
         self.view.insertSubview(test, belowSubview: listView)

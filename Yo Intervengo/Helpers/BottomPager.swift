@@ -91,11 +91,16 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
        /* cell.textLabel?.text = "\(indexPath.section):\(indexPath.row)"
         cell.imageView?.image = UIImage(named: "Pin")*/
 
-        var rotation = CATransform3DMakeRotation(CGFloat((180.0*M_PI)/180), 0.2, 0.1, 0.2)
-        rotation.m34 = -1.0/1200.0
+        //var rotation = CATransform3DMakeRotation(CGFloat((180.0*M_PI)/180), 0.2, 0.1, 0.2)
+        //rotation.m34 = -1.0/1200.0
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
-        cell.layer.transform = CATransform3DIdentity
+      //  var fg = CATransform3DMakeScale(0.1, 0.23, 0.9)
+       // cell.layer.transform = rotation
+        //cell.layer.transform = rotation
+//        var transform = CGAffineTransformMakeScale(0.9, 0.9)
+//        cell.transform = transform;
+
         cell.alpha = 0
         return cell
     }
@@ -103,14 +108,18 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath){
         var s = CGFloat((90.0*M_PI)/180)
         var rotation = CATransform3DMakeRotation(s, 0.0, 0.7, 0.4)
-        rotation.m34 = -1.0/600.0
+        //var fg = CATransform3DMakeScale(0.0, 0.23, 0.34)
+        //rotation.m34 = -1.0/600.0
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 0.5)
         UIView.beginAnimations("rotation", context: nil)
         UIView.setAnimationDuration(0.8)
-        cell.layer.transform = CATransform3DIdentity
+        //cell.layer.transform = fg
         cell.alpha = 1
         cell.layer.shadowOffset = CGSizeMake(0, 0)
+//        var transform = CGAffineTransformMakeScale(1, 0.9)
+  //      cell.transform = transform;
+        
         UIView.commitAnimations()
     }
         
