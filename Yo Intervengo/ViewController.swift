@@ -39,7 +39,7 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
         map.showsUserLocation = true
         map.tintColor = UIColor.greenColor()
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6015,-74.0698), andTitle:"0"))
-        loc[0].userInfo = "Pin"
+        loc[0].userInfo = "Pin2"
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6625,-74.0628), andTitle:"1"))
         loc[1].userInfo = "Pin"
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6135,-74.0638), andTitle:"2"))
@@ -59,7 +59,8 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
             map.addAnnotation(ann)
         }
         
-        map.clusterAreaSize = CGSize(width: 30, height: 40)
+        map.clusterAreaSize = CGSize(width: 10, height: 10)
+        map.positionClusterMarkersAtTheGravityCenter = true
         map.clusteringEnabled = true
         animator = UIDynamicAnimator(referenceView: view)
         menuView = LeftMenu(frame: CGRect(x: -204, y: 0, width: 204, height: view.frame.height))
@@ -77,14 +78,37 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     
     func tapOnAnnotation(annotation: RMAnnotation!, onMap map: RMMapView!) {
         if annotation.isClusterAnnotation{
-            var zoom = map.zoom
+            /*var zoom = map.zoom
             var initZ = zoom
             while(annotation.clusteredAnnotations.count > 1){
                 zoom += 1
                 map.setZoom(zoom, animated: false)
             }
             map.setZoom(initZ, animated: false)
-            map.setZoom(zoom, atCoordinate: annotation.clusteredAnnotations[0].coordinate, animated: true)
+            map.setZoom(zoom, atCoordinate: annotation.clusteredAnnotations[0].coordinate, animated: true)*/
+            
+            
+            if (annotation.isClusterAnnotation) {
+                
+                var southwestCoordinate = annotation.coordinate
+                var northeastCoordinate = annotation.coordinate
+                
+                for plot in annotation.clusteredAnnotations {
+                    
+                    var latititude = Float(plot.coordinate.latitude)
+                    var longitude =  Float(plot.coordinate.longitude)
+                    
+                    if Float(southwestCoordinate.latitude) > fabsf(latititude){ southwestCoordinate.latitude = CLLocationDegrees(latititude)}
+                    if Float(southwestCoordinate.longitude) > fabsf(longitude){ southwestCoordinate.longitude = CLLocationDegrees(longitude)}
+                    
+                    if Float(northeastCoordinate.latitude) < fabsf(latititude){ northeastCoordinate.latitude = CLLocationDegrees(latititude)}
+                    if Float(northeastCoordinate.longitude) < fabsf(longitude){ northeastCoordinate.longitude = CLLocationDegrees(longitude)}
+                    
+                }
+                map.zoomWithLatitudeLongitudeBoundsSouthWest(southwestCoordinate, northEast: northeastCoordinate, animated: true)
+            }
+            
+            
         }else{
             map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(annotation.coordinate).x, y: map.coordinateToPixel(annotation.coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
             test.show()
@@ -116,8 +140,30 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
         if annotation.isClusterAnnotation
         {
             let layer = RMMarker(UIImage: UIImage(named: "circle"))
-            layer.bounds = CGRect(x: 0, y: -10, width: 75, height: 75)
+            var southwestCoordinate = annotation.coordinate
+            var northeastCoordinate = annotation.coordinate
+            for plot in annotation.clusteredAnnotations {
+                
+                var latititude = Float(plot.coordinate.latitude)
+                var longitude =  Float(plot.coordinate.longitude)
+                
+                if Float(southwestCoordinate.latitude) > fabsf(latititude){ southwestCoordinate.latitude = CLLocationDegrees(latititude)}
+                if Float(southwestCoordinate.longitude) > fabsf(longitude){ southwestCoordinate.longitude = CLLocationDegrees(longitude)}
+                
+                if Float(northeastCoordinate.latitude) < fabsf(latititude){ northeastCoordinate.latitude = CLLocationDegrees(latititude)}
+                if Float(northeastCoordinate.longitude) < fabsf(longitude){ northeastCoordinate.longitude = CLLocationDegrees(longitude)}
+                
+            }
+            var a = map.coordinateToPixel(southwestCoordinate).x - map.coordinateToPixel(northeastCoordinate).x
+            var b = map.coordinateToPixel(northeastCoordinate).y - map.coordinateToPixel(southwestCoordinate).y
+            var c = max(max(a, b),80)
+            layer.bounds = CGRect(x: 0, y: -10, width: c, height: c)
             layer.changeLabelUsingText(annotation.title, font: UIFont(name: "Roboto-light", size: 30), foregroundColor: UIColor.whiteColor(), backgroundColor: UIColor.clearColor())
+            
+            /*let layer = RMCircle(view: mapView, radiusInMeters: 3000)
+            layer.backgroundColor = UIColor.clearColor().CGColor*/
+
+            
             return layer
         }
         else

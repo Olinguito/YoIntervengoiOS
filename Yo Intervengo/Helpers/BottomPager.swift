@@ -87,19 +87,8 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as UICollectionViewCell
-//        cell.backgroundColor = UIColor.greenColor()
-       /* cell.textLabel?.text = "\(indexPath.section):\(indexPath.row)"
-        cell.imageView?.image = UIImage(named: "Pin")*/
-
-        //var rotation = CATransform3DMakeRotation(CGFloat((180.0*M_PI)/180), 0.2, 0.1, 0.2)
-        //rotation.m34 = -1.0/1200.0
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
-      //  var fg = CATransform3DMakeScale(0.1, 0.23, 0.9)
-       // cell.layer.transform = rotation
-        //cell.layer.transform = rotation
-//        var transform = CGAffineTransformMakeScale(0.9, 0.9)
-//        cell.transform = transform;
 
         cell.alpha = 0
         return cell
