@@ -33,6 +33,4 @@ class FilterVC: UIViewController,UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-    
-    
 }

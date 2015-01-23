@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
+class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNERadialMenuDataSource,LNERadialMenuDelegate {
     weak var map: RMMapView!
     var animator:UIDynamicAnimator!
     var attachmentBeh: UIAttachmentBehavior!
@@ -59,7 +59,7 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
             map.addAnnotation(ann)
         }
         
-        map.clusterAreaSize = CGSize(width: 10, height: 10)
+        map.clusterAreaSize = CGSize(width: 5, height: 5)
         map.positionClusterMarkersAtTheGravityCenter = true
         map.clusteringEnabled = true
         animator = UIDynamicAnimator(referenceView: view)
@@ -115,6 +115,11 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
             test.go2Page(NSIndexPath(forRow: annotation.title.toInt()!, inSection: 0))
         }
     
+    }
+    
+    func longPressOnMap(map: RMMapView!, at point: CGPoint) {
+        var thisMenu = LNERadialMenu(fromPoint: point, withDataSource: self, andDelegate: self)
+        thisMenu.showMenu()
     }
     
     func singleTapOnMap(map: RMMapView!, at point: CGPoint) {
@@ -206,12 +211,53 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     @IBAction func search(sender: AnyObject) {
     }
     @IBAction func newReport(sender: AnyObject) {
-
+        var thisMenu = LNERadialMenu(fromPoint: sender.center, withDataSource: self, andDelegate: self)
+        thisMenu.showMenu()
     }
     
     func pageSetted(index:NSIndexPath){
         map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(loc[index.row].coordinate).x, y: map.coordinateToPixel(loc[index.row].coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
     }
     
+    
+    // READIAL MENU DELEGATE
+    
+    
+    func numberOfButtonsForRadialMenu(radialMenu: LNERadialMenu!) -> Int {
+        return 2
+    }
+    
+    func radiusLenghtForRadialMenu(radialMenu: LNERadialMenu!) -> CGFloat {
+        return 100
+    }
+    
+    func radialMenu(radialMenu: LNERadialMenu!, elementAtIndex index: Int) -> UIButton! {
+        var element : UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        element.layer.cornerRadius = 25
+        element.layer.borderColor = UIColor.greenColor().CGColor
+        element.layer.borderWidth = 1
+        return element
+    }
+    
+    func radialMenu(radialMenu: LNERadialMenu!, didSelectButton button: UIButton!) {
+        println("Fuck Yeahh")
+        radialMenu.closeMenu()
+    }
+    
+    func viewForCenterOfRadialMenu(radialMenu: LNERadialMenu!) -> UIView! {
+        var centerView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
+        centerView.backgroundColor  = UIColor.redColor()
+        return centerView
+    }
+    
+    func radialMenu(radialMenu: LNERadialMenu!, customizationForRadialMenuView radialMenuView: UIView!) {
+        var bgLayer:CALayer = CALayer()
+        bgLayer.backgroundColor = UIColor.orangeColor().CGColor
+        radialMenu.layer.insertSublayer(bgLayer, atIndex: 0)
+    }
+    
+    func canDragRadialMenu(radialMenu: LNERadialMenu!) -> Bool {
+        return true
+    }
 }
 
