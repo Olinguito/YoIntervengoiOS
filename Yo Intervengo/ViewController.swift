@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNERadialMenuDataSource,LNERadialMenuDelegate {
     weak var map: RMMapView!
+    var openedReport:Bool = false
     var animator:UIDynamicAnimator!
     var attachmentBeh: UIAttachmentBehavior!
     var snaBeh: UISnapBehavior!
@@ -26,10 +27,10 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNE
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
+        let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
-        let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
+        //let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
         map = RMMapView(frame: view.frame, andTilesource: source)
         map.delegate = self
         view.insertSubview(map, belowSubview: btnReport)
@@ -67,63 +68,12 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNE
         view.insertSubview(menuView, belowSubview: btnMenu)
         let fram = self.view.frame.size
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: fram.width, height: 64), type: "Top")
-        //self.view.insertSubview(grad1, aboveSubview: map)
+        self.view.insertSubview(grad1, aboveSubview: map)
         let grad2 = Gradient(frame: CGRect(x: 0, y: fram.height-64, width: fram.width, height: 64), type: "Bottom")
-        //self.view.insertSubview(grad2, aboveSubview: map)
+        self.view.insertSubview(grad2, aboveSubview: map)
         test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 240), array: loc)
         test.delegate = self
         self.view.insertSubview(test, belowSubview: listView)
-        //test.show()
-    }
-    
-    func tapOnAnnotation(annotation: RMAnnotation!, onMap map: RMMapView!) {
-        if annotation.isClusterAnnotation{
-            /*var zoom = map.zoom
-            var initZ = zoom
-            while(annotation.clusteredAnnotations.count > 1){
-                zoom += 1
-                map.setZoom(zoom, animated: false)
-            }
-            map.setZoom(initZ, animated: false)
-            map.setZoom(zoom, atCoordinate: annotation.clusteredAnnotations[0].coordinate, animated: true)*/
-            
-            
-            if (annotation.isClusterAnnotation) {
-                
-                var southwestCoordinate = annotation.coordinate
-                var northeastCoordinate = annotation.coordinate
-                
-                for plot in annotation.clusteredAnnotations {
-                    
-                    var latititude = Float(plot.coordinate.latitude)
-                    var longitude =  Float(plot.coordinate.longitude)
-                    
-                    if Float(southwestCoordinate.latitude) > fabsf(latititude){ southwestCoordinate.latitude = CLLocationDegrees(latititude)}
-                    if Float(southwestCoordinate.longitude) > fabsf(longitude){ southwestCoordinate.longitude = CLLocationDegrees(longitude)}
-                    
-                    if Float(northeastCoordinate.latitude) < fabsf(latititude){ northeastCoordinate.latitude = CLLocationDegrees(latititude)}
-                    if Float(northeastCoordinate.longitude) < fabsf(longitude){ northeastCoordinate.longitude = CLLocationDegrees(longitude)}
-                    
-                }
-                map.zoomWithLatitudeLongitudeBoundsSouthWest(southwestCoordinate, northEast: northeastCoordinate, animated: true)
-            }
-            
-            
-        }else{
-            map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(annotation.coordinate).x, y: map.coordinateToPixel(annotation.coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
-            test.show()
-            test.go2Page(NSIndexPath(forRow: annotation.title.toInt()!, inSection: 0))
-        }
-    
-    }
-    
-    func longPressOnMap(map: RMMapView!, at point: CGPoint) {
-        var thisMenu = LNERadialMenu(fromPoint: point, withDataSource: self, andDelegate: self)
-        thisMenu.showMenu()
-    }
-    
-    func singleTapOnMap(map: RMMapView!, at point: CGPoint) {
-        test.hide()
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -137,6 +87,46 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNE
         listView.center = CGPoint(x: ((self.view.frame.width*1.5)-4), y: self.view.frame.height/2)
         initLoc = listView.center
     }
+
+    
+    // MAP DELEGATE
+    
+    func tapOnAnnotation(annotation: RMAnnotation!, onMap map: RMMapView!) {
+        if annotation.isClusterAnnotation {
+            var southwestCoordinate = annotation.coordinate
+            var northeastCoordinate = annotation.coordinate
+            for plot in annotation.clusteredAnnotations {
+                var latititude = Float(plot.coordinate.latitude)
+                var longitude =  Float(plot.coordinate.longitude)
+                if Float(southwestCoordinate.latitude) > fabsf(latititude){ southwestCoordinate.latitude = CLLocationDegrees(latititude)}
+                if Float(southwestCoordinate.longitude) > fabsf(longitude){ southwestCoordinate.longitude = CLLocationDegrees(longitude)}
+                if Float(northeastCoordinate.latitude) < fabsf(latititude){ northeastCoordinate.latitude = CLLocationDegrees(latititude)}
+                if Float(northeastCoordinate.longitude) < fabsf(longitude){ northeastCoordinate.longitude = CLLocationDegrees(longitude)}
+            }
+            map.zoomWithLatitudeLongitudeBoundsSouthWest(southwestCoordinate, northEast: northeastCoordinate, animated: true)
+        }
+        else{
+            map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(annotation.coordinate).x, y: map.coordinateToPixel(annotation.coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
+            test.show()
+            test.go2Page(NSIndexPath(forRow: annotation.title.toInt()!, inSection: 0))
+        }
+    
+    }
+    
+    func longPressOnMap(map: RMMapView!, at point: CGPoint) {
+        if map.zoom > 15{
+            var thisMenu = LNERadialMenu(fromPoint: point, withDataSource: self, andDelegate: self, withFrame: self.view.frame, andLabels:0)
+            self.view.insertSubview(thisMenu, belowSubview: btnReport)
+            thisMenu.radialMenuIdentifier = "hide"
+
+            thisMenu.showMenu()
+        }
+    }
+    
+    func singleTapOnMap(map: RMMapView!, at point: CGPoint) {
+        test.hide()
+    }
+    
     
     func mapView(mapView: RMMapView!, layerForAnnotation annotation: RMAnnotation!) -> RMMapLayer! {
         if annotation.isUserLocationAnnotation{
@@ -154,31 +144,19 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNE
                 
                 if Float(southwestCoordinate.latitude) > fabsf(latititude){ southwestCoordinate.latitude = CLLocationDegrees(latititude)}
                 if Float(southwestCoordinate.longitude) > fabsf(longitude){ southwestCoordinate.longitude = CLLocationDegrees(longitude)}
-                
                 if Float(northeastCoordinate.latitude) < fabsf(latititude){ northeastCoordinate.latitude = CLLocationDegrees(latititude)}
                 if Float(northeastCoordinate.longitude) < fabsf(longitude){ northeastCoordinate.longitude = CLLocationDegrees(longitude)}
-                
             }
             var a = map.coordinateToPixel(southwestCoordinate).x - map.coordinateToPixel(northeastCoordinate).x
             var b = map.coordinateToPixel(northeastCoordinate).y - map.coordinateToPixel(southwestCoordinate).y
             var c = max(max(a, b),80)
             layer.bounds = CGRect(x: 0, y: -10, width: c, height: c)
             layer.changeLabelUsingText(annotation.title, font: UIFont(name: "Roboto-light", size: 30), foregroundColor: UIColor.whiteColor(), backgroundColor: UIColor.clearColor())
-            
-            /*let layer = RMCircle(view: mapView, radiusInMeters: 3000)
-            layer.backgroundColor = UIColor.clearColor().CGColor*/
-
-            
             return layer
         }
         else
         {
             let marker = RMMarker(UIImage: UIImage(named: annotation.userInfo as String))
-            //marker.canShowCallout = true
-            //let top = CallOutTop(frame: CGRect(x: 0, y: 0, width: 269, height: 75))
-            //let bottom =  CallOutBottom(frame: CGRect(x: 0, y: 0, width: 269, height: 52))
-            //marker.topCalloutAccessoryView = top
-            //marker.bottomCalloutAccessoryView = bottom
             return marker
         }
     }
@@ -211,7 +189,14 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNE
     @IBAction func search(sender: AnyObject) {
     }
     @IBAction func newReport(sender: AnyObject) {
-        var thisMenu = LNERadialMenu(fromPoint: sender.center, withDataSource: self, andDelegate: self)
+        var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+        an.toValue = -0.75
+        an.springBounciness = 10
+        btnReport.layer.pop_addAnimation(an, forKey: "Rotate")
+        
+        var thisMenu = LNERadialMenu(fromPoint: sender.center, withDataSource: self, andDelegate: self, withFrame: self.view.frame, andLabels:Boolean(1))
+        self.view.insertSubview(thisMenu, belowSubview: btnReport)
+        thisMenu.radialMenuIdentifier = "show"
         thisMenu.showMenu()
     }
     
@@ -221,32 +206,49 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNE
     
     
     // READIAL MENU DELEGATE
+
+    func radialMenu(radialMenu: LNERadialMenu!, closingMenu close: Boolean) {
+        closeMenu()
+    }
     
-    
+    func closeMenu(){
+        var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+        an.toValue = 0.75
+        an.springBounciness = 10
+        btnReport.layer.pop_addAnimation(an, forKey: "Rotate")
+    }
+
     func numberOfButtonsForRadialMenu(radialMenu: LNERadialMenu!) -> Int {
         return 2
     }
     
     func radiusLenghtForRadialMenu(radialMenu: LNERadialMenu!) -> CGFloat {
-        return 100
+        return 60
     }
     
     func radialMenu(radialMenu: LNERadialMenu!, elementAtIndex index: Int) -> UIButton! {
-        var element : UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        element.layer.cornerRadius = 25
-        element.layer.borderColor = UIColor.greenColor().CGColor
-        element.layer.borderWidth = 1
+        var element : UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
+        switch index{
+        case 0: element.titleLabel?.text = "REPORTE"
+                element.setBackgroundImage(UIImage(named: "repo"), forState: UIControlState.Normal)
+        case 1: element.titleLabel?.text = "SOLICITUD"
+                element.setBackgroundImage(UIImage(named: "solicitud"), forState: UIControlState.Normal)
+        default:element.titleLabel?.text = "SOLICITUD"
+                element.setBackgroundImage(UIImage(named: "solicitud"), forState: UIControlState.Normal)
+        }
+        element.setTitleColor(UIColor.clearColor(), forState: UIControlState.Normal)
         return element
     }
     
     func radialMenu(radialMenu: LNERadialMenu!, didSelectButton button: UIButton!) {
-        println("Fuck Yeahh")
+        println("Fuck Yeahh \(button.tag)")
         radialMenu.closeMenu()
     }
     
     func viewForCenterOfRadialMenu(radialMenu: LNERadialMenu!) -> UIView! {
-        var centerView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
-        centerView.backgroundColor  = UIColor.redColor()
+        var centerView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: 190, height: 190))
+        centerView.backgroundColor  = UIColor.blackColor().colorWithAlphaComponent(0.2)
+        
         return centerView
     }
     
@@ -254,10 +256,12 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNE
         var bgLayer:CALayer = CALayer()
         bgLayer.backgroundColor = UIColor.orangeColor().CGColor
         radialMenu.layer.insertSublayer(bgLayer, atIndex: 0)
+        
     }
     
     func canDragRadialMenu(radialMenu: LNERadialMenu!) -> Bool {
-        return true
+        println("Entraaa YYYYY")
+        return false
     }
 }
 

@@ -69,13 +69,21 @@
          contextName = "Yo_Intervengo.ViewController.newReport (Yo_Intervengo.ViewController)(Swift.AnyObject) -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "images.count">
-            </PersistentString>
-            <PersistentString
                value = "bubbleMenu">
             </PersistentString>
             <PersistentString
                value = "bubbleMenu.menuItemImages">
+            </PersistentString>
+            <PersistentString
+               value = "images.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LNERadialMenu placeRadialMenuElementsAnimated:]:LNERadialMenu.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "virtualAngle">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

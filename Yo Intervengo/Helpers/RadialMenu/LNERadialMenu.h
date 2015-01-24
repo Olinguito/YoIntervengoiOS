@@ -37,7 +37,6 @@
  @return BOOL
  */
 -(BOOL) canDragRadialMenu:(LNERadialMenu *) radialMenu;
-
 /*!
  This method is used to set the radius of the menu. Defaults to 50. This radius will be the minimum radius for the radial menu. All the buttons will have theyr center point on the circonference of the circle virtually drawn by this radius.
  
@@ -62,11 +61,16 @@
  */
 -(void) radialMenu:(LNERadialMenu *)radialMenu customizationForRadialMenuView:(UIView *) radialMenuView;
 
+
+
+
+
 @end
 
 @protocol LNERadialMenuDelegate <NSObject>
 
 -(void)radialMenu:(LNERadialMenu *)radialMenu didSelectButton:(UIButton *)button;
+-(void)radialMenu:(LNERadialMenu *)radialMenu closingMenu:(Boolean)close;
 
 @end
 
@@ -76,7 +80,7 @@
 @property (nonatomic, readonly) CGFloat menuRadius;
 @property (nonatomic, readonly) NSInteger numberOfButtons;
 @property (nonatomic, readonly) UIView *radialMenuView;
-
+@property Boolean showlabels;
 /*!
  The color of the background view. Default is black with 0.3 alpha.
  */
@@ -92,7 +96,7 @@
 /*!
  @warning The centerPoint MUST be related to the window.
  */
--(id) initFromPoint:(CGPoint)centerPoint withDataSource:(id<LNERadialMenuDataSource>)dataSource andDelegate:(id<LNERadialMenuDelegate>)delegate;
+-(id) initFromPoint:(CGPoint)centerPoint withDataSource:(id<LNERadialMenuDataSource>)dataSource andDelegate:(id<LNERadialMenuDelegate>)delegate withFrame:(CGRect)frame andLabels:(Boolean)show;
 
 -(void) showMenu;
 -(void) showMenuWithCompletion:(void(^)()) completion;

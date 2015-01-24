@@ -18,15 +18,22 @@
 @implementation LNERadialMenu
 
 -(id)initWithFrame:(CGRect)frame{
-	return [self initFromPoint:CGPointZero withDataSource:nil andDelegate:nil];
+	return [self initFromPoint:CGPointZero withDataSource:nil andDelegate:nil withFrame:CGRectZero andLabels:false];
 }
 
--(id)initFromPoint:(CGPoint)centerPoint withDataSource:(id<LNERadialMenuDataSource>)dataSource andDelegate:(id<LNERadialMenuDelegate>)delegate{
-	self = [super initWithFrame:CGRectMake([[UIScreen mainScreen] applicationFrame].origin.x, [[UIScreen mainScreen] applicationFrame].origin.y, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height)];
-	
+-(id) initFromPoint:(CGPoint)centerPoint withDataSource:(id<LNERadialMenuDataSource>)dataSource andDelegate:(id<LNERadialMenuDelegate>)delegate withFrame:(CGRect)frame andLabels:(Boolean)show{
+	//self = [super initWithFrame:CGRectMake([[UIScreen mainScreen] applicationFrame].origin.x, [[UIScreen mainScreen] applicationFrame].origin.y, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height)];
+
+    //self = [super initWithFrame:self.superview.frame];
+	self = [super initWithFrame:frame];
+    
 	if(self){
-		centerPoint.y -= [[UIScreen mainScreen] applicationFrame].origin.y;
-		
+        self.showlabels = show;
+		//centerPoint.y -= [[UIScreen mainScreen] applicationFrame].origin.y;
+		//centerPoint.y -= self.superview.frame.origin.y;
+       // centerPoint.y = ;
+        
+        
 //		//Fix the center point in case it is too near the corners of the screen
 //		if(CGRectContainsPoint(CGRectMake(0, 0, 70, 70), centerPoint) && !CGPointEqualToPoint(centerPoint, CGPointZero)){
 //			_centerPoint = CGPointMake(70, 70);
@@ -98,6 +105,7 @@
 }
 
 -(void)closeMenu {
+    [self.delegate radialMenu:self closingMenu:true];
 	[self closeMenuWithCompletion:nil];
 }
 
@@ -179,7 +187,7 @@
 
 -(UIColor *) dimBackgroundColor{
     if(!_dimBackgroundColor){
-        _dimBackgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+        _dimBackgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
     }
     
     return _dimBackgroundColor;
@@ -188,7 +196,7 @@
 -(void)showMenuWithCompletion:(void (^)())completion{
 	[self generateRadialMenu];
 	
-	[[[[UIApplication sharedApplication] delegate] window] addSubview:self];
+	//[[[[UIApplication sharedApplication] delegate] window] addSubview:self];
 	[UIView animateWithDuration:0.25 animations:^{
 		self.backgroundColor = self.dimBackgroundColor;
 	} completion:^(BOOL finished) {
@@ -315,6 +323,16 @@
 			[self.radialMenuView bringSubviewToFront:element];
 			CGPoint endPoint = CGPointMake(self.radialMenuView.frame.size.width/2.0+(_menuRadius+radiusToAdd)*(cos(startingAngle+usableAngle/(self.numberOfButtons-(fullCircle ? 0 :1))*(float)i)), self.radialMenuView.frame.size.height/2.0+(_menuRadius+radiusToAdd)*(sin(startingAngle+usableAngle/(self.numberOfButtons-(fullCircle ? 0 :1))*(float)i)));
 			element.center = endPoint;
+            
+            if (self.showlabels) {
+                UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(element.center.x, element.center.y, 100, 20)];
+                lab.text = element.titleLabel.text;
+                lab.textAlignment = NSTextAlignmentRight;
+                lab.textColor = UIColor.whiteColor;
+                lab.font = [UIFont fontWithName:@"Roboto-Regular" size:16];
+                lab.center = CGPointMake(endPoint.x - 80, endPoint.y);
+                [_radialMenuView addSubview:lab];
+            }
 		};
 		
 		if(animated) {
