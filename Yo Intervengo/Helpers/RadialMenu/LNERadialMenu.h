@@ -76,6 +76,10 @@
 
 @interface LNERadialMenu : UIView <UIGestureRecognizerDelegate>
 
+@property (nonatomic, assign) CGFloat maxW;
+@property (nonatomic, strong) NSMutableArray *elementsArray;
+
+
 @property (nonatomic, readonly) CGPoint centerPoint;
 @property (nonatomic, readonly) CGFloat menuRadius;
 @property (nonatomic, readonly) NSInteger numberOfButtons;

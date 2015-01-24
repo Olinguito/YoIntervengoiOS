@@ -10,12 +10,12 @@
 
 @interface LNERadialMenu()
 
-@property (nonatomic, assign) CGFloat maxW;
-@property (nonatomic, strong) NSMutableArray *elementsArray;
+
 
 @end
 
 @implementation LNERadialMenu
+@synthesize maxW;
 
 -(id)initWithFrame:(CGRect)frame{
 	return [self initFromPoint:CGPointZero withDataSource:nil andDelegate:nil withFrame:CGRectZero andLabels:false];
@@ -187,7 +187,7 @@
 
 -(UIColor *) dimBackgroundColor{
     if(!_dimBackgroundColor){
-        _dimBackgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+        _dimBackgroundColor = [UIColor colorWithWhite:0 alpha:0.0];
     }
     
     return _dimBackgroundColor;

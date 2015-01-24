@@ -34,7 +34,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         
         let coll = UICollectionViewFlowLayout()
         coll.scrollDirection = UICollectionViewScrollDirection.Horizontal
-       coll.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        coll.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         coll.itemSize = CGSize(width: 274, height: 180)
 
         collectionView = UICollectionView(frame: blurView.frame, collectionViewLayout: coll)

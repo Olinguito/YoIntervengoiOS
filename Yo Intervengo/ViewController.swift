@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNERadialMenuDataSource,LNERadialMenuDelegate {
+class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     weak var map: RMMapView!
     var openedReport:Bool = false
     var animator:UIDynamicAnimator!
@@ -27,10 +27,10 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNE
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
+        //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
-        //let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
+        let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
         map = RMMapView(frame: view.frame, andTilesource: source)
         map.delegate = self
         view.insertSubview(map, belowSubview: btnReport)
@@ -110,17 +110,20 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNE
             test.show()
             test.go2Page(NSIndexPath(forRow: annotation.title.toInt()!, inSection: 0))
         }
-    
     }
     
     func longPressOnMap(map: RMMapView!, at point: CGPoint) {
-        if map.zoom > 15{
-            var thisMenu = LNERadialMenu(fromPoint: point, withDataSource: self, andDelegate: self, withFrame: self.view.frame, andLabels:0)
+        //if map.zoom > 15{
+            /*var thisMenu = LNERadialMenu(fromPoint: point, withDataSource: self, andDelegate: self, withFrame: self.view.frame, andLabels:0)
             self.view.insertSubview(thisMenu, belowSubview: btnReport)
             thisMenu.radialMenuIdentifier = "hide"
 
-            thisMenu.showMenu()
-        }
+            thisMenu.showMenu()*/
+            var thisMenu = JOaddReport(frame: self.view.frame)
+            self.view.insertSubview(thisMenu, belowSubview: btnReport)
+            thisMenu.showMenu(1, atPoint: point)
+            
+       // }
     }
     
     func singleTapOnMap(map: RMMapView!, at point: CGPoint) {
@@ -194,74 +197,11 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,LNE
         an.springBounciness = 10
         btnReport.layer.pop_addAnimation(an, forKey: "Rotate")
         
-        var thisMenu = LNERadialMenu(fromPoint: sender.center, withDataSource: self, andDelegate: self, withFrame: self.view.frame, andLabels:Boolean(1))
-        self.view.insertSubview(thisMenu, belowSubview: btnReport)
-        thisMenu.radialMenuIdentifier = "show"
-        thisMenu.showMenu()
+        
     }
     
     func pageSetted(index:NSIndexPath){
         map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(loc[index.row].coordinate).x, y: map.coordinateToPixel(loc[index.row].coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
-    }
-    
-    
-    // READIAL MENU DELEGATE
-
-    func radialMenu(radialMenu: LNERadialMenu!, closingMenu close: Boolean) {
-        closeMenu()
-    }
-    
-    func closeMenu(){
-        var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
-        an.toValue = 0.75
-        an.springBounciness = 10
-        btnReport.layer.pop_addAnimation(an, forKey: "Rotate")
-    }
-
-    func numberOfButtonsForRadialMenu(radialMenu: LNERadialMenu!) -> Int {
-        return 2
-    }
-    
-    func radiusLenghtForRadialMenu(radialMenu: LNERadialMenu!) -> CGFloat {
-        return 60
-    }
-    
-    func radialMenu(radialMenu: LNERadialMenu!, elementAtIndex index: Int) -> UIButton! {
-        var element : UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
-        switch index{
-        case 0: element.titleLabel?.text = "REPORTE"
-                element.setBackgroundImage(UIImage(named: "repo"), forState: UIControlState.Normal)
-        case 1: element.titleLabel?.text = "SOLICITUD"
-                element.setBackgroundImage(UIImage(named: "solicitud"), forState: UIControlState.Normal)
-        default:element.titleLabel?.text = "SOLICITUD"
-                element.setBackgroundImage(UIImage(named: "solicitud"), forState: UIControlState.Normal)
-        }
-        element.setTitleColor(UIColor.clearColor(), forState: UIControlState.Normal)
-        return element
-    }
-    
-    func radialMenu(radialMenu: LNERadialMenu!, didSelectButton button: UIButton!) {
-        println("Fuck Yeahh \(button.tag)")
-        radialMenu.closeMenu()
-    }
-    
-    func viewForCenterOfRadialMenu(radialMenu: LNERadialMenu!) -> UIView! {
-        var centerView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: 190, height: 190))
-        centerView.backgroundColor  = UIColor.blackColor().colorWithAlphaComponent(0.2)
-        
-        return centerView
-    }
-    
-    func radialMenu(radialMenu: LNERadialMenu!, customizationForRadialMenuView radialMenuView: UIView!) {
-        var bgLayer:CALayer = CALayer()
-        bgLayer.backgroundColor = UIColor.orangeColor().CGColor
-        radialMenu.layer.insertSublayer(bgLayer, atIndex: 0)
-        
-    }
-    
-    func canDragRadialMenu(radialMenu: LNERadialMenu!) -> Bool {
-        println("Entraaa YYYYY")
-        return false
     }
 }
 
