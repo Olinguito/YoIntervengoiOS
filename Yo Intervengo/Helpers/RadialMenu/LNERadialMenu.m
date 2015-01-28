@@ -324,6 +324,9 @@
 			CGPoint endPoint = CGPointMake(self.radialMenuView.frame.size.width/2.0+(_menuRadius+radiusToAdd)*(cos(startingAngle+usableAngle/(self.numberOfButtons-(fullCircle ? 0 :1))*(float)i)), self.radialMenuView.frame.size.height/2.0+(_menuRadius+radiusToAdd)*(sin(startingAngle+usableAngle/(self.numberOfButtons-(fullCircle ? 0 :1))*(float)i)));
 			element.center = endPoint;
             
+            
+            
+            
             if (self.showlabels) {
                 UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(element.center.x, element.center.y, 100, 20)];
                 lab.text = element.titleLabel.text;

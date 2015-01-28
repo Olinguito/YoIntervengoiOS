@@ -23,7 +23,11 @@ class FilterVC: UIViewController,UISearchBarDelegate {
         btnSearch.titleLabel?.font = UIFont(name: "Roboto-Light", size: 18)
         searchBar.keyboardAppearance = UIKeyboardAppearance.Dark
         searchBar.backgroundColor = UIColor.clearColor()
+        
+
+        
     }
+    
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.text = ""

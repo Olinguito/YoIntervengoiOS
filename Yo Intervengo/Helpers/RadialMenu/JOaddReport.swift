@@ -8,19 +8,23 @@
 
 import UIKit
 
-class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate {
+class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate {
     var step = 0
     let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+    var btnClose:UIButton!
     var btnCategoty:UIButton!
     var btnSubcategory:UIButton!
+    var lblIndicator:UILabel!
+    
     
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, bttnClose:UIButton) {
         super.init(frame: frame)
+        btnClose = bttnClose
         let blurView: UIVisualEffectView = UIVisualEffectView(effect: blurEffect)
         blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
         blurView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
@@ -43,15 +47,27 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate {
         case 2: println(2)
                 var d = NSMutableArray()
                 //d.addObject(["Image":"Solicitud","Text":"Servicio públicos"])
-                var this = JOSideBarMenu(frame: CGRectMake(0, 90, 320, 355) , data: d)
+                var this = JOSideBarMenu(frame: CGRectMake(0, 80, 320, 355) , data: d)
+                this.delegate = self
                 //self.addSubview(this)
                 self.insertSubview(this, belowSubview: btnCategoty)
-        
+        case 3: println(2)
+                var d = NSMutableArray()
+                //d.addObject(["Image":"Solicitud","Text":"Servicio públicos"])
+                var this2 = JOCentralMenu(frame: CGRectMake(0, 80, 320, 355) , data: d)
+                //this2.delegate = self
+                self.insertSubview(this2, belowSubview: btnCategoty)
         default: println("Default")
         }
     }
     
     
+    // SIDE BAR DELEGATE
+    
+    func buttoTapped(button:UIButton!,withSideBar sideBar:JOSideBarMenu){
+        sideBar.closeSideView()
+        showMenu(3, atPoint: CGPointZero)
+    }
     
     // READIAL MENU DELEGATE
     
@@ -90,15 +106,21 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate {
     
     func radialMenu(radialMenu: LNERadialMenu!, didSelectButton button: UIButton!) {
         btnCategoty = UIButton(frame: button.frame)
-        btnCategoty.center = radialMenu.center
+        btnCategoty.center = btnClose.center
         btnCategoty.setBackgroundImage(button.backgroundImageForState(UIControlState.Normal), forState: UIControlState.Normal)
         self.addSubview(btnCategoty)
         var pop = POPSpringAnimation(propertyNamed: kPOPViewCenter)
-        pop.toValue = NSValue(CGPoint: CGPoint(x: 220, y: 535))
+        pop.toValue = NSValue(CGPoint: CGPoint(x: self.frame.size.width-100, y: btnClose.center.y))
+        var wl = button.titleLabel?.text?.utf16Count
+        var t = Int(btnCategoty.frame.origin.x) - 165
+        lblIndicator = UILabel(frame: CGRect(x: t, y: (Int(btnCategoty.center.y) - 7), width: 100, height: 16))
+        lblIndicator.text = button.titleLabel?.text
+        lblIndicator.textColor = UIColor.whiteColor()
+        lblIndicator.textAlignment = NSTextAlignment.Right
+//        lblIndicator.backgroundColor = UIColor.redColor()
+        lblIndicator.font = UIFont(name: "Roboto-Regular", size: 15)
+        self.addSubview(lblIndicator)
         btnCategoty.pop_addAnimation(pop, forKey: "TEST")
-        
-        
-        println("Fuck Yeahh \(button.tag)")
         showMenu(2, atPoint: CGPointZero)
         radialMenu.closeMenu()
     }
@@ -106,7 +128,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate {
     func viewForCenterOfRadialMenu(radialMenu: LNERadialMenu!) -> UIView! {
         var centerView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: 190, height: 190))
         centerView.backgroundColor  = UIColor.blackColor().colorWithAlphaComponent(0.2)
-        
         return centerView
     }
     

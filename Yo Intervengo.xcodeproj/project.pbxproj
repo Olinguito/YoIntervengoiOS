@@ -33,6 +33,13 @@
 		EC7701A01A7409DA00378515 /* JOSideBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77019F1A7409DA00378515 /* JOSideBarMenu.swift */; };
 		EC7701A21A74169600378515 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7701A11A74169600378515 /* CategoryCell.xib */; };
 		EC790D191A633D4400900192 /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = EC790D181A633D4400900192 /* Bridge.m */; };
+		ECB6C25F1A79997800AD1BCB /* JOCentralMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB6C25E1A79997800AD1BCB /* JOCentralMenu.swift */; };
+		ECB6C2681A799C6300AD1BCB /* SubCategory_on.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB6C2641A799C6300AD1BCB /* SubCategory_on.png */; };
+		ECB6C2691A799C6300AD1BCB /* SubCategory_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB6C2651A799C6300AD1BCB /* SubCategory_on@2x.png */; };
+		ECB6C26A1A799C6300AD1BCB /* SubCategory.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB6C2661A799C6300AD1BCB /* SubCategory.png */; };
+		ECB6C26B1A799C6300AD1BCB /* SubCategory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB6C2671A799C6300AD1BCB /* SubCategory@2x.png */; };
+		ECB6C26D1A79AA7000AD1BCB /* SubCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB6C26C1A79AA7000AD1BCB /* SubCategoryCell.xib */; };
+		ECB6C26F1A79ADD700AD1BCB /* SubCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB6C26E1A79ADD700AD1BCB /* SubCategoryCell.swift */; };
 		ECCCA5DE1A64D051004C5858 /* Pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5DD1A64D051004C5858 /* Pin@2x.png */; };
 		ECCCA5EE1A65AF60004C5858 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5E11A65AF60004C5858 /* LICENSE.txt */; };
 		ECCCA5EF1A65AF60004C5858 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECCCA5E21A65AF60004C5858 /* Roboto-Black.ttf */; };
@@ -126,6 +133,13 @@
 		EC7701A11A74169600378515 /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		EC790D171A633D4300900192 /* Yo Intervengo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yo Intervengo-Bridging-Header.h"; sourceTree = "<group>"; };
 		EC790D181A633D4400900192 /* Bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bridge.m; path = Helpers/Bridge.m; sourceTree = "<group>"; };
+		ECB6C25E1A79997800AD1BCB /* JOCentralMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOCentralMenu.swift; sourceTree = "<group>"; };
+		ECB6C2641A799C6300AD1BCB /* SubCategory_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SubCategory_on.png; sourceTree = "<group>"; };
+		ECB6C2651A799C6300AD1BCB /* SubCategory_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SubCategory_on@2x.png"; sourceTree = "<group>"; };
+		ECB6C2661A799C6300AD1BCB /* SubCategory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SubCategory.png; sourceTree = "<group>"; };
+		ECB6C2671A799C6300AD1BCB /* SubCategory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SubCategory@2x.png"; sourceTree = "<group>"; };
+		ECB6C26C1A79AA7000AD1BCB /* SubCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubCategoryCell.xib; sourceTree = "<group>"; };
+		ECB6C26E1A79ADD700AD1BCB /* SubCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCategoryCell.swift; sourceTree = "<group>"; };
 		ECCCA5DD1A64D051004C5858 /* Pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pin@2x.png"; sourceTree = "<group>"; };
 		ECCCA5E11A65AF60004C5858 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		ECCCA5E21A65AF60004C5858 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
@@ -291,6 +305,10 @@
 		EC6F29CD1A674D4B00DB09EF /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				ECB6C2641A799C6300AD1BCB /* SubCategory_on.png */,
+				ECB6C2651A799C6300AD1BCB /* SubCategory_on@2x.png */,
+				ECB6C2661A799C6300AD1BCB /* SubCategory.png */,
+				ECB6C2671A799C6300AD1BCB /* SubCategory@2x.png */,
 				EC6F29CE1A674D4B00DB09EF /* loc.png */,
 				EC6F29CF1A674D4B00DB09EF /* loc@2x.png */,
 				EC6F29D01A674D4B00DB09EF /* menu.png */,
@@ -310,6 +328,9 @@
 				EC77019F1A7409DA00378515 /* JOSideBarMenu.swift */,
 				EC77019D1A74047900378515 /* JOaddReport.swift */,
 				ECF7DBD51A744761000E8967 /* CategoryCollViewCell.swift */,
+				ECB6C25E1A79997800AD1BCB /* JOCentralMenu.swift */,
+				ECB6C26C1A79AA7000AD1BCB /* SubCategoryCell.xib */,
+				ECB6C26E1A79ADD700AD1BCB /* SubCategoryCell.swift */,
 			);
 			name = RadialMenu;
 			path = Helpers/RadialMenu;
@@ -537,10 +558,12 @@
 				ECCE06E11A6CA50400A35012 /* logo.png in Resources */,
 				EC6F29DD1A674D4B00DB09EF /* search@2x.png in Resources */,
 				ECCCA60F1A662A94004C5858 /* inter@2x.png in Resources */,
+				ECB6C26D1A79AA7000AD1BCB /* SubCategoryCell.xib in Resources */,
 				ECCCA5F91A65AF60004C5858 /* Roboto-Thin.ttf in Resources */,
 				ECCCA5F81A65AF60004C5858 /* Roboto-Regular.ttf in Resources */,
 				ECCE06E91A6CA54100A35012 /* bg.png in Resources */,
 				EC0AF7BB1A62E7CD004F1B6C /* Main.storyboard in Resources */,
+				ECB6C26B1A799C6300AD1BCB /* SubCategory@2x.png in Resources */,
 				EC4EECC11A70429F0034C0EB /* Pin2@2x.png in Resources */,
 				ECCCA5F41A65AF60004C5858 /* Roboto-Light.ttf in Resources */,
 				ECCCA5FA1A65AF60004C5858 /* Roboto-ThinItalic.ttf in Resources */,
@@ -552,6 +575,7 @@
 				EC77019C1A732B2100378515 /* repo.png in Resources */,
 				ECCCA6121A662A94004C5858 /* div@2x.png in Resources */,
 				ECCE06D61A6C524800A35012 /* solicitud@2x.png in Resources */,
+				ECB6C2681A799C6300AD1BCB /* SubCategory_on.png in Resources */,
 				ECCCA6101A662A94004C5858 /* stat@2x.png in Resources */,
 				ECCCA6031A65B9FC004C5858 /* bg1@2x.png in Resources */,
 				ECCE06E21A6CA50400A35012 /* logo@2x.png in Resources */,
@@ -576,10 +600,12 @@
 				ECCE06D51A6C524800A35012 /* solicitud.png in Resources */,
 				ECCCA5F31A65AF60004C5858 /* Roboto-Italic.ttf in Resources */,
 				ECCCA6051A65B9FC004C5858 /* img1@2x.png in Resources */,
+				ECB6C26A1A799C6300AD1BCB /* SubCategory.png in Resources */,
 				EC6F29D71A674D4B00DB09EF /* loc@2x.png in Resources */,
 				ECCCA60E1A662A94004C5858 /* inter.png in Resources */,
 				EC4EECC21A70429F0034C0EB /* Pin2.png in Resources */,
 				ECCCA5F01A65AF60004C5858 /* Roboto-BlackItalic.ttf in Resources */,
+				ECB6C2691A799C6300AD1BCB /* SubCategory_on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,8 +661,10 @@
 				EC790D191A633D4400900192 /* Bridge.m in Sources */,
 				EC0AF7B81A62E7CD004F1B6C /* ViewController.swift in Sources */,
 				EC7701A01A7409DA00378515 /* JOSideBarMenu.swift in Sources */,
+				ECB6C25F1A79997800AD1BCB /* JOCentralMenu.swift in Sources */,
 				EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */,
 				ECF7DBD61A744761000E8967 /* CategoryCollViewCell.swift in Sources */,
+				ECB6C26F1A79ADD700AD1BCB /* SubCategoryCell.swift in Sources */,
 				ECFC63BC1A6DBB66003058C4 /* LayoutPager.m in Sources */,
 				ECCCA5FC1A65B173004C5858 /* CallOutTop.swift in Sources */,
 				ECF51D4F1A6C3B0000073421 /* Gradient.swift in Sources */,

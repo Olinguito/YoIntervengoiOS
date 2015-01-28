@@ -119,8 +119,9 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
             thisMenu.radialMenuIdentifier = "hide"
 
             thisMenu.showMenu()*/
-            var thisMenu = JOaddReport(frame: self.view.frame)
-            self.view.insertSubview(thisMenu, belowSubview: btnReport)
+            var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport)
+            //self.view.insertSubview(thisMenu, belowSubview: btnReport)
+            self.view.addSubview(thisMenu)
             thisMenu.showMenu(1, atPoint: point)
             
        // }

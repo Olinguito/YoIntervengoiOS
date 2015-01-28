@@ -8,12 +8,12 @@
 
 import UIKit
 
-@objc protocol JOSideBarMenuDelegate{
-    optional func buttoTapped(button:UIButton!,withSideBar sideBar:JOSideBarMenu)
+@objc protocol JOCentralMenuDelegate{
+    //optional func buttoTapped(button:UIButton!,withSideBar sideBar:JOCentralMenuDelegate)
 }
 
 
-class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
+class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,JOSideBarMenuDelegate {
     var collectionView:UICollectionView!
     var data:NSMutableArray!
     var delegate:JOSideBarMenuDelegate?
@@ -23,18 +23,18 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
         
         let coll = UICollectionViewFlowLayout()
         coll.scrollDirection = UICollectionViewScrollDirection.Vertical
-        coll.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
-        coll.itemSize = CGSize(width: 320, height: 61)
+        coll.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        coll.itemSize = CGSize(width: 130, height: 57)
         
         collectionView = UICollectionView(frame: frame, collectionViewLayout: coll)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clearColor()
         collectionView.scrollToItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
-        collectionView.registerNib(UINib(nibName: "CategoryCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCell")
+        collectionView.registerNib(UINib(nibName: "SubCategoryCell", bundle: nil), forCellWithReuseIdentifier: "SubCategoryCell")
         self.addSubview(collectionView)
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -44,21 +44,21 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return data.count
-        return 5
+        return 10
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as CategoryCollViewCell
-        cell.btnCategory.tag = indexPath.row
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SubCategoryCell", forIndexPath: indexPath) as UICollectionViewCell
+        //cell.btnCategory.tag = indexPath.row
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
-        cell.btnCategory.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)
+//        cell.btnCategory.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)
         cell.alpha = 0
         return cell
     }
     
     func goSubCategory(sender:UIButton!){
-        self.delegate?.buttoTapped!(sender, withSideBar: self)
+        //self.delegate?.buttoTapped!(sender, withSideBar: self)
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
@@ -76,7 +76,7 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
         UIView.beginAnimations("rotation", context: nil)
         UIView.setAnimationDuration(0.4)
         cell.alpha = 1
-        cell.layer.shadowOffset = CGSizeMake(0, 0)        
+        cell.layer.shadowOffset = CGSizeMake(0, 0)
         UIView.commitAnimations()
     }
     
