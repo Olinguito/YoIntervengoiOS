@@ -119,7 +119,7 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
             thisMenu.radialMenuIdentifier = "hide"
 
             thisMenu.showMenu()*/
-            var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport)
+        var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport, labels: 0)
             //self.view.insertSubview(thisMenu, belowSubview: btnReport)
             self.view.addSubview(thisMenu)
             thisMenu.showMenu(1, atPoint: point)
@@ -198,6 +198,10 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
         an.springBounciness = 10
         btnReport.layer.pop_addAnimation(an, forKey: "Rotate")
         
+        var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport, labels: 1)
+        //self.view.insertSubview(thisMenu, belowSubview: btnReport)
+        self.view.addSubview(thisMenu)
+        thisMenu.showMenu(1, atPoint: sender.center)
         
     }
     

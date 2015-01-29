@@ -23,7 +23,7 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
         
         let coll = UICollectionViewFlowLayout()
         coll.scrollDirection = UICollectionViewScrollDirection.Vertical
-        coll.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
+        coll.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         coll.itemSize = CGSize(width: 320, height: 61)
         
         collectionView = UICollectionView(frame: frame, collectionViewLayout: coll)

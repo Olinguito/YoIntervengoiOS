@@ -9,14 +9,14 @@
 import UIKit
 
 @objc protocol JOCentralMenuDelegate{
-    //optional func buttoTapped(button:UIButton!,withSideBar sideBar:JOCentralMenuDelegate)
+    optional func buttoTapped(button:UIButton!,withCentralBar sideBar:JOCentralMenu)
 }
 
 
 class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,JOSideBarMenuDelegate {
     var collectionView:UICollectionView!
     var data:NSMutableArray!
-    var delegate:JOSideBarMenuDelegate?
+    var delegate:JOCentralMenuDelegate?
     
     init(frame: CGRect, data: NSMutableArray?) {
         super.init(frame: frame)
@@ -48,17 +48,17 @@ class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SubCategoryCell", forIndexPath: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SubCategoryCell", forIndexPath: indexPath) as SubCategoryCell
         //cell.btnCategory.tag = indexPath.row
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
-//        cell.btnCategory.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.btnSubCat.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)
         cell.alpha = 0
         return cell
     }
     
     func goSubCategory(sender:UIButton!){
-        //self.delegate?.buttoTapped!(sender, withSideBar: self)
+        self.delegate?.buttoTapped!(sender, withCentralBar: self)
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
