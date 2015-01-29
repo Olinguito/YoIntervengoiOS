@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol JOSideBarMenuDelegate{
-    optional func buttoTapped(button:UIButton!,withSideBar sideBar:JOSideBarMenu)
+    optional func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String)
 }
 
 
@@ -58,7 +58,8 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     }
     
     func goSubCategory(sender:UIButton!){
-        self.delegate?.buttoTapped!(sender, withSideBar: self)
+        var a:CategoryCollViewCell = self.collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as CategoryCollViewCell
+        self.delegate?.buttoTapped!(a.imgCategory, withSideBar: self,label: a.lblTitle.text!)
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
