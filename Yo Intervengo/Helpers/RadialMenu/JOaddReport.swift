@@ -33,7 +33,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         btnClose = UIButton(frame: bttnClose.frame)
         btnClose.center = bttnClose.center
         self.labels = labels
-        btnClose.setBackgroundImage(bttnClose.backgroundImageForState(UIControlState.Normal), forState: UIControlState.Normal)
+        btnClose.setImage(bttnClose.backgroundImageForState(UIControlState.Normal), forState: UIControlState.Normal)
         btnClose.addTarget(self, action: Selector("close"), forControlEvents: UIControlEvents.TouchUpInside)
         /*let blurView: UIVisualEffectView = UIVisualEffectView(effect: blurEffect)
         blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -44,7 +44,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         lay.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.1).CGColor
         blurView.layer.insertSublayer(lay, atIndex: 0)*/
         var blurView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-        blurView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.9)
+        blurView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
         self.addSubview(blurView)
         self.addSubview(btnClose)
     }
@@ -52,10 +52,14 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     func showMenu(step:Int, atPoint point:CGPoint){
         switch (step){
         case 1:
+            var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+            an.toValue = -0.75
+            an.springBounciness = 10
+            btnClose.layer.pop_addAnimation(an, forKey: "Rotate")
             var thisMenu = LNERadialMenu(fromPoint: point, withDataSource: self, andDelegate: self,withFrame: self.frame, andLabels:Boolean(labels))
-            thisMenu.radialMenuIdentifier = "show"
-            self.addSubview(thisMenu)
-            thisMenu.showMenu()
+                thisMenu.radialMenuIdentifier = "show"
+                self.insertSubview(thisMenu, belowSubview: btnClose)
+                thisMenu.showMenu()
         case 2: println(2)
                 var d = NSMutableArray()
                 //d.addObject(["Image":"Solicitud","Text":"Servicio públicos"])
@@ -75,6 +79,10 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     }
     
     func close(){
+        var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+        an.toValue = 0
+        an.springBounciness = 10
+        btnClose.layer.pop_addAnimation(an, forKey: "Rotate")
         UIView.animateWithDuration(1.0, delay: 0, options: .CurveEaseOut, animations: {
                 self.alpha = 0
             }, completion: { finished in
@@ -115,14 +123,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     
     // READIAL MENU DELEGATE
     func radialMenu(radialMenu: LNERadialMenu!, closingMenu close: Boolean) {
-        closeMenu()
-    }
-    
-    func closeMenu(){
-        var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
-        an.toValue = 0.75
-        an.springBounciness = 10
-        btnClose.layer.pop_addAnimation(an, forKey: "Rotate")
+        //closeMenu()
     }
     
     func numberOfButtonsForRadialMenu(radialMenu: LNERadialMenu!) -> Int {

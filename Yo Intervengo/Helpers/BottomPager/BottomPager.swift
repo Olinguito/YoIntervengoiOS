@@ -34,7 +34,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         
         let coll = UICollectionViewFlowLayout()
         coll.scrollDirection = UICollectionViewScrollDirection.Horizontal
-        coll.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        coll.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         coll.itemSize = CGSize(width: 274, height: 180)
 
         collectionView = UICollectionView(frame: blurView.frame, collectionViewLayout: coll)
@@ -86,12 +86,28 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         return loc.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as publicWCell
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
-
+        cell.goReport.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.follower.tag = indexPath.row
+        cell.follower.addTarget(self, action: Selector("followReport:"), forControlEvents: UIControlEvents.TouchUpInside)
         cell.alpha = 0
         return cell
+    }
+    
+    
+    func goReport(sender:UIButton!){
+        println("going there")
+    }
+    
+    func followReport(sender:UIButton!){
+        println("Following")
+        var cell = collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as publicWCell
+        cell.follower.backgroundColor = UIColor(red:0.902, green:0.349, blue:0.176, alpha: 1)
+        cell.follower.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        cell.follower.tintColor = UIColor.whiteColor()
+        cell.follow()
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath){

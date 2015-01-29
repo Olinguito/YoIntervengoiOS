@@ -192,12 +192,7 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     }
     @IBAction func search(sender: AnyObject) {
     }
-    @IBAction func newReport(sender: AnyObject) {
-        var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
-        an.toValue = -0.75
-        an.springBounciness = 10
-        btnReport.layer.pop_addAnimation(an, forKey: "Rotate")
-        
+    @IBAction func newReport(sender: AnyObject) {        
         var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport, labels: 1)
         //self.view.insertSubview(thisMenu, belowSubview: btnReport)
         self.view.addSubview(thisMenu)

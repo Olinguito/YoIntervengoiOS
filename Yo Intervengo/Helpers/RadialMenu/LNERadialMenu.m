@@ -53,9 +53,9 @@
 		
 		self.backgroundColor = [UIColor clearColor];
 		
-		UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeRadialMenu:)];
-		[self addGestureRecognizer:tapGesture];
-		tapGesture.delegate = self;
+		//UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeRadialMenu:)];
+		//[self addGestureRecognizer:tapGesture];
+		//tapGesture.delegate = self;
 	}
 	
 	return self;
@@ -70,9 +70,9 @@
 	return should;
 }
 
--(void)closeRadialMenu:(UITapGestureRecognizer *)tapGesture{
+-(void)RadialMenu:(UITapGestureRecognizer *)tapGesture{
 	if([tapGesture.view isEqual:self] && !CGRectContainsPoint(self.radialMenuView.frame, [tapGesture locationInView:self])){
-		[self closeMenu];
+	//	[self closeMenu];
 	}
 }
 
