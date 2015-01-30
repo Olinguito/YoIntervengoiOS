@@ -27,10 +27,10 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
+        let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
-        let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
+        //let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
         map = RMMapView(frame: view.frame, andTilesource: source)
         map.delegate = self
         view.insertSubview(map, belowSubview: btnReport)
