@@ -86,6 +86,7 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     override func viewWillAppear(animated: Bool) {
         listView.center = CGPoint(x: ((self.view.frame.width*1.5)-4), y: self.view.frame.height/2)
         initLoc = listView.center
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     
@@ -202,6 +203,12 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     
     func pageSetted(index:NSIndexPath){
         map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(loc[index.row].coordinate).x, y: map.coordinateToPixel(loc[index.row].coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
+    }
+    
+    func goDetail(sender:UIButton){
+        //var view2 = self.storyboard?.instantiateViewControllerWithIdentifier("DetailReport") as UIViewController
+        var view2 = DetailReportVC()
+        self.presentViewController(view2, animated: true, completion:nil)
     }
 }
 

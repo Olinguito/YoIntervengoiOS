@@ -422,6 +422,41 @@
             </objects>
             <point key="canvasLocation" x="2353" y="279"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="V6W-JL-UbK">
+            <objects>
+                <viewController storyboardIdentifier="DetailReport" useStoryboardIdentifierAsRestorationIdentifier="YES" id="23R-qW-cfF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yvp-B9-kpi"/>
+                        <viewControllerLayoutGuide type="bottom" id="E8o-TC-0dM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XQE-zV-Jyq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fio-sh-Dxb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="test-01.png" translatesAutoresizingMaskIntoConstraints="NO" id="WGW-GO-vfz">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fio-sh-Dxb" firstAttribute="leading" secondItem="XQE-zV-Jyq" secondAttribute="leading" id="5L9-oI-Jmn"/>
+                            <constraint firstItem="fio-sh-Dxb" firstAttribute="top" secondItem="XQE-zV-Jyq" secondAttribute="top" id="9p8-Oe-9Cz"/>
+                            <constraint firstAttribute="trailing" secondItem="fio-sh-Dxb" secondAttribute="trailing" id="Odg-g2-aHB"/>
+                            <constraint firstItem="E8o-TC-0dM" firstAttribute="top" secondItem="fio-sh-Dxb" secondAttribute="bottom" id="xwK-kI-40O"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b56-Yg-4Hw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1831" y="901"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="EPv-Qf-wkv">
             <objects>
@@ -446,6 +481,7 @@
         <image name="mas.png" width="71" height="70"/>
         <image name="menu.png" width="23" height="14"/>
         <image name="search.png" width="21" height="20"/>
+        <image name="test-01.png" width="641" height="1165"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tTW-bi-3XH"/>

@@ -11,6 +11,7 @@ import UIKit
 
 @objc protocol BottomPagerDelegate{
     optional func pageSetted(index:NSIndexPath)
+    optional func goDetail(sender:UIButton)
 }
 
 class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -99,6 +100,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     
     func goReport(sender:UIButton!){
         println("going there")
+        self.delegate?.goDetail!(sender)
     }
     
     func followReport(sender:UIButton!){
