@@ -6,9 +6,7 @@ Winner of the two rounds of the regional hackathon La Ruta del Dinero (The Money
 
 ![picture alt](http://i.imgur.com/TEavgW0l.png "Yo Intervengo Look and feel")
 
-[Preview Video](http://youtu.be/usObFXx_XUE)
-
-
+[Preview Video](http://youtu.be/_DioG7gQm3Q)
 
 - - - -
 
@@ -38,8 +36,12 @@ This project is using Cocoa Pods, to open it please use **Yo Intervengo.xcworksp
 
 #Related Projects
 
+* [Yo Intervengo Web Version](https://github.com/Olinguito/yo-intervengo)
+* [Yo Intervengo Public Works scrapper](https://github.com/Olinguito/YoIntervengoWebScraper)
 
+#Contribute
 
+The project is in a very early stage but feel free to open any issue regarding the application it self or the project structure, coding style, etc.
 
 # License
 

@@ -59,6 +59,10 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
         for ann in loc{
             map.addAnnotation(ann)
         }
+        // hide MapBox logo
+        self.map.showLogoBug = false
+        // hide bottom right "i" icon
+        self.map.hideAttribution = true
         
         map.clusterAreaSize = CGSize(width: 5, height: 5)
         map.positionClusterMarkersAtTheGravityCenter = true
