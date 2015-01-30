@@ -24,6 +24,7 @@
 		EC4A5AB31A7B4327007DD7CB /* btnBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4A5AAF1A7B4327007DD7CB /* btnBack@2x.png */; };
 		EC4A5AB61A7B56AC007DD7CB /* comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4A5AB41A7B56AC007DD7CB /* comment@2x.png */; };
 		EC4A5AB71A7B56AC007DD7CB /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4A5AB51A7B56AC007DD7CB /* comment.png */; };
+		EC4A5ABA1A7BF15A007DD7CB /* JOTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4A5AB91A7BF15A007DD7CB /* JOTabBar.swift */; };
 		EC4EECC11A70429F0034C0EB /* Pin2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4EECBF1A70429F0034C0EB /* Pin2@2x.png */; };
 		EC4EECC21A70429F0034C0EB /* Pin2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4EECC01A70429F0034C0EB /* Pin2.png */; };
 		EC4EECC51A7045940034C0EB /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4EECC41A7045940034C0EB /* FilterVC.swift */; };
@@ -129,6 +130,7 @@
 		EC4A5AAF1A7B4327007DD7CB /* btnBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnBack@2x.png"; sourceTree = "<group>"; };
 		EC4A5AB41A7B56AC007DD7CB /* comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment@2x.png"; sourceTree = "<group>"; };
 		EC4A5AB51A7B56AC007DD7CB /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
+		EC4A5AB91A7BF15A007DD7CB /* JOTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOTabBar.swift; sourceTree = "<group>"; };
 		EC4EECBF1A70429F0034C0EB /* Pin2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pin2@2x.png"; sourceTree = "<group>"; };
 		EC4EECC01A70429F0034C0EB /* Pin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pin2.png; sourceTree = "<group>"; };
 		EC4EECC41A7045940034C0EB /* FilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterVC.swift; path = Views/FilterVC.swift; sourceTree = "<group>"; };
@@ -308,6 +310,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EC4A5AB81A7BF11B007DD7CB /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				EC4A5AB91A7BF15A007DD7CB /* JOTabBar.swift */,
+			);
+			name = TabBar;
+			path = Helpers/TabBar;
+			sourceTree = "<group>";
+		};
 		EC4EECC31A7044FB0034C0EB /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +413,7 @@
 		ECCCA5DF1A65AE5E004C5858 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EC4A5AB81A7BF11B007DD7CB /* TabBar */,
 				EC54A7031A7ACC9A007F6ABF /* Components */,
 				EC7701A61A74442A00378515 /* BottomPager */,
 				EC7701A51A74440F00378515 /* LeftMenu */,
@@ -698,6 +710,7 @@
 				EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */,
 				EC54A7001A7ACC79007F6ABF /* LayoutPager.m in Sources */,
 				ECF7DBD61A744761000E8967 /* CategoryCollViewCell.swift in Sources */,
+				EC4A5ABA1A7BF15A007DD7CB /* JOTabBar.swift in Sources */,
 				ECB6C26F1A79ADD700AD1BCB /* SubCategoryCell.swift in Sources */,
 				EC7701941A7204B300378515 /* LNERadialMenu.m in Sources */,
 				EC77019E1A74047900378515 /* JOaddReport.swift in Sources */,
