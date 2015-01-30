@@ -102,7 +102,10 @@ class LeftMenu: UIView{
         btnProf.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
         btnSett.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
         
-        (self.viewWithTag(sender.tag)as UIButton).setTitleColor(UIColor(red:0.761, green:0.286, blue:0.000, alpha: 1), forState: UIControlState.Normal)
+        sender.setTitleColor(UIColor(red:0.761, green:0.286, blue:0.000, alpha: 1), forState: UIControlState.Normal)
+
+        
+        //(self.viewWithTag(sender.tag)as UIButton).setTitleColor(UIColor(red:0.761, green:0.286, blue:0.000, alpha: 1), forState: UIControlState.Normal)
     }
     
 }

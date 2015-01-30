@@ -13,12 +13,20 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="zdn-lP-JIb">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Sv0-6f-drP">
-                    <rect key="frame" x="151" y="174" width="179" height="186"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Sv0-6f-drP">
+                    <rect key="frame" x="112" y="171" width="257" height="139"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="179" id="Ck2-pf-8b4"/>
+                        <constraint firstAttribute="height" constant="139" id="GE1-kS-8uP"/>
+                        <constraint firstAttribute="width" constant="257" id="OXJ-gh-uso"/>
                         <constraint firstAttribute="height" constant="186" id="abU-GL-k9R"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Ck2-pf-8b4"/>
+                            <exclude reference="abU-GL-k9R"/>
+                        </mask>
+                    </variation>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -32,11 +40,11 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="548" y="455"/>
+            <point key="canvasLocation" x="581" y="455"/>
         </view>
     </objects>
     <resources>
         <image name="bg.png" width="641" height="961"/>
-        <image name="logo.png" width="359" height="372"/>
+        <image name="logo.png" width="515" height="278"/>
     </resources>
 </document>

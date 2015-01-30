@@ -208,7 +208,7 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     func goDetail(sender:UIButton){
         //var view2 = self.storyboard?.instantiateViewControllerWithIdentifier("DetailReport") as UIViewController
         var view2 = DetailReportVC()
-        self.presentViewController(view2, animated: true, completion:nil)
+        self.showViewController(view2, sender: self)
     }
 }
 
