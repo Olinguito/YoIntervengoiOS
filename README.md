@@ -9,22 +9,24 @@
 
 # Requirements
 
-iOS 8+
-Cocoa Pods
+*iOS 8+
+*Cocoa Pods
 
 # Installation
+This project is using Cocoa Pods, to open it please use **Yo Intervengo.xcworkspace** and if you have dependencies problems execute the following command in the terminal
+`pod install`
 
 
-Wanna be Beta tester?
-Write us info@olinguito.co
+*Wanna be Beta tester?
+*Write us info@olinguito.co
 
 
-# Developed by
+# Credits
 
-Daniel Olano - Full Stack Dev @olanod
-Jorge Ovalle - iOS Dev @lojals
-Roberto Sarmiento - UX @robjalkh
-Daniel Suarez - Researcher @DanielSuarezPer
+*Daniel Olano - Full Stack Dev @olanod
+*Jorge Ovalle - iOS Dev @lojals
+*Roberto Sarmiento - UX @robjalkh
+*Daniel Suarez - Researcher @DanielSuarezPer
 
 
 # License
