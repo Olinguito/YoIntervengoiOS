@@ -1,8 +1,10 @@
 # Yo Intervengo iOS V2.0.0 
 
+A mobile application and website to track public works. The people of different Latin American cities generate complaints and requests for public works. These reports are connected to media organizations or state institutions that respond to these public reports.
 
+Winner of the two rounds of the regional hackathon La Ruta del Dinero (The Money Trail)
 
-![picture alt](http://i.imgur.com/TEavgW0.png "Yo Intervengo Look and feel")
+![picture alt](http://i.imgur.com/TEavgW0l.png "Yo Intervengo Look and feel")
 
 [Preview Video](http://youtu.be/usObFXx_XUE)
 
@@ -18,6 +20,7 @@
 # Installation
 
 This project is using Cocoa Pods, to open it please use **Yo Intervengo.xcworkspace** and if you have dependencies problems execute the following command in the terminal
+
 `pod install`
 
 
