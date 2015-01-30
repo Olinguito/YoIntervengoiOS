@@ -6,7 +6,7 @@ Winner of the two rounds of the regional hackathon La Ruta del Dinero (The Money
 
 ![picture alt](http://i.imgur.com/TEavgW0l.png "Yo Intervengo Look and feel")
 
-[Preview Video](http://youtu.be/_DioG7gQm3Q)
+[Preview Video updated Jan 30](http://youtu.be/_DioG7gQm3Q)
 
 - - - -
 
