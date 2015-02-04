@@ -50,15 +50,26 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate {
         banner.layer.mask = maskLayer
         
         tabBar = UIView(frame: CGRect(x: 0, y: banner.frame.maxY, width: 320, height: 194))
-        tabBar.backgroundColor = UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1)
+        tabBar.backgroundColor = UIColor.whiteColor()
         self.scroll.addSubview(tabBar)
-        
+        let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: self.tabBar.frame.width, height: 64), type: "Top")
+        self.view.addSubview(grad1)
         var grad3 = Gradient(frame: CGRect(x: 0, y: self.tabBar.frame.height - 10, width: 320, height: 10), type: "Bottom")
         grad3.alpha = 0.2
         tabBar.addSubview(grad3)
+    
+        var a:NSMutableArray = NSMutableArray()
+        a.addObject("Info")
+        a.addObject("Historial")
+        a.addObject("Fotos")
+        a.addObject("Enlaces")
+        var tab = JOTabBar(frame: CGRect(x: 0, y: 0, width: 320, height: 55), data: a)
+        tabBar.addSubview(tab)
+        
+        
         
         wikiBar = UIView(frame: CGRect(x: 0, y: tabBar.frame.maxY, width: 320, height: 67))
-        wikiBar.backgroundColor = UIColor.whiteColor()
+        wikiBar.backgroundColor = UIColor.greyButtons()
         self.scroll.addSubview(wikiBar)
         
         comment = UIButton(frame: CGRect(x: 0, y: wikiBar.frame.maxY, width: 320, height: 49))

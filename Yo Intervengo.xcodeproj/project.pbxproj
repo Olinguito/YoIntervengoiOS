@@ -15,6 +15,17 @@
 		EC0AF7BD1A62E7CD004F1B6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC0AF7BC1A62E7CD004F1B6C /* Images.xcassets */; };
 		EC0AF7C01A62E7CD004F1B6C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0AF7BE1A62E7CD004F1B6C /* LaunchScreen.xib */; };
 		EC0AF7CC1A62E7CD004F1B6C /* Yo_IntervengoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7CB1A62E7CD004F1B6C /* Yo_IntervengoTests.swift */; };
+		EC1DF3A41A81729D00AE8210 /* JIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1DF3A31A81729D00AE8210 /* JIColors.swift */; };
+		EC399E981A819DE6003DD89F /* Enlaces.png in Resources */ = {isa = PBXBuildFile; fileRef = EC399E8E1A819DE6003DD89F /* Enlaces.png */; };
+		EC399E991A819DE6003DD89F /* Enlaces@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC399E8F1A819DE6003DD89F /* Enlaces@2x.png */; };
+		EC399E9A1A819DE6003DD89F /* Fotos.png in Resources */ = {isa = PBXBuildFile; fileRef = EC399E901A819DE6003DD89F /* Fotos.png */; };
+		EC399E9B1A819DE6003DD89F /* Fotos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC399E911A819DE6003DD89F /* Fotos@2x.png */; };
+		EC399E9C1A819DE6003DD89F /* Historial.png in Resources */ = {isa = PBXBuildFile; fileRef = EC399E921A819DE6003DD89F /* Historial.png */; };
+		EC399E9D1A819DE6003DD89F /* Historial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC399E931A819DE6003DD89F /* Historial@2x.png */; };
+		EC399E9E1A819DE6003DD89F /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = EC399E941A819DE6003DD89F /* Info.png */; };
+		EC399E9F1A819DE6003DD89F /* Info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC399E951A819DE6003DD89F /* Info@2x.png */; };
+		EC399EA01A819DE6003DD89F /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = EC399E961A819DE6003DD89F /* share.png */; };
+		EC399EA11A819DE6003DD89F /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC399E971A819DE6003DD89F /* share@2x.png */; };
 		EC4A5AA71A7ADA2B007DD7CB /* test-01.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4A5AA61A7ADA2B007DD7CB /* test-01.png */; };
 		EC4A5AA91A7ADD1C007DD7CB /* DetailReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4A5AA81A7ADD1C007DD7CB /* DetailReportVC.swift */; };
 		EC4A5AAB1A7AEB26007DD7CB /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4A5AAA1A7AEB26007DD7CB /* mask.png */; };
@@ -121,6 +132,17 @@
 		EC0AF7C51A62E7CD004F1B6C /* Yo IntervengoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yo IntervengoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0AF7CA1A62E7CD004F1B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC0AF7CB1A62E7CD004F1B6C /* Yo_IntervengoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yo_IntervengoTests.swift; sourceTree = "<group>"; };
+		EC1DF3A31A81729D00AE8210 /* JIColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JIColors.swift; sourceTree = "<group>"; };
+		EC399E8E1A819DE6003DD89F /* Enlaces.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Enlaces.png; sourceTree = "<group>"; };
+		EC399E8F1A819DE6003DD89F /* Enlaces@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Enlaces@2x.png"; sourceTree = "<group>"; };
+		EC399E901A819DE6003DD89F /* Fotos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fotos.png; sourceTree = "<group>"; };
+		EC399E911A819DE6003DD89F /* Fotos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Fotos@2x.png"; sourceTree = "<group>"; };
+		EC399E921A819DE6003DD89F /* Historial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Historial.png; sourceTree = "<group>"; };
+		EC399E931A819DE6003DD89F /* Historial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Historial@2x.png"; sourceTree = "<group>"; };
+		EC399E941A819DE6003DD89F /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Info.png; sourceTree = "<group>"; };
+		EC399E951A819DE6003DD89F /* Info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Info@2x.png"; sourceTree = "<group>"; };
+		EC399E961A819DE6003DD89F /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		EC399E971A819DE6003DD89F /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
 		EC4A5AA61A7ADA2B007DD7CB /* test-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test-01.png"; sourceTree = "<group>"; };
 		EC4A5AA81A7ADD1C007DD7CB /* DetailReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailReportVC.swift; path = Views/DetailReportVC.swift; sourceTree = "<group>"; };
 		EC4A5AAA1A7AEB26007DD7CB /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
@@ -331,6 +353,7 @@
 		EC54A7031A7ACC9A007F6ABF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EC1DF3A31A81729D00AE8210 /* JIColors.swift */,
 				EC54A7041A7ACC9A007F6ABF /* Gradient.swift */,
 			);
 			name = Components;
@@ -340,6 +363,16 @@
 		EC6F29CD1A674D4B00DB09EF /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				EC399E8E1A819DE6003DD89F /* Enlaces.png */,
+				EC399E8F1A819DE6003DD89F /* Enlaces@2x.png */,
+				EC399E901A819DE6003DD89F /* Fotos.png */,
+				EC399E911A819DE6003DD89F /* Fotos@2x.png */,
+				EC399E921A819DE6003DD89F /* Historial.png */,
+				EC399E931A819DE6003DD89F /* Historial@2x.png */,
+				EC399E941A819DE6003DD89F /* Info.png */,
+				EC399E951A819DE6003DD89F /* Info@2x.png */,
+				EC399E961A819DE6003DD89F /* share.png */,
+				EC399E971A819DE6003DD89F /* share@2x.png */,
 				EC4A5AB41A7B56AC007DD7CB /* comment@2x.png */,
 				EC4A5AB51A7B56AC007DD7CB /* comment.png */,
 				EC4A5AAC1A7B4327007DD7CB /* btnInfo.png */,
@@ -584,6 +617,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC399E9E1A819DE6003DD89F /* Info.png in Resources */,
 				EC77019B1A732B2100378515 /* repo@2x.png in Resources */,
 				ECCCA5EE1A65AF60004C5858 /* LICENSE.txt in Resources */,
 				ECCCA6131A662A94004C5858 /* div.png in Resources */,
@@ -592,6 +626,7 @@
 				EC7701A21A74169600378515 /* CategoryCell.xib in Resources */,
 				ECCE06E11A6CA50400A35012 /* logo.png in Resources */,
 				EC54A6F51A7AC88D007F6ABF /* join.png in Resources */,
+				EC399E9A1A819DE6003DD89F /* Fotos.png in Resources */,
 				EC54A6F61A7AC88D007F6ABF /* join@2x.png in Resources */,
 				EC6F29DD1A674D4B00DB09EF /* search@2x.png in Resources */,
 				ECCCA60F1A662A94004C5858 /* inter@2x.png in Resources */,
@@ -616,9 +651,12 @@
 				ECCE06D61A6C524800A35012 /* solicitud@2x.png in Resources */,
 				EC4A5AA71A7ADA2B007DD7CB /* test-01.png in Resources */,
 				ECB6C2681A799C6300AD1BCB /* SubCategory_on.png in Resources */,
+				EC399EA11A819DE6003DD89F /* share@2x.png in Resources */,
 				EC4A5AB11A7B4327007DD7CB /* btnInfo@2x.png in Resources */,
 				ECCCA6031A65B9FC004C5858 /* bg1@2x.png in Resources */,
+				EC399EA01A819DE6003DD89F /* share.png in Resources */,
 				ECCE06E21A6CA50400A35012 /* logo@2x.png in Resources */,
+				EC399E981A819DE6003DD89F /* Enlaces.png in Resources */,
 				ECCE06E71A6CA54100A35012 /* bg@3x.png in Resources */,
 				ECCE06D21A6C524800A35012 /* mas@2x.png in Resources */,
 				EC4A5AB31A7B4327007DD7CB /* btnBack@2x.png in Resources */,
@@ -630,15 +668,20 @@
 				EC4A5AB01A7B4327007DD7CB /* btnInfo.png in Resources */,
 				EC6F29D61A674D4B00DB09EF /* loc.png in Resources */,
 				ECCCA5DE1A64D051004C5858 /* Pin@2x.png in Resources */,
+				EC399E9B1A819DE6003DD89F /* Fotos@2x.png in Resources */,
 				EC0AF7BD1A62E7CD004F1B6C /* Images.xcassets in Resources */,
 				EC6F29D91A674D4B00DB09EF /* menu@2x.png in Resources */,
+				EC399E9D1A819DE6003DD89F /* Historial@2x.png in Resources */,
 				ECCCA6021A65B9FC004C5858 /* bg1.png in Resources */,
 				EC4A5AB71A7B56AC007DD7CB /* comment.png in Resources */,
 				ECCCA5F61A65AF60004C5858 /* Roboto-Medium.ttf in Resources */,
 				ECCE06E31A6CA50400A35012 /* logo@3x.png in Resources */,
 				EC4A5AB21A7B4327007DD7CB /* btnBack.png in Resources */,
 				ECCCA5F21A65AF60004C5858 /* Roboto-BoldItalic.ttf in Resources */,
+				EC399E9C1A819DE6003DD89F /* Historial.png in Resources */,
+				EC399E9F1A819DE6003DD89F /* Info@2x.png in Resources */,
 				ECCCA6151A6632CA004C5858 /* circle.png in Resources */,
+				EC399E991A819DE6003DD89F /* Enlaces@2x.png in Resources */,
 				ECCE06D51A6C524800A35012 /* solicitud.png in Resources */,
 				ECCCA5F31A65AF60004C5858 /* Roboto-Italic.ttf in Resources */,
 				ECCCA6051A65B9FC004C5858 /* img1@2x.png in Resources */,
@@ -712,6 +755,7 @@
 				ECF7DBD61A744761000E8967 /* CategoryCollViewCell.swift in Sources */,
 				EC4A5ABA1A7BF15A007DD7CB /* JOTabBar.swift in Sources */,
 				ECB6C26F1A79ADD700AD1BCB /* SubCategoryCell.swift in Sources */,
+				EC1DF3A41A81729D00AE8210 /* JIColors.swift in Sources */,
 				EC7701941A7204B300378515 /* LNERadialMenu.m in Sources */,
 				EC77019E1A74047900378515 /* JOaddReport.swift in Sources */,
 				EC54A7011A7ACC79007F6ABF /* LayoutHelper.swift in Sources */,

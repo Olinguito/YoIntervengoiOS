@@ -106,7 +106,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     func followReport(sender:UIButton!){
         println("Following")
         var cell = collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as publicWCell
-        cell.follower.backgroundColor = UIColor(red:0.902, green:0.349, blue:0.176, alpha: 1)
+        cell.follower.backgroundColor = UIColor.greyLight()
         cell.follower.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         cell.follower.tintColor = UIColor.whiteColor()
         cell.follow()
