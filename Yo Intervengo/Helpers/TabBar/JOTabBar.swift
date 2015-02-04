@@ -19,6 +19,7 @@ class JOTabBar: UIView {
         buttons = NSMutableArray()
         var counter = 0
         var w = (frame.size.width/CGFloat(data.count))
+        let font = UIFont(name: "Roboto-Regular", size: 10)
         for button in data {
             var xAxis = CGFloat(counter)*w
             var but: UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
@@ -26,11 +27,31 @@ class JOTabBar: UIView {
             but.backgroundColor = UIColor.whiteColor()
             but.layer.borderWidth = 1
             but.tag = counter+1
-            but.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 10)
-            but.titleEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-            but.imageEdgeInsets = UIEdgeInsets(top: 00, left: 0, bottom: 20, right: 0)
-            but.setImage(UIImage(named: (data.objectAtIndex(counter) as String)), forState: UIControlState.Normal)
+            but.titleLabel?.font = font
+            var imageBtn = UIImage(named: (data.objectAtIndex(counter) as String))
+            but.setImage(imageBtn, forState: UIControlState.Normal)
             but.setTitle( (data.objectAtIndex(counter) as String), forState: UIControlState.Normal)
+        
+            
+            var spacing:CGFloat = 6
+            var imageSize = but.imageView?.image?.size
+//            var imageSize:CGSize = images.size
+            
+            var title:NSString = "\(but.titleLabel?.text)"
+            var titleSize = title.sizeWithAttributes([NSFontAttributeName: but.titleLabel?.font ?? UIFont.systemFontOfSize(100)])
+        
+            var size:CGSize = imageBtn?.size ?? CGSizeZero
+            
+            but.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+            println("This is a Test: \(size)  y \(titleSize)")
+            
+            //but.titleLabel?.frame = CGRect(x: 0, y: 0, width: but.frame.width, height: but.frame.height)
+            
+            but.titleEdgeInsets = UIEdgeInsetsMake(0.0, (-size.width) , -(size.height + spacing), 0.0)
+           // UIEdgeInsetsMake(<#top: CGFloat#>, <#left: CGFloat#>, <#bottom: CGFloat#>, <#right: CGFloat#>)
+            but.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), (titleSize.width-(size.width*1.7))/2 , 0.0, 0)
+            
+            
             but.layer.borderColor = UIColor.greyButtons().CGColor
             but.addTarget(self, action: Selector("buttonTapped:"), forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(but)
