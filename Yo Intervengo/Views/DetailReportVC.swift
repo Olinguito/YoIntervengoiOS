@@ -8,13 +8,11 @@
 
 import UIKit
 
-class DetailReportVC: UIViewController,UIScrollViewDelegate {
+class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate {
     var scroll:UIScrollView!
     var imgWork:UIImageView!
     var banner:UIView!
-    var tabBar:UIView!
-    var wikiBar:UIView!
-    var comment:UIButton!
+    
     var grad2:Gradient!
     
     var btnBack:UIButton!
@@ -22,6 +20,7 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate {
     var lblTitle:UILabel!
     var lblSubTit:UILabel!
     
+    var tab:JOTabBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +39,7 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate {
         scroll.multipleTouchEnabled = false
         self.view.addSubview(scroll)
         
+        
         banner = UIView(frame: CGRect(x: 0, y: 125, width: 320, height: 135))
         banner.backgroundColor = UIColor(red:0.180, green:0.180, blue:0.180, alpha: 1)
         self.scroll.addSubview(banner)
@@ -49,41 +49,27 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate {
         maskLayer.contents = UIImage(named: "mask")?.CGImage
         banner.layer.mask = maskLayer
         
-        tabBar = UIView(frame: CGRect(x: 0, y: banner.frame.maxY, width: 320, height: 194))
-        tabBar.backgroundColor = UIColor.whiteColor()
-        self.scroll.addSubview(tabBar)
-        let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: self.tabBar.frame.width, height: 64), type: "Top")
+        let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64), type: "Top")
         self.view.addSubview(grad1)
-        var grad3 = Gradient(frame: CGRect(x: 0, y: self.tabBar.frame.height - 10, width: 320, height: 10), type: "Bottom")
-        grad3.alpha = 0.2
-        tabBar.addSubview(grad3)
     
         var a:NSMutableArray = NSMutableArray()
-        a.addObject("Info")
-        a.addObject("Historial")
-        a.addObject("Fotos")
-        a.addObject("Enlaces")
-        var tab = JOTabBar(frame: CGRect(x: 0, y: 0, width: 320, height: 55), data: a)
-        tabBar.addSubview(tab)
+        
+        var info = Info(index: 2)
+        var histo = History(index: 2)
+        
+        a.addObject(["Info", info])
+        a.addObject(["Historial", histo])
+        a.addObject(["Fotos",info])
+        a.addObject(["Enlaces",info])
+        
+        
+        tab = JOTabBar(frame: CGRect(x: 0, y: banner.frame.maxY, width: 320, height: 800), data: a)
+        tab.delegate = self
+        self.scroll.addSubview(tab)
         
         
         
-        wikiBar = UIView(frame: CGRect(x: 0, y: tabBar.frame.maxY, width: 320, height: 67))
-        wikiBar.backgroundColor = UIColor.greyButtons()
-        self.scroll.addSubview(wikiBar)
-        
-        comment = UIButton(frame: CGRect(x: 0, y: wikiBar.frame.maxY, width: 320, height: 49))
-        comment.backgroundColor = UIColor(red:0.180, green:0.180, blue:0.180, alpha: 1)
-        comment.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        comment.setTitle("199 Comentarios", forState: UIControlState.Normal)
-        comment.titleLabel?.font = UIFont(name: "Roboto-Light", size: 13)
-        comment.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        comment.setImage(UIImage(named: "comment"), forState: UIControlState.Normal)
-        comment.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
-        comment.contentEdgeInsets = UIEdgeInsetsMake(0, 26, 0, 0)
-        self.scroll.addSubview(comment)
-        
-        scroll.contentSize = CGSize(width: 320, height: comment.frame.maxY)
+       // scroll.contentSize = CGSize(width: 320, height: comment.frame.maxY)
         
         btnBack = UIButton(frame: CGRect(x: 0, y: 10, width: 56, height: 56))
         btnBack.setImage(UIImage(named: "btnBack"), forState: UIControlState.Normal)
@@ -107,6 +93,12 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate {
         lblSubTit.textAlignment = NSTextAlignment.Center
         lblSubTit.textColor = UIColor(red:0.929, green:0.361, blue:0.180, alpha: 1)
         self.scroll.addSubview(lblSubTit)
+    }
+    
+    
+    func tappedButton(){
+        print(tab.frame)
+        scroll.contentSize = CGSize(width: 320, height: tab.frame.maxY)
     }
     
     func goBack(){
