@@ -20,7 +20,15 @@ class History: UIView {
         history.backgroundColor = UIColor.whiteColor()
         self.addSubview(history)
         
-        self.frame = CGRect(x: 0, y: 0, width: 320, height:  history.frame.height )
+        
+        
+        var times = ["Enero 26 2015","Enero 26 2015","Febrero 26 2025","Enero 26 2015","Enero 26 2015","Febrero 26 2025"]
+        var descriptions = ["Enero 26 2015","Enero 26 2015","Febrero 26 2025","Enero 26 2015","Enero 26 2015","Febrero 26 2025"]
+        
+        var timeLine = TimeLineViewControl(timeArray: times, andTimeDescriptionArray: descriptions, andCurrentStatus: 0, andFrame: CGRect(x: 0, y: 30, width: 320, height: self.frame.height))
+        
+        self.addSubview(timeLine)
+        self.frame = CGRect(x: 0, y: 0, width: 320, height:  history.bounds.height )
     }
     
     required init(coder aDecoder: NSCoder) {

@@ -19,7 +19,7 @@ class Info: UIView {
     
     init(index:Int) {
         super.init(frame:CGRectZero)
-        tabBar = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 194))
+        tabBar = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 139))
         tabBar.backgroundColor = UIColor.whiteColor()
         addSubview(tabBar)
         
