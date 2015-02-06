@@ -28,7 +28,9 @@ class History: UIView {
         var timeLine = TimeLineViewControl(timeArray: times, andTimeDescriptionArray: descriptions, andCurrentStatus: 0, andFrame: CGRect(x: 0, y: 30, width: 320, height: self.frame.height))
         
         self.addSubview(timeLine)
-        self.frame = CGRect(x: 0, y: 0, width: 320, height:  history.bounds.height )
+        
+        history.frame = CGRect(x: 0, y: 0, width: 320, height:  timeLine.height() + 50)
+        self.frame = CGRect(x: 0, y: 0, width: 320, height:  timeLine.height() + 50)
     }
     
     required init(coder aDecoder: NSCoder) {

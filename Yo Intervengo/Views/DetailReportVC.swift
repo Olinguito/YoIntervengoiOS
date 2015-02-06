@@ -56,10 +56,11 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate {
         
         var info = Info(index: 2)
         var histo = History(index: 2)
+        var pictures = Pictures(index: 2)
         
         a.addObject(["Info", info])
         a.addObject(["Historial", histo])
-        a.addObject(["Fotos",info])
+        a.addObject(["Fotos",pictures])
         a.addObject(["Enlaces",info])
         
         

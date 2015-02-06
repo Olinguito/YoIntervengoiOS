@@ -266,7 +266,7 @@ const float VIEW_WIDTH = 225.0;
         
         
         CALayer *imageLayer = [CALayer layer];
-        imageLayer.frame = CGRectMake(-3, yCenter-10, 39,39);
+        imageLayer.frame = CGRectMake(-2, yCenter-15, 39,39);
         imageLayer.cornerRadius = 10.0;
         imageLayer.contents = (id) [UIImage imageNamed:@"iconLink"].CGImage;
         imageLayer.masksToBounds = YES;
@@ -287,9 +287,9 @@ const float VIEW_WIDTH = 225.0;
         
         //configure line
         if (i > 0) {
-            fromPoint = lastpoint;
-            toPoint = CGPointMake(lastpoint.x, yCenter - CIRCLE_RADIUS);
-            lastpoint = CGPointMake(lastpoint.x, yCenter + CIRCLE_RADIUS);
+            fromPoint =  CGPointMake(lastpoint.x, yCenter - 75);
+            toPoint = CGPointMake(lastpoint.x, yCenter -12);
+            lastpoint = CGPointMake(lastpoint.x, yCenter + 20);
             
             UIBezierPath *line = [self getLineWithStartPoint:fromPoint endPoint:toPoint];
             CAShapeLayer *lineLayer = [self getLayerWithLine:line andStrokeColor:strokeColor];
@@ -300,6 +300,7 @@ const float VIEW_WIDTH = 225.0;
         } else {
             lastpoint = CGPointMake(self.progressViewContainer.center.x + CIRCLE_RADIUS + INITIAL_PROGRESS_CONTAINER_WIDTH / 2, yCenter + CIRCLE_RADIUS);
         }
+        heightTotal = yCenter+50;
         
         betweenLineOffset = BETTWEEN_LABEL_OFFSET;
         totlaHeight += (fittingSize.height + betweenLineOffset);
@@ -395,6 +396,10 @@ const float VIEW_WIDTH = 225.0;
     }
     
     
+}
+
+-(CGFloat)height{
+    return heightTotal;
 }
 
 - (void)animationDidStart:(CAAnimation *)anim {

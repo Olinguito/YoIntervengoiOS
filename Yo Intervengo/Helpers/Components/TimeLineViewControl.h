@@ -10,10 +10,14 @@
 
 @interface TimeLineViewControl : UIView {
     CGFloat viewheight;
+    CGFloat heightTotal;
 }
 
 @property(nonatomic, assign) CGFloat viewheight;
 
 - (id)initWithTimeArray:(NSArray *)time andTimeDescriptionArray:(NSArray *)timeDescriptions andCurrentStatus:(int)status andFrame:(CGRect)frame;
+
+
+-(CGFloat)height;
 
 @end
