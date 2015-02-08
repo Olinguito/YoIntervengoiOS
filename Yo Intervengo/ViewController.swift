@@ -212,6 +212,7 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     func goDetail(sender:UIButton){
         //var view2 = self.storyboard?.instantiateViewControllerWithIdentifier("DetailReport") as UIViewController
         var view2 = DetailReportVC()
+        view2.center = map.userLocation.coordinate
         self.showViewController(view2, sender: self)
     }
 }

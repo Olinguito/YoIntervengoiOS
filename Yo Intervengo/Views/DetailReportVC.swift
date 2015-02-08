@@ -12,13 +12,16 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate {
     var scroll:UIScrollView!
     var imgWork:UIImageView!
     var banner:UIView!
-    
+    var map:RMStaticMapView!
     var grad2:Gradient!
-    
+    var center:CLLocationCoordinate2D!
     var btnBack:UIButton!
     var btnInfo:UIButton!
     var lblTitle:UILabel!
     var lblSubTit:UILabel!
+    
+    var lblAdds:UILabel!
+    var lblCoun:UILabel!
     
     var tab:JOTabBar!
     
@@ -49,6 +52,20 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate {
         maskLayer.contents = UIImage(named: "mask")?.CGImage
         banner.layer.mask = maskLayer
         
+        var fram:CGRect = CGRect(x: 0, y: 42, width: 120, height: 93)
+        map = RMStaticMapView(frame: fram, mapID: "examples.map-z2effxa8", centerCoordinate: CLLocationCoordinate2DMake(4.6015,-74.0698), zoomLevel: 15, completionHandler: nil)
+        map.centerCoordinate = CLLocationCoordinate2DMake(4.6015,-74.0698)
+        banner.addSubview(map)
+        
+        
+        lblAdds = UILabel(frame: CGRect(x: map.frame.maxX, y: 75, width: self.view.frame.width - 120, height: 13))
+        lblAdds.textColor = UIColor.whiteColor()
+        lblAdds.textAlignment = NSTextAlignment.Center
+        lblAdds.font = UIFont(name: "Roboto-Light", size: 13)
+        lblAdds.text = "Calle 57 # 12- 84" 
+        banner.addSubview(lblAdds)
+        
+        
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64), type: "Top")
         self.view.addSubview(grad1)
     
@@ -57,11 +74,12 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate {
         var info = Info(index: 2)
         var histo = History(index: 2)
         var pictures = Pictures(index: 2)
+        var links = Links(index: 2)
         
         a.addObject(["Info", info])
         a.addObject(["Historial", histo])
         a.addObject(["Fotos",pictures])
-        a.addObject(["Enlaces",info])
+        a.addObject(["Enlaces",links])
         
         
         tab = JOTabBar(frame: CGRect(x: 0, y: banner.frame.maxY, width: 320, height: 800), data: a)
@@ -98,7 +116,6 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate {
     
     
     func tappedButton(){
-        print(tab.frame)
         scroll.contentSize = CGSize(width: 320, height: tab.frame.maxY)
     }
     

@@ -9,13 +9,26 @@
 import UIKit
 
 class Links: UIView {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
-    */
+    
+    init(index:Int) {
+        super.init(frame:CGRectZero)
+        backgroundColor = UIColor.whiteColor()
 
+        var counter = 10
+        for (var i=0; i<counter; i++){
+            var link = LinkComponent()
+            link.frame.origin = CGPoint(x: 0, y: 106*i)
+            self.addSubview(link)
+        }
+        
+        self.frame = CGRect(x: 0, y: 0, width: 320, height: 106*counter)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

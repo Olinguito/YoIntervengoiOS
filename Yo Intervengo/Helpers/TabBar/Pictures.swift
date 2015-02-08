@@ -29,7 +29,7 @@ class Pictures: UIView {
         
         view.mas_makeConstraints { make in
 //            make.top.greaterThanOrEqualTo()
-            make.left.equalTo()superview.mas_left
+//            make.left.equalTo()superview.mas_left
             make.edges.equalTo()(self.mas_top).with().offset()(15)
             make.edges.equalTo()(self.mas_left).with().offset()(15)
             return ()

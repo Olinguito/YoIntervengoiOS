@@ -229,7 +229,6 @@ const float VIEW_WIDTH = 225.0;
 
     
     for (UILabel *label in labels) {
-            NSLog(@"entra aca");
         //configure circle
         
         CGSize fittingSize = [label systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
@@ -251,7 +250,6 @@ const float VIEW_WIDTH = 225.0;
         UIImageView *icon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"iconLink"]];
         icon.center = CGPointMake(20, yCenter);
         icon.backgroundColor = [UIColor redColor];
-        NSLog(@"%f",yCenter);
         icon.frame = self.progressViewContainer.bounds;
         
         /*circleLayer.frame = self.progressViewContainer.bounds;

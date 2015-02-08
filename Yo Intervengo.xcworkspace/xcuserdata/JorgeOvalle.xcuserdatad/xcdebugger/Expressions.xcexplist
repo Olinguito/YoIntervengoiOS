@@ -41,6 +41,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Yo_Intervengo.Panel.init (Yo_Intervengo.Panel.Type)() -&gt; Yo_Intervengo.Panel:Panel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "title.length">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[LIVBubbleMenu initWithPoint:radius:menuItems:inView:]:LIVBubbleMenu.m">
          <PersistentStrings>
             <PersistentString
@@ -80,10 +88,10 @@
                value = "bubbleMenu">
             </PersistentString>
             <PersistentString
-               value = "images.count">
+               value = "bubbleMenu.menuItemImages">
             </PersistentString>
             <PersistentString
-               value = "bubbleMenu.menuItemImages">
+               value = "images.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

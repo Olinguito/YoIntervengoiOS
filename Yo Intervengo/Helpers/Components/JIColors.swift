@@ -34,7 +34,7 @@ extension UIColor {
     
     // MARK: - Flat colors
     class func greyLight() -> UIColor {
-        return UIColor(red:0.902, green:0.349, blue:0.176, alpha: 1)
+        return UIColor(red:0.600, green:0.600, blue:0.600, alpha: 1)
         
     }
     
