@@ -23,7 +23,7 @@ class Info: UIView {
         tabBar = UIView(frame: CGRect(x: 0, y: 0, width: wS, height: 139))
         tabBar.backgroundColor = UIColor.whiteColor()
         addSubview(tabBar)
-        
+        backgroundColor = UIColor(red:0.180, green:0.180, blue:0.180, alpha: 1)
         var grad3 = Gradient(frame: CGRect(x: 0, y: self.tabBar.frame.height - 10, width: wS, height: 10), type: "Bottom")
         grad3.alpha = 0.2
         tabBar.addSubview(grad3)
@@ -66,7 +66,7 @@ class Info: UIView {
         addSubview(comment)
         
 
-        self.frame = CGRect(x: 0, y: 0, width: 320, height: tabBar.frame.height + wikiBar.frame.height + comment.frame.height )
+        self.frame = CGRect(x: 0, y: 0, width: 320, height: tabBar.frame.height + wikiBar.frame.height + comment.frame.height + 200)
     }
     
     func heightForView(text:String, #font:UIFont, #width:CGFloat) -> CGFloat{

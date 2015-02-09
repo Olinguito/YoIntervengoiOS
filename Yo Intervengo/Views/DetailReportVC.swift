@@ -19,17 +19,19 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
     var btnInfo:UIButton!
     var lblTitle:UILabel!
     var lblSubTit:UILabel!
-    
+    var buttonHelper:UIButton!
     var lblAdds:UILabel!
     var lblCoun:UILabel!
+    
+    var pop1:POPSpringAnimation!
+    var pop2:POPSpringAnimation!
+    
     
     var tab:JOTabBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer.delegate = self
-        
-        
         
         imgWork = UIImageView(frame: CGRect(x: 0, y: 0, width: 320, height: 194))
         imgWork.image = UIImage(named: "bg1")
@@ -80,6 +82,15 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
         banner.addSubview(lblCoun)
         
         
+        pop1 = POPSpringAnimation(propertyNamed: kPOPViewCenter)
+        pop1.fromValue = NSValue(CGPoint: CGPoint(x: self.view.frame.width - 35, y: self.view.frame.height - 35))
+        pop1.toValue = NSValue(CGPoint: CGPoint(x: self.view.frame.width - 35, y: self.view.frame.height + 35))
+        
+        pop2 = POPSpringAnimation(propertyNamed: kPOPViewCenter)
+        pop2.fromValue = NSValue(CGPoint: CGPoint(x: self.view.frame.width - 35, y: self.view.frame.height + 35))
+        pop2.toValue = NSValue(CGPoint: CGPoint(x: self.view.frame.width - 35, y: self.view.frame.height - 35))
+        
+        
         
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64), type: "Top")
         self.view.addSubview(grad1)
@@ -100,8 +111,6 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
         tab = JOTabBar(frame: CGRect(x: 0, y: banner.frame.maxY, width: 320, height: 800), data: a)
         tab.delegate = self
         self.scroll.addSubview(tab)
-        
-        
         
         scroll.contentSize = CGSize(width: 320, height: self.view.frame.height+1)
         
@@ -127,6 +136,8 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
         lblSubTit.textAlignment = NSTextAlignment.Center
         lblSubTit.textColor = UIColor(red:0.929, green:0.361, blue:0.180, alpha: 1)
         self.scroll.addSubview(lblSubTit)
+        
+        buttonHelper = UIButton()
     }
     
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
@@ -135,7 +146,19 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
     
     
     func tappedButton(){
-        scroll.contentSize = CGSize(width: 320, height: tab.frame.maxY)
+        if (buttonHelper?.isDescendantOfView(self.view) != nil){
+            buttonHelper.removeTarget(self, action: Selector("openView:"), forControlEvents: UIControlEvents.TouchUpInside)
+            buttonHelper.removeFromSuperview()
+        }
+        //buttonHelper.removeFromSuperview()
+        if tab.getActHelper().tag > 0{
+            buttonHelper = tab.getActHelper()
+            buttonHelper.frame = CGRect(x: self.view.frame.maxX-70, y: self.view.frame.maxY-70, width: 70, height: 70)
+            buttonHelper.addTarget(self, action: Selector("openView:" ), forControlEvents: UIControlEvents.TouchUpInside)
+            buttonHelper.setImage(UIImage(named: "linkHelper"), forState: UIControlState.Normal)
+            self.view.addSubview(buttonHelper)
+        }
+        scroll.contentSize = CGSize(width: 320, height: tab.frame.maxY - 200)
     }
     
     func goBack(){
@@ -161,6 +184,29 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
             imgWork.transform = CGAffineTransformMakeScale(1 - 6*((scrollView.contentOffset.y)/self.view.bounds.size.height), 1-6*((scrollView.contentOffset.y)/self.view.bounds.size.height))
             grad2.transform = CGAffineTransformMakeScale(1 - 6*((scrollView.contentOffset.y)/self.view.bounds.size.height), 1-6*((scrollView.contentOffset.y)/self.view.bounds.size.height))
         }
+        
+        var translation:CGPoint = scrollView.panGestureRecognizer.translationInView(scrollView.superview!)
+        
+        if(translation.y > 0)
+        {
+            if buttonHelper.center.y != (self.view.frame.height - 35){
+                buttonHelper.pop_addAnimation(pop2, forKey: "DOWN")
+            }
+        } else
+        {
+            if buttonHelper.center.y != (self.view.frame.height + 35){
+                buttonHelper.pop_addAnimation(pop1, forKey: "UP")
+            }
+        }
     }
     
+    func openView(sender:UIButton){
+        switch(sender.tag){
+            case 1: var r = CreateReport(frame: self.view.frame, bttnClose: buttonHelper)
+                    self.view.addSubview(r)
+            case 2: var r = CreateReport(frame: self.view.frame, bttnClose: buttonHelper)
+                    self.view.addSubview(r)
+            default: print("")
+        }
+    }
 }

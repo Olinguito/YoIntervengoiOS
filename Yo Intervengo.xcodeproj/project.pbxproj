@@ -30,6 +30,9 @@
 		EC399EA71A828BCB003DD89F /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC399EA61A828BCB003DD89F /* History.swift */; };
 		EC399EA91A828BDE003DD89F /* Pictures.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC399EA81A828BDE003DD89F /* Pictures.swift */; };
 		EC399EAB1A828C2B003DD89F /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC399EAA1A828C2B003DD89F /* Links.swift */; };
+		EC3C120B1A8941BC009E82B4 /* linkHelper.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3C12091A8941BC009E82B4 /* linkHelper.png */; };
+		EC3C120C1A8941BC009E82B4 /* linkHelper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3C120A1A8941BC009E82B4 /* linkHelper@2x.png */; };
+		EC3C120F1A896F0B009E82B4 /* CreateReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3C120E1A896F0B009E82B4 /* CreateReport.swift */; };
 		EC4A5AA71A7ADA2B007DD7CB /* test-01.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4A5AA61A7ADA2B007DD7CB /* test-01.png */; };
 		EC4A5AA91A7ADD1C007DD7CB /* DetailReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4A5AA81A7ADD1C007DD7CB /* DetailReportVC.swift */; };
 		EC4A5AAB1A7AEB26007DD7CB /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = EC4A5AAA1A7AEB26007DD7CB /* mask.png */; };
@@ -180,6 +183,9 @@
 		EC399EA61A828BCB003DD89F /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		EC399EA81A828BDE003DD89F /* Pictures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pictures.swift; sourceTree = "<group>"; };
 		EC399EAA1A828C2B003DD89F /* Links.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
+		EC3C12091A8941BC009E82B4 /* linkHelper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkHelper.png; sourceTree = "<group>"; };
+		EC3C120A1A8941BC009E82B4 /* linkHelper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linkHelper@2x.png"; sourceTree = "<group>"; };
+		EC3C120E1A896F0B009E82B4 /* CreateReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReport.swift; sourceTree = "<group>"; };
 		EC4A5AA61A7ADA2B007DD7CB /* test-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test-01.png"; sourceTree = "<group>"; };
 		EC4A5AA81A7ADD1C007DD7CB /* DetailReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailReportVC.swift; path = Views/DetailReportVC.swift; sourceTree = "<group>"; };
 		EC4A5AAA1A7AEB26007DD7CB /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
@@ -413,6 +419,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EC3C120D1A896EDC009E82B4 /* LinkForm */ = {
+			isa = PBXGroup;
+			children = (
+				EC3C120E1A896F0B009E82B4 /* CreateReport.swift */,
+			);
+			name = LinkForm;
+			path = Helpers/LinkForm;
+			sourceTree = "<group>";
+		};
 		EC4A5AB81A7BF11B007DD7CB /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +469,8 @@
 		EC6F29CD1A674D4B00DB09EF /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				EC3C12091A8941BC009E82B4 /* linkHelper.png */,
+				EC3C120A1A8941BC009E82B4 /* linkHelper@2x.png */,
 				ECFAD21B1A84421900B5652C /* iconLink@2x.png */,
 				ECFAD21C1A84421900B5652C /* iconLink.png */,
 				ECFAD2171A842B5200B5652C /* arrow_2@2x.png */,
@@ -543,6 +560,7 @@
 		ECCCA5DF1A65AE5E004C5858 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EC3C120D1A896EDC009E82B4 /* LinkForm */,
 				EC4A5AB81A7BF11B007DD7CB /* TabBar */,
 				EC54A7031A7ACC9A007F6ABF /* Components */,
 				EC7701A61A74442A00378515 /* BottomPager */,
@@ -786,6 +804,7 @@
 				ECCE06E81A6CA54100A35012 /* bg@2x.png in Resources */,
 				ECCE06D11A6C524800A35012 /* mas.png in Resources */,
 				ECDB10F61A8829820099B5EF /* RobotoSlab-Thin.ttf in Resources */,
+				EC3C120C1A8941BC009E82B4 /* linkHelper@2x.png in Resources */,
 				ECF5CCCF1A6444ED0055077D /* Pin.png in Resources */,
 				ECCCA5F51A65AF60004C5858 /* Roboto-LightItalic.ttf in Resources */,
 				EC77019C1A732B2100378515 /* repo.png in Resources */,
@@ -818,6 +837,7 @@
 				EC4A5AB01A7B4327007DD7CB /* btnInfo.png in Resources */,
 				EC6F29D61A674D4B00DB09EF /* loc.png in Resources */,
 				ECCCA5DE1A64D051004C5858 /* Pin@2x.png in Resources */,
+				EC3C120B1A8941BC009E82B4 /* linkHelper.png in Resources */,
 				EC399E9B1A819DE6003DD89F /* Fotos@2x.png in Resources */,
 				EC0AF7BD1A62E7CD004F1B6C /* Images.xcassets in Resources */,
 				ECFAD21A1A842B5200B5652C /* arrow_2.png in Resources */,
@@ -895,6 +915,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECFAD20F1A83E47600B5652C /* MASViewConstraint.m in Sources */,
+				EC3C120F1A896F0B009E82B4 /* CreateReport.swift in Sources */,
 				ECFAD2281A86C9C500B5652C /* Panel.swift in Sources */,
 				ECFAD2261A86BA6100B5652C /* LinkComponent.swift in Sources */,
 				EC54A6FF1A7ACC79007F6ABF /* BottomPager.swift in Sources */,

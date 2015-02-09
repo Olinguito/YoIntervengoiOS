@@ -29,8 +29,8 @@ class History: UIView {
         
         self.addSubview(timeLine)
         
-        history.frame = CGRect(x: 0, y: 0, width: 320, height:  timeLine.height() + 50)
-        self.frame = CGRect(x: 0, y: 0, width: 320, height:  timeLine.height() + 50)
+        history.frame = CGRect(x: 0, y: 0, width: 320, height:  timeLine.height() + 250)
+        self.frame = CGRect(x: 0, y: 0, width: 320, height:  timeLine.height() + 250)
     }
     
     required init(coder aDecoder: NSCoder) {

@@ -24,7 +24,7 @@ class Links: UIView {
             self.addSubview(link)
         }
         
-        self.frame = CGRect(x: 0, y: 0, width: 320, height: 106*counter)
+        self.frame = CGRect(x: 0, y: 0, width: 320, height: (106*counter) + 200)
     }
     
     required init(coder aDecoder: NSCoder) {

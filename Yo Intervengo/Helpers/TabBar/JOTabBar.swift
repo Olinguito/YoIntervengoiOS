@@ -17,6 +17,7 @@ class JOTabBar: UIView {
     var buttons:NSMutableArray!
     var data:NSMutableArray!
     var container:UIView!
+    var actual:Int!
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -40,7 +41,6 @@ class JOTabBar: UIView {
             but.setImage(imageBtn, forState: UIControlState.Normal)
             but.setTitle( (data.objectAtIndex(counter)[0] as String), forState: UIControlState.Normal)
         
-            
             var spacing:CGFloat = 6
             var imageSize = but.imageView?.image?.size
             var title:NSString = "\(but.titleLabel?.text)"
@@ -51,8 +51,7 @@ class JOTabBar: UIView {
             but.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
             but.titleEdgeInsets = UIEdgeInsetsMake(0.0, (-size.width) , -(size.height + spacing), 0.0)
             but.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), (titleSize.width-(size.width*1.7))/2 , 0.0, 0)
-            
-            
+
             but.layer.borderColor = UIColor.greyButtons().CGColor
             but.addTarget(self, action: Selector("buttonTapped:"), forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(but)
@@ -66,9 +65,24 @@ class JOTabBar: UIView {
         setTab(sender.tag)
     }
     
+    func getActHelper() ->UIButton{
+        var returnBtn = UIButton()
+        switch(actual){
+            case 1: returnBtn.tag = 0
+            case 2: returnBtn.tag = 0
+            case 3: returnBtn.setImage(UIImage(named: "linkHelper"), forState: UIControlState.Normal)
+                    returnBtn.tag = 1
+            case 4: returnBtn.setImage(UIImage(named: "linkHelper"), forState: UIControlState.Normal)
+                    returnBtn.tag = 2
+            default: returnBtn.tag = 0
+        }
+        
+        return returnBtn
+    }
     
     func setTab(index:Int){
         var counter = 1
+        actual = index
         for button in buttons{
             (button as UIButton).backgroundColor = UIColor.whiteColor()
             /*if counter+1==index{
@@ -99,6 +113,7 @@ class JOTabBar: UIView {
                 pop.toValue = NSValue(CGRect: CGRect(origin: self.frame.origin, size: CGSize(width: self.frame.size.width, height: container.frame.height+55)))
                 self.pop_addAnimation(pop, forKey: "Increase")
                 self.delegate?.tappedButton!()
+                
             }
             counter++
         }
