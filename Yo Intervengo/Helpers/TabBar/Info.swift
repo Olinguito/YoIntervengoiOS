@@ -19,19 +19,42 @@ class Info: UIView {
     
     init(index:Int) {
         super.init(frame:CGRectZero)
-        tabBar = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 139))
+        var wS:CGFloat = 320
+        tabBar = UIView(frame: CGRect(x: 0, y: 0, width: wS, height: 139))
         tabBar.backgroundColor = UIColor.whiteColor()
         addSubview(tabBar)
         
-        var grad3 = Gradient(frame: CGRect(x: 0, y: self.tabBar.frame.height - 10, width: 320, height: 10), type: "Bottom")
+        var grad3 = Gradient(frame: CGRect(x: 0, y: self.tabBar.frame.height - 10, width: wS, height: 10), type: "Bottom")
         grad3.alpha = 0.2
         tabBar.addSubview(grad3)
         
-        wikiBar = UIView(frame: CGRect(x: 0, y: tabBar.frame.maxY, width: 320, height: 67))
+        var lblInfo = UILabel()
+        var text = "Puente en mal estado, cuando no han pasado ni siquiera seis meses de terminada la obra. El estado de este puente pone en peligro la seguridad de niños que a diario lo usan para dirigirse a la escuela."
+        lblInfo.text = text
+        lblInfo.textColor = UIColor.greyDark()
+        lblInfo.font = UIFont(name: "RobotoSlab-Light", size: 15)
+        lblInfo.numberOfLines = 0
+        lblInfo.frame = CGRect(x: (wS-270)/2, y: 5, width: 270, height: heightForView(text, font: lblInfo.font!, width: 270))
+        tabBar.addSubview(lblInfo)
+        
+        
+        wikiBar = UIView(frame: CGRect(x: 0, y: tabBar.frame.maxY, width: wS, height: 67))
         wikiBar.backgroundColor = UIColor.greyButtons()
         addSubview(wikiBar)
         
-        comment = UIButton(frame: CGRect(x: 0, y: wikiBar.frame.maxY, width: 320, height: 49))
+        var butWiki = UIButton(frame: CGRect(x: lblInfo.frame.minX, y: 15, width: lblInfo.frame.width, height: 40))
+        butWiki.titleLabel?.numberOfLines = 0
+        butWiki.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+        
+        var myMutableString = NSMutableAttributedString(string: "Para lograr un mayor impacto asocia este reporte a un contrato. Enlazar a Wiki", attributes: [NSFontAttributeName:UIFont(name: "Roboto-LightItalic", size: 14.0)!])
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greyDark(), range: NSRange(location:0,length:64))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orangeYI(), range: NSRange(location:64,length:14))
+        
+        butWiki.titleLabel?.textAlignment = NSTextAlignment.Center
+        butWiki.setAttributedTitle(myMutableString, forState: .Normal)
+        wikiBar.addSubview(butWiki)
+        
+        comment = UIButton(frame: CGRect(x: 0, y: wikiBar.frame.maxY, width: wS, height: 49))
         comment.backgroundColor = UIColor(red:0.180, green:0.180, blue:0.180, alpha: 1)
         comment.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         comment.setTitle("199 Comentarios", forState: UIControlState.Normal)
@@ -42,7 +65,18 @@ class Info: UIView {
         comment.contentEdgeInsets = UIEdgeInsetsMake(0, 26, 0, 0)
         addSubview(comment)
         
+
         self.frame = CGRect(x: 0, y: 0, width: 320, height: tabBar.frame.height + wikiBar.frame.height + comment.frame.height )
+    }
+    
+    func heightForView(text:String, #font:UIFont, #width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRectMake(0, 0, width, CGFloat.max))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        return min(120, label.frame.height)
     }
 
     required init(coder aDecoder: NSCoder) {

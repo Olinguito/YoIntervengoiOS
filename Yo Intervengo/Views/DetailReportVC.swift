@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate {
+class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIGestureRecognizerDelegate {
     var scroll:UIScrollView!
     var imgWork:UIImageView!
     var banner:UIView!
@@ -27,6 +27,9 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.interactivePopGestureRecognizer.delegate = self
+        
+        
         
         imgWork = UIImageView(frame: CGRect(x: 0, y: 0, width: 320, height: 194))
         imgWork.image = UIImage(named: "bg1")
@@ -57,13 +60,25 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate {
         map.centerCoordinate = CLLocationCoordinate2DMake(4.6015,-74.0698)
         banner.addSubview(map)
         
+        var pin = UIImageView(image: UIImage(named: "subPin"))
+        pin.center = map.center
+        banner.addSubview(pin)
         
-        lblAdds = UILabel(frame: CGRect(x: map.frame.maxX, y: 75, width: self.view.frame.width - 120, height: 13))
+        
+        lblAdds = UILabel(frame: CGRect(x: map.frame.maxX, y: map.center.y-20, width: self.view.frame.width - 120, height: 13))
         lblAdds.textColor = UIColor.whiteColor()
         lblAdds.textAlignment = NSTextAlignment.Center
         lblAdds.font = UIFont(name: "Roboto-Light", size: 13)
         lblAdds.text = "Calle 57 # 12- 84" 
         banner.addSubview(lblAdds)
+        
+        lblCoun = UILabel(frame: CGRect(x: map.frame.maxX, y: map.center.y, width: self.view.frame.width - 120, height: 13))
+        lblCoun.textColor = UIColor.whiteColor()
+        lblCoun.textAlignment = NSTextAlignment.Center
+        lblCoun.font = UIFont(name: "Roboto-Light", size: 13)
+        lblCoun.text = "Bogotá - Colombia"
+        banner.addSubview(lblCoun)
+        
         
         
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64), type: "Top")
@@ -88,7 +103,7 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate {
         
         
         
-       // scroll.contentSize = CGSize(width: 320, height: comment.frame.maxY)
+        scroll.contentSize = CGSize(width: 320, height: self.view.frame.height+1)
         
         btnBack = UIButton(frame: CGRect(x: 0, y: 10, width: 56, height: 56))
         btnBack.setImage(UIImage(named: "btnBack"), forState: UIControlState.Normal)
@@ -112,6 +127,10 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate {
         lblSubTit.textAlignment = NSTextAlignment.Center
         lblSubTit.textColor = UIColor(red:0.929, green:0.361, blue:0.180, alpha: 1)
         self.scroll.addSubview(lblSubTit)
+    }
+    
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
+        return true
     }
     
     
