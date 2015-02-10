@@ -53,8 +53,7 @@ class Panel: UIView {
         dislike.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         dislike.titleEdgeInsets = UIEdgeInsetsMake(0.0, -11, 0.0, 0.0)
         dislike.imageEdgeInsets = UIEdgeInsetsMake(0.0, 15 + vw, 0.0, 0.0)
-        
-        
+
         configure(share)
         configure(report)
         configure(like)
