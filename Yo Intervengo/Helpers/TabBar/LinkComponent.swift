@@ -13,6 +13,7 @@ class LinkComponent: UIView {
     var subtitle:UILabel!
     var date:UILabel!
     var actionPanel:Panel!
+    var iconLink:UIImageView!
     let paddinLeft:CGFloat = 14
     
     
@@ -20,45 +21,83 @@ class LinkComponent: UIView {
         super.init(frame: frame)
     }
     
-    override init() {
+    init(type:Int) {
         super.init()
+
+        if type == 1{
+            self.frame = CGRect(x: 0, y: 0, width: 320, height: 106)
+        }
+        else{
+            self.frame = CGRect(x: paddinLeft, y: 0, width: 292, height: 72)
+            self.layer.cornerRadius = 5;
+        }
+        self.backgroundColor = UIColor.whiteColor()
         
-        self.frame = CGRect(x: 0, y: 0, width: 320, height: 106)
         
-        title = UIButton(frame: CGRect(x: paddinLeft, y: 14, width: frame.width, height: 16))
-        title.setTitle("Nota publicada en elespectador.com", forState: UIControlState.Normal)
+        iconLink = UIImageView(image: UIImage(named: "Empty"))
+        iconLink.frame.origin = CGPoint(x: paddinLeft,y: paddinLeft)
+        self.addSubview(iconLink)
+        
+        date = UILabel(frame: CGRect(x: paddinLeft + iconLink.frame.maxX, y: 14, width: frame.width, height: 11))
+        date.text = "Fecha de publicación"
+        date.font = UIFont(name: "Roboto-Light", size: 10)
+        date.textColor = UIColor.greyDark()
+        addSubview(date)
+        
+        
+        title = UIButton(frame: CGRect(x: paddinLeft + iconLink.frame.maxX, y: date.frame.maxY + 2 , width: frame.width, height: 16))
+        title.setTitle("Fuente del enlace", forState: UIControlState.Normal)
         title.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         title.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 16)
         title.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         addSubview(title)
         
-        subtitle = UILabel(frame: CGRect(x: paddinLeft, y: title.frame.maxY + 2, width: frame.width, height: 13))
-        subtitle.text = "Descripción del doc o artículo"
+        subtitle = UILabel(frame: CGRect(x: paddinLeft + iconLink.frame.maxX, y: title.frame.maxY + 2, width: frame.width, height: 13))
+        subtitle.text = "Descripción del enlace"
         subtitle.font = UIFont(name: "Roboto-Italic", size: 12)
         subtitle.textColor = UIColor.orangeYI()
         addSubview(subtitle)
         
-        date = UILabel(frame: CGRect(x: paddinLeft, y: subtitle.frame.maxY + 2, width: frame.width, height: 11))
-        date.text = "Fecha de publicación: Enero 26 de 2014"
-        date.font = UIFont(name: "Roboto-Light", size: 10)
-        date.textColor = UIColor.greyDark()
-        addSubview(date)
-        
-        actionPanel = Panel()
-        actionPanel.center = CGPoint(x: frame.width/2, y: date.frame.maxY + 20)
-        addSubview(actionPanel)
+        iconLink.center.y = title.center.y
         
         
-        var line = UIBezierPath(rect: CGRect(x: 0, y: frame.maxY-1, width: frame.width, height: 0))
-        var shape = CAShapeLayer(layer: line)
-        var staticLine = CAShapeLayer()
-        staticLine.path = line.CGPath
-        staticLine.strokeColor = UIColor.greyLight().CGColor
-        self.layer.addSublayer(staticLine)
+        if type == 1 {
+            actionPanel = Panel()
+            actionPanel.center = CGPoint(x: frame.width/2, y: subtitle.frame.maxY + 20)
+            addSubview(actionPanel)
+            
+            
+            var line = UIBezierPath(rect: CGRect(x: 0, y: frame.maxY-1, width: frame.width, height: 0))
+            var shape = CAShapeLayer(layer: line)
+            var staticLine = CAShapeLayer()
+            staticLine.path = line.CGPath
+            staticLine.strokeColor = UIColor.greyLight().CGColor
+            self.layer.addSublayer(staticLine)
+        }
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setAsNew(){
+        date.textColor = UIColor.greyLight()
+        title.setTitleColor(UIColor.greyLight(), forState: UIControlState.Normal)
+        subtitle.textColor = UIColor.greyLight()
+        setIcon(UIImage(named: "Empty")!)
+        date.text = "Fecha de publicación"
+        title.setTitle("Fuente del enlace", forState: UIControlState.Normal)
+        subtitle.text = "Descripción del enlace"
+        iconLink.center.y = title.center.y
+    }
+    
+    func setIcon(image:UIImage){
+        if iconLink.isDescendantOfView(self){
+            iconLink.removeFromSuperview()
+        }
+        iconLink = UIImageView(image: image)
+        iconLink.frame.origin = CGPoint(x: paddinLeft,y: paddinLeft)
+        addSubview(iconLink)
     }
     
 }

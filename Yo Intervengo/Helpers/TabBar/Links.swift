@@ -19,7 +19,7 @@ class Links: UIView {
 
         var counter = 10
         for (var i=0; i<counter; i++){
-            var link = LinkComponent()
+            var link = LinkComponent(type: 1)
             link.frame.origin = CGPoint(x: 0, y: 106*i)
             self.addSubview(link)
         }

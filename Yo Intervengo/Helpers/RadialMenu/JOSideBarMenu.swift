@@ -20,17 +20,19 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     
     init(frame: CGRect, data: NSMutableArray?) {
         super.init(frame: frame)
+        self.layer.masksToBounds = true
         
         let coll = UICollectionViewFlowLayout()
         coll.scrollDirection = UICollectionViewScrollDirection.Vertical
-        coll.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        //coll.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         coll.itemSize = CGSize(width: 320, height: 61)
         
         collectionView = UICollectionView(frame: frame, collectionViewLayout: coll)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clearColor()
-        collectionView.scrollToItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
+        collectionView.scrollToItemAtIndexPath(NSIndexPath(forRow: 4, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: true)
+        
         collectionView.registerNib(UINib(nibName: "CategoryCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCell")
         self.addSubview(collectionView)
     }
