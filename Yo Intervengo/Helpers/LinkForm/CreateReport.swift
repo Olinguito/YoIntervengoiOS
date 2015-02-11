@@ -66,6 +66,10 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         card.setAsNew()
         self.addSubview(card)
         
+        datePicker =  ESDatePicker(frame: CGRect(x: 0, y: 100, width: 320, height: 300))
+        datePicker.alpha = 0
+        datePicker.delegate = self
+        
     }
     
     func showMenu(step:Int, atPoint point:CGPoint){
@@ -88,16 +92,24 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
             self.addSubview(this)
         case 2:
             
-            date = UIButton(frame: CGRect(x: 0, y: 100, width: 320, height: 100))
-            date.backgroundColor = UIColor.redColor()
+            date = UIButton(frame: CGRect(x: 0, y: 100, width: 320, height: 49))
+            date.setTitle("MM / DD / AA", forState: UIControlState.Normal)
+            date.titleLabel?.font = UIFont(name: "Roboto-Light", size: 18)
+            date.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            date.layer.borderColor = UIColor.greyLight().CGColor
+            date.layer.borderWidth = 1.0
             date.addTarget(self, action: Selector("addDatePicker:"), forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(date)
-            
-            
-            datePicker =  ESDatePicker(frame: CGRect(x: 0, y: 100, width: 320, height: 300))
             datePicker.frame = date.frame
-           // datePicker.alpha = 0
-            datePicker.delegate = self
+            
+            textUrl = UITextField(frame: CGRect(x: 0, y: date.frame.maxY, width: 320, height: 49))
+            textUrl.placeholder = "Pegar URL"
+            textUrl.font = UIFont(name: "Roboto-Light", size: 18)
+            textUrl.layer.borderColor = UIColor.greyLight().CGColor
+            textUrl.layer.borderWidth = 1.0
+            textUrl.textColor = UIColor.whiteColor()
+            textUrl.textAlignment = NSTextAlignment.Center
+            self.addSubview(textUrl)
             
             
             
@@ -107,13 +119,29 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         }
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.backgroundColor = UIColor.whiteColor()
+        textField.textColor = UIColor.greyDark()
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        textField.backgroundColor = UIColor.clearColor()
+        textField.textColor = UIColor.whiteColor()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        return true
+    }
+    
     func addDatePicker(sender:UIButton!){
         datePicker.show()
+        datePicker.frame = CGRect(x: 0, y: 100, width: 320, height: 300)
         self.addSubview(datePicker)
         var animDate2 = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
-        animDate2.toValue = 0
+        animDate2.toValue = 1
 
         datePicker.pop_addAnimation(animDate2, forKey: "DateAlpha")
+        
         var animDate = POPSpringAnimation(propertyNamed: kPOPViewFrame)
         animDate.fromValue = NSValue(CGRect: date.frame)
         animDate.toValue = NSValue(CGRect: CGRect(x: 0, y: 100, width: 320, height: 300))
@@ -123,14 +151,17 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     
     
     
-    
-    
-    
-    
     // DATEPICKER DELEGATE
     
     func datePicker(datePicker: ESDatePicker!, dateSelected date: NSDate!) {
         print(date)
+        var format = NSDateFormatter()
+        format.dateFormat = "MMM dd, yyyy"
+        
+        card.setDate(format.stringFromDate(date))
+        
+        self.date.setTitle(format.stringFromDate(date), forState: UIControlState.Normal)
+        
         
         var animDate = POPSpringAnimation(propertyNamed: kPOPViewFrame)
         animDate.fromValue = NSValue(CGRect: CGRect(x: 0, y: 100, width: 320, height: 300))

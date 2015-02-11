@@ -91,6 +91,11 @@ class LinkComponent: UIView {
         iconLink.center.y = title.center.y
     }
     
+    func setDate(dateStr:NSString!){
+        date.textColor = UIColor.orangeYI()
+        date.text = dateStr
+    }
+    
     func setIcon(image:UIImage){
         if iconLink.isDescendantOfView(self){
             iconLink.removeFromSuperview()
