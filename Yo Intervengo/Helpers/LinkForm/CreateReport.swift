@@ -95,6 +95,8 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
             
             
             datePicker =  ESDatePicker(frame: CGRect(x: 0, y: 100, width: 320, height: 300))
+            datePicker.frame = date.frame
+           // datePicker.alpha = 0
             datePicker.delegate = self
             
             
@@ -108,6 +110,10 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     func addDatePicker(sender:UIButton!){
         datePicker.show()
         self.addSubview(datePicker)
+        var animDate2 = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
+        animDate2.toValue = 0
+
+        datePicker.pop_addAnimation(animDate2, forKey: "DateAlpha")
         var animDate = POPSpringAnimation(propertyNamed: kPOPViewFrame)
         animDate.fromValue = NSValue(CGRect: date.frame)
         animDate.toValue = NSValue(CGRect: CGRect(x: 0, y: 100, width: 320, height: 300))
@@ -118,11 +124,24 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     
     
     
+    
+    
+    
     // DATEPICKER DELEGATE
     
     func datePicker(datePicker: ESDatePicker!, dateSelected date: NSDate!) {
         print(date)
-        datePicker.removeFromSuperview()
+        
+        var animDate = POPSpringAnimation(propertyNamed: kPOPViewFrame)
+        animDate.fromValue = NSValue(CGRect: CGRect(x: 0, y: 100, width: 320, height: 300))
+        animDate.toValue = NSValue(CGRect: self.date.frame)
+        datePicker.pop_addAnimation(animDate, forKey: "Dateanim2")
+        var animDate2 = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
+        animDate2.toValue = 0
+        animDate2.completionBlock = {(Bool)  in
+            datePicker.removeFromSuperview()
+        }
+        datePicker.pop_addAnimation(animDate2, forKey: "DateAlpha")
     }
     
     // SIDE BAR DELEGATE
