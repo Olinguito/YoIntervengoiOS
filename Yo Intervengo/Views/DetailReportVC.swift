@@ -90,8 +90,6 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
         pop2.fromValue = NSValue(CGPoint: CGPoint(x: self.view.frame.width - 35, y: self.view.frame.height + 35))
         pop2.toValue = NSValue(CGPoint: CGPoint(x: self.view.frame.width - 35, y: self.view.frame.height - 35))
         
-        
-        
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64), type: "Top")
         self.view.addSubview(grad1)
     

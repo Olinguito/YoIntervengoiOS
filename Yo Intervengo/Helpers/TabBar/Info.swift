@@ -69,7 +69,7 @@ class Info: UIView {
         self.frame = CGRect(x: 0, y: 0, width: 320, height: tabBar.frame.height + wikiBar.frame.height + comment.frame.height + 200)
     }
     
-    func heightForView(text:String, #font:UIFont, #width:CGFloat) -> CGFloat{
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
         let label:UILabel = UILabel(frame: CGRectMake(0, 0, width, CGFloat.max))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.ByWordWrapping
