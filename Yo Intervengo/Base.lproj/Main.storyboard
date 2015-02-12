@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oPP-eP-kLq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="p5p-Kt-IUI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -396,6 +396,100 @@
             </objects>
             <point key="canvasLocation" x="2732" y="278.5"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Br9-Tc-WRN">
+            <objects>
+                <viewController id="p5p-Kt-IUI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kfp-ZN-C1j"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q24-bj-WL1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Te-lS-k0e">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ba-M5-yO4">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Msf-DC-pAj">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="logoDark.png" translatesAutoresizingMaskIntoConstraints="NO" id="DEe-0e-T21">
+                                        <rect key="frame" x="191" y="42" width="219" height="115"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="115" id="V0K-rd-WQr"/>
+                                            <constraint firstAttribute="width" constant="219" id="Z8j-fy-BHP"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Participa usando tus redes sociales y ahorra tiempo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="jdw-p2-cLd">
+                                        <rect key="frame" x="190" y="178" width="220" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="220" id="Wl4-3K-RfK"/>
+                                            <constraint firstAttribute="height" constant="35" id="mGO-V4-jJi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Roboto-Light"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jC-zY-11z">
+                                        <rect key="frame" x="148" y="230" width="305" height="56"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Inicia sesión con Facebook" backgroundImage="btnFacebook.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7X-GM-p7v">
+                                        <rect key="frame" x="148" y="294" width="305" height="56"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="titleEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Inicia sesión Google +" backgroundImage="btnGoogle.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvU-fU-wEq">
+                                        <rect key="frame" x="179" y="358" width="243" height="30"/>
+                                        <state key="normal" title="¿Primera vez? Registrate con email">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qk-mF-90J">
+                                        <rect key="frame" x="172" y="421" width="257" height="30"/>
+                                        <state key="normal" title="¿Ya posees una cuenta? Inicia sesión">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="DEe-0e-T21" secondAttribute="centerX" id="nxv-sO-fdX"/>
+                                    <constraint firstItem="jdw-p2-cLd" firstAttribute="top" secondItem="DEe-0e-T21" secondAttribute="bottom" constant="21" id="sAL-En-hGF"/>
+                                    <constraint firstAttribute="centerX" secondItem="jdw-p2-cLd" secondAttribute="centerX" id="x5U-gL-c8G"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Msf-DC-pAj" firstAttribute="leading" secondItem="2Te-lS-k0e" secondAttribute="leading" id="Jxn-vs-Jp7"/>
+                            <constraint firstItem="Q24-bj-WL1" firstAttribute="top" secondItem="9ba-M5-yO4" secondAttribute="bottom" id="LVT-9q-wNl"/>
+                            <constraint firstAttribute="trailing" secondItem="9ba-M5-yO4" secondAttribute="trailing" id="fN2-Q8-93a"/>
+                            <constraint firstItem="9ba-M5-yO4" firstAttribute="leading" secondItem="2Te-lS-k0e" secondAttribute="leading" id="iZC-la-T9I"/>
+                            <constraint firstAttribute="trailing" secondItem="Msf-DC-pAj" secondAttribute="trailing" id="o1I-CA-9sg"/>
+                            <constraint firstItem="Q24-bj-WL1" firstAttribute="top" secondItem="Msf-DC-pAj" secondAttribute="bottom" id="siM-le-IBh"/>
+                            <constraint firstItem="9ba-M5-yO4" firstAttribute="top" secondItem="2Te-lS-k0e" secondAttribute="top" id="u5s-Dh-WAY"/>
+                            <constraint firstItem="Msf-DC-pAj" firstAttribute="top" secondItem="2Te-lS-k0e" secondAttribute="top" id="xpA-P5-Cfc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R2p-zR-NNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2697" y="1005"/>
+        </scene>
         <!--Table View Controller-->
         <scene sceneID="TcF-hh-QAX">
             <objects>
@@ -496,7 +590,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btnFacebook.png" width="305" height="56"/>
+        <image name="btnGoogle.png" width="305" height="56"/>
         <image name="loc.png" width="22" height="22"/>
+        <image name="logoDark.png" width="225" height="121"/>
         <image name="mas.png" width="71" height="70"/>
         <image name="menu.png" width="23" height="14"/>
         <image name="search.png" width="21" height="20"/>

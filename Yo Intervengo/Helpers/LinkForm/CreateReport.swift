@@ -19,7 +19,7 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     var labels:Int!
     var this:JOSideBarMenu!
     var this2:JOCentralMenu!
-
+    var placeholder:NSAttributedString!
     var datePicker:ESDatePicker!
     
     var str1:String!
@@ -27,13 +27,15 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     var str3:String!
     var card:LinkComponent!
     
+    var singleTap:UIGestureRecognizer!
     
+    var container:UIView!
     var date:UIButton!
     var textUrl:UITextField!
     var textSource:UITextField!
     var textTitle:UITextField!
-    
-    
+    var btnSave:UIButton!
+    var blurView: UIVisualEffectView!
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -47,7 +49,7 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         btnClose.setImage(UIImage(named: "mas"), forState: UIControlState.Normal)
         btnClose.addTarget(self, action: Selector("close"), forControlEvents: UIControlEvents.TouchUpInside)
         
-        let blurView: UIVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        blurView = UIVisualEffectView(effect: blurEffect)
         blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
         blurView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         blurView.alpha = 1
@@ -60,16 +62,18 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         self.addSubview(btnClose)
         showMenu(1, atPoint: CGPointZero)
         
-        
         card = LinkComponent(type: 2)
         card.center = CGPoint(x: frame.size.width/2 , y: (card.frame.height/2) + 25)
         card.setAsNew()
         self.addSubview(card)
         
-        datePicker =  ESDatePicker(frame: CGRect(x: 0, y: 100, width: 320, height: 300))
+        datePicker =  ESDatePicker(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
         datePicker.alpha = 0
         datePicker.delegate = self
         
+        container = UIView(frame: CGRect(x: 0, y: 100, width: 320, height: 270))
+        createForm()
+        singleTap = UITapGestureRecognizer(target: self, action: Selector("singleTap:"))
     }
     
     func showMenu(step:Int, atPoint point:CGPoint){
@@ -91,45 +95,100 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
             this.delegate = self
             self.addSubview(this)
         case 2:
-            
-            date = UIButton(frame: CGRect(x: 0, y: 100, width: 320, height: 49))
-            date.setTitle("MM / DD / AA", forState: UIControlState.Normal)
-            date.titleLabel?.font = UIFont(name: "Roboto-Light", size: 18)
-            date.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-            date.layer.borderColor = UIColor.greyLight().CGColor
-            date.layer.borderWidth = 1.0
-            date.addTarget(self, action: Selector("addDatePicker:"), forControlEvents: UIControlEvents.TouchUpInside)
-            self.addSubview(date)
-            datePicker.frame = date.frame
-            
-            textUrl = UITextField(frame: CGRect(x: 0, y: date.frame.maxY, width: 320, height: 49))
-            textUrl.placeholder = "Pegar URL"
-            textUrl.font = UIFont(name: "Roboto-Light", size: 18)
-            textUrl.layer.borderColor = UIColor.greyLight().CGColor
-            textUrl.layer.borderWidth = 1.0
-            textUrl.textColor = UIColor.whiteColor()
-            textUrl.textAlignment = NSTextAlignment.Center
-            self.addSubview(textUrl)
-            
-            
-            
-            
+            self.addSubview(container)
+            container.center = self.center
+            blurView.addGestureRecognizer(singleTap)
         case 3: println(2)
         default: println("Default")
         }
     }
     
+    func resetForm(){
+        date.setTitle("MM / DD / AA", forState: UIControlState.Normal)
+        textUrl.text = ""
+        textSource.text = ""
+        textTitle.text = ""
+    }
+    
+    func createForm(){
+        date = UIButton(frame: CGRect(x: -1, y: 0, width: 322, height: 49))
+        date.setTitle("MM / DD / AA", forState: UIControlState.Normal)
+        date.titleLabel?.font = UIFont(name: "Roboto-Light", size: 18)
+        date.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        date.layer.borderColor = UIColor.greyLight().CGColor
+        date.layer.borderWidth = 1.0
+        date.addTarget(self, action: Selector("addDatePicker:"), forControlEvents: UIControlEvents.TouchUpInside)
+        container.addSubview(date)
+        datePicker.frame = date.frame
+        
+        textUrl = UITextField(frame: CGRect(x: -1, y: date.frame.maxY, width: 322, height: 49))
+        placeholder = NSAttributedString(string: "Pegar URL", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        textUrl.attributedPlaceholder = placeholder
+        textUrl.tag = 1
+        textUrl.keyboardType = UIKeyboardType.URL
+        config(textUrl)
+        container.addSubview(textUrl)
+        
+        textSource = UITextField(frame: CGRect(x: -1, y: textUrl.frame.maxY, width: 322, height: 49))
+        placeholder = NSAttributedString(string: "Fuente", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        textSource.attributedPlaceholder = placeholder
+        config(textSource)
+        textSource.tag = 2
+        container.addSubview(textSource)
+        
+        textTitle = UITextField(frame: CGRect(x: -1, y: textSource.frame.maxY, width: 322, height: 49))
+        placeholder = NSAttributedString(string: "Titular (máx. 30 caracteres)", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        textTitle.attributedPlaceholder = placeholder
+        config(textTitle)
+        textTitle.tag = 3
+        container.addSubview(textTitle)
+        
+        btnSave = UIButton(frame: CGRect(x: 14, y: textTitle.frame.maxY + 20, width: 292, height: 45))
+        btnSave.layer.cornerRadius = 5
+        btnSave.layer.borderColor = UIColor.orangeYI().CGColor
+        btnSave.layer.borderWidth = 2
+        btnSave.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 16)
+        btnSave.setTitle("Guardar nuevo enlace", forState: UIControlState.Normal)
+        btnSave.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        container.addSubview(btnSave)
+    }
+    
+    func config(textField:UITextField){
+        textField.font = UIFont(name: "Roboto-Light", size: 18)
+        textField.layer.borderColor = UIColor.greyLight().CGColor
+        textField.layer.borderWidth = 1.0
+        textField.keyboardAppearance = UIKeyboardAppearance.Dark
+        textField.delegate = self
+        textField.textColor = UIColor.whiteColor()
+        textField.textAlignment = NSTextAlignment.Center        
+    }
+    
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.backgroundColor = UIColor.whiteColor()
         textField.textColor = UIColor.greyDark()
+        placeholder = NSAttributedString(string: textField.placeholder!, attributes: [NSForegroundColorAttributeName : UIColor.greyLight()])
+        textField.attributedPlaceholder = placeholder
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        return true
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
         textField.backgroundColor = UIColor.clearColor()
         textField.textColor = UIColor.whiteColor()
+        placeholder = NSAttributedString(string: textField.placeholder!, attributes: [NSForegroundColorAttributeName : UIColor.greyLight()])
+        textField.attributedPlaceholder = placeholder
+        switch(textField.tag){
+            case (2): card.title.setTitle(textSource.text, forState: UIControlState.Normal)
+            case (3): card.subtitle.text = textTitle.text
+            default: print("")
+        }
     }
     
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
     
@@ -139,13 +198,15 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         self.addSubview(datePicker)
         var animDate2 = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
         animDate2.toValue = 1
-
         datePicker.pop_addAnimation(animDate2, forKey: "DateAlpha")
         
         var animDate = POPSpringAnimation(propertyNamed: kPOPViewFrame)
         animDate.fromValue = NSValue(CGRect: date.frame)
         animDate.toValue = NSValue(CGRect: CGRect(x: 0, y: 100, width: 320, height: 300))
         datePicker.pop_addAnimation(animDate, forKey: "Dateanim")
+        textSource.resignFirstResponder()
+        textTitle.resignFirstResponder()
+        textUrl.resignFirstResponder()
     }
     
     
@@ -154,15 +215,17 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     // DATEPICKER DELEGATE
     
     func datePicker(datePicker: ESDatePicker!, dateSelected date: NSDate!) {
-        print(date)
+        textSource.resignFirstResponder()
+        textTitle.resignFirstResponder()
+        textUrl.resignFirstResponder()
         var format = NSDateFormatter()
         format.dateFormat = "MMM dd, yyyy"
-        
         card.setDate(format.stringFromDate(date))
-        
         self.date.setTitle(format.stringFromDate(date), forState: UIControlState.Normal)
-        
-        
+        closeDatePicker()
+    }
+    
+    func closeDatePicker(){
         var animDate = POPSpringAnimation(propertyNamed: kPOPViewFrame)
         animDate.fromValue = NSValue(CGRect: CGRect(x: 0, y: 100, width: 320, height: 300))
         animDate.toValue = NSValue(CGRect: self.date.frame)
@@ -170,7 +233,7 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         var animDate2 = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
         animDate2.toValue = 0
         animDate2.completionBlock = {(Bool)  in
-            datePicker.removeFromSuperview()
+            self.datePicker.removeFromSuperview()
         }
         datePicker.pop_addAnimation(animDate2, forKey: "DateAlpha")
     }
@@ -180,7 +243,6 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String){
         sideBar.closeSideView()
 
-        
         card.setIcon(UIImage(named: "Note")!)
         
         btnCategoty = UIButton(frame: button.frame)
@@ -217,6 +279,15 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
 
         showMenu(2, atPoint: CGPointZero)
     }
+    
+    func singleTap(gesture:UITapGestureRecognizer){
+        if datePicker.isDescendantOfView(self){
+            closeDatePicker()
+        }
+        textSource.resignFirstResponder()
+        textTitle.resignFirstResponder()
+        textUrl.resignFirstResponder()
+    }
 
     func close(){
         var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
@@ -240,8 +311,15 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
             case 1:
                 self.showMenu(1, atPoint: btnClose.center)
                 card.setAsNew()
+                resetForm()
                 btnCategoty.removeFromSuperview()
                 lblIndicator.removeFromSuperview()
+                container.removeFromSuperview()
+                if datePicker.isDescendantOfView(self){
+                    closeDatePicker()
+                }
+                blurView.removeGestureRecognizer(singleTap)
+            
             default: println("Default")
         }
     }
