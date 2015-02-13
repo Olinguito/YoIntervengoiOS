@@ -18,6 +18,7 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     var menuView: LeftMenu!
     var test: BottomPager!
     var loc:[RMAnnotation]! = []
+
     
 
     @IBOutlet weak var listView: UIView!
@@ -27,6 +28,9 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        
         //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")

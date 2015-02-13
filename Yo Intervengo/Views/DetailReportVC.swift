@@ -22,6 +22,9 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
     var buttonHelper:UIButton!
     var lblAdds:UILabel!
     var lblCoun:UILabel!
+
+    
+    var story:UIStoryboard!
     
     var report:ReportVC!
     
@@ -31,9 +34,22 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
     
     var tab:JOTabBar!
     
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer.delegate = self
+        
+        story = UIStoryboard(name: "Main", bundle: nil)
+        
+        ////report = self.storyboard?.instantiateViewControllerWithIdentifier("")
+        
+        
+        report = story.instantiateViewControllerWithIdentifier("denunciaView") as ReportVC
+        
         
         imgWork = UIImageView(frame: CGRect(x: 0, y: 0, width: 320, height: 194))
         imgWork.image = UIImage(named: "bg1")
@@ -121,7 +137,7 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
 
         btnInfo = UIButton(frame: CGRect(x: self.view.frame.maxX - 56, y: 10, width: 56, height: 56))
         btnInfo.setImage(UIImage(named: "btnInfo"), forState: UIControlState.Normal)
-        btnInfo.addTarget(self, action: Selector("goReport"), forControlEvents: UIControlEvents.TouchUpInside)
+        btnInfo.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(btnInfo)
         
         lblTitle = UILabel(frame: CGRect(x: 10, y: btnInfo.frame.maxY + 10, width: 300, height: 18))
@@ -146,8 +162,10 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
     }
     
     func goReport(sender:UIButton!){
-        var reportView = self.storyboard?.instantiateViewControllerWithIdentifier("denunciaView") as UIViewController
-        self.showViewController(reportView, sender: self)
+        print("Hola")
+        
+        print("Hola")
+        self.showViewController(report, sender: self)
     }
     
     

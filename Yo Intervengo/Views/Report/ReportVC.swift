@@ -17,6 +17,9 @@ class ReportVC: UIViewController {
     
     var selected:Int!
     
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +51,8 @@ class ReportVC: UIViewController {
         configure(btn1)
         configure(btn2)
         configure(btn3)
-        sender.setTitleColor(UIColor.orangeYI(), forState: UIControlState.Normal)
-        sender.titleLabel?.font = UIFont(name: "Roboto-LightItalic", size: 18)
+        sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        sender.backgroundColor = UIColor.greyLight()
         selected = sender.tag
     }
 
