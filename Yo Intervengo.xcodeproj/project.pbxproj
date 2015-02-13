@@ -83,6 +83,12 @@
 		EC77019E1A74047900378515 /* JOaddReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77019D1A74047900378515 /* JOaddReport.swift */; };
 		EC7701A01A7409DA00378515 /* JOSideBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77019F1A7409DA00378515 /* JOSideBarMenu.swift */; };
 		EC7701A21A74169600378515 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7701A11A74169600378515 /* CategoryCell.xib */; };
+		EC86D5541A8D685000B0BFA0 /* bgConfPassword@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC86D5501A8D685000B0BFA0 /* bgConfPassword@2x.png */; };
+		EC86D5551A8D685000B0BFA0 /* bgConfPassword.png in Resources */ = {isa = PBXBuildFile; fileRef = EC86D5511A8D685000B0BFA0 /* bgConfPassword.png */; };
+		EC86D5561A8D685000B0BFA0 /* bgUsername@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC86D5521A8D685000B0BFA0 /* bgUsername@2x.png */; };
+		EC86D5571A8D685000B0BFA0 /* bgUsername.png in Resources */ = {isa = PBXBuildFile; fileRef = EC86D5531A8D685000B0BFA0 /* bgUsername.png */; };
+		EC86D5591A8D6AD400B0BFA0 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86D5581A8D6AD400B0BFA0 /* SignUpVC.swift */; };
+		EC86D55C1A8D7C6B00B0BFA0 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86D55B1A8D7C6B00B0BFA0 /* ReportVC.swift */; };
 		EC9985BF1A8AB235003E6393 /* Empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9985BD1A8AB235003E6393 /* Empty@2x.png */; };
 		EC9985C01A8AB235003E6393 /* Empty.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9985BE1A8AB235003E6393 /* Empty.png */; };
 		ECB6C25F1A79997800AD1BCB /* JOCentralMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB6C25E1A79997800AD1BCB /* JOCentralMenu.swift */; };
@@ -127,6 +133,12 @@
 		ECEC501D1A8C2F6300AC5853 /* btnFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEC501B1A8C2F6300AC5853 /* btnFacebook.png */; };
 		ECEC50201A8C4A7000AC5853 /* btnGoogle.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEC501E1A8C4A7000AC5853 /* btnGoogle.png */; };
 		ECEC50211A8C4A7000AC5853 /* btnGoogle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEC501F1A8C4A7000AC5853 /* btnGoogle@2x.png */; };
+		ECEC50231A8D1E1100AC5853 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEC50221A8D1E1100AC5853 /* SignIn.swift */; };
+		ECEC50251A8D1E9400AC5853 /* JOTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEC50241A8D1E9400AC5853 /* JOTextField.swift */; };
+		ECEC502B1A8D418B00AC5853 /* bgEmail.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEC50271A8D418B00AC5853 /* bgEmail.png */; };
+		ECEC502C1A8D418B00AC5853 /* bgEmail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEC50281A8D418B00AC5853 /* bgEmail@2x.png */; };
+		ECEC502D1A8D418B00AC5853 /* bgPassword.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEC50291A8D418B00AC5853 /* bgPassword.png */; };
+		ECEC502E1A8D418B00AC5853 /* bgPassword@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECEC502A1A8D418B00AC5853 /* bgPassword@2x.png */; };
 		ECF5CCCF1A6444ED0055077D /* Pin.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF5CCCE1A6444ED0055077D /* Pin.png */; };
 		ECF5CCD11A644CE10055077D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF5CCD01A644CE10055077D /* QuartzCore.framework */; };
 		ECF5CCD31A644CE80055077D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF5CCD21A644CE80055077D /* CoreLocation.framework */; };
@@ -241,6 +253,12 @@
 		EC77019F1A7409DA00378515 /* JOSideBarMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOSideBarMenu.swift; sourceTree = "<group>"; };
 		EC7701A11A74169600378515 /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		EC790D171A633D4300900192 /* Yo Intervengo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yo Intervengo-Bridging-Header.h"; sourceTree = "<group>"; };
+		EC86D5501A8D685000B0BFA0 /* bgConfPassword@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgConfPassword@2x.png"; sourceTree = "<group>"; };
+		EC86D5511A8D685000B0BFA0 /* bgConfPassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgConfPassword.png; sourceTree = "<group>"; };
+		EC86D5521A8D685000B0BFA0 /* bgUsername@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgUsername@2x.png"; sourceTree = "<group>"; };
+		EC86D5531A8D685000B0BFA0 /* bgUsername.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgUsername.png; sourceTree = "<group>"; };
+		EC86D5581A8D6AD400B0BFA0 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		EC86D55B1A8D7C6B00B0BFA0 /* ReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		EC9985BD1A8AB235003E6393 /* Empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Empty@2x.png"; sourceTree = "<group>"; };
 		EC9985BE1A8AB235003E6393 /* Empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Empty.png; sourceTree = "<group>"; };
 		ECB6C25E1A79997800AD1BCB /* JOCentralMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOCentralMenu.swift; sourceTree = "<group>"; };
@@ -285,6 +303,12 @@
 		ECEC501B1A8C2F6300AC5853 /* btnFacebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnFacebook.png; sourceTree = "<group>"; };
 		ECEC501E1A8C4A7000AC5853 /* btnGoogle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnGoogle.png; sourceTree = "<group>"; };
 		ECEC501F1A8C4A7000AC5853 /* btnGoogle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnGoogle@2x.png"; sourceTree = "<group>"; };
+		ECEC50221A8D1E1100AC5853 /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		ECEC50241A8D1E9400AC5853 /* JOTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOTextField.swift; sourceTree = "<group>"; };
+		ECEC50271A8D418B00AC5853 /* bgEmail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgEmail.png; sourceTree = "<group>"; };
+		ECEC50281A8D418B00AC5853 /* bgEmail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgEmail@2x.png"; sourceTree = "<group>"; };
+		ECEC50291A8D418B00AC5853 /* bgPassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgPassword.png; sourceTree = "<group>"; };
+		ECEC502A1A8D418B00AC5853 /* bgPassword@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgPassword@2x.png"; sourceTree = "<group>"; };
 		ECF5CCCE1A6444ED0055077D /* Pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pin.png; sourceTree = "<group>"; };
 		ECF5CCD01A644CE10055077D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ECF5CCD21A644CE80055077D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -497,6 +521,7 @@
 		EC4EECC31A7044FB0034C0EB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EC86D55A1A8D7C5E00B0BFA0 /* Report */,
 				ECEC50131A8C296400AC5853 /* Login */,
 				EC4EECC41A7045940034C0EB /* FilterVC.swift */,
 				EC4A5AA81A7ADD1C007DD7CB /* DetailReportVC.swift */,
@@ -512,6 +537,7 @@
 				ECFAD1EF1A83E47600B5652C /* TimeLineViewControl.m */,
 				EC1DF3A31A81729D00AE8210 /* JIColors.swift */,
 				EC54A7041A7ACC9A007F6ABF /* Gradient.swift */,
+				ECEC50241A8D1E9400AC5853 /* JOTextField.swift */,
 			);
 			name = Components;
 			path = Helpers/Components;
@@ -612,6 +638,15 @@
 			name = BottomPager;
 			sourceTree = "<group>";
 		};
+		EC86D55A1A8D7C5E00B0BFA0 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				EC86D55B1A8D7C6B00B0BFA0 /* ReportVC.swift */,
+			);
+			name = Report;
+			path = Views/Report;
+			sourceTree = "<group>";
+		};
 		ECCCA5DF1A65AE5E004C5858 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +688,7 @@
 		ECCCA5FD1A65B9FC004C5858 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				ECEC50261A8D418B00AC5853 /* Login */,
 				EC3C12101A8A95E1009E82B4 /* Test */,
 				EC3C12131A8A95E1009E82B4 /* Map */,
 				EC3C12171A8A95E1009E82B4 /* Panel */,
@@ -682,9 +718,26 @@
 			isa = PBXGroup;
 			children = (
 				ECEC50141A8C29E600AC5853 /* LoginVC.swift */,
+				ECEC50221A8D1E1100AC5853 /* SignIn.swift */,
+				EC86D5581A8D6AD400B0BFA0 /* SignUpVC.swift */,
 			);
 			name = Login;
 			path = Views/Login;
+			sourceTree = "<group>";
+		};
+		ECEC50261A8D418B00AC5853 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EC86D5501A8D685000B0BFA0 /* bgConfPassword@2x.png */,
+				EC86D5511A8D685000B0BFA0 /* bgConfPassword.png */,
+				EC86D5521A8D685000B0BFA0 /* bgUsername@2x.png */,
+				EC86D5531A8D685000B0BFA0 /* bgUsername.png */,
+				ECEC50271A8D418B00AC5853 /* bgEmail.png */,
+				ECEC50281A8D418B00AC5853 /* bgEmail@2x.png */,
+				ECEC50291A8D418B00AC5853 /* bgPassword.png */,
+				ECEC502A1A8D418B00AC5853 /* bgPassword@2x.png */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		ECF5CCCC1A6444ED0055077D /* Assets */ = {
@@ -799,6 +852,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECEC502D1A8D418B00AC5853 /* bgPassword.png in Resources */,
 				ECEC501D1A8C2F6300AC5853 /* btnFacebook.png in Resources */,
 				EC399E9E1A819DE6003DD89F /* Info.png in Resources */,
 				EC77019B1A732B2100378515 /* repo@2x.png in Resources */,
@@ -815,6 +869,7 @@
 				ECFAD2151A841F3C00B5652C /* arrow@2x.png in Resources */,
 				EC6F29DD1A674D4B00DB09EF /* search@2x.png in Resources */,
 				EC3C122F1A8A95E1009E82B4 /* like_panel.png in Resources */,
+				EC86D5541A8D685000B0BFA0 /* bgConfPassword@2x.png in Resources */,
 				ECB6C26D1A79AA7000AD1BCB /* SubCategoryCell.xib in Resources */,
 				ECCCA5F91A65AF60004C5858 /* Roboto-Thin.ttf in Resources */,
 				ECCCA5F81A65AF60004C5858 /* Roboto-Regular.ttf in Resources */,
@@ -841,6 +896,7 @@
 				ECCE06D61A6C524800A35012 /* solicitud@2x.png in Resources */,
 				EC4A5AA71A7ADA2B007DD7CB /* test-01.png in Resources */,
 				ECDB10F31A8829820099B5EF /* RobotoSlab-Bold.ttf in Resources */,
+				EC86D5561A8D685000B0BFA0 /* bgUsername@2x.png in Resources */,
 				ECB6C2681A799C6300AD1BCB /* SubCategory_on.png in Resources */,
 				ECDB10F41A8829820099B5EF /* RobotoSlab-Light.ttf in Resources */,
 				EC3C122D1A8A95E1009E82B4 /* div@2x.png in Resources */,
@@ -854,12 +910,15 @@
 				ECEC50201A8C4A7000AC5853 /* btnGoogle.png in Resources */,
 				EC399E981A819DE6003DD89F /* Enlaces.png in Resources */,
 				ECCE06E71A6CA54100A35012 /* bg@3x.png in Resources */,
+				ECEC502B1A8D418B00AC5853 /* bgEmail.png in Resources */,
 				ECCE06D21A6C524800A35012 /* mas@2x.png in Resources */,
 				EC3C12271A8A95E1009E82B4 /* circle.png in Resources */,
 				EC9985BF1A8AB235003E6393 /* Empty@2x.png in Resources */,
 				EC4A5AB31A7B4327007DD7CB /* btnBack@2x.png in Resources */,
+				ECEC502C1A8D418B00AC5853 /* bgEmail@2x.png in Resources */,
 				EC0AF7C01A62E7CD004F1B6C /* LaunchScreen.xib in Resources */,
 				EC3C12251A8A95E1009E82B4 /* bg1.png in Resources */,
+				EC86D5571A8D685000B0BFA0 /* bgUsername.png in Resources */,
 				EC6F29D81A674D4B00DB09EF /* menu.png in Resources */,
 				EC6F29DC1A674D4B00DB09EF /* search.png in Resources */,
 				EC3C12321A8A95E1009E82B4 /* img1@2x.png in Resources */,
@@ -898,8 +957,10 @@
 				EC4EECC21A70429F0034C0EB /* Pin2.png in Resources */,
 				ECCCA5F01A65AF60004C5858 /* Roboto-BlackItalic.ttf in Resources */,
 				EC3C122C1A8A95E1009E82B4 /* div.png in Resources */,
+				EC86D5551A8D685000B0BFA0 /* bgConfPassword.png in Resources */,
 				EC3C12331A8A95E1009E82B4 /* inter.png in Resources */,
 				ECEC50191A8C2EB000AC5853 /* logoDark.png in Resources */,
+				ECEC502E1A8D418B00AC5853 /* bgPassword@2x.png in Resources */,
 				ECB6C2691A799C6300AD1BCB /* SubCategory_on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -961,13 +1022,16 @@
 				EC54A6F81A7ACC2C007F6ABF /* publicWCell.swift in Sources */,
 				EC7701A01A7409DA00378515 /* JOSideBarMenu.swift in Sources */,
 				EC54A7051A7ACC9A007F6ABF /* Gradient.swift in Sources */,
+				ECEC50251A8D1E9400AC5853 /* JOTextField.swift in Sources */,
 				EC54A6FA1A7ACC59007F6ABF /* LeftMenu.swift in Sources */,
 				ECFAD2091A83E47600B5652C /* TimeLineViewControl.m in Sources */,
 				EC4A5AA91A7ADD1C007DD7CB /* DetailReportVC.swift in Sources */,
 				ECB6C25F1A79997800AD1BCB /* JOCentralMenu.swift in Sources */,
 				EC399EA51A828BB4003DD89F /* Info.swift in Sources */,
+				ECEC50231A8D1E1100AC5853 /* SignIn.swift in Sources */,
 				EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */,
 				EC54A7001A7ACC79007F6ABF /* LayoutPager.m in Sources */,
+				EC86D5591A8D6AD400B0BFA0 /* SignUpVC.swift in Sources */,
 				EC399EA91A828BDE003DD89F /* Pictures.swift in Sources */,
 				ECF7DBD61A744761000E8967 /* CategoryCollViewCell.swift in Sources */,
 				EC4A5ABA1A7BF15A007DD7CB /* JOTabBar.swift in Sources */,
@@ -978,6 +1042,7 @@
 				EC1DF3A41A81729D00AE8210 /* JIColors.swift in Sources */,
 				EC7701941A7204B300378515 /* LNERadialMenu.m in Sources */,
 				EC77019E1A74047900378515 /* JOaddReport.swift in Sources */,
+				EC86D55C1A8D7C6B00B0BFA0 /* ReportVC.swift in Sources */,
 				EC54A7011A7ACC79007F6ABF /* LayoutHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,6 +23,8 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
     var lblAdds:UILabel!
     var lblCoun:UILabel!
     
+    var report:ReportVC!
+    
     var pop1:POPSpringAnimation!
     var pop2:POPSpringAnimation!
     
@@ -119,6 +121,7 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
 
         btnInfo = UIButton(frame: CGRect(x: self.view.frame.maxX - 56, y: 10, width: 56, height: 56))
         btnInfo.setImage(UIImage(named: "btnInfo"), forState: UIControlState.Normal)
+        btnInfo.addTarget(self, action: Selector("goReport"), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(btnInfo)
         
         lblTitle = UILabel(frame: CGRect(x: 10, y: btnInfo.frame.maxY + 10, width: 300, height: 18))
@@ -140,6 +143,11 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
     
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
         return true
+    }
+    
+    func goReport(sender:UIButton!){
+        var reportView = self.storyboard?.instantiateViewControllerWithIdentifier("denunciaView") as UIViewController
+        self.showViewController(reportView, sender: self)
     }
     
     
