@@ -28,6 +28,7 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
     
     var report:ReportVC!
     
+    
     var pop1:POPSpringAnimation!
     var pop2:POPSpringAnimation!
     
