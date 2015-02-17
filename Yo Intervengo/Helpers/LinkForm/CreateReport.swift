@@ -37,13 +37,18 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     var btnSave:UIButton!
     var blurView: UIVisualEffectView!
     
+    var sideData:NSMutableArray!
+    
+    var conn:Connection!
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     init(frame: CGRect, bttnClose:UIButton) {
         super.init(frame: frame)
-        
+        conn = Connection()
+        sideData = conn.getLinks()
         btnClose = UIButton(frame: bttnClose.frame)
         btnClose.center = bttnClose.center
         btnClose.setImage(UIImage(named: "mas"), forState: UIControlState.Normal)
@@ -74,6 +79,8 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         container = UIView(frame: CGRect(x: 0, y: 100, width: 320, height: 270))
         createForm()
         singleTap = UITapGestureRecognizer(target: self, action: Selector("singleTap:"))
+        
+
     }
     
     func showMenu(step:Int, atPoint point:CGPoint){
@@ -89,8 +96,8 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
             an2.springBounciness = 10
             btnClose.layer.pop_addAnimation(an2, forKey: "size")
             
-            var d = NSMutableArray()
-            this = JOSideBarMenu(frame: CGRectMake(0, 0, 320, min(350, self.frame.height - (100 + btnClose.frame.height)))  , data: d)
+
+            this = JOSideBarMenu(frame: CGRectMake(0, 0, 320, min(350, self.frame.height - (100 + btnClose.frame.height)))  , data: sideData)
             this.frame.origin = CGPoint(x: 0, y: (frame.height - btnClose.frame.height)-this.frame.height)
             this.delegate = self
             self.addSubview(this)
@@ -209,11 +216,7 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         textUrl.resignFirstResponder()
     }
     
-    
-    
-    
     // DATEPICKER DELEGATE
-    
     func datePicker(datePicker: ESDatePicker!, dateSelected date: NSDate!) {
         textSource.resignFirstResponder()
         textTitle.resignFirstResponder()
@@ -243,12 +246,17 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String){
         sideBar.closeSideView()
 
-        card.setIcon(UIImage(named: "Note")!)
+        var dic:Dictionary<String, String> = (sideData.objectAtIndex(button.tag) as Dictionary)
+        var id:String = dic["ID"]!
+        
+        var link:Dictionary<String, String> =  (conn.getLinkByID(id.toInt()!)).objectAtIndex(0) as Dictionary
+        
+        card.setIcon(UIImage(named: link["ICON"]!)!)
         
         btnCategoty = UIButton(frame: button.frame)
         btnCategoty.center = btnClose.center
         btnCategoty.setBackgroundImage(button.image, forState: UIControlState.Normal)
-        btnCategoty.tag = 1
+        btnCategoty.tag = button.tag
         btnCategoty.addTarget(self, action: Selector("goBack:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(btnCategoty)
         
@@ -319,7 +327,6 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
                     closeDatePicker()
                 }
                 blurView.removeGestureRecognizer(singleTap)
-            
             default: println("Default")
         }
     }

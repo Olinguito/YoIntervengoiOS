@@ -20,6 +20,7 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     
     init(frame: CGRect, data: NSMutableArray?) {
         super.init(frame: frame)
+        self.data = data
         self.layer.masksToBounds = true
         
         let coll = UICollectionViewFlowLayout()
@@ -46,7 +47,7 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return data.count
-        return 5
+        return data.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -54,6 +55,8 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
         cell.btnCategory.tag = indexPath.row
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
+        cell.lblTitle.text = ((data.objectAtIndex(indexPath.row))["NAME"]) as? String
+        cell.imgCategory.image = UIImage(named: ((data.objectAtIndex(indexPath.row))["ICON"]) as String!)
         cell.btnCategory.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)
         cell.alpha = 0
         return cell

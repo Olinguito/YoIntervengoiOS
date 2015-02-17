@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIGestureRecognizerDelegate {
+class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegate,UIGestureRecognizerDelegate {
     var scroll:UIScrollView!
     var imgWork:UIImageView!
     var banner:UIView!
@@ -22,17 +22,11 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
     var buttonHelper:UIButton!
     var lblAdds:UILabel!
     var lblCoun:UILabel!
-
-    
     var story:UIStoryboard!
-    
     var report:ReportVC!
-    
     
     var pop1:POPSpringAnimation!
     var pop2:POPSpringAnimation!
-    
-    
     var tab:JOTabBar!
     
     
@@ -46,9 +40,7 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
         
         story = UIStoryboard(name: "Main", bundle: nil)
         
-        ////report = self.storyboard?.instantiateViewControllerWithIdentifier("")
-        
-        
+
         report = story.instantiateViewControllerWithIdentifier("denunciaView") as ReportVC
         
         
@@ -163,9 +155,7 @@ class DetailReportVC: UIViewController,UIScrollViewDelegate,JOTabBarDelegate,UIG
     }
     
     func goReport(sender:UIButton!){
-        print("Hola")
-        
-        print("Hola")
+
         self.showViewController(report, sender: self)
     }
     

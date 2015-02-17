@@ -29,8 +29,6 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
         //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
