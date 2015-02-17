@@ -25,6 +25,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Yo_Intervengo.Panel.init (Yo_Intervengo.Panel.Type)() -&gt; Yo_Intervengo.Panel:Panel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "title.length">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[LayoutPager frameForItemAtIndexPath:]:LayoutPager.m">
          <PersistentStrings>
             <PersistentString
@@ -41,10 +49,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Yo_Intervengo.Panel.init (Yo_Intervengo.Panel.Type)() -&gt; Yo_Intervengo.Panel:Panel.swift">
+         contextName = "Yo_Intervengo.CreateReport.buttoTapped (Yo_Intervengo.CreateReport)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIImageView&gt;, withSideBar : Yo_Intervengo.JOSideBarMenu, label : Swift.String) -&gt; ():CreateReport.swift">
          <PersistentStrings>
             <PersistentString
-               value = "title.length">
+               value = "conn.getLinkByID(id.toInt()!)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -88,10 +96,10 @@
                value = "bubbleMenu">
             </PersistentString>
             <PersistentString
-               value = "bubbleMenu.menuItemImages">
+               value = "images.count">
             </PersistentString>
             <PersistentString
-               value = "images.count">
+               value = "bubbleMenu.menuItemImages">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

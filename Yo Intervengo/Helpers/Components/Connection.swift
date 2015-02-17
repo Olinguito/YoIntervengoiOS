@@ -67,6 +67,7 @@ class Connection: NSObject {
             }
             if let icon = key["icon"] {
                 links["ICON"] = "btn_add_links_" + icon.asString()
+                links["BG"] = "bg_links_" + icon.asString()
             }
             returnArray.addObject(links)
         }
@@ -79,6 +80,7 @@ class Connection: NSObject {
         var returnArray = NSMutableArray()
         let query = "SELECT * FROM link where \(index)"
         let data = db.query(query)
+        print(data.count)
         for key in data{
             var links: Dictionary<String, String> = [:]
             if let _id = key["id"] {

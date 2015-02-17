@@ -247,11 +247,7 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         sideBar.closeSideView()
 
         var dic:Dictionary<String, String> = (sideData.objectAtIndex(button.tag) as Dictionary)
-        var id:String = dic["ID"]!
-        
-        var link:Dictionary<String, String> =  (conn.getLinkByID(id.toInt()!)).objectAtIndex(0) as Dictionary
-        
-        card.setIcon(UIImage(named: link["ICON"]!)!)
+        card.setIcon(UIImage(named: dic["BG"]!)!)
         
         btnCategoty = UIButton(frame: button.frame)
         btnCategoty.center = btnClose.center
@@ -315,8 +311,8 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     
     
     func goBack(sender:UIButton!){
-        switch sender.tag{
-            case 1:
+        //switch sender.tag{
+          //  case 1:
                 self.showMenu(1, atPoint: btnClose.center)
                 card.setAsNew()
                 resetForm()
@@ -327,8 +323,8 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
                     closeDatePicker()
                 }
                 blurView.removeGestureRecognizer(singleTap)
-            default: println("Default")
-        }
+            //default: println("Default")
+        //}
     }
     
 }
