@@ -9,6 +9,7 @@
 import UIKit
 
 class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate {
+    // MARK: -VAR DEFFINITION
     var step = 0
     let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
     var btnClose:UIButton!
@@ -19,30 +20,31 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     var this:JOSideBarMenu!
     var this2:JOCentralMenu!
     
+    var sideData:NSMutableArray!
+    var conn:Connection!
     
     var str1:String!
     var str2:String!
     var str3:String!
     
+    
+    // MARK: -INIT
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     init(frame: CGRect, bttnClose:UIButton, labels:Int) {
         super.init(frame: frame)
+        step = 1
+        
         btnClose = UIButton(frame: bttnClose.frame)
         btnClose.center = bttnClose.center
         self.labels = labels
         btnClose.setImage(bttnClose.backgroundImageForState(UIControlState.Normal), forState: UIControlState.Normal)
         btnClose.addTarget(self, action: Selector("close"), forControlEvents: UIControlEvents.TouchUpInside)
-        /*let blurView: UIVisualEffectView = UIVisualEffectView(effect: blurEffect)
-        blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        blurView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
-        blurView.alpha = 1
-        var lay = CALayer()
-        lay.frame = frame
-        lay.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.1).CGColor
-        blurView.layer.insertSublayer(lay, atIndex: 0)*/
+        
+        conn = Connection()
+        
         var blurView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
         blurView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
         self.addSubview(blurView)
@@ -60,14 +62,13 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 thisMenu.radialMenuIdentifier = "show"
                 self.insertSubview(thisMenu, belowSubview: btnClose)
                 thisMenu.showMenu()
-        case 2: println(2)
-                var d = NSMutableArray()
-                //d.addObject(["Image":"Solicitud","Text":"Servicio públicos"])
-                this = JOSideBarMenu(frame: CGRectMake(0, 70, 320, 385) , data: d)
+        case 2:
+                sideData = conn.getCategories(lblIndicator.text == "REPORTE")
+                this = JOSideBarMenu(frame: CGRectMake(0, 0, 320, min(350, self.frame.height - (100 + btnClose.frame.height)))  , data: sideData)
+                this.frame.origin = CGPoint(x: 0, y: (frame.height - btnClose.frame.height)-this.frame.height)
                 this.delegate = self
-                //self.insertSubview(this, belowSubview: btnCategoty)
                 self.addSubview(this)
-        case 3: println(2)
+        case 3:
                 var d = NSMutableArray()
                 //d.addObject(["Image":"Solicitud","Text":"Servicio públicos"])
                 var t = (self.frame.size.height-450)/2
@@ -78,77 +79,9 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         }
     }
     
-    func close(){
-        var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
-        an.toValue = 0
-        an.springBounciness = 10
-        btnClose.layer.pop_addAnimation(an, forKey: "Rotate")
-        UIView.animateWithDuration(1.0, delay: 0, options: .CurveEaseOut, animations: {
-                self.alpha = 0
-            }, completion: { finished in
-                self.removeFromSuperview()
-        })
-    }
-    
-    // SUBCATEGORY TAPPED
-    func buttoTapped(button: UIButton!, withCentralBar sideBar: JOCentralMenu) {
-        println("Creando nuevo reporte")
-    }
-    
-    
-    // SIDE BAR DELEGATE
-    
-    func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String){
-        sideBar.closeSideView()
-        str2 = label
-        showMenu(3, atPoint: CGPointZero)
-        btnSubcategory = UIButton(frame: CGRectMake(0, 0, btnCategoty.frame.size.width - 10, btnCategoty.frame.height - 10))
-        btnSubcategory.tag = 2
-        btnSubcategory.center = btnCategoty.center
-        btnSubcategory.setBackgroundImage(button.image, forState: UIControlState.Normal)
-        btnSubcategory.addTarget(self, action: Selector("goBack:"), forControlEvents: UIControlEvents.TouchUpInside)
-        //btnSubcategory.setBackgroundImage(UIImage(named: "repo"), forState: UIControlState.Normal)
-        self.addSubview(btnSubcategory)
-        var pop = POPSpringAnimation(propertyNamed: kPOPViewCenter)
-        pop.toValue = NSValue(CGPoint: CGPoint(x: self.frame.size.width-164, y: btnClose.center.y))
-        btnSubcategory.pop_addAnimation(pop, forKey: "TEST2")
-        lblIndicator.text = str2
-        var pop2 = POPSpringAnimation(propertyNamed: kPOPViewCenter)
-        pop2.toValue = NSValue(CGPoint: CGPoint(x: lblIndicator.center.x-25, y: btnClose.center.y))
-        lblIndicator.pop_addAnimation(pop2, forKey: "TEST3")
-        var pop3 = POPSpringAnimation(propertyNamed: kPOPViewSize)
-        pop3.toValue = NSValue(CGSize: CGSize(width: 100, height: lblIndicator.frame.size.height))
-        lblIndicator.pop_addAnimation(pop3, forKey: "TEST4")
-    }
-    
-    // READIAL MENU DELEGATE
-    func radialMenu(radialMenu: LNERadialMenu!, closingMenu close: Boolean) {
-        //closeMenu()
-    }
-    
-    func numberOfButtonsForRadialMenu(radialMenu: LNERadialMenu!) -> Int {
-        return 2
-    }
-    
-    func radiusLenghtForRadialMenu(radialMenu: LNERadialMenu!) -> CGFloat {
-        return 60
-    }
-    
-    func radialMenu(radialMenu: LNERadialMenu!, elementAtIndex index: Int) -> UIButton! {
-        var element : UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
-        switch index{
-        case 0: element.titleLabel?.text = "REPORTE"
-        element.setBackgroundImage(UIImage(named: "repo"), forState: UIControlState.Normal)
-        case 1: element.titleLabel?.text = "SOLICITUD"
-        element.setBackgroundImage(UIImage(named: "solicitud"), forState: UIControlState.Normal)
-        default:element.titleLabel?.text = "SOLICITUD"
-        element.setBackgroundImage(UIImage(named: "solicitud"), forState: UIControlState.Normal)
-        }
-        element.setTitleColor(UIColor.clearColor(), forState: UIControlState.Normal)
-        return element
-    }
-    
+    // MARK: -RADIAL MENU DELEGATE ::STEP 2
     func radialMenu(radialMenu: LNERadialMenu!, didSelectButton button: UIButton!) {
+        step = 2
         btnCategoty = UIButton(frame: button.frame)
         btnCategoty.center = btnClose.center
         btnCategoty.setBackgroundImage(button.backgroundImageForState(UIControlState.Normal), forState: UIControlState.Normal)
@@ -177,6 +110,32 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         radialMenu.closeMenu()
     }
     
+    func radialMenu(radialMenu: LNERadialMenu!, closingMenu close: Boolean) {
+        //closeMenu()
+    }
+    
+    func numberOfButtonsForRadialMenu(radialMenu: LNERadialMenu!) -> Int {
+        return 2
+    }
+    
+    func radiusLenghtForRadialMenu(radialMenu: LNERadialMenu!) -> CGFloat {
+        return 60
+    }
+    
+    func radialMenu(radialMenu: LNERadialMenu!, elementAtIndex index: Int) -> UIButton! {
+        var element : UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
+        switch index{
+        case 0: element.titleLabel?.text = "REPORTE"
+        element.setBackgroundImage(UIImage(named: "repo"), forState: UIControlState.Normal)
+        case 1: element.titleLabel?.text = "SOLICITUD"
+        element.setBackgroundImage(UIImage(named: "solicitud"), forState: UIControlState.Normal)
+        default:element.titleLabel?.text = "SOLICITUD"
+        element.setBackgroundImage(UIImage(named: "solicitud"), forState: UIControlState.Normal)
+        }
+        element.setTitleColor(UIColor.clearColor(), forState: UIControlState.Normal)
+        return element
+    }
+    
     func viewForCenterOfRadialMenu(radialMenu: LNERadialMenu!) -> UIView! {
         var centerView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: 190, height: 190))
         centerView.backgroundColor  = UIColor.blackColor().colorWithAlphaComponent(0.2)
@@ -201,32 +160,69 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         return false
     }
     
+    // MARK: -SIDE BAR DELEGATE  ::STEP 3
     
-    //BACK METHODS
+    func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String){
+        step = 3
+        sideBar.closeSideView()
+        str2 = label
+        showMenu(3, atPoint: CGPointZero)
+        btnSubcategory = UIButton(frame: CGRectMake(0, 0, btnCategoty.frame.size.width - 10, btnCategoty.frame.height - 10))
+        btnSubcategory.tag = 2
+        btnSubcategory.center = btnCategoty.center
+        btnSubcategory.setBackgroundImage(button.image, forState: UIControlState.Normal)
+        btnSubcategory.addTarget(self, action: Selector("goBack:"), forControlEvents: UIControlEvents.TouchUpInside)
+        //btnSubcategory.setBackgroundImage(UIImage(named: "repo"), forState: UIControlState.Normal)
+        self.addSubview(btnSubcategory)
+        var pop = POPSpringAnimation(propertyNamed: kPOPViewCenter)
+        pop.toValue = NSValue(CGPoint: CGPoint(x: self.frame.size.width-164, y: btnClose.center.y))
+        btnSubcategory.pop_addAnimation(pop, forKey: "TEST2")
+        lblIndicator.text = str2
+        var pop2 = POPSpringAnimation(propertyNamed: kPOPViewCenter)
+        pop2.toValue = NSValue(CGPoint: CGPoint(x: lblIndicator.center.x-25, y: btnClose.center.y))
+        lblIndicator.pop_addAnimation(pop2, forKey: "TEST3")
+        var pop3 = POPSpringAnimation(propertyNamed: kPOPViewSize)
+        pop3.toValue = NSValue(CGSize: CGSize(width: 100, height: lblIndicator.frame.size.height))
+        lblIndicator.pop_addAnimation(pop3, forKey: "TEST4")
+    }
     
+    // MARK: -SUBCATEGORY DELEGATE ::STEP 4
+    func buttoTapped(button: UIButton!, withCentralBar sideBar: JOCentralMenu) {
+        println("Creando nuevo reporte")
+    }
+    
+    
+    // MARK: -BACK METHODS
     func goBack(sender:UIButton!){
-        switch sender.tag{
-            case 1:
+        println("Estaba en \(step)")
+        switch step{
+            case 2:
                 labels = 1
                 self.showMenu(1, atPoint: btnClose.center)
                 btnCategoty.removeFromSuperview()
-                btnSubcategory.removeFromSuperview()
+                if (btnSubcategory != nil){
+                    btnSubcategory.removeFromSuperview()
+                    btnSubcategory = nil
+                }
                 lblIndicator.removeFromSuperview()
                 this.removeFromSuperview()
-                this2.removeFromSuperview()
-            case 2:
+                if (this2 != nil){
+                    this2.removeFromSuperview()
+                    this2 = nil
+                }
+            case 3:
                 goLbl(2)
                 self.showMenu(2, atPoint: CGPointZero)
                 btnSubcategory.removeFromSuperview()
                 this2.removeFromSuperview()
             default: println("Default")
         }
+        step--
     }
     
     func goLbl(step:Int){
         switch step{
         case 2:
-            println("Default")
             lblIndicator.text = str1
             var pop3 = POPSpringAnimation(propertyNamed: kPOPViewSize)
             pop3.toValue = NSValue(CGSize: CGSize(width: 200, height: lblIndicator.frame.size.height))
@@ -236,10 +232,23 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
             pop2.toValue = NSValue(CGPoint: CGPoint(x: lblIndicator.center.x+25, y: btnClose.center.y))
             lblIndicator.pop_addAnimation(pop2, forKey: "TEST3")
         case 3:
-            println("Default")
             lblIndicator.text = str2
         default: println("Default")
         }
     }
+    
+    
+    func close(){
+        var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+        an.toValue = 0
+        an.springBounciness = 10
+        btnClose.layer.pop_addAnimation(an, forKey: "Rotate")
+        UIView.animateWithDuration(1.0, delay: 0, options: .CurveEaseOut, animations: {
+            self.alpha = 0
+            }, completion: { finished in
+                self.removeFromSuperview()
+        })
+    }
+    
     
 }

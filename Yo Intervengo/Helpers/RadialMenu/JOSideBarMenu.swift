@@ -52,10 +52,11 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as CategoryCollViewCell
-        cell.btnCategory.tag = indexPath.row
+        cell.btnCategory.tag = 1
         cell.imgCategory.tag = indexPath.row
         cell.layer.shadowColor = UIColor.blackColor().CGColor
-        cell.layer.shadowOffset = CGSizeMake(0, 1.0)
+        //cell.layer.shadowOffset = CGSizeMake(0, 1.0)
+        print((data.objectAtIndex(indexPath.row)))
         cell.lblTitle.text = ((data.objectAtIndex(indexPath.row))["NAME"]) as? String
         cell.imgCategory.image = UIImage(named: ((data.objectAtIndex(indexPath.row))["ICON"]) as String!)
         cell.btnCategory.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)

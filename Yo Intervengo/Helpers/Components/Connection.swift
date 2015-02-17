@@ -18,20 +18,23 @@ class Connection: NSObject {
     }
     
     // GET CATEGORIES
-    func getCategories() -> NSMutableArray{
+    func getCategories(report:Bool) -> NSMutableArray{
         var returnArray = NSMutableArray()
         let data = db.query("SELECT * FROM Category")
         for key in data{
             var city: Dictionary<String, String> = [:]
-            if let name = key["nam_city"] {
+            if let _id = key["id"] {
+                city["ID"] = _id.asString()
+            }
+            if let name = key["name"] {
                 city["NAME"] = name.asString()
             }
-            if let image = key["img_city"] {
-                city["IMAGE"] = image.asString()
+            if let image = key["icon"] {
+                city["ICON"] = report ? "btn_reporte_" + image.asString() : "btn_solicitud_" + image.asString()
             }
-            
             returnArray.addObject(city)
         }
+        println("Encotnrados: \(data.count)")
         return returnArray
     }
     
@@ -45,7 +48,7 @@ class Connection: NSObject {
                 city["NAME"] = name.asString()
             }
             if let image = key["img_city"] {
-                city["IMAGE"] = image.asString()
+                city["ICON"] = image.asString()
             }
             
             returnArray.addObject(city)

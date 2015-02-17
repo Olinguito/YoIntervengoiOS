@@ -3,14 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[LayoutPager layoutAttributesForItemAtIndexPath:]:LayoutPager.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "attr.frame">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "Yo_Intervengo.ViewController.mapView (Yo_Intervengo.ViewController)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.RMMapView&gt;, layerForAnnotation : Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.RMAnnotation&gt;) -&gt; Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.RMMapLayer&gt;:ViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -21,38 +13,6 @@
             </PersistentString>
             <PersistentString
                value = "an">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Yo_Intervengo.Panel.init (Yo_Intervengo.Panel.Type)() -&gt; Yo_Intervengo.Panel:Panel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "title.length">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[LayoutPager frameForItemAtIndexPath:]:LayoutPager.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.itemSize.width">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Yo_Intervengo.LeftMenu.goBtn (Yo_Intervengo.LeftMenu)(ObjectiveC.UIButton) -&gt; ():LeftMenu.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "sender.tag">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Yo_Intervengo.CreateReport.buttoTapped (Yo_Intervengo.CreateReport)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIImageView&gt;, withSideBar : Yo_Intervengo.JOSideBarMenu, label : Swift.String) -&gt; ():CreateReport.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "conn.getLinkByID(id.toInt()!)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -68,17 +28,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[LIVBubbleMenu show]:LIVBubbleMenu.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "_menuItemImages">
-            </PersistentString>
-            <PersistentString
-               value = "[_menuItemImages count]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "Yo_Intervengo.ViewController.viewDidLoad (Yo_Intervengo.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -90,16 +39,97 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Yo_Intervengo.JOaddReport.buttoTapped (Yo_Intervengo.JOaddReport)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIImageView&gt;, withSideBar : Yo_Intervengo.JOSideBarMenu, label : Swift.String) -&gt; ():JOaddReport.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "button.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LIVBubbleMenu show]:LIVBubbleMenu.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_menuItemImages">
+            </PersistentString>
+            <PersistentString
+               value = "[_menuItemImages count]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Yo_Intervengo.CreateReport.buttoTapped (Yo_Intervengo.CreateReport)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIImageView&gt;, withSideBar : Yo_Intervengo.JOSideBarMenu, label : Swift.String) -&gt; ():CreateReport.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "conn.getLinkByID(id.toInt()!)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Yo_Intervengo.JOSideBarMenu.collectionView (Yo_Intervengo.JOSideBarMenu)(ObjectiveC.UICollectionView, cellForItemAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UICollectionViewCell:JOSideBarMenu.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(data.objectAtIndex(0))[&quot;NAME&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "data">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Yo_Intervengo.JOaddReport.goBack (Yo_Intervengo.JOaddReport)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIButton&gt;) -&gt; ():JOaddReport.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "btnSubcategory">
+            </PersistentString>
+            <PersistentString
+               value = "sender.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Yo_Intervengo.LeftMenu.goBtn (Yo_Intervengo.LeftMenu)(ObjectiveC.UIButton) -&gt; ():LeftMenu.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LayoutPager frameForItemAtIndexPath:]:LayoutPager.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.itemSize.width">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Yo_Intervengo.ViewController.newReport (Yo_Intervengo.ViewController)(Swift.AnyObject) -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "bubbleMenu">
             </PersistentString>
             <PersistentString
-               value = "images.count">
+               value = "bubbleMenu.menuItemImages">
             </PersistentString>
             <PersistentString
-               value = "bubbleMenu.menuItemImages">
+               value = "images.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Yo_Intervengo.Panel.init (Yo_Intervengo.Panel.Type)() -&gt; Yo_Intervengo.Panel:Panel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "title.length">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Yo_Intervengo.JOSideBarMenu.goSubCategory (Yo_Intervengo.JOSideBarMenu)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIButton&gt;) -&gt; ():JOSideBarMenu.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.tag">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -108,6 +138,14 @@
          <PersistentStrings>
             <PersistentString
                value = "virtualAngle">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LayoutPager layoutAttributesForItemAtIndexPath:]:LayoutPager.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "attr.frame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

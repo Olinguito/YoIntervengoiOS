@@ -311,20 +311,16 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     
     
     func goBack(sender:UIButton!){
-        //switch sender.tag{
-          //  case 1:
-                self.showMenu(1, atPoint: btnClose.center)
-                card.setAsNew()
-                resetForm()
-                btnCategoty.removeFromSuperview()
-                lblIndicator.removeFromSuperview()
-                container.removeFromSuperview()
-                if datePicker.isDescendantOfView(self){
-                    closeDatePicker()
-                }
-                blurView.removeGestureRecognizer(singleTap)
-            //default: println("Default")
-        //}
+        self.showMenu(1, atPoint: btnClose.center)
+        card.setAsNew()
+        resetForm()
+        btnCategoty.removeFromSuperview()
+        lblIndicator.removeFromSuperview()
+        container.removeFromSuperview()
+        if datePicker.isDescendantOfView(self){
+            closeDatePicker()
+        }
+        blurView.removeGestureRecognizer(singleTap)
     }
     
 }
