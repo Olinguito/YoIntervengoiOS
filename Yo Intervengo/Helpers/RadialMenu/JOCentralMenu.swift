@@ -17,15 +17,16 @@ class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
     var collectionView:UICollectionView!
     var data:NSMutableArray!
     var delegate:JOCentralMenuDelegate?
+    var type:Int!
     
-    init(frame: CGRect, data: NSMutableArray?) {
+    init(frame: CGRect, data: NSMutableArray?, type:Int) {
         super.init(frame: frame)
+        self.type = type
         
         let coll = UICollectionViewFlowLayout()
         coll.scrollDirection = UICollectionViewScrollDirection.Vertical
         coll.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         coll.itemSize = CGSize(width: 130, height: 57)
-        
         collectionView = UICollectionView(frame: frame, collectionViewLayout: coll)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -54,6 +55,7 @@ class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
         cell.btnSubCat.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)
         cell.alpha = 0
+        cell.type = self.type
         return cell
     }
     

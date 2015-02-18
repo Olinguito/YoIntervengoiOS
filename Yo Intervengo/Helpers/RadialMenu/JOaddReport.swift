@@ -72,7 +72,8 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 var d = NSMutableArray()
                 //d.addObject(["Image":"Solicitud","Text":"Servicio públicos"])
                 var t = (self.frame.size.height-450)/2
-                this2 = JOCentralMenu(frame: CGRectMake(0, t, 320, 400) , data: d)
+                var type = lblIndicator.text == "REPORTE" ? 1 : 0
+                this2 = JOCentralMenu(frame: CGRectMake(0, t, 320, 400) , data: d, type: type)
                 this2.delegate = self
                 self.insertSubview(this2, belowSubview: btnCategoty)
         default: println("Default")

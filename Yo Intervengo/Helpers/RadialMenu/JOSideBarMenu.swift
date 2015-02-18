@@ -52,7 +52,7 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as CategoryCollViewCell
-        cell.btnCategory.tag = 1
+        cell.btnCategory.tag = indexPath.row
         cell.imgCategory.tag = indexPath.row
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         //cell.layer.shadowOffset = CGSizeMake(0, 1.0)

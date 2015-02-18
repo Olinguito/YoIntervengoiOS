@@ -11,9 +11,15 @@ import UIKit
 class SubCategoryCell: UICollectionViewCell {
     @IBOutlet weak var btnSubCat: UIButton!
     @IBOutlet weak var lblSubCat: UILabel!
+    var type:Int!
     
     @IBAction func setCat(sender: AnyObject) {
-        lblSubCat.textColor = UIColor(red:0.122, green:0.737, blue:0.859, alpha: 1)
-        btnSubCat.setBackgroundImage(UIImage(named: "SubCategory_on"), forState: UIControlState.Normal)
+        if type == 0{
+            lblSubCat.textColor = UIColor(red:0.122, green:0.737, blue:0.859, alpha: 1)
+            btnSubCat.setBackgroundImage(UIImage(named: "SubCategory_on"), forState: UIControlState.Normal)
+        }else{
+            lblSubCat.textColor = UIColor.orangeYI()
+            btnSubCat.setBackgroundImage(UIImage(named: "SubCategory2_on"), forState: UIControlState.Normal)
+        }
     }
 }
