@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol JOSideBarMenuDelegate{
-    optional func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String)
+    optional func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String, id:Int)
 }
 
 
@@ -54,6 +54,8 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as CategoryCollViewCell
         cell.btnCategory.tag = indexPath.row
         cell.imgCategory.tag = indexPath.row
+        cell.btnCategory.setTitle(((data.objectAtIndex(indexPath.row))["ID"]) as? String, forState: UIControlState.Normal)
+        cell.btnCategory.setTitleColor(UIColor.clearColor(), forState: UIControlState.Normal)
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         //cell.layer.shadowOffset = CGSizeMake(0, 1.0)
         print((data.objectAtIndex(indexPath.row)))
@@ -66,7 +68,7 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     
     func goSubCategory(sender:UIButton!){
         var a:CategoryCollViewCell = self.collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as CategoryCollViewCell
-        self.delegate?.buttoTapped!(a.imgCategory, withSideBar: self,label: a.lblTitle.text!)
+        self.delegate?.buttoTapped!(a.imgCategory, withSideBar: self,label: a.lblTitle.text!, id:sender.titleLabel?.text?.toInt() ?? 1)
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {

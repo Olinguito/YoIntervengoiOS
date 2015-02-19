@@ -28,6 +28,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Yo_Intervengo.JOaddReport.buttoTapped (Yo_Intervengo.JOaddReport)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIImageView&gt;, withSideBar : Yo_Intervengo.JOSideBarMenu, label : Swift.String) -&gt; ():JOaddReport.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "centralData">
+            </PersistentString>
+            <PersistentString
+               value = "button.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Yo_Intervengo.ViewController.viewDidLoad (Yo_Intervengo.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -35,14 +46,6 @@
             </PersistentString>
             <PersistentString
                value = "ann.title">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Yo_Intervengo.JOaddReport.buttoTapped (Yo_Intervengo.JOaddReport)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIImageView&gt;, withSideBar : Yo_Intervengo.JOSideBarMenu, label : Swift.String) -&gt; ():JOaddReport.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "button.tag">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -66,17 +69,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Yo_Intervengo.JOSideBarMenu.collectionView (Yo_Intervengo.JOSideBarMenu)(ObjectiveC.UICollectionView, cellForItemAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UICollectionViewCell:JOSideBarMenu.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "(data.objectAtIndex(0))[&quot;NAME&quot;]">
-            </PersistentString>
-            <PersistentString
-               value = "data">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "Yo_Intervengo.JOaddReport.goBack (Yo_Intervengo.JOaddReport)(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UIButton&gt;) -&gt; ():JOaddReport.swift">
          <PersistentStrings>
             <PersistentString
@@ -84,6 +76,17 @@
             </PersistentString>
             <PersistentString
                value = "sender.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Yo_Intervengo.JOSideBarMenu.collectionView (Yo_Intervengo.JOSideBarMenu)(ObjectiveC.UICollectionView, cellForItemAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UICollectionViewCell:JOSideBarMenu.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(data.objectAtIndex(0))[&quot;NAME&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "data">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -110,10 +113,10 @@
                value = "bubbleMenu">
             </PersistentString>
             <PersistentString
-               value = "bubbleMenu.menuItemImages">
+               value = "images.count">
             </PersistentString>
             <PersistentString
-               value = "images.count">
+               value = "bubbleMenu.menuItemImages">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -138,6 +141,14 @@
          <PersistentStrings>
             <PersistentString
                value = "virtualAngle">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Yo_Intervengo.JOaddReport.showMenu (Yo_Intervengo.JOaddReport)(Swift.Int, atPoint : C.CGPoint) -&gt; ():JOaddReport.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "centralData">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

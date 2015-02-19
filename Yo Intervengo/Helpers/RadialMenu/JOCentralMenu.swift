@@ -21,6 +21,7 @@ class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
     
     init(frame: CGRect, data: NSMutableArray?, type:Int) {
         super.init(frame: frame)
+        self.data = data
         self.type = type
         
         let coll = UICollectionViewFlowLayout()
@@ -44,8 +45,7 @@ class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
     //COLLECTION VIEW DELEGATE
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return data.count
-        return 10
+        return data.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -54,8 +54,10 @@ class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
         cell.btnSubCat.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.lblSubCat.text = (data.objectAtIndex(indexPath.row) as Dictionary)["NAME"]
         cell.alpha = 0
         cell.type = self.type
+        cell.btnSubCat.tag = 3
         return cell
     }
     

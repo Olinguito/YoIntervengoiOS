@@ -20,7 +20,7 @@ class Connection: NSObject {
     // GET CATEGORIES
     func getCategories(report:Bool) -> NSMutableArray{
         var returnArray = NSMutableArray()
-        let data = db.query("SELECT * FROM Category")
+        let data = db.query("SELECT * FROM Category ORDER BY _order")
         for key in data{
             var city: Dictionary<String, String> = [:]
             if let _id = key["id"] {
@@ -39,18 +39,17 @@ class Connection: NSObject {
     }
     
     // GET SUBCATEGORIES
-    func getSubcategories() -> NSMutableArray{
+    func getSubcategories(idCategory:Int) -> NSMutableArray{
         var returnArray = NSMutableArray()
-        let data = db.query("SELECT * FROM subcategory")
+        let data = db.query("SELECT * FROM subcategory where category = \(idCategory)")
         for key in data{
             var city: Dictionary<String, String> = [:]
-            if let name = key["nam_city"] {
+            if let id = key["id"] {
+                city["ID"] = id.asString()
+            }
+            if let name = key["name"] {
                 city["NAME"] = name.asString()
             }
-            if let image = key["img_city"] {
-                city["ICON"] = image.asString()
-            }
-            
             returnArray.addObject(city)
         }
         return returnArray

@@ -21,12 +21,15 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     var this2:JOCentralMenu!
     
     var sideData:NSMutableArray!
+    var centralData:NSMutableArray!
     var conn:Connection!
     
     var str1:String!
     var str2:String!
     var str3:String!
     
+    
+    var catId:Int!
     
     // MARK: -INIT
     required init(coder aDecoder: NSCoder) {
@@ -64,16 +67,18 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 thisMenu.showMenu()
         case 2:
                 sideData = conn.getCategories(lblIndicator.text == "REPORTE")
-                this = JOSideBarMenu(frame: CGRectMake(0, 0, 320, min(350, self.frame.height - (100 + btnClose.frame.height)))  , data: sideData)
+                this = JOSideBarMenu(frame: CGRectMake(0, 0, 320, min(370, self.frame.height - (100 + btnClose.frame.height)))  , data: sideData)
                 this.frame.origin = CGPoint(x: 0, y: (frame.height - btnClose.frame.height)-this.frame.height)
                 this.delegate = self
                 self.addSubview(this)
         case 3:
                 var d = NSMutableArray()
-                //d.addObject(["Image":"Solicitud","Text":"Servicio públicos"])
                 var t = (self.frame.size.height-450)/2
                 var type = lblIndicator.text == "REPORTE" ? 1 : 0
-                this2 = JOCentralMenu(frame: CGRectMake(0, t, 320, 400) , data: d, type: type)
+                println("ID de la categoria \(catId)")
+                centralData = conn.getSubcategories(catId)
+                
+                this2 = JOCentralMenu(frame: CGRectMake(0, t, 320, 400) , data: centralData, type: type)
                 this2.delegate = self
                 self.insertSubview(this2, belowSubview: btnCategoty)
         default: println("Default")
@@ -86,7 +91,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         btnCategoty = UIButton(frame: button.frame)
         btnCategoty.center = btnClose.center
         btnCategoty.setBackgroundImage(button.backgroundImageForState(UIControlState.Normal), forState: UIControlState.Normal)
-        btnCategoty.tag = 1
+        btnCategoty.tag = button.tag
         btnCategoty.addTarget(self, action: Selector("goBack:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(btnCategoty)
         var pop = POPSpringAnimation(propertyNamed: kPOPViewCenter)
@@ -163,10 +168,13 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     
     // MARK: -SIDE BAR DELEGATE  ::STEP 3
     
-    func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String){
+    func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String , id:Int){
         step = 3
         sideBar.closeSideView()
         str2 = label
+
+        print(sideData.objectAtIndex(button.tag))
+        catId = id
         showMenu(3, atPoint: CGPointZero)
         btnSubcategory = UIButton(frame: CGRectMake(0, 0, btnCategoty.frame.size.width - 10, btnCategoty.frame.height - 10))
         btnSubcategory.tag = 2
