@@ -243,7 +243,7 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     
     // SIDE BAR DELEGATE
     
-    func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String){
+    func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String, id:Int){
         sideBar.closeSideView()
 
         var dic:Dictionary<String, String> = (sideData.objectAtIndex(button.tag) as Dictionary)
