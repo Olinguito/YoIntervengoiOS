@@ -98,6 +98,9 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     
     // MAP DELEGATE
     
+    
+    
+    
     func tapOnAnnotation(annotation: RMAnnotation!, onMap map: RMMapView!) {
         if annotation.isClusterAnnotation {
             var southwestCoordinate = annotation.coordinate

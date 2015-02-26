@@ -108,7 +108,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         
         var info = Info(index: 2)
         var histo = History(index: 2)
-        var pictures = Pictures(index: 2)
+        var pictures = Pictures(index: 2, frame: self.view.frame, ini: banner.frame.maxY)
         var links = Links(index: 2)
         
         a.addObject(["Info", info])
@@ -117,7 +117,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         a.addObject(["Enlaces",links])
         
         
-        tab = JOTabBar(frame: CGRect(x: 0, y: banner.frame.maxY, width: 320, height: 800), data: a)
+        tab = JOTabBar(frame: CGRect(x: 0, y: banner.frame.maxY, width: self.view.frame.width, height: self.view.frame.height), data: a)
         tab.delegate = self
         self.scroll.addSubview(tab)
         
