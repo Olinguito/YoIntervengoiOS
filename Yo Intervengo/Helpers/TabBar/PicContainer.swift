@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @objc protocol PicContainerDelegate{
-    optional func picTapped(index:NSIndexPath)
+    optional func picTapped(index:Int)
 }
 
 
@@ -58,12 +58,15 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PicContainerCell", forIndexPath: indexPath) as PicContainerCell
         cell.alpha = 0
         cell.layer.cornerRadius = 5
+        cell.imageBtn.addTarget(self, action: Selector("goPicture:"), forControlEvents: UIControlEvents.TouchUpInside)
         return cell
     }
     
     
-    func goReport(sender:UIButton!){
-        //self.delegate?.picTapped(sender.tag)
+    
+    func goPicture(sender:UIButton!){
+        print("Touched")
+        self.delegate?.picTapped!(sender.tag)
     }
     
     func followReport(sender:UIButton!){

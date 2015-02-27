@@ -29,6 +29,9 @@
                 <constraint firstItem="DiZ-pm-VyC" firstAttribute="top" secondItem="BF1-7s-BNV" secondAttribute="top" id="Ph7-gU-P9o"/>
                 <constraint firstItem="DiZ-pm-VyC" firstAttribute="leading" secondItem="BF1-7s-BNV" secondAttribute="leading" id="pGR-cM-sOI"/>
             </constraints>
+            <connections>
+                <outlet property="imageBtn" destination="DiZ-pm-VyC" id="J2d-A8-JsW"/>
+            </connections>
             <point key="canvasLocation" x="91" y="93"/>
         </collectionViewCell>
     </objects>

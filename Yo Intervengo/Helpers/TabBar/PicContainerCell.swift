@@ -9,5 +9,6 @@
 import UIKit
 
 class PicContainerCell: UICollectionViewCell {
+    @IBOutlet weak var imageBtn: UIButton!
     
 }

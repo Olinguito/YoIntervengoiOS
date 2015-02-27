@@ -197,6 +197,8 @@
 		ECCE06E71A6CA54100A35012 /* bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCE06E41A6CA54100A35012 /* bg@3x.png */; };
 		ECCE06E81A6CA54100A35012 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCE06E51A6CA54100A35012 /* bg@2x.png */; };
 		ECCE06E91A6CA54100A35012 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = ECCE06E61A6CA54100A35012 /* bg.png */; };
+		ECD0E9141AA01E54001990D6 /* btnClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0E9121AA01E54001990D6 /* btnClose@2x.png */; };
+		ECD0E9151AA01E54001990D6 /* btnClose.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD0E9131AA01E54001990D6 /* btnClose.png */; };
 		ECDB10F31A8829820099B5EF /* RobotoSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECDB10EF1A8829820099B5EF /* RobotoSlab-Bold.ttf */; };
 		ECDB10F41A8829820099B5EF /* RobotoSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECDB10F01A8829820099B5EF /* RobotoSlab-Light.ttf */; };
 		ECDB10F51A8829820099B5EF /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECDB10F11A8829820099B5EF /* RobotoSlab-Regular.ttf */; };
@@ -441,6 +443,8 @@
 		ECCE06E41A6CA54100A35012 /* bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@3x.png"; sourceTree = "<group>"; };
 		ECCE06E51A6CA54100A35012 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		ECCE06E61A6CA54100A35012 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		ECD0E9121AA01E54001990D6 /* btnClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnClose@2x.png"; sourceTree = "<group>"; };
+		ECD0E9131AA01E54001990D6 /* btnClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnClose.png; sourceTree = "<group>"; };
 		ECDB10EF1A8829820099B5EF /* RobotoSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Bold.ttf"; sourceTree = "<group>"; };
 		ECDB10F01A8829820099B5EF /* RobotoSlab-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Light.ttf"; sourceTree = "<group>"; };
 		ECDB10F11A8829820099B5EF /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Regular.ttf"; sourceTree = "<group>"; };
@@ -727,6 +731,8 @@
 		EC6F29CD1A674D4B00DB09EF /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				ECD0E9121AA01E54001990D6 /* btnClose@2x.png */,
+				ECD0E9131AA01E54001990D6 /* btnClose.png */,
 				ECA7926E1A943971003D0A41 /* SubCategory2_on@2x.png */,
 				ECFAD2141A841F3C00B5652C /* arrow.png */,
 				ECA7926F1A943971003D0A41 /* SubCategory2_on.png */,
@@ -1200,6 +1206,7 @@
 				ECCE06E81A6CA54100A35012 /* bg@2x.png in Resources */,
 				EC3C12301A8A95E1009E82B4 /* like_panel@2x.png in Resources */,
 				ECA7918D1A929BEC003D0A41 /* btn_reporte_vial@2x.png in Resources */,
+				ECD0E9141AA01E54001990D6 /* btnClose@2x.png in Resources */,
 				ECCE06D11A6C524800A35012 /* mas.png in Resources */,
 				ECDB10F61A8829820099B5EF /* RobotoSlab-Thin.ttf in Resources */,
 				ECA7919C1A929BEC003D0A41 /* bg_hist_documento.png in Resources */,
@@ -1287,6 +1294,7 @@
 				ECCE06E31A6CA50400A35012 /* logo@3x.png in Resources */,
 				EC3C12291A8A95E1009E82B4 /* subPin@2x.png in Resources */,
 				EC4A5AB21A7B4327007DD7CB /* btnBack.png in Resources */,
+				ECD0E9151AA01E54001990D6 /* btnClose.png in Resources */,
 				ECCCA5F21A65AF60004C5858 /* Roboto-BoldItalic.ttf in Resources */,
 				EC399E9C1A819DE6003DD89F /* Historial.png in Resources */,
 				ECA791BF1A929BEC003D0A41 /* btn_add_links_tv@2x.png in Resources */,
