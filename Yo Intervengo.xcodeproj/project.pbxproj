@@ -92,6 +92,7 @@
 		EC86D55C1A8D7C6B00B0BFA0 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86D55B1A8D7C6B00B0BFA0 /* ReportVC.swift */; };
 		EC9985BF1A8AB235003E6393 /* Empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9985BD1A8AB235003E6393 /* Empty@2x.png */; };
 		EC9985C01A8AB235003E6393 /* Empty.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9985BE1A8AB235003E6393 /* Empty.png */; };
+		ECA379EE1AA1168B00B134C9 /* btnNewPicture.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA379ED1AA1168B00B134C9 /* btnNewPicture.png */; };
 		ECA791821A929BEC003D0A41 /* btn_reporte_edif.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA791401A929BEC003D0A41 /* btn_reporte_edif.png */; };
 		ECA791831A929BEC003D0A41 /* btn_reporte_edif@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA791411A929BEC003D0A41 /* btn_reporte_edif@2x.png */; };
 		ECA791841A929BEC003D0A41 /* btn_reporte_ma.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA791421A929BEC003D0A41 /* btn_reporte_ma.png */; };
@@ -338,6 +339,7 @@
 		EC86D55B1A8D7C6B00B0BFA0 /* ReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		EC9985BD1A8AB235003E6393 /* Empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Empty@2x.png"; sourceTree = "<group>"; };
 		EC9985BE1A8AB235003E6393 /* Empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Empty.png; sourceTree = "<group>"; };
+		ECA379ED1AA1168B00B134C9 /* btnNewPicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnNewPicture.png; sourceTree = "<group>"; };
 		ECA791401A929BEC003D0A41 /* btn_reporte_edif.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_reporte_edif.png; sourceTree = "<group>"; };
 		ECA791411A929BEC003D0A41 /* btn_reporte_edif@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_reporte_edif@2x.png"; sourceTree = "<group>"; };
 		ECA791421A929BEC003D0A41 /* btn_reporte_ma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_reporte_ma.png; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 		EC6F29CD1A674D4B00DB09EF /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				ECA379ED1AA1168B00B134C9 /* btnNewPicture.png */,
 				ECD0E9121AA01E54001990D6 /* btnClose@2x.png */,
 				ECD0E9131AA01E54001990D6 /* btnClose.png */,
 				ECA7926E1A943971003D0A41 /* SubCategory2_on@2x.png */,
@@ -1283,6 +1286,7 @@
 				ECA791881A929BEC003D0A41 /* btn_reporte_seguridad.png in Resources */,
 				EC399E9B1A819DE6003DD89F /* Fotos@2x.png in Resources */,
 				EC0AF7BD1A62E7CD004F1B6C /* Images.xcassets in Resources */,
+				ECA379EE1AA1168B00B134C9 /* btnNewPicture.png in Resources */,
 				ECFAD21A1A842B5200B5652C /* arrow_2.png in Resources */,
 				EC6F29D91A674D4B00DB09EF /* menu@2x.png in Resources */,
 				EC399E9D1A819DE6003DD89F /* Historial@2x.png in Resources */,
@@ -1543,9 +1547,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Yo Intervengo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Yo Intervengo/Yo Intervengo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1557,9 +1564,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Yo Intervengo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Yo Intervengo/Yo Intervengo-Bridging-Header.h";
 			};
 			name = Release;

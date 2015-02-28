@@ -162,15 +162,24 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     
     func tappedButton(){
         if (buttonHelper?.isDescendantOfView(self.view) != nil){
+            print("sdfsfsdfsdf \(tab.getActHelper().tag)")
             buttonHelper.removeTarget(self, action: Selector("openView:"), forControlEvents: UIControlEvents.TouchUpInside)
+                buttonHelper.setImage(UIImage(named: "btnNewPicture"), forState: UIControlState.Normal)
             buttonHelper.removeFromSuperview()
         }
         //buttonHelper.removeFromSuperview()
         if tab.getActHelper().tag > 0{
+            print("OMGGGGGGG \(tab.getActHelper().tag)")
             buttonHelper = tab.getActHelper()
             buttonHelper.frame = CGRect(x: self.view.frame.maxX-70, y: self.view.frame.maxY-70, width: 70, height: 70)
-            buttonHelper.addTarget(self, action: Selector("openView:" ), forControlEvents: UIControlEvents.TouchUpInside)
-            buttonHelper.setImage(UIImage(named: "linkHelper"), forState: UIControlState.Normal)
+            switch(tab.getActHelper().tag){
+                case 2: buttonHelper.addTarget(self, action: Selector("openView:" ), forControlEvents: UIControlEvents.TouchUpInside)
+                        buttonHelper.setImage(UIImage(named: "linkHelper"), forState: UIControlState.Normal)
+                case 1: buttonHelper.addTarget(self, action: Selector("openView:" ), forControlEvents: UIControlEvents.TouchUpInside)
+                        buttonHelper.setImage(UIImage(named: "btnNewPicture"), forState: UIControlState.Normal)
+            default: print("")
+            }
+            
             self.view.addSubview(buttonHelper)
         }
         scroll.contentSize = CGSize(width: 320, height: tab.frame.maxY - 200)

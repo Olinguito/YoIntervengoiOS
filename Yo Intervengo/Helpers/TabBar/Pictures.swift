@@ -31,7 +31,6 @@ class Pictures: UIView, PicContainerDelegate {
     }
     
     func picTapped(index: Int) {
-        print("Entra aca?")
         view = UIView(frame: frame2)
         view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.85)
         
@@ -72,7 +71,6 @@ class Pictures: UIView, PicContainerDelegate {
         userDate.attributedText = myMutableString
         
         view.addSubview(userDate)
-//        userDate.setAttributedTitle(myMutableString, forState: .Normal)
         
         var close = UIButton(frame: CGRect(x: view.frame.width - 40, y:20, width: 40, height: 40))
         close.setImage(UIImage(named: "btnClose"), forState: UIControlState.Normal)
