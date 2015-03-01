@@ -28,8 +28,20 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     var str2:String!
     var str3:String!
     
-    
     var catId:Int!
+    
+    //STEP 4
+    var localization:CLLocationCoordinate2D!
+    var btnBack:UIButton!
+    var btnContinue:UIButton!
+    var mapLocation:RMMapView!
+    var pinIcon:UIImageView!
+    
+    
+    //STEP 5
+    var txtTitle:UITextField!
+    var txtDesc:UIView!
+    
     
     // MARK: -INIT
     required init(coder aDecoder: NSCoder) {
@@ -52,6 +64,25 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         blurView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
         self.addSubview(blurView)
         self.addSubview(btnClose)
+        
+        btnBack = UIButton(frame: CGRect(x: frame.midX-152, y: 0, width: 142, height: 45))
+        btnBack.layer.borderColor = UIColor(red:0.878, green:0.886, blue:0.894, alpha: 1).CGColor
+        btnBack.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 16)
+        btnBack.layer.borderWidth = 1.0
+        btnBack.layer.cornerRadius = 5
+        btnBack.setTitle("Volver", forState: UIControlState.Normal)
+        btnBack.addTarget(self, action: Selector("goBack:"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.addSubview(btnBack)
+        
+        btnContinue = UIButton(frame: CGRect(x: frame.midX+10, y: 0, width: 142, height: 45))
+        btnContinue.layer.borderColor = UIColor(red:0.878, green:0.886, blue:0.894, alpha: 1).CGColor
+        btnContinue.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 16)
+        btnContinue.layer.borderWidth = 1.0
+        btnContinue.layer.cornerRadius = 5
+        btnContinue.addTarget(self, action: Selector("goContinue:"), forControlEvents: UIControlEvents.TouchUpInside)
+        btnContinue.setTitle("Siguente", forState: UIControlState.Normal)
+        self.addSubview(btnContinue)
+        
     }
     
     func showMenu(step:Int, atPoint point:CGPoint){
@@ -75,12 +106,57 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 var d = NSMutableArray()
                 var t = (self.frame.size.height-450)/2
                 var type = lblIndicator.text == "REPORTE" ? 1 : 0
-                println("ID de la categoria \(catId)")
                 centralData = conn.getSubcategories(catId)
-                
                 this2 = JOCentralMenu(frame: CGRectMake(0, t, 320, 400) , data: centralData, type: type)
                 this2.delegate = self
                 self.insertSubview(this2, belowSubview: btnCategoty)
+        case 4:
+                let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
+                btnBack.frame.origin.y = btnCategoty.frame.minY - 55
+                btnContinue.frame.origin.y = btnCategoty.frame.minY - 55
+                mapLocation = RMMapView(frame: CGRect(x: 15, y: 40, width: self.frame.width - 30, height: btnBack.frame.minY - 70), andTilesource: source)
+                mapLocation.layer.cornerRadius = 10
+                self.addSubview(mapLocation)
+                pinIcon = UIImageView(image: UIImage(named: "Pin"))
+                pinIcon.center = mapLocation.center
+                self.addSubview(pinIcon)
+        case 5:
+                mapLocation.removeFromSuperview()
+                self.step++
+                pinIcon.removeFromSuperview()
+                txtTitle = UITextField(frame: CGRect(x: -1, y: 115, width: self.frame.width+2, height: 49))
+                txtTitle.layer.borderColor = UIColor.whiteColor().CGColor
+                txtTitle.layer.borderWidth = 1
+                txtTitle.textAlignment = NSTextAlignment.Center
+                txtTitle.textColor = UIColor.whiteColor()
+                var placeholder = NSAttributedString(string: "Titulo", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
+                txtTitle.attributedPlaceholder = placeholder
+                txtTitle.tintColor = UIColor.orangeYI()
+                txtTitle.keyboardAppearance = UIKeyboardAppearance.Dark
+                self.addSubview(txtTitle)
+                
+                txtDesc = UIView(frame: CGRect(x: -1, y: txtTitle.frame.maxY, width: self.frame.width+2, height: 120))
+                txtDesc.layer.borderColor = UIColor.whiteColor().CGColor
+                txtDesc.backgroundColor = UIColor.clearColor()
+                txtDesc.layer.borderWidth = 1
+                
+                var tit = UILabel(frame: CGRect(x: 0, y: 10, width: txtDesc.frame.width, height: 15))
+                tit.textColor = UIColor.lightGrayColor()
+                tit.text = "Descripción del reporte"
+                tit.font = UIFont(name: "Roboto-Light", size: 18)
+                tit.textAlignment = NSTextAlignment.Center
+                txtDesc.addSubview(tit)
+                
+                var txtD = UITextView(frame: CGRect(x: 20, y: 38, width: txtDesc.frame.width-40, height: 80))
+                txtD.textColor = UIColor.whiteColor()
+                txtD.backgroundColor = UIColor.clearColor()
+                txtD.keyboardAppearance = UIKeyboardAppearance.Dark
+                txtD.font = UIFont(name: "Roboto-Light", size: 18)
+                txtDesc.addSubview(txtD)
+                
+                self.addSubview(txtDesc)
+        case 6: println("")
+            
         default: println("Default")
         }
     }
@@ -172,8 +248,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         step = 3
         sideBar.closeSideView()
         str2 = label
-
-        print(sideData.objectAtIndex(button.tag))
         catId = id
         showMenu(3, atPoint: CGPointZero)
         btnSubcategory = UIButton(frame: CGRectMake(0, 0, btnCategoty.frame.size.width - 10, btnCategoty.frame.height - 10))
@@ -181,7 +255,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         btnSubcategory.center = btnCategoty.center
         btnSubcategory.setBackgroundImage(button.image, forState: UIControlState.Normal)
         btnSubcategory.addTarget(self, action: Selector("goBack:"), forControlEvents: UIControlEvents.TouchUpInside)
-        //btnSubcategory.setBackgroundImage(UIImage(named: "repo"), forState: UIControlState.Normal)
         self.addSubview(btnSubcategory)
         var pop = POPSpringAnimation(propertyNamed: kPOPViewCenter)
         pop.toValue = NSValue(CGPoint: CGPoint(x: self.frame.size.width-164, y: btnClose.center.y))
@@ -197,9 +270,19 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     
     // MARK: -SUBCATEGORY DELEGATE ::STEP 4
     func buttoTapped(button: UIButton!, withCentralBar sideBar: JOCentralMenu) {
-        println("Creando nuevo reporte")
+        step = 4
+        sideBar.removeFromSuperview()
+        btnBack.tag = 4
+        btnContinue.tag = 4
+        showMenu(4, atPoint: CGPointZero)
     }
     
+    // MARK: -NEXT METHODS
+    
+    func goContinue(sender:UIButton!){
+        sender.tag++
+        showMenu(sender.tag, atPoint: CGPointZero)
+    }
     
     // MARK: -BACK METHODS
     func goBack(sender:UIButton!){
@@ -224,6 +307,12 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 self.showMenu(2, atPoint: CGPointZero)
                 btnSubcategory.removeFromSuperview()
                 this2.removeFromSuperview()
+            case 4:
+                self.showMenu(3, atPoint: CGPointZero)
+                mapLocation.removeFromSuperview()
+                pinIcon.removeFromSuperview()
+            case 5:
+                self.showMenu(4, atPoint: CGPointZero)
             default: println("Default")
         }
         step--
