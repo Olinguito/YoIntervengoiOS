@@ -86,6 +86,7 @@
 		EC77019E1A74047900378515 /* JOaddReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77019D1A74047900378515 /* JOaddReport.swift */; };
 		EC7701A01A7409DA00378515 /* JOSideBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77019F1A7409DA00378515 /* JOSideBarMenu.swift */; };
 		EC7701A21A74169600378515 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7701A11A74169600378515 /* CategoryCell.xib */; };
+		EC85A76B1AA6531C000C8849 /* JSImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC85A76A1AA6531C000C8849 /* JSImagePickerViewController.m */; };
 		EC86D5541A8D685000B0BFA0 /* bgConfPassword@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC86D5501A8D685000B0BFA0 /* bgConfPassword@2x.png */; };
 		EC86D5551A8D685000B0BFA0 /* bgConfPassword.png in Resources */ = {isa = PBXBuildFile; fileRef = EC86D5511A8D685000B0BFA0 /* bgConfPassword.png */; };
 		EC86D5561A8D685000B0BFA0 /* bgUsername@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC86D5521A8D685000B0BFA0 /* bgUsername@2x.png */; };
@@ -234,6 +235,7 @@
 		ECFAD21E1A84421900B5652C /* iconLink.png in Resources */ = {isa = PBXBuildFile; fileRef = ECFAD21C1A84421900B5652C /* iconLink.png */; };
 		ECFAD2261A86BA6100B5652C /* LinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAD2251A86BA6100B5652C /* LinkComponent.swift */; };
 		ECFAD2281A86C9C500B5652C /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFAD2271A86C9C500B5652C /* Panel.swift */; };
+		ECFE122B1AA659940094A0C7 /* ViewYI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE122A1AA659940094A0C7 /* ViewYI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,6 +337,8 @@
 		EC77019F1A7409DA00378515 /* JOSideBarMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOSideBarMenu.swift; sourceTree = "<group>"; };
 		EC7701A11A74169600378515 /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		EC790D171A633D4300900192 /* Yo Intervengo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yo Intervengo-Bridging-Header.h"; sourceTree = "<group>"; };
+		EC85A7691AA6531C000C8849 /* JSImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSImagePickerViewController.h; sourceTree = "<group>"; };
+		EC85A76A1AA6531C000C8849 /* JSImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSImagePickerViewController.m; sourceTree = "<group>"; };
 		EC86D5501A8D685000B0BFA0 /* bgConfPassword@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgConfPassword@2x.png"; sourceTree = "<group>"; };
 		EC86D5511A8D685000B0BFA0 /* bgConfPassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgConfPassword.png; sourceTree = "<group>"; };
 		EC86D5521A8D685000B0BFA0 /* bgUsername@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgUsername@2x.png"; sourceTree = "<group>"; };
@@ -484,6 +488,7 @@
 		ECFAD21C1A84421900B5652C /* iconLink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLink.png; sourceTree = "<group>"; };
 		ECFAD2251A86BA6100B5652C /* LinkComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkComponent.swift; sourceTree = "<group>"; };
 		ECFAD2271A86C9C500B5652C /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		ECFE122A1AA659940094A0C7 /* ViewYI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewYI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -702,6 +707,7 @@
 				EC54A7041A7ACC9A007F6ABF /* Gradient.swift */,
 				ECEC50241A8D1E9400AC5853 /* JOTextField.swift */,
 				ECA791C51A92A0E1003D0A41 /* Connection.swift */,
+				ECFE122A1AA659940094A0C7 /* ViewYI.swift */,
 			);
 			name = Components;
 			path = Helpers/Components;
@@ -836,6 +842,16 @@
 			name = BottomPager;
 			sourceTree = "<group>";
 		};
+		EC85A7681AA6531C000C8849 /* JSImagePickerController Source */ = {
+			isa = PBXGroup;
+			children = (
+				EC85A7691AA6531C000C8849 /* JSImagePickerViewController.h */,
+				EC85A76A1AA6531C000C8849 /* JSImagePickerViewController.m */,
+			);
+			name = "JSImagePickerController Source";
+			path = "Helpers/JSImagePickerController Source";
+			sourceTree = "<group>";
+		};
 		EC86D55A1A8D7C5E00B0BFA0 /* Report */ = {
 			isa = PBXGroup;
 			children = (
@@ -952,6 +968,7 @@
 		ECCCA5DF1A65AE5E004C5858 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EC85A7681AA6531C000C8849 /* JSImagePickerController Source */,
 				EC3C120D1A896EDC009E82B4 /* LinkForm */,
 				EC4A5AB81A7BF11B007DD7CB /* TabBar */,
 				EC54A7031A7ACC9A007F6ABF /* Components */,
@@ -1411,6 +1428,7 @@
 				EC399EA51A828BB4003DD89F /* Info.swift in Sources */,
 				ECEC50231A8D1E1100AC5853 /* SignIn.swift in Sources */,
 				ECCA04061A9D7955002E8FA2 /* PicContainer.swift in Sources */,
+				ECFE122B1AA659940094A0C7 /* ViewYI.swift in Sources */,
 				EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */,
 				EC5FD8EE1A9CF3E5004192A3 /* DetailReportVC.swift in Sources */,
 				EC54A7001A7ACC79007F6ABF /* LayoutPager.m in Sources */,
@@ -1428,6 +1446,7 @@
 				ECA791EA1A92A123003D0A41 /* SQLiteDB.swift in Sources */,
 				EC77019E1A74047900378515 /* JOaddReport.swift in Sources */,
 				EC86D55C1A8D7C6B00B0BFA0 /* ReportVC.swift in Sources */,
+				EC85A76B1AA6531C000C8849 /* JSImagePickerViewController.m in Sources */,
 				EC54A7011A7ACC79007F6ABF /* LayoutHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

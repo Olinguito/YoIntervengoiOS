@@ -13,3 +13,4 @@
 #import "ESDatePicker.h"
 #import "sqlite3.h"
 #import <time.h>
+#import "JSImagePickerViewController.h"

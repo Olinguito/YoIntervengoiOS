@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate,UIImagePickerControllerDelegate {
+class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate,JSImagePickerViewControllerDelegate {
     // MARK: -VAR DEFFINITION\
     var step = 0
     let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
@@ -47,6 +47,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     var imgReport:UIImageView!
     var btnAddImage:UIButton!
     
+    var type:Int!
     
     // MARK: -INIT
     required init(coder aDecoder: NSCoder) {
@@ -110,7 +111,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         case 3:
                 var d = NSMutableArray()
                 var t = (self.frame.size.height-450)/2
-                var type = lblIndicator.text == "REPORTE" ? 1 : 0
+                type = lblIndicator.text == "REPORTE" ? 1 : 0
                 centralData = conn.getSubcategories(catId)
                 this2 = JOCentralMenu(frame: CGRectMake(0, t, 320, 400) , data: centralData, type: type)
                 this2.delegate = self
@@ -166,6 +167,8 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 txtDesc.removeFromSuperview()
             
                 imgReport = UIImageView(frame: CGRect(x: -1, y: (btnBack.frame.minY - 221)/2, width: self.frame.width+2, height: 221))
+                imgReport.contentMode = UIViewContentMode.ScaleAspectFill
+                imgReport.layer.masksToBounds = true
                 imgReport.layer.borderColor = UIColor.whiteColor().CGColor
                 imgReport.layer.borderWidth = 1
             
@@ -174,6 +177,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 btnAddImage = UIButton(frame: CGRect(x: 0, y: 0, width: 95, height: 94))
                 btnAddImage.setImage(UIImage(named: "btnAddPic"), forState: UIControlState.Normal)
                 btnAddImage.center = imgReport.center
+                btnAddImage.addTarget(self, action: Selector("openCamera:") , forControlEvents: UIControlEvents.TouchUpInside)
                 self.addSubview(btnAddImage)
             
             
@@ -297,6 +301,36 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         btnContinue.tag = 4
         showMenu(4, atPoint: CGPointZero)
     }
+    
+    // MARK: -CAMERA DELEGATE ::STEP 4
+    func openCamera(sender:UIButton!){
+        /*JSImagePickerViewController *imagePicker = [[JSImagePickerViewController alloc] init];
+        imagePicker.delegate = self;
+        [imagePicker showImagePickerInController:self animated:YES];*/
+        
+        var imagePicker = JSImagePickerViewController()
+        imagePicker.delegate = self
+        imagePicker.showImagePickerInController(self.parentViewController(), animated: true)
+        
+        
+    }
+    
+    func imagePickerDidSelectImage(image: UIImage!) {
+        imgReport.image = image
+        
+        if type == 1 {
+            btnContinue.setTitle("Crear Reporte", forState: UIControlState.Normal)
+            btnContinue.backgroundColor = UIColor.orangeYI()
+        }else{
+            btnContinue.setTitle("Crear Solicitud", forState: UIControlState.Normal)
+            btnContinue.backgroundColor = UIColor.blurYI()
+        }
+        
+        
+
+        btnContinue.layer.borderColor = UIColor.clearColor().CGColor
+    }
+    
     
     // MARK: -NEXT METHODS
     
