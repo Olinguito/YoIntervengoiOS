@@ -46,7 +46,6 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     //COLLECTION VIEW DELEGATE
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return data.count
         return data.count
     }
     

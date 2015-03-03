@@ -8,8 +8,8 @@
 
 import UIKit
 
-class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate {
-    // MARK: -VAR DEFFINITION
+class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate,UIImagePickerControllerDelegate {
+    // MARK: -VAR DEFFINITION\
     var step = 0
     let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
     var btnClose:UIButton!
@@ -41,6 +41,11 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     //STEP 5
     var txtTitle:UITextField!
     var txtDesc:UIView!
+    
+    
+    //STEP 6
+    var imgReport:UIImageView!
+    var btnAddImage:UIButton!
     
     
     // MARK: -INIT
@@ -155,7 +160,23 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 txtDesc.addSubview(txtD)
                 
                 self.addSubview(txtDesc)
-        case 6: println("")
+        case 6:
+                self.step++
+                txtTitle.removeFromSuperview()
+                txtDesc.removeFromSuperview()
+            
+                imgReport = UIImageView(frame: CGRect(x: -1, y: (btnBack.frame.minY - 221)/2, width: self.frame.width+2, height: 221))
+                imgReport.layer.borderColor = UIColor.whiteColor().CGColor
+                imgReport.layer.borderWidth = 1
+            
+                self.addSubview(imgReport)
+                    //UIImageView(image: UIImage(named: "btnAddPic"))
+                btnAddImage = UIButton(frame: CGRect(x: 0, y: 0, width: 95, height: 94))
+                btnAddImage.setImage(UIImage(named: "btnAddPic"), forState: UIControlState.Normal)
+                btnAddImage.center = imgReport.center
+                self.addSubview(btnAddImage)
+            
+            
             
         default: println("Default")
         }
