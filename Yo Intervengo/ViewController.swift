@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
+class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,JOaddReportDelegate {
     weak var map: RMMapView!
     var openedReport:Bool = false
     var animator:UIDynamicAnimator!
@@ -97,10 +97,6 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
 
     
     // MAP DELEGATE
-    
-    
-    
-    
     func tapOnAnnotation(annotation: RMAnnotation!, onMap map: RMMapView!) {
         if annotation.isClusterAnnotation {
             var southwestCoordinate = annotation.coordinate
@@ -129,8 +125,9 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
             thisMenu.radialMenuIdentifier = "hide"
 
             thisMenu.showMenu()*/
-        var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport, labels: 0)
+        var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport, labels: 0, coodinate: map.pixelToCoordinate(point))
             //self.view.insertSubview(thisMenu, belowSubview: btnReport)
+            thisMenu.delegate = self
             self.view.addSubview(thisMenu)
             thisMenu.showMenu(1, atPoint: point)
             
@@ -203,7 +200,8 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
     @IBAction func search(sender: AnyObject) {
     }
     @IBAction func newReport(sender: AnyObject) {        
-        var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport, labels: 1)
+        var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport, labels: 1, coodinate: map.userLocation.coordinate)
+        thisMenu.delegate = self
         //self.view.insertSubview(thisMenu, belowSubview: btnReport)
         self.view.addSubview(thisMenu)
         thisMenu.showMenu(1, atPoint: sender.center)
@@ -220,5 +218,14 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate {
         view2.center = map.userLocation.coordinate
         self.showViewController(view2, sender: self)
     }
+    
+    
+    
+    func reportCreated(location:CLLocationCoordinate2D, type:Int){
+        var newANN = RMAnnotation(mapView: map, coordinate: location, andTitle:"0")
+        newANN.userInfo = type == 1 ? "Pin" : "Pin2"
+        map.addAnnotation(newANN)
+    }
+    
 }
 

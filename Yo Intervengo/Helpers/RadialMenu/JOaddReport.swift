@@ -8,8 +8,14 @@
 
 import UIKit
 
-class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate,JSImagePickerViewControllerDelegate {
+@objc protocol JOaddReportDelegate{
+    func reportCreated(location:CLLocationCoordinate2D, type:Int)
+}
+
+class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate,JSImagePickerViewControllerDelegate,UITextFieldDelegate {
     // MARK: -VAR DEFFINITION\
+    var delegate:JOaddReportDelegate!
+    
     var step = 0
     let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
     var btnClose:UIButton!
@@ -54,10 +60,10 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect, bttnClose:UIButton, labels:Int) {
+    init(frame: CGRect, bttnClose:UIButton, labels:Int, coodinate:CLLocationCoordinate2D) {
         super.init(frame: frame)
         step = 1
-        
+        localization = coodinate
         btnClose = UIButton(frame: bttnClose.frame)
         btnClose.center = bttnClose.center
         self.labels = labels
@@ -76,8 +82,10 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         btnBack.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 16)
         btnBack.layer.borderWidth = 1.0
         btnBack.layer.cornerRadius = 5
+        btnBack.alpha = 0
         btnBack.setTitle("Volver", forState: UIControlState.Normal)
         btnBack.addTarget(self, action: Selector("goBack:"), forControlEvents: UIControlEvents.TouchUpInside)
+        btnBack.userInteractionEnabled = false
         self.addSubview(btnBack)
         
         btnContinue = UIButton(frame: CGRect(x: frame.midX+10, y: 0, width: 142, height: 45))
@@ -87,11 +95,28 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         btnContinue.layer.cornerRadius = 5
         btnContinue.addTarget(self, action: Selector("goContinue:"), forControlEvents: UIControlEvents.TouchUpInside)
         btnContinue.setTitle("Siguente", forState: UIControlState.Normal)
+        btnContinue.alpha = 0
+        btnContinue.userInteractionEnabled = false
         self.addSubview(btnContinue)
         
     }
     
+    func setButtons(step:Int){
+        if step < 4 {
+            btnContinue.alpha = 0
+            btnContinue.userInteractionEnabled = false
+            btnBack.alpha = 0
+            btnBack.userInteractionEnabled = false
+        }else{
+            btnContinue.alpha = 1
+            btnContinue.userInteractionEnabled = true
+            btnBack.alpha = 1
+            btnBack.userInteractionEnabled = true
+        }
+    }
+    
     func showMenu(step:Int, atPoint point:CGPoint){
+        setButtons(step)
         switch (step){
         case 1:
             var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
@@ -121,9 +146,14 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 btnBack.frame.origin.y = btnCategoty.frame.minY - 55
                 btnContinue.frame.origin.y = btnCategoty.frame.minY - 55
                 mapLocation = RMMapView(frame: CGRect(x: 15, y: 40, width: self.frame.width - 30, height: btnBack.frame.minY - 70), andTilesource: source)
+                mapLocation.centerCoordinate = localization
                 mapLocation.layer.cornerRadius = 10
                 self.addSubview(mapLocation)
-                pinIcon = UIImageView(image: UIImage(named: "Pin"))
+                if type == 1{
+                    pinIcon = UIImageView(image: UIImage(named: "Pin"))
+                }else{
+                    pinIcon = UIImageView(image: UIImage(named: "Pin2"))
+                }
                 pinIcon.center = mapLocation.center
                 self.addSubview(pinIcon)
         case 5:
@@ -133,6 +163,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 txtTitle = UITextField(frame: CGRect(x: -1, y: 115, width: self.frame.width+2, height: 49))
                 txtTitle.layer.borderColor = UIColor.whiteColor().CGColor
                 txtTitle.layer.borderWidth = 1
+                txtTitle.delegate = self
                 txtTitle.textAlignment = NSTextAlignment.Center
                 txtTitle.textColor = UIColor.whiteColor()
                 var placeholder = NSAttributedString(string: "Titulo", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
@@ -165,7 +196,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 self.step++
                 txtTitle.removeFromSuperview()
                 txtDesc.removeFromSuperview()
-            
                 imgReport = UIImageView(frame: CGRect(x: -1, y: (btnBack.frame.minY - 221)/2, width: self.frame.width+2, height: 221))
                 imgReport.contentMode = UIViewContentMode.ScaleAspectFill
                 imgReport.layer.masksToBounds = true
@@ -173,15 +203,16 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 imgReport.layer.borderWidth = 1
             
                 self.addSubview(imgReport)
-                    //UIImageView(image: UIImage(named: "btnAddPic"))
                 btnAddImage = UIButton(frame: CGRect(x: 0, y: 0, width: 95, height: 94))
                 btnAddImage.setImage(UIImage(named: "btnAddPic"), forState: UIControlState.Normal)
                 btnAddImage.center = imgReport.center
                 btnAddImage.addTarget(self, action: Selector("openCamera:") , forControlEvents: UIControlEvents.TouchUpInside)
                 self.addSubview(btnAddImage)
-            
-            
-            
+        case 7:
+                println("ETRA?")
+                delegate.reportCreated(localization, type: type)
+                println("ETRA?")
+                self.removeFromSuperview()
         default: println("Default")
         }
     }
@@ -403,5 +434,8 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         })
     }
     
-    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

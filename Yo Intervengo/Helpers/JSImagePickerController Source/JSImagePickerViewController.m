@@ -67,7 +67,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.imagePickerFrame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-imagePickerHeight, [UIScreen mainScreen].bounds.size.width, imagePickerHeight);
     self.hiddenFrame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, imagePickerHeight);
     self.imagePickerView = [[UIView alloc] initWithFrame:self.hiddenFrame];
-    self.imagePickerView.backgroundColor = [UIColor whiteColor];
+    self.imagePickerView.backgroundColor =  [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:0.95];
     
     
     
@@ -87,7 +87,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.imagePickerView.frame.size.width, 50)];
     [btn setTitle:@"Hello!" forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(setDefaults) forControlEvents:UIControlEventTouchUpInside];
     
     [self.imagePickerView addSubview:btn];
@@ -107,43 +107,49 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
     [aFlowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     self.collectionView = [[UICollectionView alloc] initWithFrame:collectionViewFrame collectionViewLayout:aFlowLayout];
-    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    [self.collectionView setBackgroundColor:[UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:0.95]];
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerClass:[JSPhotoCell class] forCellWithReuseIdentifier:@"Cell"];
     
-    UIFont *btnFont = [UIFont systemFontOfSize:19.0];
+    UIFont *btnFont = [UIFont fontWithName:@"Roboto-Light" size:18];
     
     self.photoLibraryBtn = [[UIButton alloc] initWithFrame:libraryBtnFrame];
     [self.photoLibraryBtn setTitle:@"Photo Library" forState:UIControlStateNormal];
     self.photoLibraryBtn.titleLabel.font = btnFont;
+    self.photoLibraryBtn.tintColor = [UIColor whiteColor];
+    [self.photoLibraryBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.photoLibraryBtn addTarget:self action:@selector(selectFromLibraryWasPressed) forControlEvents:UIControlEventTouchUpInside];
     
     self.cameraBtn = [[UIButton alloc] initWithFrame:cameraBtnFrame];
     [self.cameraBtn setTitle:@"Take Photo" forState:UIControlStateNormal];
     self.cameraBtn.titleLabel.font = btnFont;
+    self.cameraBtn.tintColor = [UIColor whiteColor];
+    [self.cameraBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.cameraBtn addTarget:self action:@selector(takePhotoWasPressed) forControlEvents:UIControlEventTouchUpInside];
     
     self.cancelBtn = [[UIButton alloc] initWithFrame:cancelBtnFrame];
     [self.cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
     self.cancelBtn.titleLabel.font = btnFont;
+    self.cancelBtn.tintColor = [UIColor whiteColor];
+    [self.cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.cancelBtn addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     
-    for (UIButton *btn in @[self.photoLibraryBtn, self.cameraBtn, self.cancelBtn]) {
+    /*for (UIButton *btn in @[self.photoLibraryBtn, self.cameraBtn, self.cancelBtn]) {
         [btn setTitleColor:UIColorFromRGB(0x0b60fe) forState:UIControlStateNormal];
         [btn setTitleColor:UIColorFromRGB(0x70B3FD) forState:UIControlStateHighlighted];
-    }
+    }*/
     
     UIView *separator1 = [[UIView alloc] initWithFrame:CGRectMake(0, 140, screenWidth, 1)];
     separator1.backgroundColor = UIColorFromRGB(0xDDDDDD);
     [self.imagePickerView addSubview:separator1];
     
-    UIView *separator2 = [[UIView alloc] initWithFrame:CGRectMake(25, 187, screenWidth-25, 1)];
+    UIView *separator2 = [[UIView alloc] initWithFrame:CGRectMake(10, 187, screenWidth-20, 1)];
     separator2.backgroundColor = UIColorFromRGB(0xDDDDDD);
     [self.imagePickerView addSubview:separator2];
-    UIView *separator3 = [[UIView alloc] initWithFrame:CGRectMake(25, 234, screenWidth-25, 1)];
+    UIView *separator3 = [[UIView alloc] initWithFrame:CGRectMake(10, 234, screenWidth-20, 1)];
     separator3.backgroundColor = UIColorFromRGB(0xDDDDDD);
     [self.imagePickerView addSubview:separator3];
     
