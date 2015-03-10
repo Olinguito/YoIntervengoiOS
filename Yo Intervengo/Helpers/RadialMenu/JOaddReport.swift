@@ -209,9 +209,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 btnAddImage.addTarget(self, action: Selector("openCamera:") , forControlEvents: UIControlEvents.TouchUpInside)
                 self.addSubview(btnAddImage)
         case 7:
-                println("ETRA?")
                 delegate.reportCreated(localization, type: type)
-                println("ETRA?")
                 self.removeFromSuperview()
         default: println("Default")
         }

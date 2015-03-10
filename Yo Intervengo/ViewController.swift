@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,JOaddReportDelegate {
+class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegate,JOaddReportDelegate {
     weak var map: RMMapView!
     var openedReport:Bool = false
     var animator:UIDynamicAnimator!
@@ -17,9 +17,7 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,JOa
     var initLoc: CGPoint!
     var menuView: LeftMenu!
     var test: BottomPager!
-    var loc:[RMAnnotation]! = []
-
-    
+    var loc:[RMAnnotation]! = []    
 
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var btnMenu: UIButton!
@@ -29,6 +27,8 @@ class ViewController: UIViewController,RMMapViewDelegate,BottomPagerDelegate,JOa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        APIManagerClass.getReports()
         //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")

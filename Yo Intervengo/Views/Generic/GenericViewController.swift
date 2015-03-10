@@ -10,9 +10,13 @@ import UIKit
 
 class GenericViewController: UIViewController {
     var conn:Connection!
+    var APIManagerClass:APIManager!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        APIManagerClass = APIManager()
+        
     }
 
     override func didReceiveMemoryWarning() {

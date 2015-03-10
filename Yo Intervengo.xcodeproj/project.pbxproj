@@ -86,6 +86,7 @@
 		EC77019E1A74047900378515 /* JOaddReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77019D1A74047900378515 /* JOaddReport.swift */; };
 		EC7701A01A7409DA00378515 /* JOSideBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77019F1A7409DA00378515 /* JOSideBarMenu.swift */; };
 		EC7701A21A74169600378515 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7701A11A74169600378515 /* CategoryCell.xib */; };
+		EC7D45451AAF7BE800C27833 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7D45441AAF7BE800C27833 /* APIManager.swift */; };
 		EC85A76B1AA6531C000C8849 /* JSImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC85A76A1AA6531C000C8849 /* JSImagePickerViewController.m */; };
 		EC86D5541A8D685000B0BFA0 /* bgConfPassword@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC86D5501A8D685000B0BFA0 /* bgConfPassword@2x.png */; };
 		EC86D5551A8D685000B0BFA0 /* bgConfPassword.png in Resources */ = {isa = PBXBuildFile; fileRef = EC86D5511A8D685000B0BFA0 /* bgConfPassword.png */; };
@@ -337,6 +338,7 @@
 		EC77019F1A7409DA00378515 /* JOSideBarMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOSideBarMenu.swift; sourceTree = "<group>"; };
 		EC7701A11A74169600378515 /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		EC790D171A633D4300900192 /* Yo Intervengo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yo Intervengo-Bridging-Header.h"; sourceTree = "<group>"; };
+		EC7D45441AAF7BE800C27833 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		EC85A7691AA6531C000C8849 /* JSImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSImagePickerViewController.h; sourceTree = "<group>"; };
 		EC85A76A1AA6531C000C8849 /* JSImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSImagePickerViewController.m; sourceTree = "<group>"; };
 		EC86D5501A8D685000B0BFA0 /* bgConfPassword@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgConfPassword@2x.png"; sourceTree = "<group>"; };
@@ -842,6 +844,15 @@
 			name = BottomPager;
 			sourceTree = "<group>";
 		};
+		EC7D45431AAF7BBD00C27833 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				EC7D45441AAF7BE800C27833 /* APIManager.swift */,
+			);
+			name = API;
+			path = Helpers/API;
+			sourceTree = "<group>";
+		};
 		EC85A7681AA6531C000C8849 /* JSImagePickerController Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -968,6 +979,7 @@
 		ECCCA5DF1A65AE5E004C5858 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EC7D45431AAF7BBD00C27833 /* API */,
 				EC85A7681AA6531C000C8849 /* JSImagePickerController Source */,
 				EC3C120D1A896EDC009E82B4 /* LinkForm */,
 				EC4A5AB81A7BF11B007DD7CB /* TabBar */,
@@ -1446,6 +1458,7 @@
 				ECA791EA1A92A123003D0A41 /* SQLiteDB.swift in Sources */,
 				EC77019E1A74047900378515 /* JOaddReport.swift in Sources */,
 				EC86D55C1A8D7C6B00B0BFA0 /* ReportVC.swift in Sources */,
+				EC7D45451AAF7BE800C27833 /* APIManager.swift in Sources */,
 				EC85A76B1AA6531C000C8849 /* JSImagePickerViewController.m in Sources */,
 				EC54A7011A7ACC79007F6ABF /* LayoutHelper.swift in Sources */,
 			);
