@@ -60,6 +60,8 @@ typedef enum : NSUInteger {
 
 /** @name Creating Tile Sources */
 
+- (id)init DEPRECATED_MSG_ATTRIBUTE("please use an explicit map ID, URL, or TileJSON string.");
+
 /** Initialize a tile source using the Mapbox map ID.
 *
 *   This method requires a network connection in order to download the TileJSON used to define the tile source. 
@@ -138,6 +140,8 @@ typedef enum : NSUInteger {
 *
 *   Note that you may want to clear the tile cache after changing this value in order to provide a consistent experience. */
 @property (nonatomic, assign) RMMapboxSourceQuality imageQuality;
+
++ (BOOL)isUsingLargeTiles;
 
 #if OS_OBJECT_USE_OBJC
 @property (nonatomic, readonly, strong) dispatch_queue_t dataQueue;

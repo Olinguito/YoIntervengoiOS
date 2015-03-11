@@ -34,6 +34,8 @@
 #import "RMConfiguration.h"
 #import "RMTileSource.h"
 
+#import "RMAbstractWebMapSource.h"
+
 #import "RMTileCacheDownloadOperation.h"
 
 @interface RMTileCache (Configuration)
@@ -76,7 +78,7 @@
     _activeTileSource = nil;
     _backgroundFetchQueue = nil;
 
-    id cacheCfg = [[RMConfiguration configuration] cacheConfiguration];
+    id cacheCfg = [[RMConfiguration sharedInstance] cacheConfiguration];
     if (!cacheCfg)
         cacheCfg = [NSArray arrayWithObjects:
                     [NSDictionary dictionaryWithObject: @"memory-cache" forKey: @"type"],
@@ -131,6 +133,10 @@
          _memoryCache = nil;
          _tileCaches = nil;
     });
+    
+#if ! OS_OBJECT_USE_OBJC
+    dispatch_release(_tileCacheQueue);
+#endif
 }
 
 - (void)addCache:(id <RMTileCache>)cache
@@ -160,10 +166,17 @@
 	return [NSNumber numberWithUnsignedLongLong:RMTileKey(tile)];
 }
 
-// Returns the cached image if it exists. nil otherwise.
 - (UIImage *)cachedImage:(RMTile)tile withCacheKey:(NSString *)aCacheKey
 {
-    __block UIImage *image = [_memoryCache cachedImage:tile withCacheKey:aCacheKey];
+    return [self cachedImage:tile withCacheKey:aCacheKey bypassingMemoryCache:NO];
+}
+
+- (UIImage *)cachedImage:(RMTile)tile withCacheKey:(NSString *)aCacheKey bypassingMemoryCache:(BOOL)shouldBypassMemoryCache
+{
+    __block UIImage *image = nil;
+
+    if (!shouldBypassMemoryCache)
+        image = [_memoryCache cachedImage:tile withCacheKey:aCacheKey];
 
     if (image)
         return image;
@@ -174,7 +187,7 @@
         {
             image = [cache cachedImage:tile withCacheKey:aCacheKey];
 
-            if (image != nil)
+            if (image != nil && !shouldBypassMemoryCache)
             {
                 [_memoryCache addImage:image forTile:tile withCacheKey:aCacheKey];
                 break;
@@ -183,7 +196,7 @@
 
     });
 
-	return image;
+    return image;
 }
 
 - (void)addImage:(UIImage *)image forTile:(RMTile)tile withCacheKey:(NSString *)aCacheKey
@@ -199,6 +212,22 @@
         {	
             if ([cache respondsToSelector:@selector(addImage:forTile:withCacheKey:)])
                 [cache addImage:image forTile:tile withCacheKey:aCacheKey];
+        }
+
+    });
+}
+
+- (void)addDiskCachedImageData:(NSData *)data forTile:(RMTile)tile withCacheKey:(NSString *)aCacheKey
+{
+    if (!data || !aCacheKey)
+        return;
+
+    dispatch_sync(_tileCacheQueue, ^{
+
+        for (id <RMTileCache> cache in _tileCaches)
+        {
+            if ([cache respondsToSelector:@selector(addDiskCachedImageData:forTile:withCacheKey:)])
+                [cache addDiskCachedImageData:data forTile:tile withCacheKey:aCacheKey];
         }
 
     });
@@ -252,6 +281,16 @@
     return (_activeTileSource || _backgroundFetchQueue);
 }
 
+- (BOOL)markCachingComplete
+{
+    BOOL incomplete = (_activeTileSource || _backgroundFetchQueue);
+
+    _activeTileSource = nil;
+    _backgroundFetchQueue = nil;
+
+    return incomplete;
+}
+
 - (NSUInteger)tileCountForSouthWest:(CLLocationCoordinate2D)southWest northEast:(CLLocationCoordinate2D)northEast minZoom:(NSUInteger)minZoom maxZoom:(NSUInteger)maxZoom
 {
     NSUInteger minCacheZoom = minZoom;
@@ -289,10 +328,16 @@
     if (self.isBackgroundCaching)
         return;
 
+    NSAssert([tileSource isKindOfClass:[RMAbstractWebMapSource class]], @"only web-based tile sources are supported for downloading");
+
     _activeTileSource = tileSource;
 
-    _backgroundFetchQueue = [[NSOperationQueue alloc] init];
+    _backgroundFetchQueue = [NSOperationQueue new];
     [_backgroundFetchQueue setMaxConcurrentOperationCount:6];
+    if ([_backgroundFetchQueue respondsToSelector:@selector(setQualityOfService:)])
+    {
+        [_backgroundFetchQueue setQualityOfService:NSQualityOfServiceUtility];
+    }
 
     NSUInteger totalTiles = [self tileCountForSouthWest:southWest northEast:northEast minZoom:minZoom maxZoom:maxZoom];
 
@@ -305,7 +350,11 @@
     CLLocationDegrees maxCacheLon = northEast.longitude;
 
     if ([_backgroundCacheDelegate respondsToSelector:@selector(tileCache:didBeginBackgroundCacheWithCount:forTileSource:)])
-        [_backgroundCacheDelegate tileCache:self didBeginBackgroundCacheWithCount:totalTiles forTileSource:_activeTileSource];
+    {
+        [_backgroundCacheDelegate tileCache:self
+           didBeginBackgroundCacheWithCount:totalTiles
+                              forTileSource:_activeTileSource];
+    }
 
     NSUInteger n, xMin, yMax, xMax, yMin;
 
@@ -323,73 +372,77 @@
         {
             for (NSUInteger y = yMin; y <= yMax; y++)
             {
-                RMTileCacheDownloadOperation *operation = [[RMTileCacheDownloadOperation alloc] initWithTile:RMTileMake(x, y, zoom)
+                RMTileCacheDownloadOperation *operation = [[RMTileCacheDownloadOperation alloc] initWithTile:RMTileMake((uint32_t)x, (uint32_t)y, zoom)
                                                                                                 forTileSource:_activeTileSource
                                                                                                    usingCache:self];
 
-                __block RMTileCacheDownloadOperation *internalOperation = operation;
+                __weak RMTileCacheDownloadOperation *internalOperation = operation;
+                __weak RMTileCache *weakSelf = self;
 
                 [operation setCompletionBlock:^(void)
                 {
-                    dispatch_sync(dispatch_get_main_queue(), ^(void)
+                    if ( ! [internalOperation isCancelled])
                     {
-                        if ( ! [internalOperation isCancelled])
+                        progTile++;
+
+                        if ([_backgroundCacheDelegate respondsToSelector:@selector(tileCache:didBackgroundCacheTile:withIndex:ofTotalTileCount:)])
                         {
-                            progTile++;
-
-                            if ([_backgroundCacheDelegate respondsToSelector:@selector(tileCache:didBackgroundCacheTile:withIndex:ofTotalTileCount:)])
-                                [_backgroundCacheDelegate tileCache:self didBackgroundCacheTile:RMTileMake(x, y, zoom) withIndex:progTile ofTotalTileCount:totalTiles];
-
-                            if (progTile == totalTiles)
-                            {
-                                 _backgroundFetchQueue = nil;
-
-                                 _activeTileSource = nil;
-
-                                if ([_backgroundCacheDelegate respondsToSelector:@selector(tileCacheDidFinishBackgroundCache:)])
-                                    [_backgroundCacheDelegate tileCacheDidFinishBackgroundCache:self];
-                            }
+                            [_backgroundCacheDelegate tileCache:weakSelf
+                                         didBackgroundCacheTile:RMTileMake((uint32_t)x, (uint32_t)y, zoom)
+                                                      withIndex:progTile
+                                               ofTotalTileCount:totalTiles];
                         }
 
-                        internalOperation = nil;
-                    });
+                        if (progTile == totalTiles)
+                        {
+                            dispatch_async(dispatch_get_main_queue(), ^(void)
+                            {
+                                [weakSelf markCachingComplete];
+
+                                if ([_backgroundCacheDelegate respondsToSelector:@selector(tileCacheDidFinishBackgroundCache:)])
+                                {
+                                    [_backgroundCacheDelegate tileCacheDidFinishBackgroundCache:weakSelf];
+                                }
+                            });
+                        }
+                    }
+                    else
+                    {
+                        if ([_backgroundCacheDelegate respondsToSelector:@selector(tileCache:didReceiveError:whenCachingTile:)])
+                        {
+                            [_backgroundCacheDelegate tileCache:weakSelf
+                                                didReceiveError:internalOperation.error
+                                                whenCachingTile:RMTileMake((uint32_t)x, (uint32_t)y, zoom)];
+                        }
+                    }
                 }];
 
                 [_backgroundFetchQueue addOperation:operation];
             }
         }
-    };
+    }
 }
 
 - (void)cancelBackgroundCache
 {
+    __weak NSOperationQueue *weakBackgroundFetchQueue = _backgroundFetchQueue;
+    __weak RMTileCache *weakSelf = self;
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
     {
-        @synchronized (self)
+        dispatch_sync(dispatch_get_main_queue(), ^(void)
         {
-            BOOL didCancel = NO;
+            [weakBackgroundFetchQueue cancelAllOperations];
+            [weakBackgroundFetchQueue waitUntilAllOperationsAreFinished];
 
-            if (_backgroundFetchQueue)
+            if ([weakSelf markCachingComplete])
             {
-                [_backgroundFetchQueue cancelAllOperations];
-                [_backgroundFetchQueue waitUntilAllOperationsAreFinished];
-                 _backgroundFetchQueue = nil;
-
-                didCancel = YES;
-            }
-
-            if (_activeTileSource)
-                 _activeTileSource = nil;
-
-            if (didCancel)
-            {
-                dispatch_sync(dispatch_get_main_queue(), ^(void)
+                if ([_backgroundCacheDelegate respondsToSelector:@selector(tileCacheDidCancelBackgroundCache:)])
                 {
-                    if ([_backgroundCacheDelegate respondsToSelector:@selector(tileCacheDidCancelBackgroundCache:)])
-                        [_backgroundCacheDelegate tileCacheDidCancelBackgroundCache:self];
-                });
+                    [_backgroundCacheDelegate tileCacheDidCancelBackgroundCache:weakSelf];
+                }
             }
-        }
+        });
     });
 }
 
@@ -471,8 +524,6 @@ static NSMutableDictionary *predicateValues = nil;
                 capacity = [capacityNumber unsignedIntegerValue];
         }
     }
-
-    RMLog(@"Memory cache configuration: {capacity : %lu}", (unsigned long)capacity);
 
 	return [[RMMemoryCache alloc] initWithCapacity:capacity];
 }
@@ -571,8 +622,6 @@ static NSMutableDictionary *predicateValues = nil;
 
     if (expiryPeriodNumber != nil)
         _expiryPeriod = [expiryPeriodNumber doubleValue];
-
-    RMLog(@"Database cache configuration: {capacity : %lu, strategy : %@, minimalPurge : %lu, expiryPeriod: %.0f, useCacheDir : %@}", (unsigned long)capacity, strategyStr, (unsigned long)minimalPurge, _expiryPeriod, useCacheDir ? @"YES" : @"NO");
 
     RMDatabaseCache *dbCache = [[RMDatabaseCache alloc] initUsingCacheDir:useCacheDir];
     [dbCache setCapacity:capacity];

@@ -1,6 +1,9 @@
 # ESDateHelper
+
+[![Build](https://travis-ci.org/e-sites/ESDateHelper.svg)](https://travis-ci.org/e-sites/ESDateHelper)
 [![Platform](https://cocoapod-badges.herokuapp.com/p/ESDateHelper/badge.png)](http://cocoadocs.org/docsets/ESDateHelper)
 [![Version](https://cocoapod-badges.herokuapp.com/v/ESDateHelper/badge.png)](http://cocoadocs.org/docsets/ESDateHelper)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 Helper category for making the usage of NSDates easier
 
