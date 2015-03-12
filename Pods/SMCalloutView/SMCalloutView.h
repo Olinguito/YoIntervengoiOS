@@ -1,4 +1,4 @@
-    #import <UIKit/UIKit.h>
+#import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
 /*
@@ -39,7 +39,7 @@ extern NSTimeInterval kSMCalloutViewRepositionDelayForUIScrollView;
 
 @property (nonatomic, unsafe_unretained) id<SMCalloutViewDelegate> delegate;
 @property (nonatomic, copy) NSString *title, *subtitle; // title/titleView relationship mimics UINavigationBar.
-@property (nonatomic, retain) UIView *leftAccessoryView, *rightAccessoryView, *topAccessoryView, *bottomAccessoryView;
+@property (nonatomic, retain) UIView *leftAccessoryView, *rightAccessoryView;
 @property (nonatomic, assign) SMCalloutArrowDirection permittedArrowDirection; // default SMCalloutArrowDirectionDown
 @property (nonatomic, readonly) SMCalloutArrowDirection currentArrowDirection;
 @property (nonatomic, assign) UIEdgeInsets constrainedInsets; // if the UIView you're constraining to has portions that are overlapped by nav bar, tab bar, etc. you'll need to tell us those insets.

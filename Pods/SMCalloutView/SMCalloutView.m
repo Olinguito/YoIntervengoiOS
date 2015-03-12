@@ -15,17 +15,17 @@
 // Callout View.
 //
 
-#define CALLOUT_DEFAULT_HEIGHT 115 // fixed height of system callout; ours can be any height when contentView is set
-#define CALLOUT_DEFAULT_CONTAINER_HEIGHT 115 // height of just the main portion without arrow
-#define CALLOUT_MIN_WIDTH 269 // minimum width of system callout
-#define TITLE_HMARGIN 0 // the title/subtitle view's normal horizontal margin from the edges of our callout view or from the accessories
-#define TITLE_TOP 0 // the top of the title view when no subtitle is present
-#define TITLE_SUB_TOP 30// the top of the title view when a subtitle IS present
-#define TITLE_HEIGHT 0 // title height, fixed
-#define SUBTITLE_TOP 0 // the top of the subtitle, when present
-#define SUBTITLE_HEIGHT 0 // subtitle height, fixed
-#define BETWEEN_ACCESSORIES_MARGIN 0 // margin between accessories when no title/subtitle is present
-#define CONTENT_VIEW_MARGIN 0 // margin around content view when present
+#define CALLOUT_DEFAULT_HEIGHT 57 // fixed height of system callout; ours can be any height when contentView is set
+#define CALLOUT_DEFAULT_CONTAINER_HEIGHT 44 // height of just the main portion without arrow
+#define CALLOUT_MIN_WIDTH 61 // minimum width of system callout
+#define TITLE_HMARGIN 13 // the title/subtitle view's normal horizontal margin from the edges of our callout view or from the accessories
+#define TITLE_TOP 11 // the top of the title view when no subtitle is present
+#define TITLE_SUB_TOP 3 // the top of the title view when a subtitle IS present
+#define TITLE_HEIGHT 21 // title height, fixed
+#define SUBTITLE_TOP 24 // the top of the subtitle, when present
+#define SUBTITLE_HEIGHT 15 // subtitle height, fixed
+#define BETWEEN_ACCESSORIES_MARGIN 7 // margin between accessories when no title/subtitle is present
+#define CONTENT_VIEW_MARGIN 13 // margin around content view when present
 #define ANCHOR_MARGIN 27 // the smallest possible distance from the edge of our control to the "tip" of the anchor, from either left or right
 #define ANCHOR_HEIGHT 13 // effective height of the anchor
 #define TOP_ANCHOR_MARGIN 13 // all the above measurements assume a bottom anchor! if we're pointing "up" we'll need to add this top margin to everything.
@@ -138,8 +138,6 @@ NSTimeInterval kSMCalloutViewRepositionDelayForUIScrollView = 1.0/3.0;
         if (self.titleViewOrDefault) [self.containerView addSubview:self.titleViewOrDefault];
         if (self.subtitleViewOrDefault) [self.containerView addSubview:self.subtitleViewOrDefault];
     }
-    if (self.topAccessoryView) [self.containerView addSubview:self.topAccessoryView];
-    if (self.bottomAccessoryView) [self.containerView addSubview:self.bottomAccessoryView];
     if (self.leftAccessoryView) [self.containerView addSubview:self.leftAccessoryView];
     if (self.rightAccessoryView) [self.containerView addSubview:self.rightAccessoryView];
 }
@@ -160,21 +158,6 @@ NSTimeInterval kSMCalloutViewRepositionDelayForUIScrollView = 1.0/3.0;
         return 0;
 }
 
-- (CGFloat)topAccessoryMargin {
-    if (self.topAccessoryView.$height < self.calloutContainerHeight)
-        return roundf((self.calloutContainerHeight - self.topAccessoryView.$height) / 2);
-    else
-        return 0;
-}
-
-- (CGFloat)bottomAccessoryMargin {
-    if (self.bottomAccessoryView.$height < self.calloutContainerHeight)
-        return roundf((self.calloutContainerHeight - self.bottomAccessoryView.$height) / 2);
-    else
-        return 0;
-}
-
-
 - (CGFloat)innerContentMarginLeft {
     if (self.leftAccessoryView)
         return self.leftAccessoryMargin + self.leftAccessoryView.$width + TITLE_HMARGIN;
@@ -188,22 +171,6 @@ NSTimeInterval kSMCalloutViewRepositionDelayForUIScrollView = 1.0/3.0;
     else
         return TITLE_HMARGIN;
 }
-
-- (CGFloat)innerContentMarginTop {
-    if (self.topAccessoryView)
-        return 0;
-    else
-        return TITLE_HMARGIN;
-}
-
-- (CGFloat)innerContentMarginBottom {
-    if (self.bottomAccessoryView)
-        return 0;
-    else
-        return TITLE_HMARGIN;
-}
-
-
 
 - (CGFloat)calloutHeight {
     return self.calloutContainerHeight + ANCHOR_HEIGHT;
@@ -251,11 +218,6 @@ NSTimeInterval kSMCalloutViewRepositionDelayForUIScrollView = 1.0/3.0;
         
         if (self.leftAccessoryView && self.rightAccessoryView)
             preferredWidth += BETWEEN_ACCESSORIES_MARGIN;
-        
-        if (self.topAccessoryView) {
-            preferredWidth = self.topAccessoryView.$width;
-        }
-        
     }
     
     // ensure we're big enough to fit our graphics!
@@ -542,14 +504,6 @@ NSTimeInterval kSMCalloutViewRepositionDelayForUIScrollView = 1.0/3.0;
     
     self.rightAccessoryView.$x = self.$width-self.rightAccessoryMargin-self.rightAccessoryView.$width;
     self.rightAccessoryView.$y = self.rightAccessoryMargin + dy;
-    
-    self.topAccessoryView.$x = self.innerContentMarginLeft;
-    self.topAccessoryView.$y = dy;
-    
-    self.bottomAccessoryView.$x = self.innerContentMarginLeft;
-    self.bottomAccessoryView.$y = self.topAccessoryView.$height;
-    
-    
     
     if (self.contentView) {
         self.contentView.$x = self.innerContentMarginLeft;

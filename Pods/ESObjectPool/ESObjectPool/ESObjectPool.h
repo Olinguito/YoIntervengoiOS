@@ -21,6 +21,7 @@
 @property (nonatomic, readonly, getter=isStaticPool) BOOL staticPool;
 @property (nonatomic, readonly) int usageCount;
 @property (nonatomic, readonly, assign) NSArray *usedObjects;
+@property (nonatomic, readonly, assign) NSArray *objects;
 @property (nonatomic, readonly) int retainedCount;
 
 +(id)dynamicObjectPool;

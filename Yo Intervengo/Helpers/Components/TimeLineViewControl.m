@@ -288,7 +288,6 @@ const float VIEW_WIDTH = 225.0;
             fromPoint =  CGPointMake(lastpoint.x, yCenter - 75);
             toPoint = CGPointMake(lastpoint.x, yCenter -12);
             lastpoint = CGPointMake(lastpoint.x, yCenter + 20);
-            
             UIBezierPath *line = [self getLineWithStartPoint:fromPoint endPoint:toPoint];
             CAShapeLayer *lineLayer = [self getLayerWithLine:line andStrokeColor:strokeColor];
             [layers addObject:lineLayer];

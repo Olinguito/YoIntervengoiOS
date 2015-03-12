@@ -17,7 +17,9 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     var initLoc: CGPoint!
     var menuView: LeftMenu!
     var test: BottomPager!
-    var loc:[RMAnnotation]! = []    
+    var loc:[RMAnnotation]! = []
+    
+    var reportsArray:NSMutableArray!
 
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var btnMenu: UIButton!
@@ -27,12 +29,18 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        reportsArray = NSMutableArray()
         
+        APIManagerClass = APIManager()
+        APIManagerClass.delegate = self
         APIManagerClass.getReports()
-        //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
+        
+        (RMConfiguration.sharedInstance()).accessToken = "pk.eyJ1Ijoib2xpbmd1aXRvIiwiYSI6IkVGeE41bE0ifQ.TrGnR7v_7HRJUsiM2h_3dQ"
+        
+        let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
-        let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
+        //let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
         map = RMMapView(frame: view.frame, andTilesource: source)
         map.delegate = self
         view.insertSubview(map, belowSubview: btnReport)
@@ -219,13 +227,43 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         self.showViewController(view2, sender: self)
     }
     
-    
-    
     func reportCreated(location:CLLocationCoordinate2D, type:Int){
-        var newANN = RMAnnotation(mapView: map, coordinate: location, andTitle:"0")
+        addAnnotation(location, type: type)
+    }
+    
+    func returnList(responseObject: AnyObject, url: String) {
+//        println(responseObject)
+        for report in responseObject as NSMutableArray{
+            reportsArray.addObject(report)
+            var location = report["location"]
+            println(location)
+            var type = report["type"] as Int ?? 3
+            println(type)
+            //addAnnotation(CLLocationCoordinate2DMake(location["lat"], location["lng"]), type: type)
+        }
+        
+        /*loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.8385,-74.0598), andTitle:"7"))
+        loc[7].userInfo = "Pin2"
+        
+        for ann in loc{
+            map.addAnnotation(ann)
+        }*/
+        
+        /*var reports: Dictionary<String, String> = [:]
+        if let _id = responseObject["id"] {
+            city["ID"] = _id.asString()
+        }
+        if let name = responseObject["name"] {
+            city["NAME"] = name.asString()
+        }
+        if let image = key["icon"] {
+            city["ICON"] = report ? "btn_reporte_" + image.asString() : "btn_solicitud_" + image.asString()
+        }*/
+    }
+    
+    func addAnnotation(localization:CLLocationCoordinate2D, type:Int){
+        var newANN = RMAnnotation(mapView: map, coordinate: localization, andTitle:"0")
         newANN.userInfo = type == 1 ? "Pin" : "Pin2"
         map.addAnnotation(newANN)
     }
-    
 }
-

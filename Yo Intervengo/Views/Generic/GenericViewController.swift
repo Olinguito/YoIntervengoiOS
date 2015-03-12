@@ -8,14 +8,14 @@
 
 import UIKit
 
-class GenericViewController: UIViewController {
+class GenericViewController: UIViewController,APIManagerDelegate {
     var conn:Connection!
     var APIManagerClass:APIManager!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIManagerClass = APIManager()
+
         
     }
 

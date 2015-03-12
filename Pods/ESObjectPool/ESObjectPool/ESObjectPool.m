@@ -20,7 +20,7 @@ typedef void (^ObjectBlock)(id obj);
 -(id)_create;
 @end
 @implementation ESObjectPool
-@synthesize capacity,staticPool=_staticPool,usageCount,retainedCount,usedObjects;
+@synthesize capacity,staticPool=_staticPool,usageCount,retainedCount,usedObjects,objects;
 
 #pragma mark - Constructor
 // ____________________________________________________________________________________________________________________
@@ -77,6 +77,8 @@ typedef void (^ObjectBlock)(id obj);
     id obj = [_allocClass alloc];
     if (_initBlock != nil) {
         _initBlock(obj);
+    } else {
+        [obj init];
     }
     return obj;
     
@@ -157,6 +159,13 @@ typedef void (^ObjectBlock)(id obj);
     }
 }
 
+- (NSArray *)objects
+{
+    @synchronized(self) {
+        return [NSArray arrayWithArray:_pool];
+    }
+}
+
 #pragma mark - Destructor
 // ____________________________________________________________________________________________________________________
 
@@ -182,7 +191,7 @@ typedef void (^ObjectBlock)(id obj);
     [_pool release], _pool = nil;
     [_inUse release], _inUse = nil;
     [_initBlock release], _initBlock = nil;
-#endif
     [super dealloc];
+#endif
 }
 @end
