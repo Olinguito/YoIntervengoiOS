@@ -42,10 +42,16 @@
          contextName = "Yo_Intervengo.ViewController.viewDidLoad (Yo_Intervengo.ViewController)() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "ann.title">
+            </PersistentString>
+            <PersistentString
                value = "menuView">
             </PersistentString>
             <PersistentString
-               value = "ann.title">
+               value = "map">
+            </PersistentString>
+            <PersistentString
+               value = "btnReport">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -113,10 +119,10 @@
                value = "bubbleMenu">
             </PersistentString>
             <PersistentString
-               value = "images.count">
+               value = "bubbleMenu.menuItemImages">
             </PersistentString>
             <PersistentString
-               value = "bubbleMenu.menuItemImages">
+               value = "images.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegate,JOaddReportDelegate {
-    weak var map: RMMapView!
+    var map: RMMapView!
     var openedReport:Bool = false
     var animator:UIDynamicAnimator!
     var attachmentBeh: UIAttachmentBehavior!
@@ -37,6 +37,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         
         (RMConfiguration.sharedInstance()).accessToken = "pk.eyJ1Ijoib2xpbmd1aXRvIiwiYSI6IkVGeE41bE0ifQ.TrGnR7v_7HRJUsiM2h_3dQ"
         
+        //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
@@ -67,7 +68,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         loc[7].userInfo = "Pin2"
         
         for ann in loc{
-            map.addAnnotation(ann)
+           // map.addAnnotation(ann)
         }
         // hide MapBox logo
         self.map.showLogoBug = false
@@ -157,10 +158,8 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
             var southwestCoordinate = annotation.coordinate
             var northeastCoordinate = annotation.coordinate
             for plot in annotation.clusteredAnnotations {
-                
                 var latititude = Float(plot.coordinate.latitude)
                 var longitude =  Float(plot.coordinate.longitude)
-                
                 if Float(southwestCoordinate.latitude) > fabsf(latititude){ southwestCoordinate.latitude = CLLocationDegrees(latititude)}
                 if Float(southwestCoordinate.longitude) > fabsf(longitude){ southwestCoordinate.longitude = CLLocationDegrees(longitude)}
                 if Float(northeastCoordinate.latitude) < fabsf(latititude){ northeastCoordinate.latitude = CLLocationDegrees(latititude)}
@@ -210,7 +209,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     @IBAction func newReport(sender: AnyObject) {        
         var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport, labels: 1, coodinate: map.userLocation.coordinate)
         thisMenu.delegate = self
-        //self.view.insertSubview(thisMenu, belowSubview: btnReport)
         self.view.addSubview(thisMenu)
         thisMenu.showMenu(1, atPoint: sender.center)
         
@@ -221,7 +219,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     func goDetail(sender:UIButton){
-        //var view2 = self.storyboard?.instantiateViewControllerWithIdentifier("DetailReport") as UIViewController
         var view2 = DetailReportVC()
         view2.center = map.userLocation.coordinate
         self.showViewController(view2, sender: self)
@@ -232,37 +229,18 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     func returnList(responseObject: AnyObject, url: String) {
-//        println(responseObject)
         for report in responseObject as NSMutableArray{
             reportsArray.addObject(report)
-            var location = report["location"]
-            println(location)
-            var type = report["type"] as Int ?? 3
-            println(type)
-            //addAnnotation(CLLocationCoordinate2DMake(location["lat"], location["lng"]), type: type)
+            var location = report["location"] as NSDictionary
+            var type = report["type"] as? Int ?? 3
+            var lat = location["lat"] as CLLocationDegrees
+            var lng = location["lng"] as CLLocationDegrees
+            addAnnotation(CLLocationCoordinate2DMake(lng,lat), type: type)
         }
-        
-        /*loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.8385,-74.0598), andTitle:"7"))
-        loc[7].userInfo = "Pin2"
-        
-        for ann in loc{
-            map.addAnnotation(ann)
-        }*/
-        
-        /*var reports: Dictionary<String, String> = [:]
-        if let _id = responseObject["id"] {
-            city["ID"] = _id.asString()
-        }
-        if let name = responseObject["name"] {
-            city["NAME"] = name.asString()
-        }
-        if let image = key["icon"] {
-            city["ICON"] = report ? "btn_reporte_" + image.asString() : "btn_solicitud_" + image.asString()
-        }*/
     }
     
     func addAnnotation(localization:CLLocationCoordinate2D, type:Int){
-        var newANN = RMAnnotation(mapView: map, coordinate: localization, andTitle:"0")
+        var newANN = RMAnnotation(mapView: map, coordinate: localization, andTitle:"1")
         newANN.userInfo = type == 1 ? "Pin" : "Pin2"
         map.addAnnotation(newANN)
     }

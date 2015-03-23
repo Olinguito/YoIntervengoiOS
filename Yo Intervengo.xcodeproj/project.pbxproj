@@ -168,6 +168,7 @@
 		ECA791F01A92B5F3003D0A41 /* data.db in Resources */ = {isa = PBXBuildFile; fileRef = ECA791EF1A92B5F3003D0A41 /* data.db */; };
 		ECA792701A943971003D0A41 /* SubCategory2_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA7926E1A943971003D0A41 /* SubCategory2_on@2x.png */; };
 		ECA792711A943971003D0A41 /* SubCategory2_on.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA7926F1A943971003D0A41 /* SubCategory2_on.png */; };
+		ECB475C01ABF82FC001B1BE1 /* JOAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB475BF1ABF82FC001B1BE1 /* JOAlert.m */; };
 		ECB6C25F1A79997800AD1BCB /* JOCentralMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB6C25E1A79997800AD1BCB /* JOCentralMenu.swift */; };
 		ECB6C2681A799C6300AD1BCB /* SubCategory_on.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB6C2641A799C6300AD1BCB /* SubCategory_on.png */; };
 		ECB6C2691A799C6300AD1BCB /* SubCategory_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECB6C2651A799C6300AD1BCB /* SubCategory_on@2x.png */; };
@@ -421,6 +422,8 @@
 		ECA791EF1A92B5F3003D0A41 /* data.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.db; sourceTree = "<group>"; };
 		ECA7926E1A943971003D0A41 /* SubCategory2_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SubCategory2_on@2x.png"; sourceTree = "<group>"; };
 		ECA7926F1A943971003D0A41 /* SubCategory2_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SubCategory2_on.png; sourceTree = "<group>"; };
+		ECB475BE1ABF82FC001B1BE1 /* JOAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOAlert.h; sourceTree = "<group>"; };
+		ECB475BF1ABF82FC001B1BE1 /* JOAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOAlert.m; sourceTree = "<group>"; };
 		ECB6C25E1A79997800AD1BCB /* JOCentralMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JOCentralMenu.swift; sourceTree = "<group>"; };
 		ECB6C2641A799C6300AD1BCB /* SubCategory_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SubCategory_on.png; sourceTree = "<group>"; };
 		ECB6C2651A799C6300AD1BCB /* SubCategory_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SubCategory_on@2x.png"; sourceTree = "<group>"; };
@@ -703,6 +706,8 @@
 		EC54A7031A7ACC9A007F6ABF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				ECB475BE1ABF82FC001B1BE1 /* JOAlert.h */,
+				ECB475BF1ABF82FC001B1BE1 /* JOAlert.m */,
 				ECFAD2081A83E47600B5652C /* TimeLineViewControl.h */,
 				ECFAD1EF1A83E47600B5652C /* TimeLineViewControl.m */,
 				EC1DF3A31A81729D00AE8210 /* JIColors.swift */,
@@ -1455,6 +1460,7 @@
 				EC1DF3A41A81729D00AE8210 /* JIColors.swift in Sources */,
 				EC5FD8E81A9CF356004192A3 /* CommentVC.swift in Sources */,
 				EC7701941A7204B300378515 /* LNERadialMenu.m in Sources */,
+				ECB475C01ABF82FC001B1BE1 /* JOAlert.m in Sources */,
 				ECA791EA1A92A123003D0A41 /* SQLiteDB.swift in Sources */,
 				EC77019E1A74047900378515 /* JOaddReport.swift in Sources */,
 				EC86D55C1A8D7C6B00B0BFA0 /* ReportVC.swift in Sources */,

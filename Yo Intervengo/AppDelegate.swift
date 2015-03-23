@@ -10,7 +10,7 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    var listPublicWorks:NSMutableArray!
     var window: UIWindow?
 
 

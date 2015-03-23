@@ -12,7 +12,7 @@ import UIKit
     func reportCreated(location:CLLocationCoordinate2D, type:Int)
 }
 
-class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate,JSImagePickerViewControllerDelegate,UITextFieldDelegate {
+class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate,JSImagePickerViewControllerDelegate,UITextFieldDelegate, UITextViewDelegate{
     // MARK: -VAR DEFFINITION\
     var delegate:JOaddReportDelegate!
     
@@ -99,6 +99,9 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         btnContinue.userInteractionEnabled = false
         self.addSubview(btnContinue)
         
+        let source = RMMapboxSource(mapID: "olinguito.c389ab51")
+        mapLocation = RMMapView(frame: CGRect(x: 15, y: 40, width: self.frame.width - 30, height: btnBack.frame.minY - 70), andTilesource: source)
+        
     }
     
     func setButtons(step:Int){
@@ -142,10 +145,10 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 this2.delegate = self
                 self.insertSubview(this2, belowSubview: btnCategoty)
         case 4:
-                let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
                 btnBack.frame.origin.y = btnCategoty.frame.minY - 55
                 btnContinue.frame.origin.y = btnCategoty.frame.minY - 55
-                mapLocation = RMMapView(frame: CGRect(x: 15, y: 40, width: self.frame.width - 30, height: btnBack.frame.minY - 70), andTilesource: source)
+                mapLocation.frame = CGRect(x: 15, y: 40, width: self.frame.width - 30, height: btnBack.frame.minY - 70)
+                mapLocation.setZoom(15, animated: true)
                 mapLocation.centerCoordinate = localization
                 mapLocation.layer.cornerRadius = 10
                 self.addSubview(mapLocation)
@@ -158,7 +161,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 self.addSubview(pinIcon)
         case 5:
                 mapLocation.removeFromSuperview()
-                self.step++
                 pinIcon.removeFromSuperview()
                 txtTitle = UITextField(frame: CGRect(x: -1, y: 115, width: self.frame.width+2, height: 49))
                 txtTitle.layer.borderColor = UIColor.whiteColor().CGColor
@@ -166,14 +168,16 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 txtTitle.delegate = self
                 txtTitle.textAlignment = NSTextAlignment.Center
                 txtTitle.textColor = UIColor.whiteColor()
+                
                 var placeholder = NSAttributedString(string: "Titulo", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
                 txtTitle.attributedPlaceholder = placeholder
                 txtTitle.tintColor = UIColor.orangeYI()
                 txtTitle.keyboardAppearance = UIKeyboardAppearance.Dark
                 self.addSubview(txtTitle)
-                
                 txtDesc = UIView(frame: CGRect(x: -1, y: txtTitle.frame.maxY, width: self.frame.width+2, height: 120))
+                //txtDesc.delegate = self
                 txtDesc.layer.borderColor = UIColor.whiteColor().CGColor
+                txtDesc.tintColor = UIColor.orangeYI()
                 txtDesc.backgroundColor = UIColor.clearColor()
                 txtDesc.layer.borderWidth = 1
                 
@@ -183,17 +187,15 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 tit.font = UIFont(name: "Roboto-Light", size: 18)
                 tit.textAlignment = NSTextAlignment.Center
                 txtDesc.addSubview(tit)
-                
                 var txtD = UITextView(frame: CGRect(x: 20, y: 38, width: txtDesc.frame.width-40, height: 80))
+                txtD.delegate = self
                 txtD.textColor = UIColor.whiteColor()
                 txtD.backgroundColor = UIColor.clearColor()
                 txtD.keyboardAppearance = UIKeyboardAppearance.Dark
                 txtD.font = UIFont(name: "Roboto-Light", size: 18)
                 txtDesc.addSubview(txtD)
-                
                 self.addSubview(txtDesc)
         case 6:
-                self.step++
                 txtTitle.removeFromSuperview()
                 txtDesc.removeFromSuperview()
                 imgReport = UIImageView(frame: CGRect(x: -1, y: (btnBack.frame.minY - 221)/2, width: self.frame.width+2, height: 221))
@@ -336,12 +338,9 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         /*JSImagePickerViewController *imagePicker = [[JSImagePickerViewController alloc] init];
         imagePicker.delegate = self;
         [imagePicker showImagePickerInController:self animated:YES];*/
-        
         var imagePicker = JSImagePickerViewController()
         imagePicker.delegate = self
         imagePicker.showImagePickerInController(self.parentViewController(), animated: true)
-        
-        
     }
     
     func imagePickerDidSelectImage(image: UIImage!) {
@@ -354,9 +353,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
             btnContinue.setTitle("Crear Solicitud", forState: UIControlState.Normal)
             btnContinue.backgroundColor = UIColor.blurYI()
         }
-        
-        
-
         btnContinue.layer.borderColor = UIColor.clearColor().CGColor
     }
     
@@ -364,13 +360,12 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     // MARK: -NEXT METHODS
     
     func goContinue(sender:UIButton!){
-        sender.tag++
-        showMenu(sender.tag, atPoint: CGPointZero)
+        self.step++
+        showMenu(self.step, atPoint: CGPointZero)
     }
     
     // MARK: -BACK METHODS
     func goBack(sender:UIButton!){
-        println("Estaba en \(step)")
         switch step{
             case 2:
                 labels = 1
@@ -397,9 +392,15 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 pinIcon.removeFromSuperview()
             case 5:
                 self.showMenu(4, atPoint: CGPointZero)
+                txtTitle.removeFromSuperview()
+                txtDesc.removeFromSuperview()
+            case 6:
+                self.showMenu(5, atPoint: CGPointZero)
+                imgReport.removeFromSuperview()
+                btnAddImage.removeFromSuperview()
             default: println("Default")
         }
-        step--
+        self.step--
     }
     
     func goLbl(step:Int){
@@ -434,6 +435,14 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
         return true
     }
 }

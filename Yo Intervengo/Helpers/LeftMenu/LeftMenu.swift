@@ -34,10 +34,10 @@ class LeftMenu: UIView{
         btnSett = UIButton(frame: CGRect(x: 20, y: btnProf.frame.maxY+10, width: 120, height: 26))
         
         btnRep.setTitle("...REPORTES", forState: UIControlState.Normal)
-        btnWiki.setTitle("WIKI", forState: UIControlState.Normal)
+        btnWiki.setTitle("ACERCA DE", forState: UIControlState.Normal)
         btnStat.setTitle("ESTADÍSTICAS", forState: UIControlState.Normal)
         btnProf.setTitle("PERFIL", forState: UIControlState.Normal)
-        btnSett.setTitle("CONFIGURACIÓN", forState: UIControlState.Normal)
+        btnSett.setTitle("ACERCA DE", forState: UIControlState.Normal)
         
         btnRep.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
         btnWiki.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
@@ -74,9 +74,9 @@ class LeftMenu: UIView{
         
         self.addSubview(btnRep)
         self.addSubview(btnWiki)
-        self.addSubview(btnStat)
+        /*self.addSubview(btnStat)
         self.addSubview(btnProf)
-        self.addSubview(btnSett)
+        self.addSubview(btnSett)*/
         
         opened = false
     }

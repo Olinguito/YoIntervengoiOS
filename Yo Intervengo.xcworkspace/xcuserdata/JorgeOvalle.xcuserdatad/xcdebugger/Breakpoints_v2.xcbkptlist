@@ -26,94 +26,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Yo Intervengo/ViewController.swift"
-            timestampString = "447807035.033113"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "ViewController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Yo_Intervengo.ViewController.openedReport.getter : Swift.Bool"
-                  moduleName = "Yo Intervengo"
-                  urlString = "file:///Users/JorgeOvalle/Documents/lojals/Proyectos/Yo%20Intervengo%20V%202.0/Yo%20Intervengo/Yo%20Intervengo/ViewController.swift"
-                  timestampString = "447808158.607112"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "18">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Yo_Intervengo.ViewController.openedReport.materializeForSet : Swift.Bool"
-                  moduleName = "Yo Intervengo"
-                  urlString = "file:///Users/JorgeOvalle/Documents/lojals/Proyectos/Yo%20Intervengo%20V%202.0/Yo%20Intervengo/Yo%20Intervengo/ViewController.swift"
-                  timestampString = "447808158.60771"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "25">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Yo_Intervengo.ViewController.init (Yo_Intervengo.ViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; Yo_Intervengo.ViewController"
-                  moduleName = "Yo Intervengo"
-                  urlString = "file:///Users/JorgeOvalle/Documents/lojals/Proyectos/Yo%20Intervengo%20V%202.0/Yo%20Intervengo/Yo%20Intervengo/ViewController.swift"
-                  timestampString = "447808158.607958"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "171">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Yo_Intervengo.ViewController.init (Yo_Intervengo.ViewController.Type)() -&gt; Yo_Intervengo.ViewController"
-                  moduleName = "Yo Intervengo"
-                  urlString = "file:///Users/JorgeOvalle/Documents/lojals/Proyectos/Yo%20Intervengo%20V%202.0/Yo%20Intervengo/Yo%20Intervengo/ViewController.swift"
-                  timestampString = "447808158.60863"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "122">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Yo_Intervengo.ViewController.init (Yo_Intervengo.ViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; Yo_Intervengo.ViewController"
-                  moduleName = "Yo Intervengo"
-                  urlString = "file:///Users/JorgeOvalle/Documents/lojals/Proyectos/Yo%20Intervengo%20V%202.0/Yo%20Intervengo/Yo%20Intervengo/ViewController.swift"
-                  timestampString = "447808158.609242"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "146">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Yo Intervengo/ViewController.swift"
             timestampString = "447807125.341441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -130,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Yo Intervengo/ViewController.swift"
-            timestampString = "447807200.561785"
+            timestampString = "448656304.986956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
@@ -146,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Yo Intervengo/ViewController.swift"
-            timestampString = "447807226.12691"
+            timestampString = "448656304.986956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -162,12 +74,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Yo Intervengo/ViewController.swift"
-            timestampString = "447808364.933412"
+            timestampString = "448656304.986956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "returnList(_:url:)"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Yo Intervengo/ViewController.swift"
+            timestampString = "448656304.986956"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
