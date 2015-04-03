@@ -66,8 +66,8 @@ class APIManager: NSObject {
     
     }
     
-    func postReport(){
-    
+    func postReport(data:NSDictionary!){
+        performPost("Reports", token: "", data: data, list: true, successMsg: "Creado datisfactoriamente", failMsg: "Ocurrio un error, intente más tarde.")
     }
     
     func followReport(){

@@ -47,6 +47,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     //STEP 5
     var txtTitle:UITextField!
     var txtDesc:UIView!
+    var txtD:UITextView!
     
     
     //STEP 6
@@ -54,6 +55,13 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     var btnAddImage:UIButton!
     
     var type:Int!
+    
+    var alert:JOAlert!
+    
+    
+    var txtTit:String!
+    var txtDes:String!
+    
     
     // MARK: -INIT
     required init(coder aDecoder: NSCoder) {
@@ -63,7 +71,10 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     init(frame: CGRect, bttnClose:UIButton, labels:Int, coodinate:CLLocationCoordinate2D) {
         super.init(frame: frame)
         step = 1
+        alert = JOAlert(textNFrame: "", self.frame)
         localization = coodinate
+        txtTit = ""
+        txtDes = ""
         btnClose = UIButton(frame: bttnClose.frame)
         btnClose.center = bttnClose.center
         self.labels = labels
@@ -120,6 +131,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     
     func showMenu(step:Int, atPoint point:CGPoint){
         setButtons(step)
+        configButton(step)
         switch (step){
         case 1:
             var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
@@ -168,7 +180,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 txtTitle.delegate = self
                 txtTitle.textAlignment = NSTextAlignment.Center
                 txtTitle.textColor = UIColor.whiteColor()
-                
                 var placeholder = NSAttributedString(string: "Titulo", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
                 txtTitle.attributedPlaceholder = placeholder
                 txtTitle.tintColor = UIColor.orangeYI()
@@ -180,22 +191,34 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 txtDesc.tintColor = UIColor.orangeYI()
                 txtDesc.backgroundColor = UIColor.clearColor()
                 txtDesc.layer.borderWidth = 1
-                
                 var tit = UILabel(frame: CGRect(x: 0, y: 10, width: txtDesc.frame.width, height: 15))
                 tit.textColor = UIColor.lightGrayColor()
                 tit.text = "Descripción del reporte"
                 tit.font = UIFont(name: "Roboto-Light", size: 18)
                 tit.textAlignment = NSTextAlignment.Center
                 txtDesc.addSubview(tit)
-                var txtD = UITextView(frame: CGRect(x: 20, y: 38, width: txtDesc.frame.width-40, height: 80))
+                txtD = UITextView(frame: CGRect(x: 20, y: 38, width: txtDesc.frame.width-40, height: 80))
                 txtD.delegate = self
                 txtD.textColor = UIColor.whiteColor()
                 txtD.backgroundColor = UIColor.clearColor()
                 txtD.keyboardAppearance = UIKeyboardAppearance.Dark
                 txtD.font = UIFont(name: "Roboto-Light", size: 18)
                 txtDesc.addSubview(txtD)
+                if txtTit != "" && txtDes != "" {
+                    txtTitle.text = txtTit
+                    txtD.text = txtDes
+                }
                 self.addSubview(txtDesc)
         case 6:
+            if txtTitle.text == "" || txtD.text == "" {
+                self.step--
+                alert.setText("Ninguno puede estar vacio!!!")
+                self.addSubview(alert)
+                alert.showAlert()
+            }else{
+                txtTit = txtTitle.text
+                txtDes = txtD.text
+                btnContinue.userInteractionEnabled = false
                 txtTitle.removeFromSuperview()
                 txtDesc.removeFromSuperview()
                 imgReport = UIImageView(frame: CGRect(x: -1, y: (btnBack.frame.minY - 221)/2, width: self.frame.width+2, height: 221))
@@ -210,7 +233,9 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 btnAddImage.center = imgReport.center
                 btnAddImage.addTarget(self, action: Selector("openCamera:") , forControlEvents: UIControlEvents.TouchUpInside)
                 self.addSubview(btnAddImage)
+            }
         case 7:
+            
                 delegate.reportCreated(localization, type: type)
                 self.removeFromSuperview()
         default: println("Default")
@@ -345,7 +370,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     
     func imagePickerDidSelectImage(image: UIImage!) {
         imgReport.image = image
-        
+        btnContinue.userInteractionEnabled = true
         if type == 1 {
             btnContinue.setTitle("Crear Reporte", forState: UIControlState.Normal)
             btnContinue.backgroundColor = UIColor.orangeYI()
@@ -356,6 +381,17 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         btnContinue.layer.borderColor = UIColor.clearColor().CGColor
     }
     
+    func configButton(step:Int){
+        if step<6{
+            btnContinue.setTitle("Siguiente", forState: UIControlState.Normal)
+            btnContinue.backgroundColor = UIColor.clearColor()
+            btnContinue.layer.borderColor = UIColor.whiteColor().CGColor
+            btnContinue.layer.borderWidth = 1
+            btnContinue.userInteractionEnabled = true
+        }else{
+            btnContinue.userInteractionEnabled = false
+        }
+    }
     
     // MARK: -NEXT METHODS
     
