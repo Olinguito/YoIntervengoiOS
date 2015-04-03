@@ -235,7 +235,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 self.addSubview(btnAddImage)
             }
         case 7:
-            
+                //Aca se envia al API
                 delegate.reportCreated(localization, type: type)
                 self.removeFromSuperview()
         default: println("Default")
