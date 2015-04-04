@@ -58,7 +58,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     
     var alert:JOAlert!
     
-    
+    var APIManagerClass:APIManager!
     var txtTit:String!
     var txtDes:String!
     
@@ -71,6 +71,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     init(frame: CGRect, bttnClose:UIButton, labels:Int, coodinate:CLLocationCoordinate2D) {
         super.init(frame: frame)
         step = 1
+        APIManagerClass = APIManager()
         alert = JOAlert(textNFrame: "", self.frame)
         localization = coodinate
         txtTit = ""
@@ -236,8 +237,40 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
             }
         case 7:
                 //Aca se envia al API
+                /*
+            
+                {
+                    "description": "",
+                    "location": "geopoint",
+                    "status": 0,
+                    "title": "",
+                    "address": "",
+                    "type": 0,
+                    "category": {
+                        "name": "",
+                        "icon": "",
+                        "parent": "",
+                        "id": "objectid"
+                    },
+                    "link": [
+                        {
+                            "source": "",
+                            "date": "",
+                            "description": "",
+                            "url": "",
+                            "title": "",
+                            "type": 0,
+                            "id": "objectid"
+                        }
+                    ],
+                        "id": "objectid"
+                }
+            
+                */
                 delegate.reportCreated(localization, type: type)
                 self.removeFromSuperview()
+                var dataRep:NSDictionary = ["description":txtDes, "location":[localization.latitude, localization.longitude], "title":txtTit, "type":type]
+                APIManagerClass.postReport(dataRep)
         default: println("Default")
         }
     }

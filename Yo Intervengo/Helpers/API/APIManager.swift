@@ -67,6 +67,7 @@ class APIManager: NSObject {
     }
     
     func postReport(data:NSDictionary!){
+        print("Posteando reporte???")
         performPost("Reports", token: "", data: data, list: true, successMsg: "Creado datisfactoriamente", failMsg: "Ocurrio un error, intente más tarde.")
         
     }
@@ -129,13 +130,15 @@ class APIManager: NSObject {
         operationManager.responseSerializer = AFJSONResponseSerializer()
         operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
         //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
-        operationManager.POST(url, parameters: nil, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
-            println(responseObject.description)
-            let responseDict = responseObject as Dictionary<String, AnyObject>
-            var token = responseDict["token"] as String!
-            println(token)
+        operationManager.POST(URLAPI+url, parameters: nil, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+                println(responseObject.description)
+                let responseDict = responseObject as Dictionary<String, AnyObject>
+                var token = responseDict["token"] as String!
+                println("Exitosoooo!!")
             }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
-        })
+                print(error)
+                print("Hola mundo ocurrio un error")
+            })
     }
     
     func performPut(url:String!, token:String!, data:NSDictionary, list:Bool, successMsg:String, failMsg:String){
@@ -144,7 +147,8 @@ class APIManager: NSObject {
         operationManager.responseSerializer = AFJSONResponseSerializer()
         operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
         //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
-        operationManager.POST(url, parameters: nil, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+        print(URLAPI+url)
+        operationManager.POST(URLAPI+url, parameters: nil, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
             println(responseObject.description)
             let responseDict = responseObject as Dictionary<String, AnyObject>
             var token = responseDict["token"] as String!
