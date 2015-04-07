@@ -270,7 +270,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 delegate.reportCreated(localization, type: type)
                 self.removeFromSuperview()
                 var dataRep:NSDictionary = ["description":txtDes, "location":[localization.latitude, localization.longitude], "title":txtTit, "type":type]
-                APIManagerClass.postReport(dataRep)
+                //APIManagerClass.postReport(dataRep)
         default: println("Default")
         }
     }
