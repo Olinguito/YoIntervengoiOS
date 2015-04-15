@@ -27,7 +27,7 @@
         
         lblMsg = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 270, 50)];
         lblMsg.text = text;
-        lblMsg.font = [UIFont fontWithName:@"Roboto-Light" size: 15];
+        lblMsg.font = [UIFont fontWithName:@"Roboto-Light" size: 18];
         lblMsg.textColor = [UIColor whiteColor];
         lblMsg.textAlignment = NSTextAlignmentCenter;
         [bgTxt addSubview:lblMsg];

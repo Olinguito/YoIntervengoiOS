@@ -216,6 +216,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 alert.setText("Ninguno puede estar vacio!!!")
                 self.addSubview(alert)
                 alert.showAlert()
+                configButton(self.step)
             }else{
                 txtTit = txtTitle.text
                 txtDes = txtD.text
