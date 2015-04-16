@@ -19,6 +19,7 @@
 		7A2316081ADF17E1007C5A46 /* ic-05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2315FC1ADF17E1007C5A46 /* ic-05@2x.png */; };
 		7A2316091ADF17E1007C5A46 /* ic-06.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2315FD1ADF17E1007C5A46 /* ic-06.png */; };
 		7A23160A1ADF17E1007C5A46 /* ic-06@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2315FE1ADF17E1007C5A46 /* ic-06@2x.png */; };
+		7A23160C1AE047DD007C5A46 /* YIPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23160B1AE047DD007C5A46 /* YIPin.swift */; };
 		AD47E1973A450F63AC40EF7B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 088AA865EB5056C1F0BEC02E /* libPods.a */; };
 		EC051BBC1A6CCD1A00C70D2A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */; };
 		EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7B51A62E7CD004F1B6C /* AppDelegate.swift */; };
@@ -278,6 +279,7 @@
 		7A2315FC1ADF17E1007C5A46 /* ic-05@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-05@2x.png"; sourceTree = "<group>"; };
 		7A2315FD1ADF17E1007C5A46 /* ic-06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-06.png"; sourceTree = "<group>"; };
 		7A2315FE1ADF17E1007C5A46 /* ic-06@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-06@2x.png"; sourceTree = "<group>"; };
+		7A23160B1AE047DD007C5A46 /* YIPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YIPin.swift; sourceTree = "<group>"; };
 		EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionViewCell.xib; path = XIB/CollectionViewCell.xib; sourceTree = "<group>"; };
 		EC0AF7B01A62E7CD004F1B6C /* Yo Intervengo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yo Intervengo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0AF7B41A62E7CD004F1B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 				ECEC50241A8D1E9400AC5853 /* JOTextField.swift */,
 				ECA791C51A92A0E1003D0A41 /* Connection.swift */,
 				ECFE122A1AA659940094A0C7 /* ViewYI.swift */,
+				7A23160B1AE047DD007C5A46 /* YIPin.swift */,
 			);
 			name = Components;
 			path = Helpers/Components;
@@ -1521,6 +1524,7 @@
 				EC77019E1A74047900378515 /* JOaddReport.swift in Sources */,
 				EC86D55C1A8D7C6B00B0BFA0 /* ReportVC.swift in Sources */,
 				EC7D45451AAF7BE800C27833 /* APIManager.swift in Sources */,
+				7A23160C1AE047DD007C5A46 /* YIPin.swift in Sources */,
 				EC85A76B1AA6531C000C8849 /* JSImagePickerViewController.m in Sources */,
 				EC54A7011A7ACC79007F6ABF /* LayoutHelper.swift in Sources */,
 			);

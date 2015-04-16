@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol JOaddReportDelegate{
-    func reportCreated(location:CLLocationCoordinate2D, type:Int)
+    func reportCreated(location:CLLocationCoordinate2D, type:Int,Category:Int)
 }
 
 class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate,JSImagePickerViewControllerDelegate,UITextFieldDelegate, UITextViewDelegate{
@@ -53,11 +53,8 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     //STEP 6
     var imgReport:UIImageView!
     var btnAddImage:UIButton!
-    
     var type:Int!
-    
     var alert:JOAlert!
-    
     var APIManagerClass:APIManager!
     var txtTit:String!
     var txtDes:String!
@@ -165,11 +162,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 mapLocation.centerCoordinate = localization
                 mapLocation.layer.cornerRadius = 10
                 self.addSubview(mapLocation)
-                if type == 1{
-                    pinIcon = UIImageView(image: UIImage(named: "Pin"))
-                }else{
-                    pinIcon = UIImageView(image: UIImage(named: "Pin2"))
-                }
+                pinIcon = UIImageView(image: UIImage.getPin(type, Category: catId))
                 pinIcon.center = mapLocation.center
                 self.addSubview(pinIcon)
         case 5:
@@ -268,7 +261,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 }
             
                 */
-                delegate.reportCreated(localization, type: type)
+                delegate.reportCreated(localization, type: type, Category: catId)
                 self.removeFromSuperview()
                 var dataRep:NSDictionary = ["description":txtDes, "location":[localization.latitude, localization.longitude], "title":txtTit, "type":type]
                 //APIManagerClass.postReport(dataRep)
@@ -358,7 +351,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     }
     
     // MARK: -SIDE BAR DELEGATE  ::STEP 3
-    
     func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String , id:Int){
         step = 3
         sideBar.closeSideView()
@@ -394,9 +386,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     
     // MARK: -CAMERA DELEGATE ::STEP 4
     func openCamera(sender:UIButton!){
-        /*JSImagePickerViewController *imagePicker = [[JSImagePickerViewController alloc] init];
-        imagePicker.delegate = self;
-        [imagePicker showImagePickerInController:self animated:YES];*/
         var imagePicker = JSImagePickerViewController()
         imagePicker.delegate = self
         imagePicker.showImagePickerInController(self.parentViewController(), animated: true)

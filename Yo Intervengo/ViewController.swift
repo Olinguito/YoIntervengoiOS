@@ -174,7 +174,11 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         }
         else
         {
-            let marker = RMMarker(UIImage: UIImage(named: annotation.userInfo as String))
+            //let marker = RMMarker(UIImage: UIImage.getPin(annotation.userInfo["type"] as Int, Category: annotation.userInfo["category"] as Int))
+            var dic = annotation.userInfo as NSDictionary
+            //var imagePin =
+            
+            let marker = RMMarker(UIImage: UIImage.getPin(dic["type"] as Int, Category: dic["category"] as Int))
             return marker
         }
     }
@@ -224,8 +228,8 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         self.showViewController(view2, sender: self)
     }
     
-    func reportCreated(location:CLLocationCoordinate2D, type:Int){
-        addAnnotation(location, type: type)
+    func reportCreated(location:CLLocationCoordinate2D, type:Int, Category:Int){
+        addAnnotation(location, data: ["type":type,"category":Category])
     }
     
     func returnList(responseObject: AnyObject, url: String) {
@@ -233,15 +237,16 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
             reportsArray.addObject(report)
             var location = report["location"] as NSDictionary
             var type = report["type"] as? Int ?? 3
+            var category = report["category"] as? Int ?? 3
             var lat = location["lat"] as CLLocationDegrees
             var lng = location["lng"] as CLLocationDegrees
-            addAnnotation(CLLocationCoordinate2DMake(lng,lat), type: type)
+            addAnnotation(CLLocationCoordinate2DMake(lng,lat), data: ["type":type,"category":category])
         }
     }
     
-    func addAnnotation(localization:CLLocationCoordinate2D, type:Int){
+    func addAnnotation(localization:CLLocationCoordinate2D, data:NSDictionary){
         var newANN = RMAnnotation(mapView: map, coordinate: localization, andTitle:"1")
-        newANN.userInfo = type == 1 ? "Pin" : "Pin2"
+        newANN.userInfo = data
         map.addAnnotation(newANN)
     }
 }
