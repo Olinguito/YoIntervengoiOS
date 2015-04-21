@@ -31,15 +31,15 @@ class JOTabBar: UIView {
         let font = UIFont(name: "Roboto-Regular", size: 10)
         for button in data {
             var xAxis = CGFloat(counter)*w
-            var but: UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+            var but: UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
             but.frame = CGRect(x: xAxis, y: 0, width: w, height: 55)
             but.backgroundColor = UIColor.whiteColor()
             but.layer.borderWidth = 1
             but.tag = counter+1
             but.titleLabel?.font = font
-            var imageBtn = UIImage(named: (data.objectAtIndex(counter)[0] as String))
+            var imageBtn = UIImage(named: (data.objectAtIndex(counter)[0] as! String))
             but.setImage(imageBtn, forState: UIControlState.Normal)
-            but.setTitle( (data.objectAtIndex(counter)[0] as String), forState: UIControlState.Normal)
+            but.setTitle( (data.objectAtIndex(counter)[0] as! String), forState: UIControlState.Normal)
         
             var spacing:CGFloat = 6
             var imageSize = but.imageView?.image?.size
@@ -84,7 +84,7 @@ class JOTabBar: UIView {
         var counter = 1
         actual = index
         for button in buttons{
-            (button as UIButton).backgroundColor = UIColor.whiteColor()
+            (button as! UIButton).backgroundColor = UIColor.whiteColor()
             /*if counter+1==index{
                 var mask = CAShapeLayer()
                 mask.path = (UIBezierPath(roundedRect: button.bounds, byRoundingCorners: UIRectCorner.BottomRight, cornerRadii:  CGSize(width: 5.0, height: 10.0))).CGPath
@@ -96,16 +96,16 @@ class JOTabBar: UIView {
                 mask.path = (UIBezierPath(roundedRect: button.bounds, byRoundingCorners: UIRectCorner.BottomLeft, cornerRadii:  CGSize(width: 5.0, height: 10.0))).CGPath
                 button.layer.mask = mask
             }*/
-            (button as UIButton).layer.borderColor = UIColor.greyButtons().CGColor
-            (button as UIButton).tintColor = UIColor.greyDark()
+            (button as! UIButton).layer.borderColor = UIColor.greyButtons().CGColor
+            (button as! UIButton).tintColor = UIColor.greyDark()
             if counter==index{
                 if (container?.isDescendantOfView(self) != nil){
                   container.removeFromSuperview()
                 }
-                (button as UIButton).layer.borderColor = UIColor.clearColor().CGColor
-                (button as UIButton).tintColor = UIColor.orangeColor()
-                container = self.data.objectAtIndex(index-1)[1] as UIView
-                container.frame = (self.data.objectAtIndex(index-1)[1] as UIView).frame
+                (button as! UIButton).layer.borderColor = UIColor.clearColor().CGColor
+                (button as! UIButton).tintColor = UIColor.orangeColor()
+                container = self.data.objectAtIndex(index-1)[1] as! UIView
+                container.frame = (self.data.objectAtIndex(index-1)[1] as! UIView).frame
                 container.frame.origin = CGPoint(x: 0, y: 55)
                 self.frame = CGRect(x: 0, y: self.frame.origin.y, width: 320, height: container.frame.maxY)
                 self.addSubview(container)

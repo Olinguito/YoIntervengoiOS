@@ -77,7 +77,7 @@ class LayoutHelper: UICollectionViewFlowLayout {
                 attrs.addObject(attr2)
             }
         }
-        return attrs
+        return attrs as [AnyObject]
     }
     
 }

@@ -21,9 +21,11 @@ class LinkComponent: UIView {
         super.init(frame: frame)
     }
     
-    init(type:Int) {
-        super.init()
 
+    
+    convenience init(type:Int) {
+        self.init()
+        
         if type == 1{
             self.frame = CGRect(x: 0, y: 0, width: 320, height: 106)
         }
@@ -91,9 +93,9 @@ class LinkComponent: UIView {
         iconLink.center.y = title.center.y
     }
     
-    func setDate(dateStr:NSString!){
+    func setDates(dateStr:NSString!){
         date.textColor = UIColor.orangeYI()
-        date.text = dateStr
+        date.text = dateStr as String!
     }
     
     func setIcon(image:UIImage){

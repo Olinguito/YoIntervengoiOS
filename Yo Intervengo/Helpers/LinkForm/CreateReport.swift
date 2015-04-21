@@ -223,7 +223,7 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         textUrl.resignFirstResponder()
         var format = NSDateFormatter()
         format.dateFormat = "MMM dd, yyyy"
-        card.setDate(format.stringFromDate(date))
+        card.setDates(format.stringFromDate(date))
         self.date.setTitle(format.stringFromDate(date), forState: UIControlState.Normal)
         closeDatePicker()
     }
@@ -246,7 +246,7 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String, id:Int){
         sideBar.closeSideView()
 
-        var dic:Dictionary<String, String> = (sideData.objectAtIndex(button.tag) as Dictionary)
+        var dic:Dictionary<String, String> = (sideData.objectAtIndex(button.tag) as! Dictionary)
         card.setIcon(UIImage(named: dic["BG"]!)!)
         
         btnCategoty = UIButton(frame: button.frame)

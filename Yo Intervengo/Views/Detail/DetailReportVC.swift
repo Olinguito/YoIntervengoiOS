@@ -41,7 +41,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         story = UIStoryboard(name: "Main", bundle: nil)
         
 
-        report = story.instantiateViewControllerWithIdentifier("denunciaView") as ReportVC
+        report = story.instantiateViewControllerWithIdentifier("denunciaView") as! ReportVC
         
         
         imgWork = UIImageView(frame: CGRect(x: 0, y: 0, width: 320, height: 194))

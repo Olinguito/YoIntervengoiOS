@@ -87,7 +87,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         return loc.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as publicWCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as! publicWCell
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
         cell.goReport.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -105,7 +105,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     
     func followReport(sender:UIButton!){
         println("Following")
-        var cell = collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as publicWCell
+        var cell = collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as! publicWCell
         cell.follower.backgroundColor = UIColor.greyLight()
         cell.follower.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         cell.follower.tintColor = UIColor.whiteColor()

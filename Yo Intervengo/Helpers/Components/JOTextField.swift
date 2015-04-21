@@ -21,7 +21,7 @@ class JOTextField: UITextField,UITextFieldDelegate {
         layer.borderWidth = 1
         leftV = UIView(frame: CGRect(x:0, y: 1, width: 45, height: 52))
         leftV.backgroundColor = UIColor.whiteColor()
-        icon = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        icon = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         icon.frame = CGRect(x: 0, y: 0, width: 35, height: 52)
         
         leftV.addSubview(icon)

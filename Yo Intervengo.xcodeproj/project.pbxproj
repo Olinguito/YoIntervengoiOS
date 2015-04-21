@@ -1656,6 +1656,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jorge Raul Ovalle Zuleta (UGPQWP42UQ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jorge Raul Ovalle Zuleta (UGPQWP42UQ)";
 				INFOPLIST_FILE = "Yo Intervengo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c960c5a1-a484-4d17-be77-98853200356b";
@@ -1674,6 +1675,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jorge Ovalle Z (QF2P6LAFBK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jorge Ovalle Z (QF2P6LAFBK)";
 				INFOPLIST_FILE = "Yo Intervengo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "43215a2c-c462-4ee5-b071-115a8a158510";

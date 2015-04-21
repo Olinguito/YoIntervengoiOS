@@ -280,7 +280,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         self.addSubview(btnCategoty)
         var pop = POPSpringAnimation(propertyNamed: kPOPViewCenter)
         pop.toValue = NSValue(CGPoint: CGPoint(x: self.frame.size.width-100, y: btnClose.center.y))
-        var wl = button.titleLabel?.text?.utf16Count
+        var wl = button.titleLabel?.text?.utf16
         var t = Int(btnCategoty.frame.origin.x) - 265
         lblIndicator = UILabel(frame: CGRect(x: t, y: (Int(btnCategoty.center.y) - 20), width: 200, height: 40))
         str1 = button.titleLabel?.text

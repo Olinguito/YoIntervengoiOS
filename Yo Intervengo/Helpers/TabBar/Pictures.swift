@@ -62,7 +62,7 @@ class Pictures: UIView, PicContainerDelegate {
         var txt1 = "SandroNino_Bravo " as NSString
         var txt2 = "Ene. 26, 2014 - 2:25pm" as NSString
         
-        var myMutableString = NSMutableAttributedString(string: txt1+txt2, attributes: [NSFontAttributeName:UIFont(name: "Roboto-Light", size: 12)!])
+        var myMutableString = NSMutableAttributedString(string: (txt1 as String)+(txt2 as String), attributes: [NSFontAttributeName:UIFont(name: "Roboto-Light", size: 12)!])
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orangeYI(), range: NSRange(location:0,length:txt1.length))
         myMutableString.addAttribute(NSFontAttributeName, value:UIFont(name: "Roboto-Light", size: 12)!, range: NSRange(location:0,length:txt1.length))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor(), range: NSRange(location:txt1.length,length:txt2.length))

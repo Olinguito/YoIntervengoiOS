@@ -133,8 +133,8 @@ class APIManager: NSObject {
         print(data)
         operationManager.POST(URLAPI+url, parameters: nil, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
                 println(responseObject.description)
-                let responseDict = responseObject as Dictionary<String, AnyObject>
-                var token = responseDict["token"] as String!
+                let responseDict = responseObject as! Dictionary<String, AnyObject>
+                var token = responseDict["token"] as! String!
                 println("Exitosoooo!!")
             }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
                 print(error)
@@ -151,8 +151,8 @@ class APIManager: NSObject {
         print(URLAPI+url)
         operationManager.POST(URLAPI+url, parameters: nil, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
             println(responseObject.description)
-            let responseDict = responseObject as Dictionary<String, AnyObject>
-            var token = responseDict["token"] as String!
+            let responseDict = responseObject as! Dictionary<String , AnyObject>
+            var token = responseDict["token"] as! String!
             println(token)
             }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
         })

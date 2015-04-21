@@ -50,7 +50,7 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as CategoryCollViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCollViewCell
         cell.btnCategory.tag = indexPath.row
         cell.imgCategory.tag = indexPath.row
         cell.btnCategory.setTitle(((data.objectAtIndex(indexPath.row))["ID"]) as? String, forState: UIControlState.Normal)
@@ -59,14 +59,14 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
         //cell.layer.shadowOffset = CGSizeMake(0, 1.0)
         print((data.objectAtIndex(indexPath.row)))
         cell.lblTitle.text = ((data.objectAtIndex(indexPath.row))["NAME"]) as? String
-        cell.imgCategory.image = UIImage(named: ((data.objectAtIndex(indexPath.row))["ICON"]) as String!)
+        cell.imgCategory.image = UIImage(named: ((data.objectAtIndex(indexPath.row))["ICON"]) as! String!)
         cell.btnCategory.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)
         cell.alpha = 0
         return cell
     }
     
     func goSubCategory(sender:UIButton!){
-        var a:CategoryCollViewCell = self.collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as CategoryCollViewCell
+        var a:CategoryCollViewCell = self.collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as! CategoryCollViewCell
         self.delegate?.buttoTapped!(a.imgCategory, withSideBar: self,label: a.lblTitle.text!, id:sender.titleLabel?.text?.toInt() ?? 1)
     }
     

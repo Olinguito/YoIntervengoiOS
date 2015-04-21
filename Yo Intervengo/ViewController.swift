@@ -175,10 +175,10 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         else
         {
             //let marker = RMMarker(UIImage: UIImage.getPin(annotation.userInfo["type"] as Int, Category: annotation.userInfo["category"] as Int))
-            var dic = annotation.userInfo as NSDictionary
+            var dic = annotation.userInfo as! NSDictionary
             //var imagePin =
             
-            let marker = RMMarker(UIImage: UIImage.getPin(dic["type"] as Int, Category: dic["category"] as Int))
+            let marker = RMMarker(UIImage: UIImage.getPin(dic["type"] as! Int, Category: dic["category"] as! Int))
             return marker
         }
     }
@@ -233,13 +233,13 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     func returnList(responseObject: AnyObject, url: String) {
-        for report in responseObject as NSMutableArray{
+        for report in responseObject as! NSMutableArray{
             reportsArray.addObject(report)
-            var location = report["location"] as NSDictionary
+            var location = report["location"] as! NSDictionary
             var type = report["type"] as? Int ?? 3
             var category = report["category"] as? Int ?? 3
-            var lat = location["lat"] as CLLocationDegrees
-            var lng = location["lng"] as CLLocationDegrees
+            var lat = location["lat"] as! CLLocationDegrees
+            var lng = location["lng"] as! CLLocationDegrees
             addAnnotation(CLLocationCoordinate2DMake(lng,lat), data: ["type":type,"category":category])
         }
     }

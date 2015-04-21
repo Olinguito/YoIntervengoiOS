@@ -14,9 +14,8 @@ class Panel: UIView {
     var like:UIButton!
     var dislike:UIButton!
     
-    override init() {
-        super.init()
-        
+    convenience init() {
+        self.init()
         self.frame = CGRect(x: 0, y: 0, width: 291, height: 24)
         self.layer.borderColor = UIColor.greyLight().CGColor
         self.layer.borderWidth = 1.0
@@ -40,7 +39,7 @@ class Panel: UIView {
         dislike.setImage(UIImage(named: "dislike_panel"), forState: UIControlState.Normal)
         
         var title:String = like.titleLabel?.text ?? "3333"
-        var vw:CGFloat = CGFloat(countElements(title))*10
+        var vw:CGFloat = CGFloat(count(title))*10
         
         print(vw)
         like.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
@@ -48,7 +47,7 @@ class Panel: UIView {
         like.imageEdgeInsets = UIEdgeInsetsMake(0.0, 15 + vw, 0.0, 0.0)
         
         title = dislike.titleLabel?.text ?? "333"
-        vw = CGFloat(countElements(title))*10
+        vw = CGFloat(count(title))*10
                 print(vw)
         dislike.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         dislike.titleEdgeInsets = UIEdgeInsetsMake(0.0, -11, 0.0, 0.0)

@@ -49,12 +49,12 @@ class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SubCategoryCell", forIndexPath: indexPath) as SubCategoryCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SubCategoryCell", forIndexPath: indexPath) as! SubCategoryCell
         //cell.btnCategory.tag = indexPath.row
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
         cell.btnSubCat.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)
-        cell.lblSubCat.text = (data.objectAtIndex(indexPath.row) as Dictionary)["NAME"]
+        cell.lblSubCat.text = (data.objectAtIndex(indexPath.row) as! Dictionary)["NAME"]
         cell.alpha = 0
         cell.type = self.type
         cell.btnSubCat.tag = 3

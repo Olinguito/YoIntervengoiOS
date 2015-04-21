@@ -55,7 +55,7 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
         return 10
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PicContainerCell", forIndexPath: indexPath) as PicContainerCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PicContainerCell", forIndexPath: indexPath) as! PicContainerCell
         cell.alpha = 0
         cell.layer.cornerRadius = 5
         cell.imageBtn.addTarget(self, action: Selector("goPicture:"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -70,7 +70,7 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
     }
     
     func followReport(sender:UIButton!){
-        var cell = collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as publicWCell
+        var cell = collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as! publicWCell
         cell.follower.backgroundColor = UIColor.greyLight()
         cell.follower.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         cell.follower.tintColor = UIColor.whiteColor()
