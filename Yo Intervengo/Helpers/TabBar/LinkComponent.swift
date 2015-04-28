@@ -64,7 +64,7 @@ class LinkComponent: UIView {
         
         
         if type == 1 {
-            actionPanel = Panel()
+            actionPanel = Panel(frame: CGRectZero, data: NSMutableArray())
             actionPanel.center = CGPoint(x: frame.width/2, y: subtitle.frame.maxY + 20)
             addSubview(actionPanel)
             

@@ -28,7 +28,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         reportsArray = NSMutableArray()
         
         APIManagerClass = APIManager()
@@ -50,7 +49,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         map.minZoom = 11
         map.showsUserLocation = true
         map.tintColor = UIColor.greenColor()
-        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6015,-74.0698), andTitle:"0"))
+        /*loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6015,-74.0698), andTitle:"0"))
         loc[0].userInfo = "Pin2"
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6625,-74.0628), andTitle:"1"))
         loc[1].userInfo = "Pin"
@@ -65,11 +64,11 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6675,-74.0698), andTitle:"6"))
         loc[6].userInfo = "Pin2"
         loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.8385,-74.0598), andTitle:"7"))
-        loc[7].userInfo = "Pin2"
+        loc[7].userInfo = "Pin2"*/
         
-        for ann in loc{
+        //for ann in loc{
            // map.addAnnotation(ann)
-        }
+        //}
         // hide MapBox logo
         self.map.showLogoBug = false
         // hide bottom right "i" icon
@@ -86,6 +85,8 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         self.view.insertSubview(grad1, aboveSubview: map)
         let grad2 = Gradient(frame: CGRect(x: 0, y: fram.height-64, width: fram.width, height: 64), type: "Bottom")
         self.view.insertSubview(grad2, aboveSubview: map)
+        
+        
         test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 240), array: loc)
         test.delegate = self
         self.view.insertSubview(test, belowSubview: listView)
@@ -107,23 +108,26 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     
     // MAP DELEGATE
     func tapOnAnnotation(annotation: RMAnnotation!, onMap map: RMMapView!) {
-        if annotation.isClusterAnnotation {
-            var southwestCoordinate = annotation.coordinate
-            var northeastCoordinate = annotation.coordinate
-            for plot in annotation.clusteredAnnotations {
-                var latititude = Float(plot.coordinate.latitude)
-                var longitude =  Float(plot.coordinate.longitude)
-                if Float(southwestCoordinate.latitude) > fabsf(latititude){ southwestCoordinate.latitude = CLLocationDegrees(latititude)}
-                if Float(southwestCoordinate.longitude) > fabsf(longitude){ southwestCoordinate.longitude = CLLocationDegrees(longitude)}
-                if Float(northeastCoordinate.latitude) < fabsf(latititude){ northeastCoordinate.latitude = CLLocationDegrees(latititude)}
-                if Float(northeastCoordinate.longitude) < fabsf(longitude){ northeastCoordinate.longitude = CLLocationDegrees(longitude)}
+        if !annotation.isUserLocationAnnotation{
+            if annotation.isClusterAnnotation {
+                var southwestCoordinate = annotation.coordinate
+                var northeastCoordinate = annotation.coordinate
+                for plot in annotation.clusteredAnnotations {
+                    var latititude = Float(plot.coordinate.latitude)
+                    var longitude =  Float(plot.coordinate.longitude)
+                    if Float(southwestCoordinate.latitude) > fabsf(latititude){ southwestCoordinate.latitude = CLLocationDegrees(latititude)}
+                    if Float(southwestCoordinate.longitude) > fabsf(longitude){ southwestCoordinate.longitude = CLLocationDegrees(longitude)}
+                    if Float(northeastCoordinate.latitude) < fabsf(latititude){ northeastCoordinate.latitude = CLLocationDegrees(latititude)}
+                    if Float(northeastCoordinate.longitude) < fabsf(longitude){ northeastCoordinate.longitude = CLLocationDegrees(longitude)}
+                }
+                map.zoomWithLatitudeLongitudeBoundsSouthWest(southwestCoordinate, northEast: northeastCoordinate, animated: true)
             }
-            map.zoomWithLatitudeLongitudeBoundsSouthWest(southwestCoordinate, northEast: northeastCoordinate, animated: true)
-        }
-        else{
-            map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(annotation.coordinate).x, y: map.coordinateToPixel(annotation.coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
-            test.show()
-            test.go2Page(NSIndexPath(forRow: annotation.title.toInt()!, inSection: 0))
+            else{
+                map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(annotation.coordinate).x, y: map.coordinateToPixel(annotation.coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
+                test.show()
+                print("Entrando a: \(annotation.title.toInt())")
+                test.go2Page(NSIndexPath(forRow: annotation.title.toInt()!, inSection: 0))
+            }
         }
     }
     
@@ -222,6 +226,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(loc[index.row].coordinate).x, y: map.coordinateToPixel(loc[index.row].coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
     }
     
+    //MARK: DATA
     func goDetail(sender:UIButton){
         var view2 = DetailReportVC()
         view2.center = map.userLocation.coordinate
@@ -233,15 +238,24 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     func returnList(responseObject: AnyObject, url: String) {
+        var newANN:RMAnnotation!
         for report in responseObject as! NSMutableArray{
             reportsArray.addObject(report)
+            print("Coordenada lng: \(report)")
             var location = report["location"] as! NSDictionary
             var type = report["type"] as? Int ?? 3
-            var category = report["category"] as? Int ?? 3
+            var category = report["category"] as? Int ?? 1
             var lat = location["lat"] as! CLLocationDegrees
             var lng = location["lng"] as! CLLocationDegrees
-            addAnnotation(CLLocationCoordinate2DMake(lng,lat), data: ["type":type,"category":category])
+            var title = report["title"] as? NSString ?? "No se trajo información"
+            var description = report["description"] as? NSString ?? "No se trajo información"
+            newANN = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(lat,lng), andTitle:"0");
+            newANN.userInfo =  ["type":type,"category":category,"title":title,"description":description]
+            map.addAnnotation(newANN)
+            loc.append(newANN)
         }
+        test.loc = loc;
+        test.collectionView.reloadData()
     }
     
     func addAnnotation(localization:CLLocationCoordinate2D, data:NSDictionary){

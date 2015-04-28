@@ -46,7 +46,7 @@ class Pictures: UIView, PicContainerDelegate {
         image.center.y = view.center.y
         view.addSubview(image)
         
-        var panel = Panel()
+        var panel = Panel(frame: CGRectZero, data: NSMutableArray())
         panel.center.x = view.center.x
         panel.frame.origin.y = view.frame.maxY - 40
         view.addSubview(panel)

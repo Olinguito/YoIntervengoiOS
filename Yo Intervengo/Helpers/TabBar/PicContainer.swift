@@ -62,10 +62,7 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
         return cell
     }
     
-    
-    
     func goPicture(sender:UIButton!){
-        print("Touched")
         self.delegate?.picTapped!(sender.tag)
     }
     

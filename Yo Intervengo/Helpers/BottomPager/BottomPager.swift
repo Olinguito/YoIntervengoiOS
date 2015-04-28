@@ -74,6 +74,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     }
     
     func go2Page (page:NSIndexPath){
+        print("Buscando Pagina: \(page.row)")
         collectionView.scrollToItemAtIndexPath(page, atScrollPosition:UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
     }
     
@@ -88,8 +89,11 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as! publicWCell
+        var infoPin = (loc[indexPath.row] as RMAnnotation).userInfo!
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
+        cell.lblTitle.text = (infoPin["title"] as! String)
+        cell.lblDescr.text = (infoPin["description"] as! String)
         cell.goReport.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
         cell.follower.tag = indexPath.row
         cell.follower.addTarget(self, action: Selector("followReport:"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -123,10 +127,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         UIView.setAnimationDuration(0.8)
         //cell.layer.transform = fg
         cell.alpha = 1
-        cell.layer.shadowOffset = CGSizeMake(0, 0)
-//        var transform = CGAffineTransformMakeScale(1, 0.9)
-  //      cell.transform = transform;
-        
+        cell.layer.shadowOffset = CGSizeMake(0, 0) 
         UIView.commitAnimations()
     }
         
