@@ -18,9 +18,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     var menuView: LeftMenu!
     var test: BottomPager!
     var loc:[RMAnnotation]! = []
-    
-    var reportsArray:NSMutableArray!
-
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var btnMenu: UIButton!
     @IBOutlet weak var btnSearch: UIButton!
@@ -28,8 +25,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        reportsArray = NSMutableArray()
-        
         APIManagerClass = APIManager()
         APIManagerClass.delegate = self
         APIManagerClass.getReports()
@@ -49,26 +44,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         map.minZoom = 11
         map.showsUserLocation = true
         map.tintColor = UIColor.greenColor()
-        /*loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6015,-74.0698), andTitle:"0"))
-        loc[0].userInfo = "Pin2"
-        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6625,-74.0628), andTitle:"1"))
-        loc[1].userInfo = "Pin"
-        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6135,-74.0638), andTitle:"2"))
-        loc[2].userInfo = "Pin2"
-        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6245,-74.0658), andTitle:"3"))
-        loc[3].userInfo = "Pin2"
-        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6355,-74.0678), andTitle:"4"))
-        loc[4].userInfo = "Pin"
-        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6665,-74.0728), andTitle:"5"))
-        loc[5].userInfo = "Pin"
-        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.6675,-74.0698), andTitle:"6"))
-        loc[6].userInfo = "Pin2"
-        loc.append(RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(4.8385,-74.0598), andTitle:"7"))
-        loc[7].userInfo = "Pin2"*/
-        
-        //for ann in loc{
-           // map.addAnnotation(ann)
-        //}
         // hide MapBox logo
         self.map.showLogoBug = false
         // hide bottom right "i" icon
@@ -85,7 +60,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         self.view.insertSubview(grad1, aboveSubview: map)
         let grad2 = Gradient(frame: CGRect(x: 0, y: fram.height-64, width: fram.width, height: 64), type: "Bottom")
         self.view.insertSubview(grad2, aboveSubview: map)
-        
         
         test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 240), array: loc)
         test.delegate = self
@@ -132,19 +106,16 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     func longPressOnMap(map: RMMapView!, at point: CGPoint) {
-        //if map.zoom > 15{
-            /*var thisMenu = LNERadialMenu(fromPoint: point, withDataSource: self, andDelegate: self, withFrame: self.view.frame, andLabels:0)
-            self.view.insertSubview(thisMenu, belowSubview: btnReport)
-            thisMenu.radialMenuIdentifier = "hide"
-
-            thisMenu.showMenu()*/
-        var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport, labels: 0, coodinate: map.pixelToCoordinate(point))
-            //self.view.insertSubview(thisMenu, belowSubview: btnReport)
+        if self.map.zoom > 14{
+            var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport, labels: 0, coodinate: map.pixelToCoordinate(point))
             thisMenu.delegate = self
             self.view.addSubview(thisMenu)
             thisMenu.showMenu(1, atPoint: point)
-            
-       // }
+        }else{
+            alert.setText("Ups, acercate un poco más")
+            self.view.addSubview(alert)
+            alert.showAlert()
+        }
     }
     
     func singleTapOnMap(map: RMMapView!, at point: CGPoint) {
@@ -240,8 +211,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     func returnList(responseObject: AnyObject, url: String) {
         var newANN:RMAnnotation!
         for report in responseObject as! NSMutableArray{
-            reportsArray.addObject(report)
-            print("Coordenada lng: \(report)")
             var location = report["location"] as! NSDictionary
             var type = report["type"] as? Int ?? 3
             var category = report["category"] as? Int ?? 1

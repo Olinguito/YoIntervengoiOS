@@ -11,11 +11,12 @@ import UIKit
 class GenericViewController: UIViewController,APIManagerDelegate {
     var conn:Connection!
     var APIManagerClass:APIManager!
+    var alert:JOAlert!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        alert = JOAlert(textNFrame: "", self.view.frame)
         
     }
 

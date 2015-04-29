@@ -20,8 +20,9 @@
 		7A2316091ADF17E1007C5A46 /* ic-06.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2315FD1ADF17E1007C5A46 /* ic-06.png */; };
 		7A23160A1ADF17E1007C5A46 /* ic-06@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2315FE1ADF17E1007C5A46 /* ic-06@2x.png */; };
 		7A23160C1AE047DD007C5A46 /* YIPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23160B1AE047DD007C5A46 /* YIPin.swift */; };
+		7A3693241AF0816C0049058F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3693231AF0816C0049058F /* SwiftyJSON.swift */; };
 		7A73657C1AEF2A7E00B71CE7 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73657B1AEF2A7E00B71CE7 /* Panel.swift */; };
-		AD47E1973A450F63AC40EF7B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 088AA865EB5056C1F0BEC02E /* libPods.a */; };
+		946A4F5F589DEEAAB19C1B76 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 299917266435710DC9DFBAA8 /* libPods.a */; };
 		EC051BBC1A6CCD1A00C70D2A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */; };
 		EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7B51A62E7CD004F1B6C /* AppDelegate.swift */; };
 		EC0AF7B81A62E7CD004F1B6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7B71A62E7CD004F1B6C /* ViewController.swift */; };
@@ -264,8 +265,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		088AA865EB5056C1F0BEC02E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DE7C65E89059CCA63606471 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		299917266435710DC9DFBAA8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AD3BC2E5B429E2621BC7C7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7A2315F31ADF17E1007C5A46 /* ic-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-01.png"; sourceTree = "<group>"; };
 		7A2315F41ADF17E1007C5A46 /* ic-01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-01@2x.png"; sourceTree = "<group>"; };
@@ -280,6 +281,7 @@
 		7A2315FD1ADF17E1007C5A46 /* ic-06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-06.png"; sourceTree = "<group>"; };
 		7A2315FE1ADF17E1007C5A46 /* ic-06@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-06@2x.png"; sourceTree = "<group>"; };
 		7A23160B1AE047DD007C5A46 /* YIPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YIPin.swift; sourceTree = "<group>"; };
+		7A3693231AF0816C0049058F /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		7A73657B1AEF2A7E00B71CE7 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionViewCell.xib; path = XIB/CollectionViewCell.xib; sourceTree = "<group>"; };
 		EC0AF7B01A62E7CD004F1B6C /* Yo Intervengo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yo Intervengo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -531,7 +533,7 @@
 				ECF5CCD51A644CF50055077D /* libsqlite3.dylib in Frameworks */,
 				ECF5CCD31A644CE80055077D /* CoreLocation.framework in Frameworks */,
 				ECF5CCD11A644CE10055077D /* QuartzCore.framework in Frameworks */,
-				AD47E1973A450F63AC40EF7B /* libPods.a in Frameworks */,
+				946A4F5F589DEEAAB19C1B76 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,7 +554,7 @@
 				ECF5CCD41A644CF50055077D /* libsqlite3.dylib */,
 				ECF5CCD21A644CE80055077D /* CoreLocation.framework */,
 				ECF5CCD01A644CE10055077D /* QuartzCore.framework */,
-				088AA865EB5056C1F0BEC02E /* libPods.a */,
+				299917266435710DC9DFBAA8 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -750,6 +752,7 @@
 		EC54A7031A7ACC9A007F6ABF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7A3693231AF0816C0049058F /* SwiftyJSON.swift */,
 				7A73657B1AEF2A7E00B71CE7 /* Panel.swift */,
 				ECB475BE1ABF82FC001B1BE1 /* JOAlert.h */,
 				ECB475BF1ABF82FC001B1BE1 /* JOAlert.m */,
@@ -1487,6 +1490,7 @@
 				EC3C120F1A896F0B009E82B4 /* CreateReport.swift in Sources */,
 				ECCA04081A9D7955002E8FA2 /* PicContainerCell.swift in Sources */,
 				ECEC50151A8C29E600AC5853 /* LoginVC.swift in Sources */,
+				7A3693241AF0816C0049058F /* SwiftyJSON.swift in Sources */,
 				ECFAD2261A86BA6100B5652C /* LinkComponent.swift in Sources */,
 				EC54A6FF1A7ACC79007F6ABF /* BottomPager.swift in Sources */,
 				ECA791C41A92A065003D0A41 /* GenericViewController.swift in Sources */,

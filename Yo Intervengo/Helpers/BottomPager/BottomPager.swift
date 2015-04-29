@@ -95,6 +95,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         cell.lblTitle.text = (infoPin["title"] as! String)
         cell.lblDescr.text = (infoPin["description"] as! String)
         cell.goReport.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.bgIcon.backgroundColor = (infoPin["type"] as! Int) == 1 ? UIColor.orangeYI() : UIColor.blurYI()
         cell.follower.tag = indexPath.row
         cell.follower.addTarget(self, action: Selector("followReport:"), forControlEvents: UIControlEvents.TouchUpInside)
         cell.alpha = 0
