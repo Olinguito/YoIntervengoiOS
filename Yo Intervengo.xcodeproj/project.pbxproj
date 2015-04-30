@@ -21,6 +21,10 @@
 		7A23160A1ADF17E1007C5A46 /* ic-06@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2315FE1ADF17E1007C5A46 /* ic-06@2x.png */; };
 		7A23160C1AE047DD007C5A46 /* YIPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A23160B1AE047DD007C5A46 /* YIPin.swift */; };
 		7A3693241AF0816C0049058F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3693231AF0816C0049058F /* SwiftyJSON.swift */; };
+		7A3693261AF089F00049058F /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3693251AF089F00049058F /* StringEx.swift */; };
+		7A3693291AF1E00E0049058F /* subPin2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3693271AF1E00E0049058F /* subPin2@2x.png */; };
+		7A36932A1AF1E00E0049058F /* subPin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3693281AF1E00E0049058F /* subPin2.png */; };
+		7A36932D1AF1E8900049058F /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36932C1AF1E8900049058F /* AboutVC.swift */; };
 		7A73657C1AEF2A7E00B71CE7 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73657B1AEF2A7E00B71CE7 /* Panel.swift */; };
 		946A4F5F589DEEAAB19C1B76 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 299917266435710DC9DFBAA8 /* libPods.a */; };
 		EC051BBC1A6CCD1A00C70D2A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */; };
@@ -282,6 +286,10 @@
 		7A2315FE1ADF17E1007C5A46 /* ic-06@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-06@2x.png"; sourceTree = "<group>"; };
 		7A23160B1AE047DD007C5A46 /* YIPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YIPin.swift; sourceTree = "<group>"; };
 		7A3693231AF0816C0049058F /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		7A3693251AF089F00049058F /* StringEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringEx.swift; sourceTree = "<group>"; };
+		7A3693271AF1E00E0049058F /* subPin2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "subPin2@2x.png"; sourceTree = "<group>"; };
+		7A3693281AF1E00E0049058F /* subPin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subPin2.png; sourceTree = "<group>"; };
+		7A36932C1AF1E8900049058F /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutVC.swift; path = Views/About/AboutVC.swift; sourceTree = "<group>"; };
 		7A73657B1AEF2A7E00B71CE7 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionViewCell.xib; path = XIB/CollectionViewCell.xib; sourceTree = "<group>"; };
 		EC0AF7B01A62E7CD004F1B6C /* Yo Intervengo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yo Intervengo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -587,6 +595,14 @@
 			path = icons;
 			sourceTree = "<group>";
 		};
+		7A36932B1AF1E8600049058F /* About */ = {
+			isa = PBXGroup;
+			children = (
+				7A36932C1AF1E8900049058F /* AboutVC.swift */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
 		EC0AF7A71A62E7CD004F1B6C = {
 			isa = PBXGroup;
 			children = (
@@ -669,6 +685,8 @@
 		EC3C12131A8A95E1009E82B4 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				7A3693271AF1E00E0049058F /* subPin2@2x.png */,
+				7A3693281AF1E00E0049058F /* subPin2.png */,
 				EC3C12141A8A95E1009E82B4 /* circle.png */,
 				EC3C12151A8A95E1009E82B4 /* subPin.png */,
 				EC3C12161A8A95E1009E82B4 /* subPin@2x.png */,
@@ -738,6 +756,7 @@
 		EC4EECC31A7044FB0034C0EB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7A36932B1AF1E8600049058F /* About */,
 				EC5FD8E91A9CF3E5004192A3 /* Filter */,
 				EC5FD8EB1A9CF3E5004192A3 /* Detail */,
 				EC5FD8E61A9CF356004192A3 /* Comment */,
@@ -764,6 +783,7 @@
 				ECA791C51A92A0E1003D0A41 /* Connection.swift */,
 				ECFE122A1AA659940094A0C7 /* ViewYI.swift */,
 				7A23160B1AE047DD007C5A46 /* YIPin.swift */,
+				7A3693251AF089F00049058F /* StringEx.swift */,
 			);
 			name = Components;
 			path = Helpers/Components;
@@ -1299,6 +1319,7 @@
 				EC4A5AAB1A7AEB26007DD7CB /* mask.png in Resources */,
 				EC4A5AB61A7B56AC007DD7CB /* comment@2x.png in Resources */,
 				ECA7919E1A929BEC003D0A41 /* bg_hist_imagen.png in Resources */,
+				7A36932A1AF1E00E0049058F /* subPin2.png in Resources */,
 				ECA791A11A929BEC003D0A41 /* bg_hist_otro@2x.png in Resources */,
 				ECA791981A929BEC003D0A41 /* btn_solicitud_vial.png in Resources */,
 				ECA791A91A929BEC003D0A41 /* bg_hist_video@2x.png in Resources */,
@@ -1324,6 +1345,7 @@
 				ECB6C2681A799C6300AD1BCB /* SubCategory_on.png in Resources */,
 				ECDB10F41A8829820099B5EF /* RobotoSlab-Light.ttf in Resources */,
 				7A2316001ADF17E1007C5A46 /* ic-01@2x.png in Resources */,
+				7A3693291AF1E00E0049058F /* subPin2@2x.png in Resources */,
 				ECA791B61A929BEC003D0A41 /* btn_add_links_documento.png in Resources */,
 				ECA7918F1A929BEC003D0A41 /* btn_solicitud_edif@2x.png in Resources */,
 				EC3C122D1A8A95E1009E82B4 /* div@2x.png in Resources */,
@@ -1490,8 +1512,10 @@
 				EC3C120F1A896F0B009E82B4 /* CreateReport.swift in Sources */,
 				ECCA04081A9D7955002E8FA2 /* PicContainerCell.swift in Sources */,
 				ECEC50151A8C29E600AC5853 /* LoginVC.swift in Sources */,
+				7A3693261AF089F00049058F /* StringEx.swift in Sources */,
 				7A3693241AF0816C0049058F /* SwiftyJSON.swift in Sources */,
 				ECFAD2261A86BA6100B5652C /* LinkComponent.swift in Sources */,
+				7A36932D1AF1E8900049058F /* AboutVC.swift in Sources */,
 				EC54A6FF1A7ACC79007F6ABF /* BottomPager.swift in Sources */,
 				ECA791C41A92A065003D0A41 /* GenericViewController.swift in Sources */,
 				EC0AF7B81A62E7CD004F1B6C /* ViewController.swift in Sources */,

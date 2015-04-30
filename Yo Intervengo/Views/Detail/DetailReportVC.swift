@@ -25,9 +25,13 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     var story:UIStoryboard!
     var report:ReportVC!
     
+    var colorView:UIColor!
+    
     var pop1:POPSpringAnimation!
     var pop2:POPSpringAnimation!
     var tab:JOTabBar!
+    
+    var data:NSDictionary!
     
     
     override func viewWillAppear(animated: Bool) {
@@ -39,10 +43,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         self.navigationController?.interactivePopGestureRecognizer.delegate = self
         
         story = UIStoryboard(name: "Main", bundle: nil)
-        
-
         report = story.instantiateViewControllerWithIdentifier("denunciaView") as! ReportVC
-        
         
         imgWork = UIImageView(frame: CGRect(x: 0, y: 0, width: 320, height: 194))
         imgWork.image = UIImage(named: "bg1")
@@ -58,6 +59,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         scroll.multipleTouchEnabled = false
         self.view.addSubview(scroll)
         
+        colorView = (data["type"] as! Int) == 1 ? UIColor.orangeYI() : UIColor.blurYI()
         
         banner = UIView(frame: CGRect(x: 0, y: 125, width: 320, height: 135))
         banner.backgroundColor = UIColor(red:0.180, green:0.180, blue:0.180, alpha: 1)
@@ -73,10 +75,9 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         map.centerCoordinate = CLLocationCoordinate2DMake(4.6015,-74.0698)
         banner.addSubview(map)
         
-        var pin = UIImageView(image: UIImage(named: "subPin"))
+        var pin = UIImageView(image: UIImage(named: (data["type"] as! Int) == 1 ? "subPin" : "subPin2"))
         pin.center = map.center
         banner.addSubview(pin)
-        
         
         lblAdds = UILabel(frame: CGRect(x: map.frame.maxX, y: map.center.y-20, width: self.view.frame.width - 120, height: 13))
         lblAdds.textColor = UIColor.whiteColor()
@@ -92,7 +93,6 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         lblCoun.text = "Bogotá - Colombia"
         banner.addSubview(lblCoun)
         
-        
         pop1 = POPSpringAnimation(propertyNamed: kPOPViewCenter)
         pop1.fromValue = NSValue(CGPoint: CGPoint(x: self.view.frame.width - 35, y: self.view.frame.height - 35))
         pop1.toValue = NSValue(CGPoint: CGPoint(x: self.view.frame.width - 35, y: self.view.frame.height + 35))
@@ -106,7 +106,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     
         var a:NSMutableArray = NSMutableArray()
         
-        var info = Info(index: 2)
+        var info = Info(index: 2, data: data, color: colorView)
         var histo = History(index: 2)
         var pictures = Pictures(index: 2, frame: self.view.frame, ini: banner.frame.maxY)
         var links = Links(index: 2)
@@ -117,7 +117,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         a.addObject(["Enlaces",links])
         
         
-        tab = JOTabBar(frame: CGRect(x: 0, y: banner.frame.maxY, width: self.view.frame.width, height: self.view.frame.height), data: a)
+        tab = JOTabBar(frame: CGRect(x: 0, y: banner.frame.maxY, width: self.view.frame.width, height: self.view.frame.height), data: a, color: colorView)
         tab.delegate = self
         self.scroll.addSubview(tab)
         
@@ -135,16 +135,16 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         
         lblTitle = UILabel(frame: CGRect(x: 10, y: btnInfo.frame.maxY + 10, width: 300, height: 18))
         lblTitle.font = UIFont(name: "Roboto-Regular", size: 17)
-        lblTitle.text = "Puente Calle 33 con Av. López ..."
+        lblTitle.text = (data["title"] as! String)
         lblTitle.textAlignment = NSTextAlignment.Center
         lblTitle.textColor = UIColor.whiteColor()
         self.scroll.addSubview(lblTitle)
         
         lblSubTit = UILabel(frame: CGRect(x: 10, y: lblTitle.frame.maxY+5, width: 300, height: 13))
         lblSubTit.font = UIFont(name: "Roboto-Medium", size: 12.5)
-        lblSubTit.text = "CATEGORÍA > SUBCATEGORÍA"
+        lblSubTit.text = "CATEGORÍA > " + (data["subcategory"] as! String).uppercaseString
         lblSubTit.textAlignment = NSTextAlignment.Center
-        lblSubTit.textColor = UIColor(red:0.929, green:0.361, blue:0.180, alpha: 1)
+        lblSubTit.textColor = colorView
         self.scroll.addSubview(lblSubTit)
         
         buttonHelper = UIButton()
@@ -162,14 +162,12 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     
     func tappedButton(){
         if (buttonHelper?.isDescendantOfView(self.view) != nil){
-            print("sdfsfsdfsdf \(tab.getActHelper().tag)")
             buttonHelper.removeTarget(self, action: Selector("openView:"), forControlEvents: UIControlEvents.TouchUpInside)
                 buttonHelper.setImage(UIImage(named: "btnNewPicture"), forState: UIControlState.Normal)
             buttonHelper.removeFromSuperview()
         }
         //buttonHelper.removeFromSuperview()
         if tab.getActHelper().tag > 0{
-            print("OMGGGGGGG \(tab.getActHelper().tag)")
             buttonHelper = tab.getActHelper()
             buttonHelper.frame = CGRect(x: self.view.frame.maxX-70, y: self.view.frame.maxY-70, width: 70, height: 70)
             switch(tab.getActHelper().tag){

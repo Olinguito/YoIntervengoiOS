@@ -15,7 +15,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     var attachmentBeh: UIAttachmentBehavior!
     var snaBeh: UISnapBehavior!
     var initLoc: CGPoint!
-    var menuView: LeftMenu!
     var test: BottomPager!
     var loc:[RMAnnotation]! = []
     @IBOutlet weak var listView: UIView!
@@ -25,10 +24,11 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        actView = 1
+        
         APIManagerClass = APIManager()
         APIManagerClass.delegate = self
         APIManagerClass.getReports()
-        
         (RMConfiguration.sharedInstance()).accessToken = "pk.eyJ1Ijoib2xpbmd1aXRvIiwiYSI6IkVGeE41bE0ifQ.TrGnR7v_7HRJUsiM2h_3dQ"
         
         //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
@@ -36,6 +36,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
         //let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
+        
         map = RMMapView(frame: view.frame, andTilesource: source)
         map.delegate = self
         view.insertSubview(map, belowSubview: btnReport)
@@ -53,7 +54,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         map.positionClusterMarkersAtTheGravityCenter = true
         map.clusteringEnabled = true
         animator = UIDynamicAnimator(referenceView: view)
-        menuView = LeftMenu(frame: CGRect(x: -204, y: 0, width: 204, height: view.frame.height))
+        
         view.insertSubview(menuView, belowSubview: btnMenu)
         let fram = self.view.frame.size
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: fram.width, height: 64), type: "Top")
@@ -122,7 +123,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         test.hide()
     }
     
-    
     func mapView(mapView: RMMapView!, layerForAnnotation annotation: RMAnnotation!) -> RMMapLayer! {
         if annotation.isUserLocationAnnotation{
             return nil
@@ -151,8 +151,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         {
             //let marker = RMMarker(UIImage: UIImage.getPin(annotation.userInfo["type"] as Int, Category: annotation.userInfo["category"] as Int))
             var dic = annotation.userInfo as! NSDictionary
-            //var imagePin =
-            
             let marker = RMMarker(UIImage: UIImage.getPin(dic["type"] as! Int, Category: dic["category"] as! Int))
             return marker
         }
@@ -190,7 +188,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         thisMenu.delegate = self
         self.view.addSubview(thisMenu)
         thisMenu.showMenu(1, atPoint: sender.center)
-        
     }
     
     func pageSetted(index:NSIndexPath){
@@ -200,6 +197,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     //MARK: DATA
     func goDetail(sender:UIButton){
         var view2 = DetailReportVC()
+        view2.data = (loc[sender.tag].userInfo) as! NSDictionary
         view2.center = map.userLocation.coordinate
         self.showViewController(view2, sender: self)
     }
@@ -210,18 +208,24 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     
     func returnList(responseObject: AnyObject, url: String) {
         var newANN:RMAnnotation!
+        var counter = 0
         for report in responseObject as! NSMutableArray{
             var location = report["location"] as! NSDictionary
             var type = report["type"] as? Int ?? 3
             var category = report["category"] as? Int ?? 1
+            //Valores faltantes:
+            var subcategory = "SUBCATEGORIA DE PRUEBA"
+            var followers = 200
+            ////////////////////////////////
             var lat = location["lat"] as! CLLocationDegrees
             var lng = location["lng"] as! CLLocationDegrees
             var title = report["title"] as? NSString ?? "No se trajo información"
             var description = report["description"] as? NSString ?? "No se trajo información"
-            newANN = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(lat,lng), andTitle:"0");
-            newANN.userInfo =  ["type":type,"category":category,"title":title,"description":description]
+            newANN = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(lat,lng), andTitle:(String(counter)));
+            newANN.userInfo =  ["type":type,"category":category,"title":title,"description":description,"subcategory":subcategory,"followers":followers,"num":counter]
             map.addAnnotation(newANN)
             loc.append(newANN)
+            counter++
         }
         test.loc = loc;
         test.collectionView.reloadData()

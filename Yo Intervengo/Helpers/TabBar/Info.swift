@@ -13,13 +13,18 @@ class Info: UIView {
     var comment:UIButton!
     var tabBar:UIView!
     
+    var colorView:UIColor!
+    var data:NSDictionary!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    init(index:Int) {
+    init(index:Int, data:NSDictionary, color:UIColor) {
         super.init(frame:CGRectZero)
         var wS:CGFloat = 320
+        self.data = data
+        self.colorView = color
         tabBar = UIView(frame: CGRect(x: 0, y: 0, width: wS, height: 139))
         tabBar.backgroundColor = UIColor.whiteColor()
         addSubview(tabBar)
@@ -29,7 +34,7 @@ class Info: UIView {
         tabBar.addSubview(grad3)
         
         var lblInfo = UILabel()
-        var text = "Puente en mal estado, cuando no han pasado ni siquiera seis meses de terminada la obra. El estado de este puente pone en peligro la seguridad de niños que a diario lo usan para dirigirse a la escuela."
+        var text = self.data["description"] as! String
         lblInfo.text = text
         lblInfo.textColor = UIColor.greyDark()
         lblInfo.font = UIFont(name: "RobotoSlab-Light", size: 15)
@@ -48,7 +53,7 @@ class Info: UIView {
         
         var myMutableString = NSMutableAttributedString(string: "Para lograr un mayor impacto asocia este reporte a un contrato. Enlazar a Wiki", attributes: [NSFontAttributeName:UIFont(name: "Roboto-LightItalic", size: 14.0)!])
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greyDark(), range: NSRange(location:0,length:64))
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orangeYI(), range: NSRange(location:64,length:14))
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: self.colorView, range: NSRange(location:64,length:14))
         
         butWiki.titleLabel?.textAlignment = NSTextAlignment.Center
         butWiki.setAttributedTitle(myMutableString, forState: .Normal)

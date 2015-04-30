@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+@objc protocol LeftMenuDelegate{
+    optional func goTo(index:Int)
+}
 
 class LeftMenu: UIView{
     var opened = false
@@ -17,6 +20,7 @@ class LeftMenu: UIView{
     var btnStat:UIButton!
     var btnProf:UIButton!
     var btnSett:UIButton!
+    var delegate:LeftMenuDelegate?
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -60,11 +64,11 @@ class LeftMenu: UIView{
         btnProf.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         btnSett.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         
-        btnRep.tag  = 0;
-        btnWiki.tag = 1;
-        btnStat.tag = 2;
-        btnProf.tag = 3;
-        btnSett.tag = 4;
+        btnRep.tag  = 3330;
+        btnWiki.tag = 3331;
+        btnStat.tag = 3332;
+        btnProf.tag = 3333;
+        btnSett.tag = 3334;
         
         btnRep.addTarget(self,  action: "goBtn:", forControlEvents: UIControlEvents.TouchUpInside)
         btnWiki.addTarget(self, action: "goBtn:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -104,8 +108,9 @@ class LeftMenu: UIView{
         
         sender.setTitleColor( UIColor.orangeYI() , forState: UIControlState.Normal)
 
+        (self.viewWithTag(sender.tag) as! UIButton).setTitleColor(UIColor(red:0.761, green:0.286, blue:0.000, alpha: 1), forState: UIControlState.Normal)
         
-        //(self.viewWithTag(sender.tag)as UIButton).setTitleColor(UIColor(red:0.761, green:0.286, blue:0.000, alpha: 1), forState: UIControlState.Normal)
+        self.delegate!.goTo!(sender.tag - 3330)
     }
     
 }

@@ -18,14 +18,16 @@ class JOTabBar: UIView {
     var data:NSMutableArray!
     var container:UIView!
     var actual:Int!
+    var colorView:UIColor!
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(frame: CGRect, data:NSMutableArray) {
+    init(frame: CGRect, data:NSMutableArray, color: UIColor) {
         super.init(frame: frame)
         self.data = data
         buttons = NSMutableArray()
+        colorView = color
         var counter = 0
         var w = (frame.size.width/CGFloat(data.count))
         let font = UIFont(name: "Roboto-Regular", size: 10)
@@ -103,7 +105,7 @@ class JOTabBar: UIView {
                   container.removeFromSuperview()
                 }
                 (button as! UIButton).layer.borderColor = UIColor.clearColor().CGColor
-                (button as! UIButton).tintColor = UIColor.orangeColor()
+                (button as! UIButton).tintColor = colorView
                 container = self.data.objectAtIndex(index-1)[1] as! UIView
                 container.frame = (self.data.objectAtIndex(index-1)[1] as! UIView).frame
                 container.frame.origin = CGPoint(x: 0, y: 55)

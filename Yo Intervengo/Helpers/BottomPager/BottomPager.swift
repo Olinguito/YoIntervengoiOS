@@ -89,13 +89,16 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as! publicWCell
-        var infoPin = (loc[indexPath.row] as RMAnnotation).userInfo!
+        var infoPin: AnyObject = (loc[indexPath.row] as RMAnnotation).userInfo!
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
         cell.lblTitle.text = (infoPin["title"] as! String)
+        cell.subTitle.text = (infoPin["subcategory"] as! String)
         cell.lblDescr.text = (infoPin["description"] as! String)
         cell.goReport.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.goReport.tag = infoPin["num"] as! Int
         cell.bgIcon.backgroundColor = (infoPin["type"] as! Int) == 1 ? UIColor.orangeYI() : UIColor.blurYI()
+        cell.follower.setTitle(String(infoPin["followers"] as! Int), forState: UIControlState.Normal)
         cell.follower.tag = indexPath.row
         cell.follower.addTarget(self, action: Selector("followReport:"), forControlEvents: UIControlEvents.TouchUpInside)
         cell.alpha = 0
@@ -111,7 +114,10 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     func followReport(sender:UIButton!){
         println("Following")
         var cell = collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as! publicWCell
+        var infoPin: AnyObject = (loc[sender.tag] as RMAnnotation).userInfo!
         cell.follower.backgroundColor = UIColor.greyLight()
+        cell.follower.backgroundColor = (infoPin["type"] as! Int) == 1 ? UIColor.orangeYI() : UIColor.blurYI()
+        cell.follower.setTitle(String((infoPin["followers"] as! Int)+1), forState: UIControlState.Normal)
         cell.follower.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         cell.follower.tintColor = UIColor.whiteColor()
         cell.follow()
