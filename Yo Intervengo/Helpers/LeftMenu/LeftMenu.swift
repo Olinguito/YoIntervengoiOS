@@ -99,17 +99,20 @@ class LeftMenu: UIView{
         self.pop_addAnimation(spAn, forKey: "center")
     }
     
-    func goBtn(sender:UIButton){
+    func setColor(idBtn:Int){
         btnRep.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
         btnWiki.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
         btnStat.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
         btnProf.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
         btnSett.setTitleColor(UIColor(red:0.898, green:0.898, blue:0.898, alpha: 1), forState: UIControlState.Normal)
         
-        sender.setTitleColor( UIColor.orangeYI() , forState: UIControlState.Normal)
-
-        (self.viewWithTag(sender.tag) as! UIButton).setTitleColor(UIColor(red:0.761, green:0.286, blue:0.000, alpha: 1), forState: UIControlState.Normal)
+        //sender.setTitleColor( UIColor.orangeYI() , forState: UIControlState.Normal)
         
+        (self.viewWithTag(idBtn) as! UIButton).setTitleColor(UIColor(red:0.761, green:0.286, blue:0.000, alpha: 1), forState: UIControlState.Normal)
+    }
+    
+    func goBtn(sender:UIButton){
+        setColor(sender.tag)
         self.delegate!.goTo!(sender.tag - 3330)
     }
     

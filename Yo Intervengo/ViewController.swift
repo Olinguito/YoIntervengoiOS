@@ -24,8 +24,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        actView = 1
-        
         APIManagerClass = APIManager()
         APIManagerClass.delegate = self
         APIManagerClass.getReports()
@@ -67,19 +65,13 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         self.view.insertSubview(test, belowSubview: listView)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     override func viewWillAppear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         listView.center = CGPoint(x: ((self.view.frame.width*1.5)-4), y: self.view.frame.height/2)
         initLoc = listView.center
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        actView = 0
+        self.menuView.setColor(actView+3330)
     }
-
     
     // MAP DELEGATE
     func tapOnAnnotation(annotation: RMAnnotation!, onMap map: RMMapView!) {
@@ -149,7 +141,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         }
         else
         {
-            //let marker = RMMarker(UIImage: UIImage.getPin(annotation.userInfo["type"] as Int, Category: annotation.userInfo["category"] as Int))
             var dic = annotation.userInfo as! NSDictionary
             let marker = RMMarker(UIImage: UIImage.getPin(dic["type"] as! Int, Category: dic["category"] as! Int))
             return marker

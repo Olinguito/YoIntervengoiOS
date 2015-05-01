@@ -861,10 +861,10 @@
             </objects>
             <point key="canvasLocation" x="3165" y="278.5"/>
         </scene>
-        <!--View Controller-->
+        <!--AboutVC-->
         <scene sceneID="BtP-k4-R12">
             <objects>
-                <viewController id="3Wh-XS-gZ2" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3Wh-XS-gZ2" customClass="AboutVC" customModule="Yo_Intervengo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7OQ-rr-Yti"/>
                         <viewControllerLayoutGuide type="bottom" id="CJe-cE-A1O"/>
@@ -874,6 +874,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1e-cQ-Kws" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

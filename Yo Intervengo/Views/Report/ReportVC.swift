@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReportVC: UIViewController {
+class ReportVC: GenericViewController {
 
     @IBOutlet weak var btn3: UIButton!
     @IBOutlet weak var btn1: UIButton!
@@ -16,10 +16,6 @@ class ReportVC: UIViewController {
     @IBOutlet weak var btnReport: UIButton!
     
     var selected:Int!
-    
-    override func viewDidAppear(animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +33,14 @@ class ReportVC: UIViewController {
         btn1.addTarget(self, action: Selector("setValue:"), forControlEvents: UIControlEvents.TouchUpInside)
         btn2.addTarget(self, action: Selector("setValue:"), forControlEvents: UIControlEvents.TouchUpInside)
         btn3.addTarget(self, action: Selector("setValue:"), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        lblHeader.text = "Denuncia"
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        //self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.showNavBar(true)
     }
     
     func configure(sender:UIButton!){

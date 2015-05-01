@@ -79,8 +79,6 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         container = UIView(frame: CGRect(x: 0, y: 100, width: 320, height: 270))
         createForm()
         singleTap = UITapGestureRecognizer(target: self, action: Selector("singleTap:"))
-        
-
     }
     
     func showMenu(step:Int, atPoint point:CGPoint){
@@ -96,7 +94,6 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
             an2.springBounciness = 10
             btnClose.layer.pop_addAnimation(an2, forKey: "size")
             
-
             this = JOSideBarMenu(frame: CGRectMake(0, 0, 320, min(350, self.frame.height - (100 + btnClose.frame.height)))  , data: sideData)
             this.frame.origin = CGPoint(x: 0, y: (frame.height - btnClose.frame.height)-this.frame.height)
             this.delegate = self

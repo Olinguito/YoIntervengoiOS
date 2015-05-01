@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegate,UIGestureRecognizerDelegate {
+class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegate,UIGestureRecognizerDelegate,JSImagePickerViewControllerDelegate {
     var scroll:UIScrollView!
     var imgWork:UIImageView!
     var banner:UIView!
@@ -224,11 +224,32 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     
     func openView(sender:UIButton){
         switch(sender.tag){
-            case 1: var r = CreateReport(frame: self.view.frame, bttnClose: buttonHelper)
-                    self.view.addSubview(r)
+            
+        case 1: var imagePicker = JSImagePickerViewController()
+                imagePicker.delegate = self
+                imagePicker.showImagePickerInController(self, animated: true)
             case 2: var r = CreateReport(frame: self.view.frame, bttnClose: buttonHelper)
                     self.view.addSubview(r)
             default: print("")
         }
+    }
+    
+    func openCamera(sender:UIButton!){
+        /*var imagePicker = JSImagePickerViewController()
+        imagePicker.delegate = self
+        imagePicker.showImagePickerInController(self.parentViewController(), animated: true)*/
+    }
+    
+    func imagePickerDidSelectImage(image: UIImage!) {
+        /*imgReport.image = image
+        btnContinue.userInteractionEnabled = true
+        if type == 1 {
+            btnContinue.setTitle("Crear Reporte", forState: UIControlState.Normal)
+            btnContinue.backgroundColor = UIColor.orangeYI()
+        }else{
+            btnContinue.setTitle("Crear Solicitud", forState: UIControlState.Normal)
+            btnContinue.backgroundColor = UIColor.blurYI()
+        }
+        btnContinue.layer.borderColor = UIColor.clearColor().CGColor*/
     }
 }

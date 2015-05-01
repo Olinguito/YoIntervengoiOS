@@ -26,6 +26,10 @@
 		7A36932A1AF1E00E0049058F /* subPin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3693281AF1E00E0049058F /* subPin2.png */; };
 		7A36932D1AF1E8900049058F /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36932C1AF1E8900049058F /* AboutVC.swift */; };
 		7A73657C1AEF2A7E00B71CE7 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73657B1AEF2A7E00B71CE7 /* Panel.swift */; };
+		7A8F7A4C1AF2D57600D2E4F6 /* sponsor.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8F7A4A1AF2D57600D2E4F6 /* sponsor.png */; };
+		7A8F7A4D1AF2D57600D2E4F6 /* sponsor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8F7A4B1AF2D57600D2E4F6 /* sponsor@2x.png */; };
+		7A8F7A511AF30ADE00D2E4F6 /* btnBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8F7A4F1AF30ADE00D2E4F6 /* btnBack@2x.png */; };
+		7A8F7A521AF30ADE00D2E4F6 /* btnBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8F7A501AF30ADE00D2E4F6 /* btnBack.png */; };
 		946A4F5F589DEEAAB19C1B76 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 299917266435710DC9DFBAA8 /* libPods.a */; };
 		EC051BBC1A6CCD1A00C70D2A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */; };
 		EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7B51A62E7CD004F1B6C /* AppDelegate.swift */; };
@@ -291,6 +295,10 @@
 		7A3693281AF1E00E0049058F /* subPin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subPin2.png; sourceTree = "<group>"; };
 		7A36932C1AF1E8900049058F /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutVC.swift; path = Views/About/AboutVC.swift; sourceTree = "<group>"; };
 		7A73657B1AEF2A7E00B71CE7 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		7A8F7A4A1AF2D57600D2E4F6 /* sponsor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sponsor.png; path = About/sponsor.png; sourceTree = "<group>"; };
+		7A8F7A4B1AF2D57600D2E4F6 /* sponsor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sponsor@2x.png"; path = "About/sponsor@2x.png"; sourceTree = "<group>"; };
+		7A8F7A4F1AF30ADE00D2E4F6 /* btnBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btnBack@2x.png"; path = "Generic/btnBack@2x.png"; sourceTree = "<group>"; };
+		7A8F7A501AF30ADE00D2E4F6 /* btnBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btnBack.png; path = Generic/btnBack.png; sourceTree = "<group>"; };
 		EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionViewCell.xib; path = XIB/CollectionViewCell.xib; sourceTree = "<group>"; };
 		EC0AF7B01A62E7CD004F1B6C /* Yo Intervengo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yo Intervengo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0AF7B41A62E7CD004F1B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -601,6 +609,24 @@
 				7A36932C1AF1E8900049058F /* AboutVC.swift */,
 			);
 			name = About;
+			sourceTree = "<group>";
+		};
+		7A8F7A491AF2D56B00D2E4F6 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				7A8F7A4A1AF2D57600D2E4F6 /* sponsor.png */,
+				7A8F7A4B1AF2D57600D2E4F6 /* sponsor@2x.png */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		7A8F7A4E1AF30AD400D2E4F6 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				7A8F7A4F1AF30ADE00D2E4F6 /* btnBack@2x.png */,
+				7A8F7A501AF30ADE00D2E4F6 /* btnBack.png */,
+			);
+			name = Generic;
 			sourceTree = "<group>";
 		};
 		EC0AF7A71A62E7CD004F1B6C = {
@@ -1093,6 +1119,8 @@
 		ECCCA5FD1A65B9FC004C5858 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7A8F7A4E1AF30AD400D2E4F6 /* Generic */,
+				7A8F7A491AF2D56B00D2E4F6 /* About */,
 				ECA7913F1A929BEC003D0A41 /* reportes */,
 				ECA791581A929BEC003D0A41 /* historial */,
 				ECA791691A929BEC003D0A41 /* enlaces */,
@@ -1269,6 +1297,7 @@
 				ECEC501D1A8C2F6300AC5853 /* btnFacebook.png in Resources */,
 				ECA791951A929BEC003D0A41 /* btn_solicitud_seguridad@2x.png in Resources */,
 				ECA791AF1A929BEC003D0A41 /* bg_links_prensa@2x.png in Resources */,
+				7A8F7A4D1AF2D57600D2E4F6 /* sponsor@2x.png in Resources */,
 				7A2315FF1ADF17E1007C5A46 /* ic-01.png in Resources */,
 				ECA791A61A929BEC003D0A41 /* bg_hist_tv.png in Resources */,
 				EC399E9E1A819DE6003DD89F /* Info.png in Resources */,
@@ -1365,6 +1394,7 @@
 				ECEC50201A8C4A7000AC5853 /* btnGoogle.png in Resources */,
 				EC3BB6821AA6440F00B15457 /* btnAddPic.png in Resources */,
 				EC399E981A819DE6003DD89F /* Enlaces.png in Resources */,
+				7A8F7A511AF30ADE00D2E4F6 /* btnBack@2x.png in Resources */,
 				7A2316031ADF17E1007C5A46 /* ic-03.png in Resources */,
 				ECCE06E71A6CA54100A35012 /* bg@3x.png in Resources */,
 				ECEC502B1A8D418B00AC5853 /* bgEmail.png in Resources */,
@@ -1402,11 +1432,13 @@
 				ECEC50211A8C4A7000AC5853 /* btnGoogle@2x.png in Resources */,
 				ECEC50181A8C2EB000AC5853 /* logoDark@2x.png in Resources */,
 				ECA7919D1A929BEC003D0A41 /* bg_hist_documento@2x.png in Resources */,
+				7A8F7A4C1AF2D57600D2E4F6 /* sponsor.png in Resources */,
 				ECCCA5DE1A64D051004C5858 /* Pin@2x.png in Resources */,
 				ECA7918C1A929BEC003D0A41 /* btn_reporte_vial.png in Resources */,
 				EC3C120B1A8941BC009E82B4 /* linkHelper.png in Resources */,
 				ECA7919A1A929BEC003D0A41 /* bg_hist_comentario.png in Resources */,
 				ECA791881A929BEC003D0A41 /* btn_reporte_seguridad.png in Resources */,
+				7A8F7A521AF30ADE00D2E4F6 /* btnBack.png in Resources */,
 				EC399E9B1A819DE6003DD89F /* Fotos@2x.png in Resources */,
 				EC0AF7BD1A62E7CD004F1B6C /* Images.xcassets in Resources */,
 				ECA379EE1AA1168B00B134C9 /* btnNewPicture.png in Resources */,
