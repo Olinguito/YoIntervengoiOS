@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <pop/POP.h>
 
-@interface JOAlert : UIView
+@interface JOAlert : UIView{
+}
 
 @property (strong,nonatomic)  UIButton *btnClose;
 @property (strong,nonatomic)  CALayer *lyr;
@@ -18,9 +19,11 @@
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, strong) UISwipeGestureRecognizer *tapGesture2;
 @property (strong,nonatomic)  UIImageView *animationView;
+@property bool closable_;
+
 
 -(instancetype)initWithAnimFrame :(CGRect)frame;
--(instancetype)initWithTextNFrame:(NSString*)text :(CGRect)frame;
+-(instancetype)initWithTextNFrame:(NSString*)text :(CGRect)frame :(BOOL)closable;
 -(void)showAlert;
 -(void)showAlertAnim;
 -(void)dismissAlert;

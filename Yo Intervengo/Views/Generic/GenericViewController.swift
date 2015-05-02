@@ -12,6 +12,7 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
     var conn:Connection!
     var APIManagerClass:APIManager!
     var alert:JOAlert!
+    var alertInternet:JOAlert!
     var menuView: LeftMenu!
     var actView:Int!
     
@@ -23,16 +24,22 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
     var lblHeader:UILabel!
     var btnLeft:UIButton!
     var btnRight:UIButton!
+    var reachability:Reachability!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         vH = self.view.frame.height
         vW = self.view.frame.width
         
-        alert = JOAlert(textNFrame: "", self.view.frame)
+        APIManagerClass = APIManager()
+        APIManagerClass.delegate = self
+
+        alert = JOAlert(textNFrame: "", self.view.frame, true)
+        alertInternet = JOAlert(textNFrame: "No tienes internet cara de raton!", self.view.frame, false)
+        
         menuView = LeftMenu(frame: CGRect(x: -204, y: 0, width: 204, height: vH))
         menuView.delegate = self
-
+        
         navBar = UIView(frame: CGRectMake(0, 0, vW, 64))
         navBar.backgroundColor = UIColor.greyNav()
         self.view.addSubview(navBar)
@@ -50,10 +57,30 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         navBar.addSubview(btnLeft)
         
         showNavBar(false)
+        
+        reachability = Reachability.reachabilityForInternetConnection()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: reachability)
+        reachability.startNotifier()
     }
     
     func goBack(sender:UIButton){
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func reachabilityChanged(note: NSNotification) {
+        let reachability = note.object as! Reachability
+        if reachability.isReachable() {
+            println("Reachable")
+            alertInternet.dismissAlert()
+            self.viewDidLoad()
+        } else {
+            println("UnReachable")
+            //self.presentViewController(NoNetworkVC(), animated: false, completion: nil)
+            if !alertInternet.isDescendantOfView(self.view){
+                self.view.addSubview(alertInternet)
+            }
+            alertInternet.showAlert()
+        }
     }
     
     func showNavBar(value:Bool){

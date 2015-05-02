@@ -24,16 +24,29 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIManagerClass = APIManager()
-        APIManagerClass.delegate = self
+        
+        let reachability2 = Reachability.reachabilityForInternetConnection()
+        
+        if reachability2.isReachable(){
+            self.initialize()
+        }else{
+            if !alertInternet.isDescendantOfView(self.view){
+                self.view.addSubview(alertInternet)
+            }
+            alertInternet.showAlert()
+        }
+    }
+    
+    func initialize(){
         APIManagerClass.getReports()
         (RMConfiguration.sharedInstance()).accessToken = "pk.eyJ1Ijoib2xpbmd1aXRvIiwiYSI6IkVGeE41bE0ifQ.TrGnR7v_7HRJUsiM2h_3dQ"
-        
         //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
         //let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
+        
+        loc = []
         
         map = RMMapView(frame: view.frame, andTilesource: source)
         map.delegate = self

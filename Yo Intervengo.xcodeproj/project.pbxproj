@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A15ED351AF431C9009D5762 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A15ED341AF431C9009D5762 /* Reachability.swift */; };
+		7A15ED371AF4409D009D5762 /* NoNetworkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A15ED361AF4409D009D5762 /* NoNetworkVC.swift */; };
 		7A2315FF1ADF17E1007C5A46 /* ic-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2315F31ADF17E1007C5A46 /* ic-01.png */; };
 		7A2316001ADF17E1007C5A46 /* ic-01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2315F41ADF17E1007C5A46 /* ic-01@2x.png */; };
 		7A2316011ADF17E1007C5A46 /* ic-02.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2315F51ADF17E1007C5A46 /* ic-02.png */; };
@@ -276,6 +278,9 @@
 		0DE7C65E89059CCA63606471 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		299917266435710DC9DFBAA8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		63AD3BC2E5B429E2621BC7C7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7A15ED321AF428C1009D5762 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7A15ED341AF431C9009D5762 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		7A15ED361AF4409D009D5762 /* NoNetworkVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNetworkVC.swift; sourceTree = "<group>"; };
 		7A2315F31ADF17E1007C5A46 /* ic-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-01.png"; sourceTree = "<group>"; };
 		7A2315F41ADF17E1007C5A46 /* ic-01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-01@2x.png"; sourceTree = "<group>"; };
 		7A2315F51ADF17E1007C5A46 /* ic-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-02.png"; sourceTree = "<group>"; };
@@ -566,6 +571,7 @@
 		3A293CDA96578086B4045C1B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A15ED321AF428C1009D5762 /* SystemConfiguration.framework */,
 				ECF5CCD61A644CFE0055077D /* libz.dylib */,
 				ECF5CCD41A644CF50055077D /* libsqlite3.dylib */,
 				ECF5CCD21A644CE80055077D /* CoreLocation.framework */,
@@ -797,6 +803,7 @@
 		EC54A7031A7ACC9A007F6ABF /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7A15ED341AF431C9009D5762 /* Reachability.swift */,
 				7A3693231AF0816C0049058F /* SwiftyJSON.swift */,
 				7A73657B1AEF2A7E00B71CE7 /* Panel.swift */,
 				ECB475BE1ABF82FC001B1BE1 /* JOAlert.h */,
@@ -1061,6 +1068,7 @@
 			isa = PBXGroup;
 			children = (
 				ECA791C31A92A065003D0A41 /* GenericViewController.swift */,
+				7A15ED361AF4409D009D5762 /* NoNetworkVC.swift */,
 			);
 			name = Generic;
 			path = Views/Generic;
@@ -1579,11 +1587,13 @@
 				EC5FD8E81A9CF356004192A3 /* CommentVC.swift in Sources */,
 				EC7701941A7204B300378515 /* LNERadialMenu.m in Sources */,
 				ECB475C01ABF82FC001B1BE1 /* JOAlert.m in Sources */,
+				7A15ED351AF431C9009D5762 /* Reachability.swift in Sources */,
 				ECA791EA1A92A123003D0A41 /* SQLiteDB.swift in Sources */,
 				EC77019E1A74047900378515 /* JOaddReport.swift in Sources */,
 				EC86D55C1A8D7C6B00B0BFA0 /* ReportVC.swift in Sources */,
 				EC7D45451AAF7BE800C27833 /* APIManager.swift in Sources */,
 				7A73657C1AEF2A7E00B71CE7 /* Panel.swift in Sources */,
+				7A15ED371AF4409D009D5762 /* NoNetworkVC.swift in Sources */,
 				7A23160C1AE047DD007C5A46 /* YIPin.swift in Sources */,
 				EC85A76B1AA6531C000C8849 /* JSImagePickerViewController.m in Sources */,
 				EC54A7011A7ACC79007F6ABF /* LayoutHelper.swift in Sources */,

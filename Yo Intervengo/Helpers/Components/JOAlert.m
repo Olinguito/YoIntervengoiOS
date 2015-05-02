@@ -11,10 +11,11 @@
 @implementation JOAlert
 @synthesize lblMsg,lyr,bgTxt,animationView,btnClose;
 
--(instancetype)initWithTextNFrame:(NSString*)text :(CGRect)frame{
+-(instancetype)initWithTextNFrame:(NSString*)text :(CGRect)frame :(BOOL)closable{
     if (self = [super init]) {
         self.frame = frame;
         self.bounds = frame;
+        self.closable_ = closable;
         self.backgroundColor = [UIColor clearColor];
         lyr = [[CALayer alloc]init];
         lyr.frame = frame;
@@ -32,15 +33,17 @@
         lblMsg.textAlignment = NSTextAlignmentCenter;
         [bgTxt addSubview:lblMsg];
         
-        btnClose = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 63, 30, 43, 43)];
-        [btnClose setImage:[UIImage imageNamed:@"btnClose"] forState:UIControlStateNormal];
-        btnClose.alpha = 0;
-        [self addSubview:btnClose];
+        if (self.closable_) {
+            btnClose = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 63, 30, 43, 43)];
+            [btnClose setImage:[UIImage imageNamed:@"btnClose"] forState:UIControlStateNormal];
+            btnClose.alpha = 0;
+            [self addSubview:btnClose];
+            self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+            self.tapGesture2 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
+            [self addGestureRecognizer:self.tapGesture];
+            [self addGestureRecognizer:self.tapGesture2];
+        }
         
-        self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-        self.tapGesture2 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
-        [self addGestureRecognizer:self.tapGesture];
-        [self addGestureRecognizer:self.tapGesture2];
     }
     return self;
 }
@@ -70,9 +73,10 @@
         animationView.animationRepeatCount=0;
         [animationView startAnimating];
         [self addSubview:animationView];
-        self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-        self.tapGesture2 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
-        
+        if (self.closable_) {
+            self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+            self.tapGesture2 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap2:)];
+        }
     }
     return self;
 }
@@ -103,17 +107,20 @@
     sA1.springSpeed = 10;
     [bgTxt pop_addAnimation:sA1 forKey:@"toCenter1"];
     
-    POPBasicAnimation *scl3 = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
-    scl3.duration = 0.2;
-    scl3.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    scl3.delegate = self;
-    [scl3 setValue:@"alpha3" forKey:@"animName"];
-    scl3.toValue = @(1);
-    [btnClose pop_addAnimation:scl3 forKey:@"alpha3"];
+    if (self.closable_) {
+        POPBasicAnimation *scl3 = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+        scl3.duration = 0.2;
+        scl3.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        scl3.delegate = self;
+        [scl3 setValue:@"alpha3" forKey:@"animName"];
+        scl3.toValue = @(1);
+        [btnClose pop_addAnimation:scl3 forKey:@"alpha3"];
+        
+        [btnClose addTarget:self action:@selector(dismissAlert) forControlEvents:UIControlEventTouchUpInside];
     
-    [btnClose addTarget:self action:@selector(dismissAlert) forControlEvents:UIControlEventTouchUpInside];
-    [self addGestureRecognizer:self.tapGesture];
-    [self addGestureRecognizer:self.tapGesture2];
+         [self addGestureRecognizer:self.tapGesture];
+         [self addGestureRecognizer:self.tapGesture2];
+     }
 }
 -(void)dismissAlert{
     POPSpringAnimation *sA1 = [POPSpringAnimation animation];

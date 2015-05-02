@@ -936,7 +936,7 @@
         <!--Navigation Controller-->
         <scene sceneID="R2U-X6-deU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oPP-eP-kLq" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oPP-eP-kLq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eev-Q1-ljg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

@@ -69,7 +69,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         super.init(frame: frame)
         step = 1
         APIManagerClass = APIManager()
-        alert = JOAlert(textNFrame: "", self.frame)
+        alert = JOAlert(textNFrame: "", self.frame, true)
         localization = coodinate
         txtTit = ""
         txtDes = ""
