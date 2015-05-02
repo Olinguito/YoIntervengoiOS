@@ -24,11 +24,24 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     @IBOutlet weak var btnReport: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         let reachability2 = Reachability.reachabilityForInternetConnection()
         
         if reachability2.isReachable(){
-            self.initialize()
+            println("Rech")
+            SwiftTryCatch.try({
+                println("Trying")
+                self.initialize()
+                }, catch: { (error) in
+                    println("Fail")
+                    var timer = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: Selector("goRoot"), userInfo: nil, repeats: false)
+                }, finally: {
+                    println("Finally")
+                    //self.navigationController?.popToRootViewControllerAnimated(false)
+            })
+            
         }else{
             if !alertInternet.isDescendantOfView(self.view){
                 self.view.addSubview(alertInternet)
@@ -38,6 +51,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     func initialize(){
+        println("Test")
         APIManagerClass.getReports()
         (RMConfiguration.sharedInstance()).accessToken = "pk.eyJ1Ijoib2xpbmd1aXRvIiwiYSI6IkVGeE41bE0ifQ.TrGnR7v_7HRJUsiM2h_3dQ"
         //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
@@ -56,6 +70,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         map.minZoom = 11
         map.showsUserLocation = true
         map.tintColor = UIColor.greenColor()
+        map.removeAllAnnotations()
         // hide MapBox logo
         self.map.showLogoBug = false
         // hide bottom right "i" icon
@@ -76,6 +91,10 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 240), array: loc)
         test.delegate = self
         self.view.insertSubview(test, belowSubview: listView)
+    }
+    
+    func mapView(mapView: RMMapView!, didUpdateUserLocation userLocation: RMUserLocation!) {
+        mapView.setCenterCoordinate(userLocation.coordinate, animated: false)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -207,6 +226,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     func reportCreated(location:CLLocationCoordinate2D, type:Int, Category:Int){
+        // Adjuntar el resto de valores
         addAnnotation(location, data: ["type":type,"category":Category])
     }
     

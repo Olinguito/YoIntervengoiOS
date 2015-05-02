@@ -126,12 +126,12 @@ class APIManager: NSObject {
     
     func performPost(url:String!, token:String!, data:NSDictionary, list:Bool, successMsg:String, failMsg:String){
         var operationManager = AFHTTPRequestOperationManager()
-        // operationManager.requestSerializer  = AFJSONRequestSerializer()
+        operationManager.requestSerializer  = AFJSONRequestSerializer()
         operationManager.responseSerializer = AFJSONResponseSerializer()
         operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
         //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
         print(data)
-        operationManager.POST(URLAPI+url, parameters: nil, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+        operationManager.POST(URLAPI+url, parameters: data, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
                 println(responseObject.description)
                 let responseDict = responseObject as! Dictionary<String, AnyObject>
                 var token = responseDict["token"] as! String!

@@ -5,3 +5,4 @@ pod 'AFNetworking', '~> 2.0'
 pod 'NSObject-ObjectMap', '~> 2.0'
 pod "Mapbox-iOS-SDK"
 pod 'ESDatePicker'
+pod 'SwiftTryCatch'

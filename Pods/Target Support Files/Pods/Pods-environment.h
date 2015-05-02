@@ -126,6 +126,12 @@
 #define COCOAPODS_VERSION_MINOR_SMCalloutView 0
 #define COCOAPODS_VERSION_PATCH_SMCalloutView 0
 
+// SwiftTryCatch
+#define COCOAPODS_POD_AVAILABLE_SwiftTryCatch
+#define COCOAPODS_VERSION_MAJOR_SwiftTryCatch 0
+#define COCOAPODS_VERSION_MINOR_SwiftTryCatch 0
+#define COCOAPODS_VERSION_PATCH_SwiftTryCatch 1
+
 // pop
 #define COCOAPODS_POD_AVAILABLE_pop
 #define COCOAPODS_VERSION_MAJOR_pop 1

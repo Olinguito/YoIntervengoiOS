@@ -63,6 +63,13 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         reachability.startNotifier()
     }
     
+    func goRoot(){
+        println("Going to root")
+        self.viewDidAppear(false)
+        self.navigationController?.popToRootViewControllerAnimated(false)
+        alertInternet.dismissAlert()
+    }
+    
     func goBack(sender:UIButton){
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -71,8 +78,12 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         let reachability = note.object as! Reachability
         if reachability.isReachable() {
             println("Reachable")
-            alertInternet.dismissAlert()
-            self.viewDidLoad()
+            if (self.navigationController != nil) {
+                var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("goRoot"), userInfo: nil, repeats: false)
+            }else{
+                alertInternet.dismissAlert()
+                self.viewDidLoad()
+            }
         } else {
             println("UnReachable")
             //self.presentViewController(NoNetworkVC(), animated: false, completion: nil)

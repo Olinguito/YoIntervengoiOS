@@ -43,6 +43,7 @@ PODS:
   - NSObject-ObjectMap (2.3.1)
   - pop (1.0.7)
   - SMCalloutView (2.0)
+  - SwiftTryCatch (0.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
@@ -51,6 +52,7 @@ DEPENDENCIES:
   - Mapbox-iOS-SDK
   - NSObject-ObjectMap (~> 2.0)
   - pop (~> 1.0)
+  - SwiftTryCatch
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
@@ -66,5 +68,6 @@ SPEC CHECKSUMS:
   NSObject-ObjectMap: 3223c0c994a8e3de44ccb74ddf3e63c86821c015
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   SMCalloutView: f758edd824b18bf4f42de00df1e299861a2d1950
+  SwiftTryCatch: fb6d2b34abe48efd69578dac919293a44f95b481
 
 COCOAPODS: 0.36.1
