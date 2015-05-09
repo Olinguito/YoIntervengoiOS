@@ -45,11 +45,11 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         story = UIStoryboard(name: "Main", bundle: nil)
         report = story.instantiateViewControllerWithIdentifier("denunciaView") as! ReportVC
         
-        imgWork = UIImageView(frame: CGRect(x: 0, y: 0, width: 320, height: 194))
+        imgWork = UIImageView(frame: CGRect(x: 0, y: 0, width: vW, height: 194))
         imgWork.image = UIImage(named: "bg1")
         self.view.addSubview(imgWork)
         
-        grad2 = Gradient(frame: CGRect(x: 0, y: -50, width: 320, height: 254), type: "Bottom")
+        grad2 = Gradient(frame: CGRect(x: 0, y: -50, width: vW, height: 254), type: "Bottom")
         self.view.insertSubview(grad2, aboveSubview: imgWork)
         
         scroll = UIScrollView(frame: self.view.frame)
@@ -61,7 +61,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         
         colorView = (data["type"] as! Int) == 1 ? UIColor.orangeYI() : UIColor.blurYI()
         
-        banner = UIView(frame: CGRect(x: 0, y: 125, width: 320, height: 135))
+        banner = UIView(frame: CGRect(x: 0, y: 125, width: vW, height: 135))
         banner.backgroundColor = UIColor(red:0.180, green:0.180, blue:0.180, alpha: 1)
         self.scroll.addSubview(banner)
         var mask = UIImage(named: "mask")
@@ -101,15 +101,15 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         pop2.fromValue = NSValue(CGPoint: CGPoint(x: self.view.frame.width - 35, y: self.view.frame.height + 35))
         pop2.toValue = NSValue(CGPoint: CGPoint(x: self.view.frame.width - 35, y: self.view.frame.height - 35))
         
-        let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 64), type: "Top")
+        let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: vW, height: 64), type: "Top")
         self.view.addSubview(grad1)
     
         var a:NSMutableArray = NSMutableArray()
         
-        var info = Info(index: 2, data: data, color: colorView)
-        var histo = History(index: 2)
+        var info = Info(index: 2, data: data, color: colorView, frame: self.view.frame)
+        var histo = History(index: 2, frame:self.view.frame)
         var pictures = Pictures(index: 2, frame: self.view.frame, ini: banner.frame.maxY)
-        var links = Links(index: 2)
+        var links = Links(index: 2, frame:self.view.frame)
         
         a.addObject(["Info", info])
         a.addObject(["Historial", histo])
@@ -121,7 +121,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         tab.delegate = self
         self.scroll.addSubview(tab)
         
-        scroll.contentSize = CGSize(width: 320, height: self.view.frame.height+1)
+        scroll.contentSize = CGSize(width: vW, height: self.view.frame.height+1)
         
         btnBack = UIButton(frame: CGRect(x: 0, y: 10, width: 56, height: 56))
         btnBack.setImage(UIImage(named: "btnBack"), forState: UIControlState.Normal)
@@ -133,14 +133,14 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         btnInfo.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(btnInfo)
         
-        lblTitle = UILabel(frame: CGRect(x: 10, y: btnInfo.frame.maxY + 10, width: 300, height: 18))
+        lblTitle = UILabel(frame: CGRect(x: 0, y: btnInfo.frame.maxY + 10, width: vW, height: 18))
         lblTitle.font = UIFont(name: "Roboto-Regular", size: 17)
         lblTitle.text = (data["title"] as! String)
         lblTitle.textAlignment = NSTextAlignment.Center
         lblTitle.textColor = UIColor.whiteColor()
         self.scroll.addSubview(lblTitle)
         
-        lblSubTit = UILabel(frame: CGRect(x: 10, y: lblTitle.frame.maxY+5, width: 300, height: 13))
+        lblSubTit = UILabel(frame: CGRect(x: 0, y: lblTitle.frame.maxY+5, width: vW, height: 13))
         lblSubTit.font = UIFont(name: "Roboto-Medium", size: 12.5)
         lblSubTit.text = "CATEGORÍA > " + (data["subcategory"] as! String).uppercaseString
         lblSubTit.textAlignment = NSTextAlignment.Center
@@ -150,7 +150,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         buttonHelper = UIButton()
     }
     
-    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
     
@@ -180,7 +180,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
             
             self.view.addSubview(buttonHelper)
         }
-        scroll.contentSize = CGSize(width: 320, height: tab.frame.maxY - 200)
+        scroll.contentSize = CGSize(width: vW, height: tab.frame.maxY - 200)
     }
     
     func goBack(){

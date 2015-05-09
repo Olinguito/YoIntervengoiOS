@@ -26,6 +26,8 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
     var btnRight:UIButton!
     var reachability:Reachability!
     
+    var loaded:Bool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         vH = self.view.frame.height
@@ -35,7 +37,7 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         APIManagerClass.delegate = self
 
         alert = JOAlert(textNFrame: "", self.view.frame, true)
-        alertInternet = JOAlert(textNFrame: "No tienes internet cara de raton!", self.view.frame, false)
+        alertInternet = JOAlert(textNFrame: "No tienes internet!", self.view.frame, false)
         
         menuView = LeftMenu(frame: CGRect(x: -204, y: 0, width: 204, height: vH))
         menuView.delegate = self
@@ -61,6 +63,8 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         reachability = Reachability.reachabilityForInternetConnection()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: reachability)
         reachability.startNotifier()
+        
+        loaded = false
     }
     
     func goRoot(){

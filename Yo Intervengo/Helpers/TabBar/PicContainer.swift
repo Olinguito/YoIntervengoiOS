@@ -32,7 +32,7 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
         coll.scrollDirection = UICollectionViewScrollDirection.Vertical
         coll.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         coll.itemSize = CGSize(width: 90, height: 90)
-        collectionView = UICollectionView(frame: CGRect(x: 0,y: 0,width: 320,height: frame.height) , collectionViewLayout: coll)
+        collectionView = UICollectionView(frame: CGRect(x: 0,y: 0,width: frame.width,height: frame.height) , collectionViewLayout: coll)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clearColor()

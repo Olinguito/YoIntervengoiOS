@@ -67,7 +67,7 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         self.addSubview(btnClose)
         showMenu(1, atPoint: CGPointZero)
         
-        card = LinkComponent(type: 2)
+        card = LinkComponent(type: 2, frame:CGRectMake(0, 0, frame.width, 106))
         card.center = CGPoint(x: frame.size.width/2 , y: (card.frame.height/2) + 25)
         card.setAsNew()
         self.addSubview(card)

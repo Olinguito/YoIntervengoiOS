@@ -17,7 +17,7 @@ import UIKit
 class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     var delegate:BottomPagerDelegate?
     var opened = false
-    let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+    let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
     var collectionView:UICollectionView!
     var loc:[RMAnnotation]!
     
@@ -28,15 +28,20 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     init(frame: CGRect, array:Array<RMAnnotation>) {
         super.init(frame: frame)
         loc = array
+        
+        var v1 = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+        v1.backgroundColor = UIColor(red:0.776, green:0.776, blue:0.776, alpha: 0.9)
+        self.addSubview(v1)
+        
         let blurView: UIVisualEffectView = UIVisualEffectView(effect: blurEffect)
         blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
         blurView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
-        self.addSubview(blurView)
+        //self.addSubview(blurView)
         
         let coll = LayoutPager()
         coll.scrollDirection = UICollectionViewScrollDirection.Horizontal
         coll.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        coll.itemSize = CGSize(width: 274, height: 180)
+        coll.itemSize = CGSize(width: 245, height: 150)
 
         collectionView = UICollectionView(frame: blurView.frame, collectionViewLayout: coll)
         collectionView.dataSource = self
@@ -46,7 +51,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         collectionView.registerNib(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
         self.addSubview(collectionView)
         
-        let shadowW = frame.width*0.07
+        let shadowW = frame.width*0.10
         
         var left = Gradient(frame: CGRect(x: 0, y: 0, width: shadowW, height: frame.size.height), type: "Left")
         addSubview(left)

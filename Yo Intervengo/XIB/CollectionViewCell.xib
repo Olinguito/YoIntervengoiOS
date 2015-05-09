@@ -7,37 +7,51 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="Hke-5V-c8g" customClass="publicWCell" customModule="Yo_Intervengo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="274" height="180"/>
+            <rect key="frame" x="0.0" y="0.0" width="245" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="274" height="180"/>
+                <rect key="frame" x="0.0" y="0.0" width="245" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1.png" translatesAutoresizingMaskIntoConstraints="NO" id="LaB-is-7fI">
-                        <rect key="frame" x="-2" y="0.0" width="182" height="91"/>
+                    <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="bg1.png" translatesAutoresizingMaskIntoConstraints="NO" id="LaB-is-7fI">
+                        <rect key="frame" x="0.0" y="0.0" width="170" height="75"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="182" id="SzD-2D-AtP"/>
-                            <constraint firstAttribute="height" constant="91" id="qyX-IV-XdR"/>
+                            <constraint firstAttribute="width" constant="170" id="SzD-2D-AtP"/>
+                            <constraint firstAttribute="height" constant="75" id="qyX-IV-XdR"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CX3-fV-Hul">
-                        <rect key="frame" x="0.0" y="0.0" width="180" height="91"/>
+                        <rect key="frame" x="0.0" y="0.0" width="170" height="75"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O71-U2-Kmq">
-                                <rect key="frame" x="20" y="15" width="155" height="45"/>
-                                <string key="text">Puente Calle 33 con
-Av. López .</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O71-U2-Kmq">
+                                <rect key="frame" x="16" y="9" width="136" height="45"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Puente Calle 33 con
+</string>
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Av. López .">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.019999999552965164"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Roboto-light"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Roboto-Regular"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NOMBRE SUBCATEGORÍA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8d-ZW-kGs">
-                                <rect key="frame" x="20" y="61" width="172" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <rect key="frame" x="16" y="54" width="136" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -48,25 +62,32 @@ Av. López .</string>
                         <color key="backgroundColor" white="0.0" alpha="0.35000000000000003" colorSpace="calibratedWhite"/>
                     </view>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zho-S5-9Qz">
-                        <rect key="frame" x="180" y="0.0" width="94" height="91"/>
+                        <rect key="frame" x="170" y="0.0" width="75" height="75"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img1.png" translatesAutoresizingMaskIntoConstraints="NO" id="IMY-V3-sQN">
-                                <rect key="frame" x="38" y="18" width="18" height="55"/>
+                                <rect key="frame" x="28" y="10" width="18" height="55"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.35686274509803922" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Problemas par el cruce de peatones en horas pic en la calle 33 con cra ..." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="158" translatesAutoresizingMaskIntoConstraints="NO" id="CNR-GG-QP7">
-                        <rect key="frame" x="8" y="96" width="258" height="48"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Problemas par el cruce de peatones en horas pic en la calle 33 con cra ..." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="211" translatesAutoresizingMaskIntoConstraints="NO" id="CNR-GG-QP7">
+                        <rect key="frame" x="16" y="75" width="211" height="45"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Roboto-light"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="RobotoSlab-light"/>
                         </userDefinedRuntimeAttributes>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPR-Bf-6P9">
+                        <rect key="frame" x="0.0" y="-29" width="245" height="149"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baP-Rp-3uA">
-                        <rect key="frame" x="0.0" y="148" width="274" height="32"/>
+                        <rect key="frame" x="75" y="120" width="170" height="30"/>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -76,12 +97,6 @@ Av. López .</string>
                         <connections>
                             <action selector="follow" destination="Hke-5V-c8g" eventType="touchUpInside" id="gdd-Tb-WOe"/>
                         </connections>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPR-Bf-6P9">
-                        <rect key="frame" x="0.0" y="0.0" width="274" height="152"/>
-                        <state key="normal">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -97,6 +112,12 @@ Av. López .</string>
                     <integer key="value" value="5"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="EGK-iB-yYl"/>
+                    <exclude reference="uRb-i9-bNn"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="bgIcon" destination="zho-S5-9Qz" id="jjk-nU-EHs"/>
                 <outlet property="follower" destination="baP-Rp-3uA" id="qjA-3N-rmr"/>
@@ -107,7 +128,7 @@ Av. López .</string>
                 <outlet property="lblTitle" destination="O71-U2-Kmq" id="jTE-2A-bxa"/>
                 <outlet property="subTitle" destination="T8d-ZW-kGs" id="n8c-vo-NPS"/>
             </connections>
-            <point key="canvasLocation" x="247" y="-16"/>
+            <point key="canvasLocation" x="246.5" y="-16"/>
         </collectionViewCell>
     </objects>
     <resources>

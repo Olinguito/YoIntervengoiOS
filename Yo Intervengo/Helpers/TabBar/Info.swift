@@ -20,12 +20,12 @@ class Info: UIView {
         super.init(frame: frame)
     }
     
-    init(index:Int, data:NSDictionary, color:UIColor) {
+    init(index:Int, data:NSDictionary, color:UIColor, frame:CGRect) {
         super.init(frame:CGRectZero)
-        var wS:CGFloat = 320
+        var wS:CGFloat = frame.width
         self.data = data
         self.colorView = color
-        tabBar = UIView(frame: CGRect(x: 0, y: 0, width: wS, height: 139))
+        tabBar = UIView(frame: CGRect(x: 0, y: 0, width: wS, height: max(139, frame.width-140)))
         tabBar.backgroundColor = UIColor.whiteColor()
         addSubview(tabBar)
         backgroundColor = UIColor(red:0.180, green:0.180, blue:0.180, alpha: 1)
@@ -39,7 +39,9 @@ class Info: UIView {
         lblInfo.textColor = UIColor.greyDark()
         lblInfo.font = UIFont(name: "RobotoSlab-Light", size: 15)
         lblInfo.numberOfLines = 0
-        lblInfo.frame = CGRect(x: (wS-270)/2, y: 5, width: 270, height: heightForView(text, font: lblInfo.font!, width: 270))
+        
+        
+        lblInfo.frame = CGRect(x: 25, y: 5, width: frame.width-50, height: heightForView(text, font: lblInfo.font!, width: frame.width-50))
         tabBar.addSubview(lblInfo)
         
         
@@ -59,6 +61,7 @@ class Info: UIView {
         butWiki.setAttributedTitle(myMutableString, forState: .Normal)
         wikiBar.addSubview(butWiki)
         
+        
         comment = UIButton(frame: CGRect(x: 0, y: wikiBar.frame.maxY, width: wS, height: 49))
         comment.backgroundColor = UIColor(red:0.180, green:0.180, blue:0.180, alpha: 1)
         comment.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
@@ -71,7 +74,7 @@ class Info: UIView {
         addSubview(comment)
         
 
-        self.frame = CGRect(x: 0, y: 0, width: 320, height: tabBar.frame.height + wikiBar.frame.height + comment.frame.height + 200)
+        self.frame = CGRect(x: 0, y: 0, width: frame.width, height: tabBar.frame.height + wikiBar.frame.height + comment.frame.height + 200)
     }
     
     func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{

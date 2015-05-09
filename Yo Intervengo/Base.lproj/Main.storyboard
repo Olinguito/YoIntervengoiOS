@@ -35,6 +35,19 @@
                                     <action selector="newReport:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L5Y-ZJ-t2e"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8R-OH-qb4">
+                                <rect key="frame" x="0.0" y="544" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="6Da-LG-4WV"/>
+                                    <constraint firstAttribute="height" constant="56" id="hEj-jv-BXm"/>
+                                </constraints>
+                                <state key="normal" image="loc.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dh2-th-b8v"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9d-ve-JFc" customClass="view">
                                 <rect key="frame" x="544" y="12" width="56" height="56"/>
                                 <constraints>
@@ -55,19 +68,6 @@
                                 </state>
                                 <connections>
                                     <action selector="getMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dwX-fT-sPM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8R-OH-qb4">
-                                <rect key="frame" x="0.0" y="544" width="56" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="6Da-LG-4WV"/>
-                                    <constraint firstAttribute="height" constant="56" id="hEj-jv-BXm"/>
-                                </constraints>
-                                <state key="normal" image="loc.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="getLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dh2-th-b8v"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uuw-FR-LVH">
@@ -94,7 +94,7 @@
                                             </constraints>
                                         </view>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <blurEffect style="dark"/>
+                                        <blurEffect style="light"/>
                                     </visualEffectView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -137,6 +137,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="FBf-7P-Pvd"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="btnLocal" destination="X8R-OH-qb4" id="hcr-Pt-kck"/>
                         <outlet property="btnMenu" destination="77O-uy-fEd" id="gPb-NO-gov"/>
@@ -771,36 +772,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zNg-4b-Lyi">
-                                <rect key="frame" x="130" y="175" width="340" height="147"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHj-W8-beI">
-                                        <rect key="frame" x="0.0" y="0.0" width="340" height="49"/>
-                                        <color key="backgroundColor" red="0.92941176469999998" green="0.36078431370000003" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Contenido duplicado">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4w-MC-LcZ">
-                                        <rect key="frame" x="0.0" y="96" width="340" height="49"/>
-                                        <color key="backgroundColor" red="0.92941176469999998" green="0.36078431370000003" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Spam o publicidad">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0u-7h-rJp">
-                                        <rect key="frame" x="0.0" y="48" width="340" height="49"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Contenido ofensivo">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="147" id="MG9-Ng-XyI"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Grh-od-7tb">
                                 <rect key="frame" x="158" y="535" width="294" height="45"/>
                                 <color key="backgroundColor" red="0.92941176469999998" green="0.36078431370000003" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -813,6 +784,54 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zNg-4b-Lyi">
+                                <rect key="frame" x="130" y="175" width="340" height="147"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHj-W8-beI">
+                                        <rect key="frame" x="0.0" y="0.0" width="340" height="49"/>
+                                        <color key="backgroundColor" red="0.92941176469999998" green="0.36078431370000003" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="8tj-XA-cEg"/>
+                                        </constraints>
+                                        <state key="normal" title="Contenido duplicado">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4w-MC-LcZ">
+                                        <rect key="frame" x="0.0" y="96" width="340" height="49"/>
+                                        <color key="backgroundColor" red="0.92941176469999998" green="0.36078431370000003" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="RyJ-SX-eiH"/>
+                                        </constraints>
+                                        <state key="normal" title="Spam o publicidad">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0u-7h-rJp">
+                                        <rect key="frame" x="0.0" y="48" width="340" height="49"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="ncG-e1-oei"/>
+                                        </constraints>
+                                        <state key="normal" title="Contenido ofensivo">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="FHj-W8-beI" firstAttribute="top" secondItem="zNg-4b-Lyi" secondAttribute="top" id="1UE-KP-Rws"/>
+                                    <constraint firstAttribute="bottom" secondItem="M4w-MC-LcZ" secondAttribute="bottom" constant="2" id="6ER-Qi-MaU"/>
+                                    <constraint firstAttribute="trailing" secondItem="M4w-MC-LcZ" secondAttribute="trailing" constant="-1" id="7Iw-HH-fUa"/>
+                                    <constraint firstItem="Y0u-7h-rJp" firstAttribute="leading" secondItem="zNg-4b-Lyi" secondAttribute="leading" constant="-1" id="Cny-ii-lam"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y0u-7h-rJp" secondAttribute="trailing" constant="-1" id="DiT-Jl-m7H"/>
+                                    <constraint firstAttribute="height" constant="147" id="MG9-Ng-XyI"/>
+                                    <constraint firstAttribute="trailing" secondItem="FHj-W8-beI" secondAttribute="trailing" constant="-1" id="QEJ-Pw-ISy"/>
+                                    <constraint firstItem="Y0u-7h-rJp" firstAttribute="top" secondItem="zNg-4b-Lyi" secondAttribute="top" constant="48" id="ky4-hH-aKA"/>
+                                    <constraint firstItem="FHj-W8-beI" firstAttribute="leading" secondItem="zNg-4b-Lyi" secondAttribute="leading" constant="-1" id="l8X-H1-ocG"/>
+                                    <constraint firstItem="M4w-MC-LcZ" firstAttribute="leading" secondItem="zNg-4b-Lyi" secondAttribute="leading" constant="-1" id="val-rh-FhT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

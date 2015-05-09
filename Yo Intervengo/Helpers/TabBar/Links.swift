@@ -13,18 +13,18 @@ class Links: UIView {
         super.init(frame: frame)
     }
     
-    init(index:Int) {
+    init(index:Int, frame:CGRect ) {
         super.init(frame:CGRectZero)
         backgroundColor = UIColor.whiteColor()
 
         var counter = 10
         for (var i=0; i<counter; i++){
-            var link = LinkComponent(type: 1)
+            var link = LinkComponent(type: 1,frame:CGRectMake(0, 0, frame.width, 106))
             link.frame.origin = CGPoint(x: 0, y: 106*i)
             self.addSubview(link)
         }
         
-        self.frame = CGRect(x: 0, y: 0, width: 320, height: (106*counter) + 200)
+        self.frame = CGRect(x: 0, y: 0, width:frame.width, height: CGFloat((106*counter) + 200))
     }
     
     required init(coder aDecoder: NSCoder) {

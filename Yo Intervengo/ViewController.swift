@@ -22,32 +22,35 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var btnLocal: UIButton!
     @IBOutlet weak var btnReport: UIButton!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        let reachability2 = Reachability.reachabilityForInternetConnection()
-        
-        if reachability2.isReachable(){
-            println("Rech")
-            SwiftTryCatch.try({
-                println("Trying")
-                self.initialize()
-                }, catch: { (error) in
-                    println("Fail")
-                    var timer = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: Selector("goRoot"), userInfo: nil, repeats: false)
-                }, finally: {
-                    println("Finally")
-                    //self.navigationController?.popToRootViewControllerAnimated(false)
-            })
+        if !loaded{
+            let reachability2 = Reachability.reachabilityForInternetConnection()
             
-        }else{
-            if !alertInternet.isDescendantOfView(self.view){
-                self.view.addSubview(alertInternet)
+            if reachability2.isReachable(){
+                println("Rech")
+                SwiftTryCatch.try({
+                    println("Trying")
+                    self.initialize()
+                    }, catch: { (error) in
+                        println("Fail")
+                        var timer = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: Selector("goRoot"), userInfo: nil, repeats: false)
+                    }, finally: {
+                        println("Finally")
+                        //self.navigationController?.popToRootViewControllerAnimated(false)
+                })
+                
+            }else{
+                if !alertInternet.isDescendantOfView(self.view){
+                    self.view.addSubview(alertInternet)
+                }
+                alertInternet.showAlert()
             }
-            alertInternet.showAlert()
+            loaded = true
         }
+        
     }
     
     func initialize(){
@@ -55,20 +58,19 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         APIManagerClass.getReports()
         (RMConfiguration.sharedInstance()).accessToken = "pk.eyJ1Ijoib2xpbmd1aXRvIiwiYSI6IkVGeE41bE0ifQ.TrGnR7v_7HRJUsiM2h_3dQ"
         //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
-        let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
+        let source = RMMapboxSource(mapID: "robjalkh.a4368786") //GRIS BONITO
+        //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
         //let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
-        
         loc = []
-        
         map = RMMapView(frame: view.frame, andTilesource: source)
         map.delegate = self
         view.insertSubview(map, belowSubview: btnReport)
-        map.setCenterCoordinate(CLLocationCoordinate2DMake(4.6615,-74.0688), animated: true)
         map.setZoom(11, animated: true)
         map.minZoom = 11
         map.showsUserLocation = true
+        map.userTrackingMode = RMUserTrackingModeFollow
         map.tintColor = UIColor.greenColor()
         map.removeAllAnnotations()
         // hide MapBox logo
@@ -88,13 +90,15 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         let grad2 = Gradient(frame: CGRect(x: 0, y: fram.height-64, width: fram.width, height: 64), type: "Bottom")
         self.view.insertSubview(grad2, aboveSubview: map)
         
-        test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 240), array: loc)
+        test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 190), array: loc)
         test.delegate = self
-        self.view.insertSubview(test, belowSubview: listView)
+        self.view.insertSubview(test, belowSubview: menuView)
     }
     
     func mapView(mapView: RMMapView!, didUpdateUserLocation userLocation: RMUserLocation!) {
-        mapView.setCenterCoordinate(userLocation.coordinate, animated: false)
+//        mapView.userTrackingMode = RMUserTrackingMode
+        map.setCenterCoordinate(CLLocationCoordinate2DMake(4.6615,-74.0688), animated: true)
+        //mapView.setCenterCoordinate(userLocation.coordinate, animated: false)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -202,7 +206,8 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     @IBAction func getLocation(sender: AnyObject) {
-        map.setCenterCoordinate(map.userLocation.coordinate, animated: true);
+       // map.setCenterCoordinate(map.userLocation.coordinate, animated: true);
+        map.setCenterCoordinate(CLLocationCoordinate2DMake(4.6615,-74.0688), animated: true)
     }
     @IBAction func search(sender: AnyObject) {
     }

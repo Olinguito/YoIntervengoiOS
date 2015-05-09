@@ -23,11 +23,12 @@ class LinkComponent: UIView {
     
 
     
-    convenience init(type:Int) {
+    convenience init(type:Int, frame:CGRect) {
         self.init()
         
         if type == 1{
-            self.frame = CGRect(x: 0, y: 0, width: 320, height: 106)
+            println(frame.width)
+            self.frame = CGRect(x: 0, y: 0, width: frame.width, height: 106)
         }
         else{
             self.frame = CGRect(x: paddinLeft, y: 0, width: 292, height: 72)
