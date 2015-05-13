@@ -13,7 +13,7 @@ import UIKit
 
 
 class Gradient: UIView{
-    let colorTop    = UIColor(red:0.000, green:0.000, blue:0.000, alpha: 0.8).CGColor
+    let colorTop    = UIColor.blackColor().colorWithAlphaComponent(0.6).CGColor
     let colorBottom = UIColor(red:0.000, green:0.000, blue:0.000, alpha: 0.0).CGColor
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

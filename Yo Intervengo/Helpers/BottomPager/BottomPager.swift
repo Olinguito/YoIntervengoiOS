@@ -17,7 +17,7 @@ import UIKit
 class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     var delegate:BottomPagerDelegate?
     var opened = false
-    let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+    let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
     var collectionView:UICollectionView!
     var loc:[RMAnnotation]!
     
@@ -31,12 +31,12 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         
         var v1 = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
         v1.backgroundColor = UIColor(red:0.776, green:0.776, blue:0.776, alpha: 0.9)
-        self.addSubview(v1)
+        //self.addSubview(v1)
         
         let blurView: UIVisualEffectView = UIVisualEffectView(effect: blurEffect)
         blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
         blurView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
-        //self.addSubview(blurView)
+        self.addSubview(blurView)
         
         let coll = LayoutPager()
         coll.scrollDirection = UICollectionViewScrollDirection.Horizontal
@@ -53,11 +53,11 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         
         let shadowW = frame.width*0.10
         
-        var left = Gradient(frame: CGRect(x: 0, y: 0, width: shadowW, height: frame.size.height), type: "Left")
-        addSubview(left)
+        //var left = Gradient(frame: CGRect(x: 0, y: 0, width: shadowW, height: frame.size.height), type: "Left")
+        //addSubview(left)
         
-        var right = Gradient(frame: CGRect(x: frame.size.width - shadowW, y: 0, width: shadowW , height: frame.size.height), type: "Right")
-        addSubview(right)
+        //var right = Gradient(frame: CGRect(x: frame.size.width - shadowW, y: 0, width: shadowW , height: frame.size.height), type: "Right")
+        //addSubview(right)
     }
     
     func show(){

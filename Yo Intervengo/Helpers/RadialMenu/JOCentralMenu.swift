@@ -55,6 +55,7 @@ class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
         cell.btnSubCat.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)
         cell.lblSubCat.text = (data.objectAtIndex(indexPath.row) as! Dictionary)["NAME"]
+        cell.lblSubCat.textColor = UIColor.addThemeContrast()
         cell.alpha = 0
         cell.type = self.type
         cell.btnSubCat.tag = 3

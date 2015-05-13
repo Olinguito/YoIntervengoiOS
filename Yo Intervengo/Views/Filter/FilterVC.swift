@@ -18,10 +18,13 @@ class FilterVC: UIViewController,UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         btnErase.titleLabel?.font = UIFont(name: "Roboto-Light", size: 18)
-        btnErase.layer.borderColor = UIColor(red:0.878, green:0.886, blue:0.894, alpha: 1).CGColor
+        btnErase.setTitleColor(UIColor.addThemeContrast(), forState: UIControlState.Normal)
+        btnErase.layer.borderColor = UIColor.addThemeContrast().CGColor
         btnErase.layer.borderWidth = 1
         btnSearch.titleLabel?.font = UIFont(name: "Roboto-Light", size: 18)
-        searchBar.keyboardAppearance = UIKeyboardAppearance.Dark
+        btnSearch.setTitleColor(UIColor.addThemeContrast(), forState: UIControlState.Normal)
+        btnSearch.layer.borderColor = UIColor.addThemeContrast().CGColor
+        btnSearch.layer.borderWidth = 1
         searchBar.backgroundColor = UIColor.clearColor()
     }
     

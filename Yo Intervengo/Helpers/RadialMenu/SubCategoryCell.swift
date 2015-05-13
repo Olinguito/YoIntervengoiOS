@@ -15,7 +15,7 @@ class SubCategoryCell: UICollectionViewCell {
     
     @IBAction func setCat(sender: AnyObject) {
         if type == 0{
-            lblSubCat.textColor = UIColor(red:0.122, green:0.737, blue:0.859, alpha: 1)
+            lblSubCat.textColor = UIColor.blurYI()
             btnSubCat.setBackgroundImage(UIImage(named: "SubCategory_on"), forState: UIControlState.Normal)
         }else{
             lblSubCat.textColor = UIColor.orangeYI()

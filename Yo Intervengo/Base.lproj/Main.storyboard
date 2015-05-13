@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23R-Sb-C4f">
-                                <rect key="frame" x="529" y="530" width="71" height="70"/>
+                                <rect key="frame" x="539" y="539" width="61" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="7kD-vp-myb"/>
                                     <constraint firstAttribute="height" constant="56" id="giy-g9-rEF"/>
@@ -93,7 +93,7 @@
                                                 <constraint firstItem="DgU-lX-BJM" firstAttribute="leading" secondItem="07s-j4-rK2" secondAttribute="leading" id="gPB-ls-IyV"/>
                                             </constraints>
                                         </view>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <blurEffect style="light"/>
                                     </visualEffectView>
                                 </subviews>
@@ -110,7 +110,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="H9d-ve-JFc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="12" id="3Ox-au-Ywb"/>
@@ -168,39 +168,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EYA-nn-b7a">
-                                <rect key="frame" x="22" y="84" width="291" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="291" id="YcN-7Q-Wiz"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Todos"/>
-                                    <segment title="Reportes"/>
-                                    <segment title="Solicitudes"/>
-                                </segments>
-                                <color key="tintColor" red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </segmentedControl>
-                            <searchBar contentMode="redraw" misplaced="YES" text="" placeholder="Escribe blablabla" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GPm-l0-dzf">
-                                <rect key="frame" x="12" y="20" width="320" height="44"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
-                                <scopeButtonTitles>
-                                    <string>Mundo</string>
-                                    <string>Caviar</string>
-                                </scopeButtonTitles>
-                                <connections>
-                                    <outlet property="delegate" destination="0y7-pi-P37" id="Rr3-23-X1S"/>
-                                </connections>
-                            </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZU-bf-8df">
                                 <rect key="frame" x="21" y="487" width="291" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHf-E6-hZB">
                                         <rect key="frame" x="159" y="0.0" width="132" height="40"/>
-                                        <color key="backgroundColor" red="0.92941176469999998" green="0.36078431370000003" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Buscar">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -245,17 +220,50 @@
                                     <segue destination="lPg-55-qam" kind="embed" id="10H-iN-Yy4"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Pa-8O-UWm">
+                                <rect key="frame" x="12" y="0.0" width="308" height="103"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EYA-nn-b7a">
+                                        <rect key="frame" x="8" y="67" width="291" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="ZFb-P8-sRZ"/>
+                                            <constraint firstAttribute="width" constant="291" id="wZP-gh-oNU"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Todos"/>
+                                            <segment title="Reportes"/>
+                                            <segment title="Solicitudes"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </segmentedControl>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wHv-9b-vmb">
+                                        <rect key="frame" x="0.0" y="17" width="308" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Rwk-1t-or2"/>
+                                        </constraints>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="103" id="Giy-W5-Zry"/>
+                                    <constraint firstItem="EYA-nn-b7a" firstAttribute="top" secondItem="wHv-9b-vmb" secondAttribute="bottom" constant="6" id="Qd7-lJ-Krm"/>
+                                    <constraint firstAttribute="centerX" secondItem="EYA-nn-b7a" secondAttribute="centerX" id="ZHt-7N-THJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="wHv-9b-vmb" secondAttribute="trailing" id="s7q-ly-jFZ"/>
+                                    <constraint firstItem="wHv-9b-vmb" firstAttribute="leading" secondItem="4Pa-8O-UWm" secondAttribute="leading" id="t09-pZ-4cf"/>
+                                    <constraint firstItem="wHv-9b-vmb" firstAttribute="top" secondItem="4Pa-8O-UWm" secondAttribute="top" constant="17" id="tto-N1-9iK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="EYA-nn-b7a" firstAttribute="top" secondItem="GPm-l0-dzf" secondAttribute="bottom" constant="20" id="18K-E0-3nc"/>
                             <constraint firstAttribute="centerY" secondItem="pFr-NK-fAe" secondAttribute="centerY" id="5i6-9t-Koj"/>
                             <constraint firstAttribute="centerX" secondItem="pFr-NK-fAe" secondAttribute="centerX" id="9gZ-nO-vHY"/>
                             <constraint firstAttribute="centerX" secondItem="wZU-bf-8df" secondAttribute="centerX" constant="-7" id="E31-dj-ucK"/>
-                            <constraint firstAttribute="trailing" secondItem="GPm-l0-dzf" secondAttribute="trailing" id="T4e-56-DQm"/>
-                            <constraint firstAttribute="centerX" secondItem="EYA-nn-b7a" secondAttribute="centerX" constant="-7" id="be6-0a-Pf3"/>
-                            <constraint firstItem="GPm-l0-dzf" firstAttribute="top" secondItem="AUI-QC-fk4" secondAttribute="bottom" constant="20" id="eqm-Zl-IE5"/>
-                            <constraint firstItem="GPm-l0-dzf" firstAttribute="leading" secondItem="mY7-D2-T7j" secondAttribute="leading" constant="12" id="i03-Z5-7t3"/>
+                            <constraint firstAttribute="trailing" secondItem="4Pa-8O-UWm" secondAttribute="trailing" id="FuV-aK-Qv7"/>
+                            <constraint firstItem="4Pa-8O-UWm" firstAttribute="leading" secondItem="mY7-D2-T7j" secondAttribute="leading" constant="12" id="M27-Df-8b5"/>
+                            <constraint firstItem="4Pa-8O-UWm" firstAttribute="top" secondItem="AUI-QC-fk4" secondAttribute="bottom" id="Yod-76-ivc"/>
                             <constraint firstItem="5iB-b9-Ftf" firstAttribute="top" secondItem="wZU-bf-8df" secondAttribute="bottom" constant="41" id="o0e-UN-NMC"/>
                         </constraints>
                         <variation key="default">
@@ -272,7 +280,7 @@
                         <outlet property="btnErase" destination="Mn6-ll-e8m" id="4nh-UF-Ela"/>
                         <outlet property="btnSearch" destination="KHf-E6-hZB" id="AWt-2l-yAR"/>
                         <outlet property="container" destination="pFr-NK-fAe" id="duS-rC-IDt"/>
-                        <outlet property="searchBar" destination="GPm-l0-dzf" id="ibO-Jb-EXD"/>
+                        <outlet property="searchBar" destination="wHv-9b-vmb" id="8De-Nu-bmH"/>
                         <outlet property="segmented" destination="EYA-nn-b7a" id="lZ2-rc-nRJ"/>
                     </connections>
                 </viewController>
@@ -280,10 +288,10 @@
             </objects>
             <point key="canvasLocation" x="1935" y="279"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Filter MasterVC-->
         <scene sceneID="qde-mu-hVZ">
             <objects>
-                <tableViewController id="8n8-VB-Aia" sceneMemberID="viewController">
+                <tableViewController id="8n8-VB-Aia" customClass="FilterMasterVC" customModule="Yo_Intervengo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uNO-sG-K7f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="347"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -291,7 +299,7 @@
                         <sections>
                             <tableViewSection id="N98-Kp-V0W">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="49" id="rJp-9k-5yF">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" shouldIndentWhileEditing="NO" rowHeight="49" id="rJp-9k-5yF">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rJp-9k-5yF" id="vm1-kK-PeD">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -305,11 +313,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="WmE-Df-cPm" kind="show" id="tTW-bi-3XH"/>
-                                        </connections>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="49" id="y7g-nf-E65">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" shouldIndentWhileEditing="NO" rowHeight="49" id="y7g-nf-E65">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y7g-nf-E65" id="GCy-wx-Czp">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -323,11 +329,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="WmE-Df-cPm" kind="show" id="3Us-If-NGD"/>
-                                        </connections>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="49" id="aSb-Xz-rFR">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" shouldIndentWhileEditing="NO" rowHeight="49" id="aSb-Xz-rFR">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aSb-Xz-rFR" id="sWB-7y-WDh">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -341,11 +345,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="WmE-Df-cPm" kind="show" id="fkD-VL-GRr"/>
-                                        </connections>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="49" id="vwb-wt-5DQ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" shouldIndentWhileEditing="NO" rowHeight="49" id="vwb-wt-5DQ">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vwb-wt-5DQ" id="udd-xv-Mpj">
@@ -360,11 +362,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="WmE-Df-cPm" kind="show" id="0qA-OR-HEA"/>
-                                        </connections>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="49" id="zhp-5W-gyi">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" shouldIndentWhileEditing="NO" rowHeight="49" id="zhp-5W-gyi">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zhp-5W-gyi" id="eO4-OE-c9a">
@@ -379,9 +379,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="WmE-Df-cPm" kind="show" id="9Oq-p0-NP2"/>
-                                        </connections>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -853,33 +851,6 @@
             </objects>
             <point key="canvasLocation" x="1445" y="1713"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="TcF-hh-QAX">
-            <objects>
-                <tableViewController id="WmE-Df-cPm" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TYZ-bz-Rbe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="347"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aPW-jh-T6H">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aPW-jh-T6H" id="2eb-80-2do">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="WmE-Df-cPm" id="Gh2-9v-rao"/>
-                            <outlet property="delegate" destination="WmE-Df-cPm" id="c2N-Zh-80J"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Vyy-fo-ziH"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ef9-nv-BXQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3165" y="278.5"/>
-        </scene>
         <!--AboutVC-->
         <scene sceneID="BtP-k4-R12">
             <objects>
@@ -934,10 +905,10 @@
             </objects>
             <point key="canvasLocation" x="1935" y="953"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Filter Nav-->
         <scene sceneID="EPv-Qf-wkv">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lPg-55-qam" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lPg-55-qam" customClass="FilterNav" customModule="Yo_Intervengo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UD7-l9-olM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -992,14 +963,11 @@
     <resources>
         <image name="btnFacebook.png" width="305" height="56"/>
         <image name="btnGoogle.png" width="305" height="56"/>
-        <image name="loc.png" width="22" height="22"/>
+        <image name="loc.png" width="42" height="42"/>
         <image name="logoDark.png" width="225" height="121"/>
-        <image name="mas.png" width="71" height="70"/>
-        <image name="menu.png" width="23" height="14"/>
-        <image name="search.png" width="21" height="20"/>
+        <image name="mas.png" width="61" height="61"/>
+        <image name="menu.png" width="29" height="21"/>
+        <image name="search.png" width="31" height="30"/>
         <image name="test-01.png" width="641" height="1165"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="tTW-bi-3XH"/>
-    </inferredMetricsTieBreakers>
 </document>

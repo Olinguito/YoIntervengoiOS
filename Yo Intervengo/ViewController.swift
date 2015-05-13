@@ -59,7 +59,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         (RMConfiguration.sharedInstance()).accessToken = "pk.eyJ1Ijoib2xpbmd1aXRvIiwiYSI6IkVGeE41bE0ifQ.TrGnR7v_7HRJUsiM2h_3dQ"
         //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         let source = RMMapboxSource(mapID: "robjalkh.a4368786") //GRIS BONITO
-        //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
         //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
         //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
         //let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
@@ -78,7 +77,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         // hide bottom right "i" icon
         self.map.hideAttribution = true
         
-        map.clusterAreaSize = CGSize(width: 5, height: 5)
+        map.clusterAreaSize = CGSize(width: 2, height: 2)
         map.positionClusterMarkersAtTheGravityCenter = true
         map.clusteringEnabled = true
         animator = UIDynamicAnimator(referenceView: view)
@@ -87,8 +86,8 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         let fram = self.view.frame.size
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: fram.width, height: 64), type: "Top")
         self.view.insertSubview(grad1, aboveSubview: map)
-        let grad2 = Gradient(frame: CGRect(x: 0, y: fram.height-64, width: fram.width, height: 64), type: "Bottom")
-        self.view.insertSubview(grad2, aboveSubview: map)
+        //let grad2 = Gradient(frame: CGRect(x: 0, y: fram.height-64, width: fram.width, height: 64), type: "Bottom")
+        //self.view.insertSubview(grad2, aboveSubview: map)
         
         test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 190), array: loc)
         test.delegate = self
@@ -171,8 +170,8 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
             var a = map.coordinateToPixel(southwestCoordinate).x - map.coordinateToPixel(northeastCoordinate).x
             var b = map.coordinateToPixel(northeastCoordinate).y - map.coordinateToPixel(southwestCoordinate).y
             var c = max(max(a, b),80)
-            layer.bounds = CGRect(x: 0, y: -10, width: c, height: c)
-            layer.changeLabelUsingText(annotation.title, font: UIFont(name: "Roboto-light", size: 30), foregroundColor: UIColor.whiteColor(), backgroundColor: UIColor.clearColor())
+            layer.bounds = CGRect(x: 0, y: -5, width: 80, height: 80)
+            layer.changeLabelUsingText(annotation.title, font: UIFont(name: "Roboto-light", size: 38), foregroundColor: UIColor.whiteColor(), backgroundColor: UIColor.clearColor())
             return layer
         }
         else

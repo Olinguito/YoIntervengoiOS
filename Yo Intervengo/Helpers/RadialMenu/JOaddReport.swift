@@ -17,7 +17,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     var delegate:JOaddReportDelegate!
     
     var step = 0
-    let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+    let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
     var btnClose:UIButton!
     var btnCategoty:UIButton!
     var btnSubcategory:UIButton!
@@ -81,13 +81,21 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         
         conn = Connection()
         
+        let blurView2: UIVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        blurView2.setTranslatesAutoresizingMaskIntoConstraints(false)
+        blurView2.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        self.addSubview(blurView2)
+        
+        
         var blurView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-        blurView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
-        self.addSubview(blurView)
+        blurView.backgroundColor = UIColor.addThemeBg()
+        
+        //self.addSubview(blurView)
         self.addSubview(btnClose)
         
         btnBack = UIButton(frame: CGRect(x: frame.midX-152, y: 0, width: 142, height: 45))
-        btnBack.layer.borderColor = UIColor(red:0.878, green:0.886, blue:0.894, alpha: 1).CGColor
+        btnBack.layer.borderColor = UIColor.addThemeContrast().CGColor
+        btnBack.setTitleColor(UIColor.addThemeContrast(), forState: UIControlState.Normal)
         btnBack.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 16)
         btnBack.layer.borderWidth = 1.0
         btnBack.layer.cornerRadius = 5
@@ -98,17 +106,18 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         self.addSubview(btnBack)
         
         btnContinue = UIButton(frame: CGRect(x: frame.midX+10, y: 0, width: 142, height: 45))
-        btnContinue.layer.borderColor = UIColor(red:0.878, green:0.886, blue:0.894, alpha: 1).CGColor
+        btnContinue.layer.borderColor = UIColor.addThemeContrast().CGColor
         btnContinue.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 16)
         btnContinue.layer.borderWidth = 1.0
         btnContinue.layer.cornerRadius = 5
+        btnContinue.setTitleColor(UIColor.addThemeContrast(), forState: UIControlState.Normal)
         btnContinue.addTarget(self, action: Selector("goContinue:"), forControlEvents: UIControlEvents.TouchUpInside)
         btnContinue.setTitle("Siguente", forState: UIControlState.Normal)
         btnContinue.alpha = 0
         btnContinue.userInteractionEnabled = false
         self.addSubview(btnContinue)
         
-        let source = RMMapboxSource(mapID: "olinguito.c389ab51")
+        let source = RMMapboxSource(mapID: "robjalkh.a4368786")
         mapLocation = RMMapView(frame: CGRect(x: 15, y: 40, width: self.frame.width - 30, height: btnBack.frame.minY - 70), andTilesource: source)
         
     }
@@ -169,11 +178,11 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 mapLocation.removeFromSuperview()
                 pinIcon.removeFromSuperview()
                 txtTitle = UITextField(frame: CGRect(x: -1, y: 115, width: self.frame.width+2, height: 49))
-                txtTitle.layer.borderColor = UIColor.whiteColor().CGColor
+                txtTitle.layer.borderColor = UIColor.addThemeContrast().CGColor
                 txtTitle.layer.borderWidth = 1
                 txtTitle.delegate = self
                 txtTitle.textAlignment = NSTextAlignment.Center
-                txtTitle.textColor = UIColor.whiteColor()
+                txtTitle.textColor = UIColor.addThemeContrast()
                 var placeholder = NSAttributedString(string: "Titulo", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
                 txtTitle.attributedPlaceholder = placeholder
                 txtTitle.tintColor = UIColor.orangeYI()
@@ -181,19 +190,19 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 self.addSubview(txtTitle)
                 txtDesc = UIView(frame: CGRect(x: -1, y: txtTitle.frame.maxY, width: self.frame.width+2, height: 120))
                 //txtDesc.delegate = self
-                txtDesc.layer.borderColor = UIColor.whiteColor().CGColor
+                txtDesc.layer.borderColor = UIColor.addThemeContrast().CGColor
                 txtDesc.tintColor = UIColor.orangeYI()
                 txtDesc.backgroundColor = UIColor.clearColor()
                 txtDesc.layer.borderWidth = 1
                 var tit = UILabel(frame: CGRect(x: 0, y: 10, width: txtDesc.frame.width, height: 15))
-                tit.textColor = UIColor.lightGrayColor()
+                tit.textColor = UIColor.addThemeContrast()
                 tit.text = "Descripción del reporte"
                 tit.font = UIFont(name: "Roboto-Light", size: 18)
                 tit.textAlignment = NSTextAlignment.Center
                 txtDesc.addSubview(tit)
                 txtD = UITextView(frame: CGRect(x: 20, y: 38, width: txtDesc.frame.width-40, height: 80))
                 txtD.delegate = self
-                txtD.textColor = UIColor.whiteColor()
+                txtD.textColor = UIColor.addThemeContrast()
                 txtD.backgroundColor = UIColor.clearColor()
                 txtD.keyboardAppearance = UIKeyboardAppearance.Dark
                 txtD.font = UIFont(name: "Roboto-Light", size: 18)
@@ -219,7 +228,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 imgReport = UIImageView(frame: CGRect(x: -1, y: (btnBack.frame.minY - 221)/2, width: self.frame.width+2, height: 221))
                 imgReport.contentMode = UIViewContentMode.ScaleAspectFill
                 imgReport.layer.masksToBounds = true
-                imgReport.layer.borderColor = UIColor.whiteColor().CGColor
+                imgReport.layer.borderColor = UIColor.addThemeContrast().CGColor
                 imgReport.layer.borderWidth = 1
             
                 self.addSubview(imgReport)
@@ -288,7 +297,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         lblIndicator.numberOfLines = 2
         lblIndicator.alpha = 0
         lblIndicator.text = str1
-        lblIndicator.textColor = UIColor.whiteColor()
+        lblIndicator.textColor = UIColor.addThemeContrast()
         lblIndicator.textAlignment = NSTextAlignment.Right
         lblIndicator.font = UIFont(name: "Roboto-Regular", size: 15)
         self.addSubview(lblIndicator)
@@ -337,13 +346,13 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         var bgLayer:CALayer = CALayer()
         bgLayer.cornerRadius = 5
         bgLayer.frame = CGRect(x: (radialMenu.radialMenuView.frame.size.width-10)/2, y: (radialMenu.radialMenuView.frame.size.width-10)/2, width: 10, height: 10)
-        bgLayer.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2).CGColor
+        bgLayer.backgroundColor = UIColor.addThemeContrast().colorWithAlphaComponent(0.2).CGColor
         radialMenu.radialMenuView.layer.insertSublayer(bgLayer, atIndex: 0)
         
         var bgLayer2:CALayer = CALayer()
         bgLayer2.cornerRadius = 2
         bgLayer2.frame = CGRect(x: (radialMenu.radialMenuView.frame.size.width-4)/2, y: (radialMenu.radialMenuView.frame.size.width-4)/2, width: 4, height: 4)
-        bgLayer2.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.4).CGColor
+        bgLayer2.backgroundColor = UIColor.addThemeContrast().colorWithAlphaComponent(0.4).CGColor
         radialMenu.radialMenuView.layer.insertSublayer(bgLayer2, atIndex: 0)
     }
     
@@ -397,9 +406,11 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         btnContinue.userInteractionEnabled = true
         if type == 1 {
             btnContinue.setTitle("Crear Reporte", forState: UIControlState.Normal)
+            btnContinue.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             btnContinue.backgroundColor = UIColor.orangeYI()
         }else{
             btnContinue.setTitle("Crear Solicitud", forState: UIControlState.Normal)
+            btnContinue.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             btnContinue.backgroundColor = UIColor.blurYI()
         }
         btnContinue.layer.borderColor = UIColor.clearColor().CGColor
@@ -409,7 +420,8 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         if step<6{
             btnContinue.setTitle("Siguiente", forState: UIControlState.Normal)
             btnContinue.backgroundColor = UIColor.clearColor()
-            btnContinue.layer.borderColor = UIColor.whiteColor().CGColor
+            btnContinue.setTitleColor(UIColor.addThemeContrast(), forState: UIControlState.Normal)
+            btnContinue.layer.borderColor = UIColor.addThemeContrast().CGColor
             btnContinue.layer.borderWidth = 1
             btnContinue.userInteractionEnabled = true
         }else{

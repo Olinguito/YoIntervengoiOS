@@ -331,7 +331,7 @@
                 UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(element.center.x, element.center.y, 100, 20)];
                 lab.text = element.titleLabel.text;
                 lab.textAlignment = NSTextAlignmentRight;
-                lab.textColor = UIColor.whiteColor;
+                lab.textColor = [UIColor colorWithRed:0.349 green:0.349 blue:0.349 alpha:1];
                 lab.font = [UIFont fontWithName:@"Roboto-Regular" size:16];
                 lab.center = CGPointMake(endPoint.x - 80, endPoint.y);
                 [_radialMenuView addSubview:lab];
