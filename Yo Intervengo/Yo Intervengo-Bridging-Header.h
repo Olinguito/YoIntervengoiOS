@@ -17,3 +17,4 @@
 #import <AFNetworking/AFNetworking.h>
 #import "JOAlert.h"
 #import "SwiftTryCatch.h"
+#import "PhotoBroswerVC.h"

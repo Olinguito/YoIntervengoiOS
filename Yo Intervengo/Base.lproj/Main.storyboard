@@ -299,7 +299,7 @@
                         <sections>
                             <tableViewSection id="N98-Kp-V0W">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" shouldIndentWhileEditing="NO" rowHeight="49" id="rJp-9k-5yF">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="0.0" shouldIndentWhileEditing="NO" rowHeight="49" id="rJp-9k-5yF">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rJp-9k-5yF" id="vm1-kK-PeD">
                                             <autoresizingMask key="autoresizingMask"/>

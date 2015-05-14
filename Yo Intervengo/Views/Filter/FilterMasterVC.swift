@@ -27,6 +27,7 @@ class FilterMasterVC: UITableViewController,UITableViewDelegate {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var detail = FilterDetailVC()
+        self.navigationController?.view.layer.addAnimation(CATransition.viewTransition(), forKey: nil)
         self.navigationController?.pushViewController(detail, animated: false)
     }
     

@@ -31,7 +31,25 @@ class Pictures: UIView, PicContainerDelegate {
     }
     
     func picTapped(index: Int) {
-        view = UIView(frame: frame2)
+
+        
+        
+        //PhotoBroswerVC.show(self, index: 0, photoModelBlock: { () -> in return modelsM})
+        var localImages = [UIImage(named: "bg1"),UIImage(named: "bg1"),UIImage(named: "bg1")]
+        var modelsM = NSMutableArray(capacity: localImages.count)
+        for (var i = 0; i<localImages.count; i++){
+            var pbModel = PhotoModel()
+            pbModel.mid = i+1
+            pbModel.title = "Hola Mundo que colmo?"
+            pbModel.desc = "Hola Mundo que colmo?"
+            pbModel.image = localImages[i]
+            modelsM.addObject(pbModel)
+        }
+        PhotoBroswerVC.show(self.parentViewController(), index: 0, photoModelBlock: modelsM)
+        
+//        PhotoBroswerVC.show(self, index: 0, photoModelBlock: modelsM)
+        
+        /*view = UIView(frame: frame2)
         view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.85)
         
         self.superview?.superview?.superview?.addSubview(view)
@@ -75,7 +93,7 @@ class Pictures: UIView, PicContainerDelegate {
         var close = UIButton(frame: CGRect(x: view.frame.width - 40, y:20, width: 40, height: 40))
         close.setImage(UIImage(named: "btnClose"), forState: UIControlState.Normal)
         close.addTarget(self, action: Selector("close:"), forControlEvents: UIControlEvents.TouchUpInside)
-        view.addSubview(close)
+        view.addSubview(close)*/
         
     }
     
