@@ -38,10 +38,17 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        print(data)
+        APIManagerClass.getReportWithID(data["id"] as! String)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.interactivePopGestureRecognizer.delegate = self
         
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        self.navigationController?.interactivePopGestureRecognizer.delegate = self
         story = UIStoryboard(name: "Main", bundle: nil)
         report = story.instantiateViewControllerWithIdentifier("denunciaView") as! ReportVC
         
@@ -104,50 +111,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: vW, height: 64), type: "Top")
         self.view.addSubview(grad1)
     
-        var a:NSMutableArray = NSMutableArray()
         
-        var info = Info(index: 2, data: data, color: colorView, frame: self.view.frame)
-        var histo = History(index: 2, frame:self.view.frame)
-        var pictures = Pictures(index: 2, frame: self.view.frame, ini: banner.frame.maxY)
-        var links = Links(index: 2, frame:self.view.frame)
-        
-        a.addObject(["Info", info])
-        a.addObject(["Historial", histo])
-        a.addObject(["Fotos",pictures])
-        a.addObject(["Enlaces",links])
-        
-        
-        tab = JOTabBar(frame: CGRect(x: 0, y: banner.frame.maxY, width: self.view.frame.width, height: self.view.frame.height), data: a, color: colorView)
-        tab.delegate = self
-        self.scroll.addSubview(tab)
-        
-        scroll.contentSize = CGSize(width: vW, height: self.view.frame.height+1)
-        
-        btnBack = UIButton(frame: CGRect(x: 0, y: 10, width: 56, height: 56))
-        btnBack.setImage(UIImage(named: "btnBack"), forState: UIControlState.Normal)
-        btnBack.addTarget(self, action: Selector("goBack"), forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(btnBack)
-
-        btnInfo = UIButton(frame: CGRect(x: self.view.frame.maxX - 56, y: 10, width: 56, height: 56))
-        btnInfo.setImage(UIImage(named: "btnInfo"), forState: UIControlState.Normal)
-        btnInfo.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(btnInfo)
-        
-        lblTitle = UILabel(frame: CGRect(x: 0, y: btnInfo.frame.maxY + 10, width: vW, height: 18))
-        lblTitle.font = UIFont(name: "Roboto-Regular", size: 17)
-        lblTitle.text = (data["title"] as! String)
-        lblTitle.textAlignment = NSTextAlignment.Center
-        lblTitle.textColor = UIColor.whiteColor()
-        self.scroll.addSubview(lblTitle)
-        
-        lblSubTit = UILabel(frame: CGRect(x: 0, y: lblTitle.frame.maxY+5, width: vW, height: 13))
-        lblSubTit.font = UIFont(name: "Roboto-Medium", size: 12.5)
-        lblSubTit.text = "CATEGORÍA > " + (data["subcategory"] as! String).uppercaseString
-        lblSubTit.textAlignment = NSTextAlignment.Center
-        lblSubTit.textColor = colorView
-        self.scroll.addSubview(lblSubTit)
-        
-        buttonHelper = UIButton()
     }
     
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -252,4 +216,57 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         }
         btnContinue.layer.borderColor = UIColor.clearColor().CGColor*/
     }
+    
+    func returnObt(responseObject:AnyObject){
+        //print(responseObject)
+        
+        println("ENTRO AL RETORNO")
+        
+        var dataDetail = JSON(responseObject)
+        var a:NSMutableArray = NSMutableArray()
+        
+        var info = Info(index: 2, data: data, color: colorView, frame: self.view.frame)
+        var histo = History(index: 2, frame:self.view.frame)
+        var pictures = Pictures(index: 2, frame: self.view.frame, ini: banner.frame.maxY)
+        //var links = Links(index: 2, frame:self.view.frame, data:dataDetail[""])
+        var links = Links(index: 2, frame: self.view.frame, data: dataDetail)
+        
+        a.addObject(["Info", info])
+        a.addObject(["Historial", histo])
+        a.addObject(["Fotos",pictures])
+        a.addObject(["Enlaces",links])
+        
+        tab = JOTabBar(frame: CGRect(x: 0, y: banner.frame.maxY, width: self.view.frame.width, height: self.view.frame.height), data: a, color: colorView)
+        tab.delegate = self
+        self.scroll.addSubview(tab)
+        
+        scroll.contentSize = CGSize(width: vW, height: self.view.frame.height+1)
+        
+        btnBack = UIButton(frame: CGRect(x: 0, y: 10, width: 56, height: 56))
+        btnBack.setImage(UIImage(named: "btnBack"), forState: UIControlState.Normal)
+        btnBack.addTarget(self, action: Selector("goBack"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(btnBack)
+        
+        btnInfo = UIButton(frame: CGRect(x: self.view.frame.maxX - 56, y: 10, width: 56, height: 56))
+        btnInfo.setImage(UIImage(named: "btnInfo"), forState: UIControlState.Normal)
+        btnInfo.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(btnInfo)
+        
+        lblTitle = UILabel(frame: CGRect(x: 0, y: btnInfo.frame.maxY + 10, width: vW, height: 18))
+        lblTitle.font = UIFont(name: "Roboto-Regular", size: 17)
+        lblTitle.text = (data["title"] as! String)
+        lblTitle.textAlignment = NSTextAlignment.Center
+        lblTitle.textColor = UIColor.whiteColor()
+        self.scroll.addSubview(lblTitle)
+        
+        lblSubTit = UILabel(frame: CGRect(x: 0, y: lblTitle.frame.maxY+5, width: vW, height: 13))
+        lblSubTit.font = UIFont(name: "Roboto-Medium", size: 12.5)
+        lblSubTit.text = "CATEGORÍA > " + (data["subcategory"] as! String).uppercaseString
+        lblSubTit.textAlignment = NSTextAlignment.Center
+        lblSubTit.textColor = colorView
+        self.scroll.addSubview(lblSubTit)
+        
+        buttonHelper = UIButton()
+    }
+    
 }

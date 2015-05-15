@@ -62,39 +62,24 @@ class APIManager: NSObject {
         performGet("Reports", token: "", list: true)
     }
     
-    func getReportWithID(){
-    
+    func getReportWithID(idReport:String){
+        performGet("Reports/?filter[include]=history-nodes&filter[include]=links&filter[where][id]=" + idReport, token: "", list: false)
     }
     
     func postReport(data:NSDictionary!){
-        print("Posteando reporte???")
         performPost("Reports", token: "", data: data, list: true, successMsg: "Creado datisfactoriamente", failMsg: "Ocurrio un error, intente más tarde.")
-        
     }
     
     func followReport(){
     
     }
     
-    //MARK: -TABBAR
-    func getHistory(){
-    
-    }
-    
     //MARK: -LINKS
-    func getLinks(){
-        
-    }
-    
     func postLink(){
         
     }
     
     //MARK: -PICTURES
-    func getPics(){
-        
-    }
-    
     func postPic(){
         
     }

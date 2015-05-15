@@ -238,6 +238,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         var newANN:RMAnnotation!
         var counter = 0
         for report in responseObject as! NSMutableArray{
+            var idReport = report["id"] as! String
             var location = report["location"] as! NSDictionary
             var type = report["type"] as? Int ?? 3
             var category = report["category"] as? Int ?? 1
@@ -250,7 +251,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
             var title = report["title"] as? NSString ?? "No se trajo información"
             var description = report["description"] as? NSString ?? "No se trajo información"
             newANN = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(lat,lng), andTitle:(String(counter)));
-            newANN.userInfo =  ["type":type,"category":category,"title":title,"description":description,"subcategory":subcategory,"followers":followers,"num":counter]
+            newANN.userInfo =  ["id":idReport,"type":type,"category":category,"title":title,"description":description,"subcategory":subcategory,"followers":followers,"num":counter]
             map.addAnnotation(newANN)
             loc.append(newANN)
             counter++

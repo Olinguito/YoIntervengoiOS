@@ -11,7 +11,7 @@ import UIKit
 class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePickerDelegate {
 
     var step = 0
-    let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+    let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
     var btnClose:UIButton!
     var btnCategoty:UIButton!
     var btnSubcategory:UIButton!
@@ -53,6 +53,10 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         btnClose.center = bttnClose.center
         btnClose.setImage(UIImage(named: "mas"), forState: UIControlState.Normal)
         btnClose.addTarget(self, action: Selector("close"), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let bg = UIView(frame: self.frame)
+        bg.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+        self.addSubview(bg)
         
         blurView = UIVisualEffectView(effect: blurEffect)
         blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -118,15 +122,15 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         date = UIButton(frame: CGRect(x: -1, y: 0, width: 322, height: 49))
         date.setTitle("MM / DD / AA", forState: UIControlState.Normal)
         date.titleLabel?.font = UIFont(name: "Roboto-Light", size: 18)
-        date.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        date.layer.borderColor = UIColor.greyLight().CGColor
+        date.setTitleColor(UIColor.addThemeContrast(), forState: UIControlState.Normal)
+        date.layer.borderColor = UIColor.addThemeContrast().CGColor
         date.layer.borderWidth = 1.0
         date.addTarget(self, action: Selector("addDatePicker:"), forControlEvents: UIControlEvents.TouchUpInside)
         container.addSubview(date)
         datePicker.frame = date.frame
         
         textUrl = UITextField(frame: CGRect(x: -1, y: date.frame.maxY, width: 322, height: 49))
-        placeholder = NSAttributedString(string: "Pegar URL", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        placeholder = NSAttributedString(string: "Pegar URL", attributes: [NSForegroundColorAttributeName : UIColor.addThemeContrast()])
         textUrl.attributedPlaceholder = placeholder
         textUrl.tag = 1
         textUrl.keyboardType = UIKeyboardType.URL
@@ -134,14 +138,14 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         container.addSubview(textUrl)
         
         textSource = UITextField(frame: CGRect(x: -1, y: textUrl.frame.maxY, width: 322, height: 49))
-        placeholder = NSAttributedString(string: "Fuente", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        placeholder = NSAttributedString(string: "Fuente", attributes: [NSForegroundColorAttributeName : UIColor.addThemeContrast()])
         textSource.attributedPlaceholder = placeholder
         config(textSource)
         textSource.tag = 2
         container.addSubview(textSource)
         
         textTitle = UITextField(frame: CGRect(x: -1, y: textSource.frame.maxY, width: 322, height: 49))
-        placeholder = NSAttributedString(string: "Titular (máx. 30 caracteres)", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        placeholder = NSAttributedString(string: "Titular (máx. 30 caracteres)", attributes: [NSForegroundColorAttributeName : UIColor.addThemeContrast()])
         textTitle.attributedPlaceholder = placeholder
         config(textTitle)
         textTitle.tag = 3
@@ -153,24 +157,24 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         btnSave.layer.borderWidth = 2
         btnSave.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 16)
         btnSave.setTitle("Guardar nuevo enlace", forState: UIControlState.Normal)
-        btnSave.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        btnSave.setTitleColor(UIColor.addThemeContrast(), forState: UIControlState.Normal)
         container.addSubview(btnSave)
     }
     
     func config(textField:UITextField){
         textField.font = UIFont(name: "Roboto-Light", size: 18)
-        textField.layer.borderColor = UIColor.greyLight().CGColor
+        textField.layer.borderColor = UIColor.addThemeContrast().CGColor
         textField.layer.borderWidth = 1.0
         textField.keyboardAppearance = UIKeyboardAppearance.Dark
         textField.delegate = self
-        textField.textColor = UIColor.whiteColor()
+        textField.textColor = UIColor.addThemeContrast()
         textField.textAlignment = NSTextAlignment.Center        
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.backgroundColor = UIColor.whiteColor()
         textField.textColor = UIColor.greyDark()
-        placeholder = NSAttributedString(string: textField.placeholder!, attributes: [NSForegroundColorAttributeName : UIColor.greyLight()])
+        placeholder = NSAttributedString(string: textField.placeholder!, attributes: [NSForegroundColorAttributeName : UIColor.addThemeContrast()])
         textField.attributedPlaceholder = placeholder
     }
     
@@ -180,8 +184,8 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     
     func textFieldDidEndEditing(textField: UITextField) {
         textField.backgroundColor = UIColor.clearColor()
-        textField.textColor = UIColor.whiteColor()
-        placeholder = NSAttributedString(string: textField.placeholder!, attributes: [NSForegroundColorAttributeName : UIColor.greyLight()])
+        textField.textColor = UIColor.addThemeContrast()
+        placeholder = NSAttributedString(string: textField.placeholder!, attributes: [NSForegroundColorAttributeName : UIColor.addThemeContrast()])
         textField.attributedPlaceholder = placeholder
         switch(textField.tag){
             case (2): card.title.setTitle(textSource.text, forState: UIControlState.Normal)
@@ -268,7 +272,7 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         lblIndicator.numberOfLines = 2
         lblIndicator.alpha = 0
         lblIndicator.text = str1
-        lblIndicator.textColor = UIColor.whiteColor()
+        lblIndicator.textColor = UIColor.addThemeContrast()
         lblIndicator.textAlignment = NSTextAlignment.Right
         lblIndicator.font = UIFont(name: "Roboto-Regular", size: 15)
         self.addSubview(lblIndicator)

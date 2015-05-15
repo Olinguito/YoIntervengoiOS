@@ -55,9 +55,11 @@ class LinkComponent: UIView {
         title.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         addSubview(title)
         
-        subtitle = UILabel(frame: CGRect(x: paddinLeft + iconLink.frame.maxX, y: title.frame.maxY + 2, width: frame.width, height: 13))
+        subtitle = UILabel(frame: CGRect(x: paddinLeft + iconLink.frame.maxX, y: title.frame.maxY + 2, width: frame.width - ((paddinLeft*2)+iconLink.frame.maxX), height: 13))
         subtitle.text = "Descripción del enlace"
         subtitle.font = UIFont(name: "Roboto-Italic", size: 12)
+        subtitle.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        subtitle.numberOfLines = 1
         subtitle.textColor = UIColor.orangeYI()
         addSubview(subtitle)
         
