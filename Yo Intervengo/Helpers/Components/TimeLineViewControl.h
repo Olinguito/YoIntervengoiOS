@@ -15,7 +15,7 @@
 
 @property(nonatomic, assign) CGFloat viewheight;
 
-- (id)initWithTimeArray:(NSArray *)time andTimeDescriptionArray:(NSArray *)timeDescriptions andCurrentStatus:(int)status andFrame:(CGRect)frame;
+- (id)initWithTimeArray:(NSMutableArray *)timeDescriptions andCurrentStatus:(int)status andFrame:(CGRect)frame;
 
 
 -(CGFloat)height;

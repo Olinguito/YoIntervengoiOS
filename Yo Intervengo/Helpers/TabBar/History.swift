@@ -9,23 +9,28 @@
 import UIKit
 
 class History: UIView {
+    var data:JSON!
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    init(index:Int, frame:CGRect) {
+    init(index:Int, frame:CGRect, data:JSON) {
         super.init(frame:frame)
        
         var history:UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: 400))
         history.backgroundColor = UIColor.whiteColor()
         self.addSubview(history)
         
+        var times = NSMutableArray()
+        var descriptions = NSMutableArray()
+        for (index,history_node) in enumerate(data[0]["history-nodes"]){
+            descriptions[index] = ["icon":"btn_add_links_otros","title":history_node.1["description"].string!,"date":String.getDate(history_node.1["date"].string!),"desc":"Pepe Veraz"]
+        }
         
         
-        var times = ["Enero 26 2015","Enero 26 2015","Febrero 26 2025","Enero 26 2015","Enero 26 2015","Febrero 26 2025"]
-        var descriptions = ["Enero 26 2015","Enero 26 2015","Febrero 26 2025","Enero 26 2015","Enero 26 2015","Febrero 26 2025"]
+        var timeLine = TimeLineViewControl(timeArray: descriptions, andCurrentStatus: 0, andFrame: CGRect(x: 0, y: 30, width: frame.width, height: self.frame.height))
+    
         
-        var timeLine = TimeLineViewControl(timeArray: times, andTimeDescriptionArray: descriptions, andCurrentStatus: 0, andFrame: CGRect(x: 0, y: 30, width: frame.width, height: self.frame.height))
         
         self.addSubview(timeLine)
         

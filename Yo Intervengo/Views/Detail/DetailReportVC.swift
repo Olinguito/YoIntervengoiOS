@@ -38,13 +38,10 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        print(data)
-        APIManagerClass.getReportWithID(data["id"] as! String)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+     
+        APIManagerClass.getReportWithID(data["id"] as! String)
         
         self.view.backgroundColor = UIColor.whiteColor()
         
@@ -219,15 +216,12 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     
     func returnObt(responseObject:AnyObject){
         //print(responseObject)
-        
-        println("ENTRO AL RETORNO")
-        
         var dataDetail = JSON(responseObject)
         var a:NSMutableArray = NSMutableArray()
         
         var info = Info(index: 2, data: data, color: colorView, frame: self.view.frame)
-        var histo = History(index: 2, frame:self.view.frame)
-        var pictures = Pictures(index: 2, frame: self.view.frame, ini: banner.frame.maxY)
+        var histo = History(index: 2, frame:self.view.frame, data: dataDetail)
+        var pictures = Pictures(index: 2, frame: self.view.frame, ini: banner.frame.maxY, data: dataDetail)
         //var links = Links(index: 2, frame:self.view.frame, data:dataDetail[""])
         var links = Links(index: 2, frame: self.view.frame, data: dataDetail)
         

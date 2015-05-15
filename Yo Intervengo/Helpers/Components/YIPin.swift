@@ -14,7 +14,6 @@ extension UIImage {
     
     // MARK: - Flat colors
     class func getPin(type:Int, Category:Int) -> UIImage {
-        println("entro con \(type) y con \(Category)")
         var bg = type == 1 ? UIImage(named: "Pin@2x")!:UIImage(named: "Pin2@2x")!
         var logo = UIImage(named: "ic-0\(Category)@2x.png")!
         UIGraphicsBeginImageContextWithOptions(bg.size, false, 2)
@@ -24,4 +23,19 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return newImage
     }
+    
+    class func getLinkImage(type:Int) -> UIImage {
+        switch(type){
+            case 1:  return UIImage(named: "bg_links_documento")!
+            case 2:  return UIImage(named: "bg_links_otros")!
+            case 3:  return UIImage(named: "bg_links_prensa")!
+            case 4:  return UIImage(named: "bg_links_radio")!
+            case 5:  return UIImage(named: "bg_links_tv")!
+            case 6:  return UIImage(named: "bg_links_video")!
+            default: return UIImage(named: "bg_links_otros")!
+        }
+    }
+    
+    
+    
 }

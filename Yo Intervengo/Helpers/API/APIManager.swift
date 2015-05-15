@@ -63,7 +63,7 @@ class APIManager: NSObject {
     }
     
     func getReportWithID(idReport:String){
-        performGet("Reports/?filter[include]=history-nodes&filter[include]=links&filter[where][id]=" + idReport, token: "", list: false)
+        performGet("Reports/?filter[include]=history-nodes&filter[include]=links&filter[include]=pictures&filter[where][id]=" + idReport, token: "", list: false)
     }
     
     func postReport(data:NSDictionary!){

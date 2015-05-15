@@ -24,16 +24,8 @@ class Links: UIView {
         for (var i=0; i<counter; i++){
             var link = LinkComponent(type: 1,frame:CGRectMake(0, 0, frame.width, 106))
             link.frame.origin = CGPoint(x: 0, y: 106*i)
-            
-            
-            var dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "YYYY-MM-dd'T'hh:mm:ss.SSS'Z'"
-            var date = dateFormatter.dateFromString(data[0]["links"][i]["date"].string!)
-            
-//            var dateFormatter2 = NSDateFormatter()
-            dateFormatter.dateFormat = "dd-MM-YYYY"
-            println(data[0]["links"][i]["date"].string!)
-            link.date.text = dateFormatter.stringFromDate(date!)
+            link.iconLink.image = UIImage.getLinkImage(data[0]["links"][i]["type"].intValue)
+            link.date.text = String.getDate(data[0]["links"][i]["date"].string!)
             link.title.setTitle(data[0]["links"][i]["source"].string , forState: UIControlState.Normal)
             link.subtitle.text = data[0]["links"][i]["title"].string
             self.addSubview(link)

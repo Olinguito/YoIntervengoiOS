@@ -34,7 +34,6 @@ class Connection: NSObject {
             }
             returnArray.addObject(city)
         }
-        println("Encotnrados: \(data.count)")
         return returnArray
     }
     

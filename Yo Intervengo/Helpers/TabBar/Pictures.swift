@@ -10,6 +10,7 @@ import UIKit
 
 class Pictures: UIView, PicContainerDelegate {
     var picCont:PicContainer!
+    var data:JSON!
     var frame2:CGRect!
     var view:UIView!
     
@@ -17,12 +18,21 @@ class Pictures: UIView, PicContainerDelegate {
         super.init(coder: aDecoder)
     }
     
-    init(index:Int, frame:CGRect, ini:CGFloat) {
+    init(index:Int, frame:CGRect, ini:CGFloat, data:JSON) {
         super.init(frame:CGRectZero)
+        self.data = data
         frame2 = frame
         var ms = NSMutableArray()
         self.backgroundColor = UIColor.whiteColor()
-        ms.addObject(UIImage(named: "bg1")!)
+        
+        println(data)
+        for (index,picture) in enumerate(self.data[0]["pictures"]){
+            //let url = NSURL(string: picture.1[index]["url"].string!)!
+        //    let data: NSData(c)
+          //  ms.addObject(UIImage(data: NSData(contentsOfURL: url)!))
+        }
+        
+        
         picCont = PicContainer(frame: CGRect(x: 0, y: 0, width: frame.width, height: ((frame.height - ini))-55), array: ms)
         picCont.delegate = self
         self.addSubview(picCont)

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7A15ED351AF431C9009D5762 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A15ED341AF431C9009D5762 /* Reachability.swift */; };
 		7A15ED371AF4409D009D5762 /* NoNetworkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A15ED361AF4409D009D5762 /* NoNetworkVC.swift */; };
+		7A1A9B721B068C180017ADCB /* ExString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A9B711B068C180017ADCB /* ExString.swift */; };
 		7A2315FF1ADF17E1007C5A46 /* ic-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2315F31ADF17E1007C5A46 /* ic-01.png */; };
 		7A2316001ADF17E1007C5A46 /* ic-01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2315F41ADF17E1007C5A46 /* ic-01@2x.png */; };
 		7A2316011ADF17E1007C5A46 /* ic-02.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2315F51ADF17E1007C5A46 /* ic-02.png */; };
@@ -346,6 +347,7 @@
 		7A15ED321AF428C1009D5762 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7A15ED341AF431C9009D5762 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		7A15ED361AF4409D009D5762 /* NoNetworkVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNetworkVC.swift; sourceTree = "<group>"; };
+		7A1A9B711B068C180017ADCB /* ExString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExString.swift; sourceTree = "<group>"; };
 		7A2315F31ADF17E1007C5A46 /* ic-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-01.png"; sourceTree = "<group>"; };
 		7A2315F41ADF17E1007C5A46 /* ic-01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-01@2x.png"; sourceTree = "<group>"; };
 		7A2315F51ADF17E1007C5A46 /* ic-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-02.png"; sourceTree = "<group>"; };
@@ -1393,6 +1395,7 @@
 				7A23160B1AE047DD007C5A46 /* YIPin.swift */,
 				7A3693251AF089F00049058F /* StringEx.swift */,
 				7AB375F41B02EB1800574BD8 /* AddThemeColors.swift */,
+				7A1A9B711B068C180017ADCB /* ExString.swift */,
 			);
 			name = Components;
 			path = Helpers/Components;
@@ -2211,6 +2214,7 @@
 				EC399EA71A828BCB003DD89F /* History.swift in Sources */,
 				7AB376C21B03EF0900574BD8 /* NSArray+Extend.m in Sources */,
 				7AB376D41B03EF0900574BD8 /* MKAnnotationView+WebCache.m in Sources */,
+				7A1A9B721B068C180017ADCB /* ExString.swift in Sources */,
 				ECB6C26F1A79ADD700AD1BCB /* SubCategoryCell.swift in Sources */,
 				EC399EAB1A828C2B003DD89F /* Links.swift in Sources */,
 				7AB375FD1B0306C800574BD8 /* FilterMasterVC.swift in Sources */,

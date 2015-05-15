@@ -27,7 +27,6 @@ class LinkComponent: UIView {
         self.init()
         
         if type == 1{
-            println(frame.width)
             self.frame = CGRect(x: 0, y: 0, width: frame.width, height: 106)
         }
         else{

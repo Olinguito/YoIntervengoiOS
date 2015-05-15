@@ -69,7 +69,7 @@ const float VIEW_WIDTH = 225.0;
     return _sizes;
 }
 
-- (id)initWithTimeArray:(NSArray *)time andTimeDescriptionArray:(NSArray *)timeDescriptions andCurrentStatus:(int)status andFrame:(CGRect)frame {
+- (id)initWithTimeArray:(NSMutableArray *)timeDescriptions andCurrentStatus:(int)status andFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         viewheight = 75.0;
@@ -81,65 +81,15 @@ const float VIEW_WIDTH = 225.0;
         [self addSubview:self.progressViewContainer];
         [self addSubview:self.timeViewContainer];
         [self addSubview:self.progressDescriptionViewContainer];
-        //uncomment to see color view's borders
-        /*
-         self.timeViewContainer.layer.borderColor = UIColor.blackColor.CGColor;
-         self.timeViewContainer.layer.borderWidth = 1;
-         self.progressDescriptionViewContainer.layer.borderColor = UIColor.redColor.CGColor;
-         self.progressDescriptionViewContainer.layer.borderWidth = 1;
-         self.progressViewContainer.layer.borderColor = UIColor.greenColor.CGColor;
-         self.progressViewContainer.layer.borderWidth = 1;
-         */
-        [self addTimeDescriptionLabels:timeDescriptions andTime:time currentStatus:status];
+        [self addTimeDescriptionLabels:timeDescriptions currentStatus:status];
         [self setNeedsUpdateConstraints];
-        [self addProgressBasedOnLabels:self.labelDscriptionsArray currentStatus:status];
-        [self addTimeLabels:time currentStatus:status];
-        
-        
+        [self addProgressBasedOnLabels:self.labelDscriptionsArray description:timeDescriptions currentStatus:status];
     }
     
     return self;
 }
 
-- (void)addTimeLabels:(NSArray *)time currentStatus:(int)currentStatus {
-    /*CGFloat betweenLabelOffset = 0;
-    CGFloat totlaHeight = 6;
-    int i = 0;
-    for (NSString *timeDescription in time) {
-        UILabel *label = [[UILabel alloc] init];
-        
-        [label setText:timeDescription];
-        label.numberOfLines = 2;
-        label.textColor = i < currentStatus ? [UIColor blackColor] : [UIColor grayColor];
-        label.textAlignment = NSTextAlignmentRight;
-        label.lineBreakMode = NSLineBreakByWordWrapping;
-        [label setFont:[UIFont fontWithName:@"Roboto-Light" size:12.0]];
-        [self.timeViewContainer addSubview:label];
-        
-        UILabel *descrLabel = self.labelDscriptionsArray[i];
-        [label makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@(16));
-            make.left.equalTo(_timeViewContainer);
-            make.width.equalTo(_timeViewContainer);
-            make.top.equalTo(descrLabel.top);//.with.offset(betweenLabelOffset + 1);
-        }];
-        CGSize fittingSize = [label systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
-        betweenLabelOffset = BETTWEEN_LABEL_OFFSET;
-        totlaHeight += (fittingSize.height + betweenLabelOffset);
-        
-        [self.labelDscriptionsArray addObject:label];
-        i++;
-    }
-    
-    viewheight = totlaHeight;
-    
-    // tell constraints they need updating
-    [self setNeedsUpdateConstraints];
-    // update constraints now
-    [self updateConstraintsIfNeeded];*/
-}
-
-- (void)addTimeDescriptionLabels:(NSArray *)timeDescriptions andTime:(NSArray *)time currentStatus:(int)currentStatus {
+- (void)addTimeDescriptionLabels:(NSMutableArray *)timeDescriptions currentStatus:(int)currentStatus {
     CGFloat betweenLabelOffset = 0;
     CGFloat totlaHeight = 6;
     CGSize fittingSizeLabel;
@@ -151,11 +101,8 @@ const float VIEW_WIDTH = 225.0;
     
     
     int i = 0;
-    for (NSString *timeDescription in timeDescriptions) {
+    for (NSDictionary *timeDescription in timeDescriptions) {
         UIView *label = [[UIView alloc] init];
-        //[label setText:timeDescription];
-      //  label.numberOfLines = 0;
-        
         UIImageView *arrow = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"arrow_2"]];
         arrow.frame = CGRectMake(0, 15, 234, 46);
         [label addSubview:arrow];
@@ -165,27 +112,26 @@ const float VIEW_WIDTH = 225.0;
         //container.layer.borderColor = [UIColor colorWithRed:0.929 green:0.361 blue:0.180 alpha:1].CGColor;
         [label addSubview:container];
         
-        
-        
-        UILabel *lbl1 = [[UILabel alloc]init];
-        lbl1.frame = CGRectMake(25, 0, 100, 50);
-        [lbl1 setFont:[UIFont fontWithName:@"Roboto-Light" size:16.0]];
-        lbl1.text = timeDescription;
-        [container addSubview:lbl1];
-        
-        
         UILabel *lbl2 = [[UILabel alloc]init];
         lbl2.frame = CGRectMake(0, 0, 100, 11);
         [lbl2 setFont:[UIFont fontWithName:@"Roboto-Light" size:11.0]];
         lbl2.textColor = [UIColor darkGrayColor];
-        lbl2.text = timeDescription;
+        lbl2.text = timeDescription[@"date"];
         [container addSubview:lbl2];
         
-                //label.textColor = i < currentStatus ? [UIColor blackColor] : [UIColor grayColor];
-       // label.textAlignment = NSTextAlignmentLeft;
-       // label.lineBreakMode = NSLineBreakByWordWrapping;
-       // [label setFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0]];
+        UILabel *lbl1 = [[UILabel alloc]init];
+        lbl1.frame = CGRectMake(25, 20, 200, 16.5);
+        [lbl1 setFont:[UIFont fontWithName:@"Roboto-Light" size:16.0]];
+        lbl1.text = timeDescription[@"title"];
+        [container addSubview:lbl1];
         
+        UILabel *lbl3 = [[UILabel alloc]init];
+        lbl3.frame = CGRectMake(25, lbl1.frame.origin.x + 17, 100, 11);
+        [lbl3 setFont:[UIFont fontWithName:@"Roboto-LightItalic" size:11.0]];
+        lbl3.textColor = [UIColor darkGrayColor];
+        lbl3.text = timeDescription[@"desc"];
+        [container addSubview:lbl3];
+
         
         [self.progressDescriptionViewContainer addSubview:label];
         [label makeConstraints:^(MASConstraintMaker *make) {
@@ -214,7 +160,7 @@ const float VIEW_WIDTH = 225.0;
     [self updateConstraintsIfNeeded];
 }
 
-- (void)addProgressBasedOnLabels:(NSArray *)labels currentStatus:(int)currentStatus {
+- (void)addProgressBasedOnLabels:(NSArray *)labels description:(NSMutableArray*)desc currentStatus:(int)currentStatus {
     int i = 0;
     CGFloat betweenLineOffset = 0;
     CGFloat totlaHeight = 8;
@@ -225,9 +171,7 @@ const float VIEW_WIDTH = 225.0;
     CGPoint fromPoint;
     circleLayers = [[NSMutableArray alloc] init];
     layers = [[NSMutableArray alloc] init];
-    
 
-    
     for (UILabel *label in labels) {
         //configure circle
         
@@ -239,48 +183,19 @@ const float VIEW_WIDTH = 225.0;
         [self configureBezierCircle:circle withCenterY:yCenter];
         CAShapeLayer *circleLayer = [self getLayerWithCircle:circle andStrokeColor:strokeColor];
         [circleLayers addObject:circleLayer];
-    
-        //add static background gray circle
         
         
-        //CAShapeLayer *grayStaticCircleLayer = [self getLayerWithCircle:circle andStrokeColor:[UIColor lightGrayColor]];
-        //[self.progressViewContainer.layer addSublayer:grayStaticCircleLayer];
-        
-        
-        UIImageView *icon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"iconLink"]];
+        UIImageView *icon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:((NSDictionary*)[desc objectAtIndex:i])[@"icon"]]];
         icon.center = CGPointMake(20, yCenter);
         icon.backgroundColor = [UIColor redColor];
         icon.frame = self.progressViewContainer.bounds;
         
-        /*circleLayer.frame = self.progressViewContainer.bounds;
-        circleLayer.path = circle.CGPath;
-        
-        circleLayer.strokeColor = strokeColor.CGColor;
-        circleLayer.fillColor = nil;
-        circleLayer.lineWidth = LINE_WIDTH;
-        circleLayer.lineJoin = kCALineJoinBevel;
-        
-        return circleLayer;*/
-        
-        
         CALayer *imageLayer = [CALayer layer];
         imageLayer.frame = CGRectMake(-2, yCenter-15, 39,39);
         imageLayer.cornerRadius = 10.0;
-        imageLayer.contents = (id) [UIImage imageNamed:@"iconLink"].CGImage;
+        imageLayer.contents = (id) [UIImage imageNamed:((NSDictionary*)[desc objectAtIndex:i])[@"icon"]].CGImage;
         imageLayer.masksToBounds = YES;
         [self.progressViewContainer.layer insertSublayer:imageLayer atIndex:0];
-        
-        
-        /*CALayer *lay = [[CALayer alloc]init];
-        lay.frame = self.progressViewContainer.bounds;
-        lay.backgroundColor = [UIColor redColor].CGColor;
-        
-        
-        [self.progressViewContainer.layer addSublayer:lay];
-        
-        [self.progressViewContainer addSubview:icon];*/
-        
-        
         
         
         //configure line
