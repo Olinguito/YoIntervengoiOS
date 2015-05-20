@@ -15,7 +15,7 @@ import UIKit
     optional func loaded(checker:Bool,msg:NSString,tokenR:NSString)
     optional func returnResponse(msg:String,response:AnyObject)
     optional func returnList(responseObject:AnyObject, url:String)
-    optional func returnObt(responseObject:AnyObject)
+    optional func returnObt(responseObject:AnyObject, url:String)
     optional func returnBool(response:Bool)
 }
 
@@ -59,11 +59,15 @@ class APIManager: NSObject {
     
     //MARK:-REPORT
     func getReports(){
-        performGet("Reports", token: "", list: true)
+        performGet("Reports", token: "", list: true, transac: "reports")
+    }
+    
+    func getFilter(){
+        getLocalJSON("filters", transac: "filters")
     }
     
     func getReportWithID(idReport:String){
-        performGet("Reports/?filter[include]=history-nodes&filter[include]=links&filter[include]=pictures&filter[where][id]=" + idReport, token: "", list: false)
+        performGet("Reports/?filter[include]=history-nodes&filter[include]=links&filter[include]=pictures&filter[where][id]=" + idReport, token: "", list: false, transac: "report_detail")
     }
     
     func postReport(data:NSDictionary!){
@@ -88,20 +92,27 @@ class APIManager: NSObject {
     func postSpam(){
         
     }
+    
+    func getLocalJSON(url:String!, transac: String!){
+        var filePath =   NSBundle.mainBundle().pathForResource(transac, ofType: "json")
+        var JSONData =   NSData.dataWithContentsOfMappedFile(filePath!) as! NSData
+        //var jsonObject = NSJSONSerialization.JSONObjectWithData (JSONData, options: NSJSONReadingOptions.MutableContainers, error: nil)
+        var stringJSON = NSString(data:JSONData, encoding:NSUTF8StringEncoding) as! String
+        self.delegate.returnObt!(JSONData, url:transac)
+    }
 
     //MARK: -AFNETWORKING DELEGATE
-    func performGet(url:String!, token:String!, list:Bool){
+    func performGet(url:String!, token:String!, list:Bool, transac: String!){
         var operationManager = AFHTTPRequestOperationManager()
         operationManager.responseSerializer = AFJSONResponseSerializer()
         operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
         //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
-        println(URLAPI+url)
-        operationManager.GET(URLAPI+url, parameters: nil,
+        operationManager.GET(url, parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 if list{
-                    self.delegate.returnList!(responseObject, url: "url")
+                    self.delegate.returnList!(responseObject, url: transac)
                 }else{
-                    self.delegate.returnObt!(responseObject)
+                    self.delegate.returnObt!(responseObject, url: transac)
                 }
             },
             failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
@@ -120,10 +131,8 @@ class APIManager: NSObject {
                 println(responseObject.description)
                 let responseDict = responseObject as! Dictionary<String, AnyObject>
                 var token = responseDict["token"] as! String!
-                println("Exitosoooo!!")
             }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
                 print(error)
-                print("Hola mundo ocurrio un error")
             })
     }
     

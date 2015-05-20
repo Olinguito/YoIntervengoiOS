@@ -27,9 +27,9 @@ class Pictures: UIView, PicContainerDelegate {
         
         println(data)
         for (index,picture) in enumerate(self.data[0]["pictures"]){
-            //let url = NSURL(string: picture.1[index]["url"].string!)!
-        //    let data: NSData(c)
-          //  ms.addObject(UIImage(data: NSData(contentsOfURL: url)!))
+            let url = NSURL(string: picture.1["url"].string!)!
+            var data = NSData(contentsOfURL: url)
+            ms.addObject(UIImage(data: data!)!)
         }
         
         

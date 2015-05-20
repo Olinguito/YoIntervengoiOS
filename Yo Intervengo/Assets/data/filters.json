@@ -1,0 +1,81 @@
+{
+  "filters": [
+    {
+      "name":"category",
+      "data":[
+        {
+          "name": "0-100",
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "name":"zone",
+      "data": [
+        {
+          "name": "0-100",
+          "value": "100"
+        },
+        {
+          "name": "100-1000",
+          "value": "100"
+        },
+        {
+          "name": "1000-2000",
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "name":"date",
+      "data": [
+        {
+          "name": "Ultimos 3 días",
+          "value": "100"
+        },
+        {
+          "name": "Ultima semana",
+          "value": "100"
+        },
+        {
+          "name": "Ultimo mes",
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "name":"backers",
+      "data":[
+        {
+          "name": "10 - 100",
+          "value": "100"
+        },
+        {
+          "name": "100 - 1K",
+          "value": "100"
+        },
+        {
+          "name": "1K - 10K",
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "name":"state",
+      "data": [
+        {
+          "name": "Activo",
+          "value": "1"
+        },
+        {
+          "name": "Archivado",
+          "value": "2"
+        },
+        {
+          "name": "Solucionado",
+          "value": "3"
+        }
+      ]
+    }
+  ]
+}

@@ -234,30 +234,34 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         addAnnotation(location, data: ["type":type,"category":Category])
     }
     
-    func returnList(responseObject: AnyObject, url: String) {
-        var newANN:RMAnnotation!
-        var counter = 0
-        for report in responseObject as! NSMutableArray{
-            var idReport = report["id"] as! String
-            var location = report["location"] as! NSDictionary
-            var type = report["type"] as? Int ?? 3
-            var category = report["category"] as? Int ?? 1
-            //Valores faltantes:
-            var subcategory = "SUBCATEGORIA DE PRUEBA"
-            var followers = 200
-            ////////////////////////////////
-            var lat = location["lat"] as! CLLocationDegrees
-            var lng = location["lng"] as! CLLocationDegrees
-            var title = report["title"] as? NSString ?? "No se trajo información"
-            var description = report["description"] as? NSString ?? "No se trajo información"
-            newANN = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(lat,lng), andTitle:(String(counter)));
-            newANN.userInfo =  ["id":idReport,"type":type,"category":category,"title":title,"description":description,"subcategory":subcategory,"followers":followers,"num":counter]
-            map.addAnnotation(newANN)
-            loc.append(newANN)
-            counter++
+    func returnList(responseObject: AnyObject, url: String!) {
+        switch  url {
+            case "a":
+                var newANN:RMAnnotation!
+                var counter = 0
+                for report in responseObject as! NSMutableArray{
+                    var idReport = report["id"] as! String
+                    var location = report["location"] as! NSDictionary
+                    var type = report["type"] as? Int ?? 3
+                    var category = report["category"] as? Int ?? 1
+                    //Valores faltantes:
+                    var subcategory = "SUBCATEGORIA DE PRUEBA"
+                    var followers = 200
+                    ////////////////////////////////
+                    var lat = location["lat"] as! CLLocationDegrees
+                    var lng = location["lng"] as! CLLocationDegrees
+                    var title = report["title"] as? NSString ?? "No se trajo información"
+                    var description = report["description"] as? NSString ?? "No se trajo información"
+                    newANN = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(lat,lng), andTitle:(String(counter)));
+                    newANN.userInfo =  ["id":idReport,"type":type,"category":category,"title":title,"description":description,"subcategory":subcategory,"followers":followers,"num":counter]
+                    map.addAnnotation(newANN)
+                    loc.append(newANN)
+                    counter++
+                }
+                test.loc = loc;
+                test.collectionView.reloadData()
+            default: print("Any")
         }
-        test.loc = loc;
-        test.collectionView.reloadData()
     }
     
     func addAnnotation(localization:CLLocationCoordinate2D, data:NSDictionary){

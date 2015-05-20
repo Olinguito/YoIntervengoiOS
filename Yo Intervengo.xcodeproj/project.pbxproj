@@ -98,6 +98,7 @@
 		7AB376E91B03EF0A00574BD8 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7AB376B81B03EF0900574BD8 /* SVProgressHUD.bundle */; };
 		7AB376EA1B03EF0A00574BD8 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB376BA1B03EF0900574BD8 /* SVProgressHUD.m */; };
 		7AB376EB1B03EF0A00574BD8 /* LFRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB376BD1B03EF0900574BD8 /* LFRoundProgressView.m */; };
+		7AF3139C1B0BF0D60016FD39 /* filters.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3139B1B0BF0D60016FD39 /* filters.json */; };
 		946A4F5F589DEEAAB19C1B76 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 299917266435710DC9DFBAA8 /* libPods.a */; };
 		EC051BBC1A6CCD1A00C70D2A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */; };
 		EC0AF7B61A62E7CD004F1B6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AF7B51A62E7CD004F1B6C /* AppDelegate.swift */; };
@@ -493,6 +494,7 @@
 		7AB376BA1B03EF0900574BD8 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		7AB376BC1B03EF0900574BD8 /* LFRoundProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRoundProgressView.h; sourceTree = "<group>"; };
 		7AB376BD1B03EF0900574BD8 /* LFRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRoundProgressView.m; sourceTree = "<group>"; };
+		7AF3139B1B0BF0D60016FD39 /* filters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = filters.json; sourceTree = "<group>"; };
 		EC051BBB1A6CCD1A00C70D2A /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionViewCell.xib; path = XIB/CollectionViewCell.xib; sourceTree = "<group>"; };
 		EC0AF7B01A62E7CD004F1B6C /* Yo Intervengo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yo Intervengo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0AF7B41A62E7CD004F1B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1212,6 +1214,14 @@
 			path = LFRoundProgressView;
 			sourceTree = "<group>";
 		};
+		7AF3139A1B0BF0D60016FD39 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				7AF3139B1B0BF0D60016FD39 /* filters.json */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
 		EC0AF7A71A62E7CD004F1B6C = {
 			isa = PBXGroup;
 			children = (
@@ -1773,6 +1783,7 @@
 		ECF5CCCC1A6444ED0055077D /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				7AF3139A1B0BF0D60016FD39 /* data */,
 				7A2315F21ADF17E1007C5A46 /* icons */,
 				ECA791EF1A92B5F3003D0A41 /* data.db */,
 				ECCE06D71A6CA50400A35012 /* Splash */,
@@ -2057,6 +2068,7 @@
 				ECCCA5F21A65AF60004C5858 /* Roboto-BoldItalic.ttf in Resources */,
 				EC399E9C1A819DE6003DD89F /* Historial.png in Resources */,
 				ECA791BF1A929BEC003D0A41 /* btn_add_links_tv@2x.png in Resources */,
+				7AF3139C1B0BF0D60016FD39 /* filters.json in Resources */,
 				ECA7918A1A929BEC003D0A41 /* btn_reporte_sp.png in Resources */,
 				EC3C12371A8A975A009E82B4 /* Note.png in Resources */,
 				ECA791A31A929BEC003D0A41 /* bg_hist_prensa@2x.png in Resources */,

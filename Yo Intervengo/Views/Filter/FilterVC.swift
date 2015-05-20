@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterVC: UIViewController,UISearchBarDelegate {
+class FilterVC: GenericViewController,UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var segmented: UISegmentedControl!
     @IBOutlet weak var container: UIView!

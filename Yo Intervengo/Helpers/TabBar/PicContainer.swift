@@ -58,6 +58,7 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PicContainerCell", forIndexPath: indexPath) as! PicContainerCell
         cell.alpha = 0
         cell.layer.cornerRadius = 5
+        cell.imageBtn.setImage(data.objectAtIndex(indexPath.row) as! UIImage, forState: UIControlState.Normal)
         cell.imageBtn.addTarget(self, action: Selector("goPicture:"), forControlEvents: UIControlEvents.TouchUpInside)
         return cell
     }

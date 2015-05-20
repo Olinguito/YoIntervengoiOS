@@ -47,7 +47,7 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         self.view.addSubview(navBar)
         
         lblHeader = UILabel(frame: CGRectMake(0, 20, vW, 44))
-        lblHeader.text = "Hola Mundo"
+        lblHeader.text = ""
         lblHeader.textAlignment = NSTextAlignment.Center
         lblHeader.textColor = UIColor.whiteColor()
         lblHeader.font = UIFont(name: "Roboto-Light", size: 18)

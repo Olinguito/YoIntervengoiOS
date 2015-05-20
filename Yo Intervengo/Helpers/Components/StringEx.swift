@@ -11,5 +11,6 @@ import UIKit
 
 extension NSString {
     // MARK: - Flat colors
+    
 
 }

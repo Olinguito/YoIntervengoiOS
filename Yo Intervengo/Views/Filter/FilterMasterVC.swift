@@ -8,10 +8,16 @@
 
 import UIKit
 
-class FilterMasterVC: UITableViewController,UITableViewDelegate {
+class FilterMasterVC: UITableViewController,UITableViewDelegate,APIManagerDelegate {
+    var APIManagerClass:APIManager!
+    var filters:NSMutableArray!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        APIManagerClass = APIManager()
+        APIManagerClass.delegate = self
+        APIManagerClass.getFilter()
         // Do any additional setup after loading the view.
     }
     
@@ -29,6 +35,19 @@ class FilterMasterVC: UITableViewController,UITableViewDelegate {
         var detail = FilterDetailVC()
         self.navigationController?.view.layer.addAnimation(CATransition.viewTransition(), forKey: nil)
         self.navigationController?.pushViewController(detail, animated: false)
+    }
+    
+    func returnObt(responseObject:AnyObject, url:String){
+        //print(responseObject)
+        var json = JSON(data: responseObject as! NSData)
+        
+//        print(json["filters"])
+        
+        for filter in json["filters"]{
+            println(filter.1["name"])
+            println(filter.1["data"][0]["name"])
+            println("----")
+        }
     }
     
     /*
