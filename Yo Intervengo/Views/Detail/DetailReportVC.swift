@@ -214,7 +214,8 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         btnContinue.layer.borderColor = UIColor.clearColor().CGColor*/
     }
     
-    func returnObt(responseObject:AnyObject){
+
+    func returnObt(responseObject: AnyObject, url: String) {
         //print(responseObject)
         var dataDetail = JSON(responseObject)
         var a:NSMutableArray = NSMutableArray()

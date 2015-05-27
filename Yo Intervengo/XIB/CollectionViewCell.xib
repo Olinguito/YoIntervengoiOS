@@ -64,8 +64,8 @@
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zho-S5-9Qz">
                         <rect key="frame" x="170" y="0.0" width="75" height="75"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img1.png" translatesAutoresizingMaskIntoConstraints="NO" id="IMY-V3-sQN">
-                                <rect key="frame" x="28" y="10" width="18" height="55"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img1.png" translatesAutoresizingMaskIntoConstraints="NO" id="IMY-V3-sQN">
+                                <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.35686274509803922" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

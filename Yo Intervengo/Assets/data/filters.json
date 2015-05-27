@@ -1,7 +1,7 @@
 {
   "filters": [
     {
-      "name":"category",
+      "name":"Categoria",
       "data":[
         {
           "name": "0-100",
@@ -10,7 +10,7 @@
       ]
     },
     {
-      "name":"zone",
+      "name":"Zona",
       "data": [
         {
           "name": "0-100",
@@ -27,7 +27,7 @@
       ]
     },
     {
-      "name":"date",
+      "name":"Fecha",
       "data": [
         {
           "name": "Ultimos 3 días",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "name":"backers",
+      "name":"Seguidores",
       "data":[
         {
           "name": "10 - 100",
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "name":"state",
+      "name":"Estado",
       "data": [
         {
           "name": "Activo",

@@ -110,7 +110,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="H9d-ve-JFc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="12" id="3Ox-au-Ywb"/>
@@ -243,6 +243,9 @@
                                         </constraints>
                                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="0y7-pi-P37" id="wCt-iy-JaX"/>
+                                        </connections>
                                     </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -97,6 +97,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         var infoPin: AnyObject = (loc[indexPath.row] as RMAnnotation).userInfo!
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
+        cell.iconPublic.image = UIImage(named: infoPin["icon"] as! String)
         cell.lblTitle.text = (infoPin["title"] as! String)
         cell.subTitle.text = (infoPin["subcategory"] as! String)
         cell.lblDescr.text = (infoPin["description"] as! String)

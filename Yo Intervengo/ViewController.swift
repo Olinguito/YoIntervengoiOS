@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegate,JOaddReportDelegate {
     var map: RMMapView!
+    var initLocation:Bool = false
     var openedReport:Bool = false
     var animator:UIDynamicAnimator!
     var attachmentBeh: UIAttachmentBehavior!
@@ -50,7 +51,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
             }
             loaded = true
         }
-        
     }
     
     func initialize(){
@@ -58,10 +58,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         APIManagerClass.getReports()
         (RMConfiguration.sharedInstance()).accessToken = "pk.eyJ1Ijoib2xpbmd1aXRvIiwiYSI6IkVGeE41bE0ifQ.TrGnR7v_7HRJUsiM2h_3dQ"
         //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
-        let source = RMMapboxSource(mapID: "robjalkh.a4368786") //GRIS BONITO
-        //let source = RMMapboxSource(mapID: "olinguito.knpn8bl7")
-        //let source = RMMapboxSource(mapID: "olinguito.knpnoamp")
-        //let source = RMMapboxSource(mapID: "examples.map-z2effxa8")
+        let source = RMMapboxSource(mapID: "robjalkh.a4368786")
         loc = []
         map = RMMapView(frame: view.frame, andTilesource: source)
         map.delegate = self
@@ -72,9 +69,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         map.userTrackingMode = RMUserTrackingModeFollow
         map.tintColor = UIColor.greenColor()
         map.removeAllAnnotations()
-        // hide MapBox logo
         self.map.showLogoBug = false
-        // hide bottom right "i" icon
         self.map.hideAttribution = true
         
         map.clusterAreaSize = CGSize(width: 2, height: 2)
@@ -95,9 +90,11 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     func mapView(mapView: RMMapView!, didUpdateUserLocation userLocation: RMUserLocation!) {
-//        mapView.userTrackingMode = RMUserTrackingMode
-        map.setCenterCoordinate(CLLocationCoordinate2DMake(4.6615,-74.0688), animated: true)
-        //mapView.setCenterCoordinate(userLocation.coordinate, animated: false)
+        if(!initLocation){
+            //map.setCenterCoordinate(CLLocationCoordinate2DMake(4.6615,-74.0688), animated: true)
+            mapView.setCenterCoordinate(userLocation.coordinate, animated: false)
+            initLocation = true
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -125,7 +122,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
                 map.zoomWithLatitudeLongitudeBoundsSouthWest(southwestCoordinate, northEast: northeastCoordinate, animated: true)
             }
             else{
-                map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(annotation.coordinate).x, y: map.coordinateToPixel(annotation.coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
+                map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(annotation.coordinate).x, y: map.coordinateToPixel(annotation.coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 100)), animated: true)
                 test.show()
                 print("Entrando a: \(annotation.title.toInt())")
                 test.go2Page(NSIndexPath(forRow: annotation.title.toInt()!, inSection: 0))
@@ -177,10 +174,11 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         else
         {
             var dic = annotation.userInfo as! NSDictionary
-            let marker = RMMarker(UIImage: UIImage.getPin(dic["type"] as! Int, Category: dic["category"] as! Int))
+            let marker = RMMarker(UIImage: UIImage.getPinByName(dic["type"] as! Int, Category: dic["icon"] as! String))
             return marker
         }
     }
+    
     @IBOutlet var gestureRecognizer: UIPanGestureRecognizer!
     @IBAction func HandleBorderGesture(sender: AnyObject) {
         let location = sender.locationInView(view)
@@ -205,8 +203,8 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     @IBAction func getLocation(sender: AnyObject) {
-       // map.setCenterCoordinate(map.userLocation.coordinate, animated: true);
-        map.setCenterCoordinate(CLLocationCoordinate2DMake(4.6615,-74.0688), animated: true)
+        map.setCenterCoordinate(map.userLocation.coordinate, animated: true);
+       //map.setCenterCoordinate(CLLocationCoordinate2DMake(4.6615,-74.0688), animated: true)
     }
     @IBAction func search(sender: AnyObject) {
     }
@@ -218,7 +216,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     func pageSetted(index:NSIndexPath){
-        map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(loc[index.row].coordinate).x, y: map.coordinateToPixel(loc[index.row].coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 30)), animated: true)
+        map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(loc[index.row].coordinate).x, y: map.coordinateToPixel(loc[index.row].coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 100)), animated: true)
     }
     
     //MARK: DATA
@@ -236,16 +234,17 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     
     func returnList(responseObject: AnyObject, url: String!) {
         switch  url {
-            case "a":
+            case "reports":
                 var newANN:RMAnnotation!
                 var counter = 0
                 for report in responseObject as! NSMutableArray{
                     var idReport = report["id"] as! String
                     var location = report["location"] as! NSDictionary
                     var type = report["type"] as? Int ?? 3
-                    var category = report["category"] as? Int ?? 1
+                    var category = report["category"] as! NSDictionary
+                    var imageIcon = category["icon"] as! String
                     //Valores faltantes:
-                    var subcategory = "SUBCATEGORIA DE PRUEBA"
+                    var subcategory = category["name"] as! String
                     var followers = 200
                     ////////////////////////////////
                     var lat = location["lat"] as! CLLocationDegrees
@@ -253,7 +252,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
                     var title = report["title"] as? NSString ?? "No se trajo información"
                     var description = report["description"] as? NSString ?? "No se trajo información"
                     newANN = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(lat,lng), andTitle:(String(counter)));
-                    newANN.userInfo =  ["id":idReport,"type":type,"category":category,"title":title,"description":description,"subcategory":subcategory,"followers":followers,"num":counter]
+                    newANN.userInfo =  ["id":idReport,"type":type,"icon":imageIcon,"title":title,"description":description,"subcategory":subcategory,"followers":followers,"num":counter]
                     map.addAnnotation(newANN)
                     loc.append(newANN)
                     counter++

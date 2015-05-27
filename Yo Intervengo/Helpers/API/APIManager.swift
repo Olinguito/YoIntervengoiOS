@@ -107,7 +107,7 @@ class APIManager: NSObject {
         operationManager.responseSerializer = AFJSONResponseSerializer()
         operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
         //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
-        operationManager.GET(url, parameters: nil,
+        operationManager.GET(URLAPI+url, parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 if list{
                     self.delegate.returnList!(responseObject, url: transac)

@@ -186,7 +186,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 var placeholder = NSAttributedString(string: "Titulo", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
                 txtTitle.attributedPlaceholder = placeholder
                 txtTitle.tintColor = UIColor.orangeYI()
-                txtTitle.keyboardAppearance = UIKeyboardAppearance.Dark
                 self.addSubview(txtTitle)
                 txtDesc = UIView(frame: CGRect(x: -1, y: txtTitle.frame.maxY, width: self.frame.width+2, height: 120))
                 //txtDesc.delegate = self
@@ -204,7 +203,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 txtD.delegate = self
                 txtD.textColor = UIColor.addThemeContrast()
                 txtD.backgroundColor = UIColor.clearColor()
-                txtD.keyboardAppearance = UIKeyboardAppearance.Dark
                 txtD.font = UIFont(name: "Roboto-Light", size: 18)
                 txtDesc.addSubview(txtD)
                 if txtTit != "" && txtDes != "" {
