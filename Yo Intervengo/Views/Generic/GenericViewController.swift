@@ -124,8 +124,11 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         print(String(actView) + "y" + String(index))
         if actView != index {
             switch (index){
-                case 0: self.navigationController?.popToRootViewControllerAnimated(true)
+                case 0:
+
+                        self.navigationController?.popToRootViewControllerAnimated(false)
                 case 1: var c  = AboutVC()
+
                         self.navigationController?.pushViewController(c, animated: false)
                 case 2: print(3)
                 case 3: print(4)

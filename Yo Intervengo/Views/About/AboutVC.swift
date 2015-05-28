@@ -17,7 +17,7 @@ class AboutVC: GenericViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
-        
+        self.lblHeader.text = "Acerca de"
         scroll = UIScrollView(frame: CGRectMake(0, 80, vW, vH - 80))
         scroll.backgroundColor = UIColor.clearColor()
         scroll.maximumZoomScale = 10
@@ -25,7 +25,7 @@ class AboutVC: GenericViewController {
         self.view.addSubview(scroll)
         
         var lblInfo = UILabel()
-        var text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+        var text = "Reportar y solicitar una obra pública nunca fue tan fácil. Con Yo Intervengo puedes hacer un reporte de una falla en el alcantarillado, un hueco sobre la vía, la existencia de un elefante blanco o cualquier otro problema que afecte a tu comunidad. Yo Intervengo también te permitirá interactuar con tus vecinos y respaldar la solicitud de la construcción de una obra pública. ¡Empieza a reportar y respaldar con Yo Intervengo para hacer más visibles los problemas de tu comunidad! \r\n \r\n Este proyecto fue desarrollado con ♥ desde Bogotá - Colombia por: \r\n \r\n OLINGUITO \r\n \r\n Daniel Olano | Fullstack Dev \r\n Jorge Ovalle | Mobile Dev \r\n Roberto Sarmiento Jalkh | UX UI\r\n Daniel Suárez Pérez | Data Journalist \r\n \r\n Gracias al apoyo de:"
         lblInfo.text = text
         lblInfo.textColor = UIColor.greyDark()
         lblInfo.font = UIFont(name: "RobotoSlab-Light", size: 15)

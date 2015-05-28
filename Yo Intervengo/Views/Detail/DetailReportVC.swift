@@ -76,7 +76,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         
         var fram:CGRect = CGRect(x: 0, y: 42, width: 120, height: 93)
         map = RMStaticMapView(frame: fram, mapID: "robjalkh.a4368786", centerCoordinate: CLLocationCoordinate2DMake(4.6015,-74.0698), zoomLevel: 15, completionHandler: nil)
-        map.centerCoordinate = CLLocationCoordinate2DMake(4.6015,-74.0698)
+        //map.centerCoordinate = CLLocationCoordinate2DMake(4.6015,-74.0698)
         banner.addSubview(map)
         
         var pin = UIImageView(image: UIImage(named: (data["type"] as! Int) == 1 ? "subPin" : "subPin2"))
