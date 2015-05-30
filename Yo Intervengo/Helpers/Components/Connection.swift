@@ -17,6 +17,38 @@ class Connection: NSObject {
         super.init()
     }
     
+    //GET CATEGGORY
+    
+    func getCategoryByDBId(idDB:Int) -> Category {
+        var category = Category()
+        let data = db.query("select a.id as idSub, a.name as nameSub, a.apiID as APISub, b.id as idCat, b.name as nameCat, b.icon as icon, b.apiID as APICat  from subcategory a,category b where a.category = b.id and a.id = \(idDB)")
+        let row = data[0]
+        if let _id = row["idSub"] {
+            category.id = _id.asInt()
+        }
+        if let icon = row["icon"] {
+            println("*********************************************************************************  Buscando con este ID: \(idDB) e icono \(icon.asString())")
+            category.slug = icon.asString()
+            category.icon = icon.asString()
+        }
+        if let name = row["nameSub"] {
+            category.name = name.asString()
+        }
+        if let api = row["APISub"]{
+            category.idAPI = api.asString()
+        }
+        if let _idCat = row["idCat"]{
+            category.parentId = _idCat.asInt()
+        }
+        if let nameCat = row["nameCat"]{
+            category.parentName = nameCat.asString()
+        }
+        if let apiCat = row["apiID"]{
+            category.parentAPI = apiCat.asString()
+        }
+        return category
+    }
+    
     // GET CATEGORIES
     func getCategories(report:Bool) -> NSMutableArray{
         var returnArray = NSMutableArray()
@@ -42,14 +74,14 @@ class Connection: NSObject {
         var returnArray = NSMutableArray()
         let data = db.query("SELECT * FROM subcategory where category = \(idCategory)")
         for key in data{
-            var city: Dictionary<String, String> = [:]
+            var category = Category()
             if let id = key["id"] {
-                city["ID"] = id.asString()
+                category.id = id.asInt()
             }
             if let name = key["name"] {
-                city["NAME"] = name.asString()
+                category.name = name.asString()
             }
-            returnArray.addObject(city)
+            returnArray.addObject(category)
         }
         return returnArray
     }
@@ -81,7 +113,6 @@ class Connection: NSObject {
         var returnArray = NSMutableArray()
         let query = "SELECT * FROM link where \(index)"
         let data = db.query(query)
-        print(data.count)
         for key in data{
             var links: Dictionary<String, String> = [:]
             if let _id = key["id"] {

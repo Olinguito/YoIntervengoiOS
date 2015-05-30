@@ -1,4 +1,4 @@
-//
+    //
 //  ViewController.swift
 //  Yo Intervengo
 //
@@ -227,9 +227,9 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         self.showViewController(view2, sender: self)
     }
     
-    func reportCreated(location:CLLocationCoordinate2D, type:Int, Category:Int){
+    func reportCreated(location:CLLocationCoordinate2D, type:Int,category:Category){
         // Adjuntar el resto de valores
-        addAnnotation(location, data: ["type":type,"category":Category])
+        addAnnotation(location, data: ["type":type,"icon":category.icon])
     }
     
     func returnList(responseObject: AnyObject, url: String!) {

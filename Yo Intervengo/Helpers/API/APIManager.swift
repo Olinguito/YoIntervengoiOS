@@ -126,7 +126,7 @@ class APIManager: NSObject {
         operationManager.responseSerializer = AFJSONResponseSerializer()
         operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
         //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
-        print(data)
+        println("se fue con estos datos \(data)")
         operationManager.POST(URLAPI+url, parameters: data, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
                 println(responseObject.description)
                 let responseDict = responseObject as! Dictionary<String, AnyObject>

@@ -1,4 +1,4 @@
-//
+    //
 //  JOaddReport.swift
 //  Yo Intervengo
 //
@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol JOaddReportDelegate{
-    func reportCreated(location:CLLocationCoordinate2D, type:Int,Category:Int)
+    func reportCreated(location:CLLocationCoordinate2D, type:Int,category:Category)
 }
 
 class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate,JSImagePickerViewControllerDelegate,UITextFieldDelegate, UITextViewDelegate{
@@ -35,6 +35,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     var str3:String!
     
     var catId:Int!
+    var subcatId:Int!
     
     //STEP 4
     var localization:CLLocationCoordinate2D!
@@ -237,41 +238,10 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 self.addSubview(btnAddImage)
             }
         case 7:
-                //Aca se envia al API
-                /*
-            
-                {
-                    "description": "",
-                    "location": "geopoint",
-                    "status": 0,
-                    "title": "",
-                    "address": "",
-                    "type": 0,
-                    "category": {
-                        "name": "",
-                        "icon": "",
-                        "parent": "",
-                        "id": "objectid"
-                    },
-                    "link": [
-                        {
-                            "source": "",
-                            "date": "",
-                            "description": "",
-                            "url": "",
-                            "title": "",
-                            "type": 0,
-                            "id": "objectid"
-                        }
-                    ],
-                        "id": "objectid"
-                }
-            
-                */
-                delegate.reportCreated(localization, type: type, Category: catId)
+                var category = conn.getCategoryByDBId(subcatId) as Category
+                delegate.reportCreated(localization, type: type, category: category)
                 self.removeFromSuperview()
-                var dataRep:NSDictionary = ["description":txtDes, "location":["lat":localization.latitude, "lng":localization.longitude], "title":txtTit, "type":type, "category":["id": "553fc1365616111200c04bbc"]]
-                println(dataRep)
+                var dataRep:NSDictionary = ["description":txtDes, "location":["lat":localization.latitude, "lng":localization.longitude], "title":txtTit, "type":type, "category":["id": category.idAPI, "slug":category.slug, "name":category.name, "icon": category.icon]]
                 APIManagerClass.postReport(dataRep)
         default: println("Default")
         }
@@ -386,6 +356,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     // MARK: -SUBCATEGORY DELEGATE ::STEP 4
     func buttoTapped(button: UIButton!, withCentralBar sideBar: JOCentralMenu) {
         step = 4
+        subcatId = button.tag
         sideBar.removeFromSuperview()
         btnBack.tag = 4
         btnContinue.tag = 4

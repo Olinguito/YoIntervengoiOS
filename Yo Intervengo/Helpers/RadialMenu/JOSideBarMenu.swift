@@ -57,7 +57,6 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
         cell.btnCategory.setTitleColor(UIColor.clearColor(), forState: UIControlState.Normal)
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         //cell.layer.shadowOffset = CGSizeMake(0, 1.0)
-        print((data.objectAtIndex(indexPath.row)))
         cell.lblTitle.text = ((data.objectAtIndex(indexPath.row))["NAME"]) as? String
         cell.lblTitle.textColor = UIColor.addThemeContrast()
         cell.imgCategory.image = UIImage(named: ((data.objectAtIndex(indexPath.row))["ICON"]) as! String!)
