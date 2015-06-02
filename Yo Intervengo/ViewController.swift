@@ -1,4 +1,4 @@
-    //
+//
 //  ViewController.swift
 //  Yo Intervengo
 //
@@ -27,6 +27,10 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
         if !loaded{
             let reachability2 = Reachability.reachabilityForInternetConnection()
             
@@ -39,10 +43,10 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
                         println("Fail")
                         var timer = NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: Selector("goRoot"), userInfo: nil, repeats: false)
                     }, finally: {
-                        println("Finally")
-                        //self.navigationController?.popToRootViewControllerAnimated(false)
                 })
-                
+                println("Finally")
+                //self.navigationController?.popToRootViewControllerAnimated(false)
+
             }else{
                 if !alertInternet.isDescendantOfView(self.view){
                     self.view.addSubview(alertInternet)
@@ -240,10 +244,12 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
                 for report in responseObject as! NSMutableArray{
                     var idReport = report["id"] as! String
                     var location = report["location"] as! NSDictionary
+                    var photos = report["photo"] as! NSDictionary
                     var type = report["type"] as? Int ?? 3
                     var category = report["category"] as! NSDictionary
                     var imageIcon = category["icon"] as! String
                     //Valores faltantes:
+                    var thumb = photos["thumbUrl"] as! String
                     var subcategory = category["name"] as! String
                     var followers = 200
                     ////////////////////////////////
@@ -252,7 +258,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
                     var title = report["title"] as? NSString ?? "No se trajo información"
                     var description = report["description"] as? NSString ?? "No se trajo información"
                     newANN = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(lat,lng), andTitle:(String(counter)));
-                    newANN.userInfo =  ["id":idReport,"type":type,"icon":imageIcon,"title":title,"description":description,"subcategory":subcategory,"followers":followers,"num":counter]
+                    newANN.userInfo =  ["id":idReport,"type":type,"icon":imageIcon,"title":title,"description":description,"subcategory":subcategory,"followers":followers,"num":counter, "thumb":thumb]
                     map.addAnnotation(newANN)
                     loc.append(newANN)
                     counter++

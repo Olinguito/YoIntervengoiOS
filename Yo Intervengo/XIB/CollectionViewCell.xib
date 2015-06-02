@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="245" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="bg1.png" translatesAutoresizingMaskIntoConstraints="NO" id="LaB-is-7fI">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="bg1.png" translatesAutoresizingMaskIntoConstraints="NO" id="LaB-is-7fI">
                         <rect key="frame" x="0.0" y="0.0" width="170" height="75"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>

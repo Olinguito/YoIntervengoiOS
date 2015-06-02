@@ -17,10 +17,12 @@ import UIKit
     optional func returnList(responseObject:AnyObject, url:String)
     optional func returnObt(responseObject:AnyObject, url:String)
     optional func returnBool(response:Bool)
+    optional func returnError(url:String)
 }
 
 class APIManager: NSObject {
     var URLAPI = "http://api.yointervengo.co/v1/"
+//    var URLAPI = "http://10.0.1.203:3000/v1/"
     var delegate:APIManagerDelegate!
     
     override init() {
@@ -73,6 +75,24 @@ class APIManager: NSObject {
     func postReport(data:NSDictionary!){
         performPost("Reports", token: "", data: data, list: true, successMsg: "Creado datisfactoriamente", failMsg: "Ocurrio un error, intente más tarde.")
     }
+
+    func postImage(image:UIImage){
+        var operationManager =  AFHTTPRequestOperationManager() as AFHTTPRequestOperationManager
+        operationManager.requestSerializer.setValue("Client-ID e84b4d7dc9700e0", forHTTPHeaderField: "Authorization")
+        var imageData = UIImageJPEGRepresentation(image,0.5)
+        operationManager.POST("https://api.imgur.com/3/image", parameters: nil, constructingBodyWithBlock: { (data: AFMultipartFormData!) in
+            var res = data.appendPartWithFileData(imageData, name: "image", fileName: "upload", mimeType: "image/jpeg")
+            println("was file added properly to the body? \(res)")
+        }, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+                println(responseObject)
+                //let responseDict = responseObject as! Dictionary<String, AnyObject>
+                self.delegate.returnObt!(responseObject, url: "image")
+            }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
+                print(error)
+                self.delegate.returnError!("image")
+        })
+    }
+    
     
     func followReport(){
     
@@ -129,8 +149,9 @@ class APIManager: NSObject {
         println("se fue con estos datos \(data)")
         operationManager.POST(URLAPI+url, parameters: data, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
                 println(responseObject.description)
-                let responseDict = responseObject as! Dictionary<String, AnyObject>
-                var token = responseDict["token"] as! String!
+//                let responseDict = responseObject as! Dictionary<String, AnyObject>
+//                var token = responseDict["token"] as! String!
+                self.delegate.returnObt!(responseObject, url: url)
             }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
                 print(error)
             })

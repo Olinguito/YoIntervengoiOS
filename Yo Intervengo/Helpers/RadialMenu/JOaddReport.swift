@@ -12,7 +12,7 @@ import UIKit
     func reportCreated(location:CLLocationCoordinate2D, type:Int,category:Category)
 }
 
-class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate,JSImagePickerViewControllerDelegate,UITextFieldDelegate, UITextViewDelegate{
+class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate,JSImagePickerViewControllerDelegate,UITextFieldDelegate, UITextViewDelegate, APIManagerDelegate{
     // MARK: -VAR DEFFINITION\
     var delegate:JOaddReportDelegate!
     
@@ -59,7 +59,8 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     var APIManagerClass:APIManager!
     var txtTit:String!
     var txtDes:String!
-    
+    var dataRep:NSDictionary!
+    var category:Category!
     
     // MARK: -INIT
     required init(coder aDecoder: NSCoder) {
@@ -70,6 +71,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         super.init(frame: frame)
         step = 1
         APIManagerClass = APIManager()
+        APIManagerClass.delegate = self
         alert = JOAlert(textNFrame: "", self.frame, true)
         localization = coodinate
         txtTit = ""
@@ -86,7 +88,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         blurView2.setTranslatesAutoresizingMaskIntoConstraints(false)
         blurView2.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         self.addSubview(blurView2)
-        
         
         var blurView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
         blurView.backgroundColor = UIColor.addThemeBg()
@@ -238,11 +239,9 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 self.addSubview(btnAddImage)
             }
         case 7:
-                var category = conn.getCategoryByDBId(subcatId) as Category
-                delegate.reportCreated(localization, type: type, category: category)
-                self.removeFromSuperview()
-                var dataRep:NSDictionary = ["description":txtDes, "location":["lat":localization.latitude, "lng":localization.longitude], "title":txtTit, "type":type, "category":["id": category.idAPI, "slug":category.slug, "name":category.name, "icon": category.icon]]
-                APIManagerClass.postReport(dataRep)
+                category = conn.getCategoryByDBId(subcatId) as Category
+               
+                APIManagerClass.postImage(imgReport.image!)
         default: println("Default")
         }
     }
@@ -399,7 +398,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     }
     
     // MARK: -NEXT METHODS
-    
     func goContinue(sender:UIButton!){
         self.step++
         showMenu(self.step, atPoint: CGPointZero)
@@ -461,7 +459,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         }
     }
     
-    
     func close(){
         var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
         an.toValue = 0
@@ -485,5 +482,25 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
             return false
         }
         return true
+    }
+    
+    // MARK -API DELEGATE
+    func returnObt(responseObject: AnyObject, url: String) {
+        var response = JSON(responseObject)
+        switch url{
+        case "image":   var dateFormatter = NSDateFormatter()
+                        dateFormatter.dateFormat = "dd/MM/YYYY" //format style. Browse online to get a format that fits your needs.
+                        var dateString = dateFormatter.stringFromDate(NSDate.new())
+                 dataRep = ["description":txtDes, "location":["lat":localization.latitude, "lng":localization.longitude], "title":txtTit, "type":type, "category":["id": category.idAPI, "slug":category.slug, "name":category.name, "icon": category.icon],"photo":["url": "http://i.imgur.com/"+response["data"]["id"].string!+".png", "thumbUrl": "http://i.imgur.com/"+response["data"]["id"].string!+"m.png", "date": dateString]]
+
+                            APIManagerClass.postReport(dataRep)
+            case "Reports": delegate.reportCreated(localization, type: type, category: category)
+                            self.removeFromSuperview()
+            default: print("")
+        }
+    }
+    
+    func returnError(url: String) {
+        print("Opps ocurrio un error")
     }
 }

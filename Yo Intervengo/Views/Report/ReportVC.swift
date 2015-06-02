@@ -16,12 +16,12 @@ class ReportVC: GenericViewController {
     @IBOutlet weak var btnReport: UIButton!
     
     var selected:Int!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         btnReport.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 16)
         btnReport.layer.cornerRadius = 5
-        
+
         btn1.tag = 1
         btn2.tag = 2
         btn3.tag = 3
@@ -29,15 +29,15 @@ class ReportVC: GenericViewController {
         configure(btn1)
         configure(btn2)
         configure(btn3)
-        
+
         btn1.addTarget(self, action: Selector("setValue:"), forControlEvents: UIControlEvents.TouchUpInside)
         btn2.addTarget(self, action: Selector("setValue:"), forControlEvents: UIControlEvents.TouchUpInside)
         btn3.addTarget(self, action: Selector("setValue:"), forControlEvents: UIControlEvents.TouchUpInside)
-        
+
         lblHeader.text = "Denuncia"
-        
+
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         //self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.showNavBar(true)

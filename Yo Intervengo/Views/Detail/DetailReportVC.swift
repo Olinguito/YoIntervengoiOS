@@ -50,7 +50,10 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         report = story.instantiateViewControllerWithIdentifier("denunciaView") as! ReportVC
         
         imgWork = UIImageView(frame: CGRect(x: 0, y: 0, width: vW, height: 194))
-        imgWork.image = UIImage(named: "bg1")
+        
+        imgWork.image = UIImage(data: NSData(contentsOfURL: NSURL(string: data["thumb"] as! String)!)!)
+        //imgWork.image = UIImage(named: "bg1")
+        imgWork.layer.masksToBounds = true
         self.view.addSubview(imgWork)
         
         grad2 = Gradient(frame: CGRect(x: 0, y: -50, width: vW, height: 254), type: "Bottom")
