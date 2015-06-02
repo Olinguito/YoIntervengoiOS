@@ -98,7 +98,16 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
         cell.iconPublic.image = UIImage(named: infoPin["icon"] as! String)
-        cell.imgPublic.image = UIImage(data: NSData(contentsOfURL: NSURL(string: infoPin["thumb"] as! String)!)!)
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            let image = UIImage(data: NSData(contentsOfURL: NSURL(string: infoPin["thumb"] as! String)!)!)
+            // do some task
+            dispatch_async(dispatch_get_main_queue()) {
+                // update some UI
+                cell.imgPublic.image = image
+            }
+        }
+
         cell.imgPublic.layer.masksToBounds = true
         cell.lblTitle.text = (infoPin["title"] as! String)
         cell.subTitle.text = (infoPin["subcategory"] as! String)

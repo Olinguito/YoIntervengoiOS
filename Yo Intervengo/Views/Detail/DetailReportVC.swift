@@ -52,7 +52,6 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         imgWork = UIImageView(frame: CGRect(x: 0, y: 0, width: vW, height: 194))
         
         imgWork.image = UIImage(data: NSData(contentsOfURL: NSURL(string: data["thumb"] as! String)!)!)
-        //imgWork.image = UIImage(named: "bg1")
         imgWork.layer.masksToBounds = true
         self.view.addSubview(imgWork)
         

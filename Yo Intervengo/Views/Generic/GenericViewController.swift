@@ -15,6 +15,7 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
     var alertInternet:JOAlert!
     var menuView: LeftMenu!
     var actView:Int!
+    var loader:Loader!
     
     var vH:CGFloat!
     var vW:CGFloat!
@@ -65,6 +66,9 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         reachability.startNotifier()
         
         loaded = false
+        
+        loader = Loader(frame: self.view.frame, c1: UIColor.darkGrayColor().colorWithAlphaComponent(0.9), c2: UIColor.whiteColor())
+        self.view.addSubview(loader)
     }
     
     func goRoot(){

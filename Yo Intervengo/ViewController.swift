@@ -27,10 +27,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
         if !loaded{
             let reachability2 = Reachability.reachabilityForInternetConnection()
             
@@ -58,7 +54,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     func initialize(){
-        println("Test")
         APIManagerClass.getReports()
         (RMConfiguration.sharedInstance()).accessToken = "pk.eyJ1Ijoib2xpbmd1aXRvIiwiYSI6IkVGeE41bE0ifQ.TrGnR7v_7HRJUsiM2h_3dQ"
         //let source = RMMapboxSource(mapID: "olinguito.c389ab51") //GRIS BONITO
@@ -73,24 +68,22 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         map.userTrackingMode = RMUserTrackingModeFollow
         map.tintColor = UIColor.greenColor()
         map.removeAllAnnotations()
+        
+        loader.show()
         self.map.showLogoBug = false
         self.map.hideAttribution = true
-        
         map.clusterAreaSize = CGSize(width: 2, height: 2)
         map.positionClusterMarkersAtTheGravityCenter = true
         map.clusteringEnabled = true
         animator = UIDynamicAnimator(referenceView: view)
-        
         view.insertSubview(menuView, belowSubview: btnMenu)
         let fram = self.view.frame.size
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: fram.width, height: 64), type: "Top")
         self.view.insertSubview(grad1, aboveSubview: map)
-        //let grad2 = Gradient(frame: CGRect(x: 0, y: fram.height-64, width: fram.width, height: 64), type: "Bottom")
-        //self.view.insertSubview(grad2, aboveSubview: map)
-        
         test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 190), array: loc)
         test.delegate = self
         self.view.insertSubview(test, belowSubview: menuView)
+
     }
     
     func mapView(mapView: RMMapView!, didUpdateUserLocation userLocation: RMUserLocation!) {
@@ -239,6 +232,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     func returnList(responseObject: AnyObject, url: String!) {
         switch  url {
             case "reports":
+                self.loader.dismissAnimate()
                 var newANN:RMAnnotation!
                 var counter = 0
                 for report in responseObject as! NSMutableArray{

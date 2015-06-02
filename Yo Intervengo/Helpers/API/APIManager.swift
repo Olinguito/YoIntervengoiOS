@@ -120,6 +120,22 @@ class APIManager: NSObject {
         var stringJSON = NSString(data:JSONData, encoding:NSUTF8StringEncoding) as! String
         self.delegate.returnObt!(JSONData, url:transac)
     }
+    
+    
+    func nominatim(location:CLLocationCoordinate2D){
+        var operationManager = AFHTTPRequestOperationManager()
+        operationManager.responseSerializer = AFJSONResponseSerializer()
+        operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
+        //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
+        operationManager.GET("http://nominatim.openstreetmap.org/reverse?lat=\(location.latitude)&lon=\(location.longitude)=json", parameters: nil,
+            success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
+                self.delegate.returnObt!(responseObject, url: "nominatim")
+            },
+            failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
+                println("Error: " + error.localizedDescription)
+        })
+    }
+    
 
     //MARK: -AFNETWORKING DELEGATE
     func performGet(url:String!, token:String!, list:Bool, transac: String!){

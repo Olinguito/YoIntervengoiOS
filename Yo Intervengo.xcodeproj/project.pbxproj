@@ -16,6 +16,14 @@
 		7A3693291AF1E00E0049058F /* subPin2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3693271AF1E00E0049058F /* subPin2@2x.png */; };
 		7A36932A1AF1E00E0049058F /* subPin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3693281AF1E00E0049058F /* subPin2.png */; };
 		7A36932D1AF1E8900049058F /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36932C1AF1E8900049058F /* AboutVC.swift */; };
+		7A52E9CC1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A52E9BE1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.m */; };
+		7A52E9CD1B1E57410037C5FD /* DGActivityIndicatorFiveDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A52E9C01B1E57410037C5FD /* DGActivityIndicatorFiveDotsAnimation.m */; };
+		7A52E9CE1B1E57410037C5FD /* DGActivityIndicatorNineDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A52E9C21B1E57410037C5FD /* DGActivityIndicatorNineDotsAnimation.m */; };
+		7A52E9CF1B1E57410037C5FD /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A52E9C41B1E57410037C5FD /* DGActivityIndicatorRotatingSquaresAnimation.m */; };
+		7A52E9D01B1E57410037C5FD /* DGActivityIndicatorTriplePulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A52E9C61B1E57410037C5FD /* DGActivityIndicatorTriplePulseAnimation.m */; };
+		7A52E9D11B1E57410037C5FD /* DGActivityIndicatorTwoDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A52E9C81B1E57410037C5FD /* DGActivityIndicatorTwoDotsAnimation.m */; };
+		7A52E9D21B1E57410037C5FD /* DGActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A52E9CB1B1E57410037C5FD /* DGActivityIndicatorView.m */; };
+		7A52E9D41B1E60B00037C5FD /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52E9D31B1E60B00037C5FD /* Loader.swift */; };
 		7A694E701B18CF8600A99BE1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A694E6F1B18CF8600A99BE1 /* Category.swift */; };
 		7A73657C1AEF2A7E00B71CE7 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A73657B1AEF2A7E00B71CE7 /* Panel.swift */; };
 		7A8F7A4C1AF2D57600D2E4F6 /* sponsor.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A8F7A4A1AF2D57600D2E4F6 /* sponsor.png */; };
@@ -355,6 +363,22 @@
 		7A3693271AF1E00E0049058F /* subPin2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "subPin2@2x.png"; sourceTree = "<group>"; };
 		7A3693281AF1E00E0049058F /* subPin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subPin2.png; sourceTree = "<group>"; };
 		7A36932C1AF1E8900049058F /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutVC.swift; path = Views/About/AboutVC.swift; sourceTree = "<group>"; };
+		7A52E9BD1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorDoubleBounceAnimation.h; sourceTree = "<group>"; };
+		7A52E9BE1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorDoubleBounceAnimation.m; sourceTree = "<group>"; };
+		7A52E9BF1B1E57410037C5FD /* DGActivityIndicatorFiveDotsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorFiveDotsAnimation.h; sourceTree = "<group>"; };
+		7A52E9C01B1E57410037C5FD /* DGActivityIndicatorFiveDotsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorFiveDotsAnimation.m; sourceTree = "<group>"; };
+		7A52E9C11B1E57410037C5FD /* DGActivityIndicatorNineDotsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorNineDotsAnimation.h; sourceTree = "<group>"; };
+		7A52E9C21B1E57410037C5FD /* DGActivityIndicatorNineDotsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorNineDotsAnimation.m; sourceTree = "<group>"; };
+		7A52E9C31B1E57410037C5FD /* DGActivityIndicatorRotatingSquaresAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorRotatingSquaresAnimation.h; sourceTree = "<group>"; };
+		7A52E9C41B1E57410037C5FD /* DGActivityIndicatorRotatingSquaresAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorRotatingSquaresAnimation.m; sourceTree = "<group>"; };
+		7A52E9C51B1E57410037C5FD /* DGActivityIndicatorTriplePulseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorTriplePulseAnimation.h; sourceTree = "<group>"; };
+		7A52E9C61B1E57410037C5FD /* DGActivityIndicatorTriplePulseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorTriplePulseAnimation.m; sourceTree = "<group>"; };
+		7A52E9C71B1E57410037C5FD /* DGActivityIndicatorTwoDotsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorTwoDotsAnimation.h; sourceTree = "<group>"; };
+		7A52E9C81B1E57410037C5FD /* DGActivityIndicatorTwoDotsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorTwoDotsAnimation.m; sourceTree = "<group>"; };
+		7A52E9C91B1E57410037C5FD /* DGActivityIndicatorAnimationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorAnimationProtocol.h; sourceTree = "<group>"; };
+		7A52E9CA1B1E57410037C5FD /* DGActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorView.h; sourceTree = "<group>"; };
+		7A52E9CB1B1E57410037C5FD /* DGActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorView.m; sourceTree = "<group>"; };
+		7A52E9D31B1E60B00037C5FD /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		7A694E6F1B18CF8600A99BE1 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = "Yo Intervengo/Classes/Category.swift"; sourceTree = SOURCE_ROOT; };
 		7A73657B1AEF2A7E00B71CE7 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		7A8F7A4A1AF2D57600D2E4F6 /* sponsor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sponsor.png; path = About/sponsor.png; sourceTree = "<group>"; };
@@ -806,6 +830,37 @@
 				7A36932C1AF1E8900049058F /* AboutVC.swift */,
 			);
 			name = About;
+			sourceTree = "<group>";
+		};
+		7A52E9BB1B1E57410037C5FD /* DGActivityIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				7A52E9BC1B1E57410037C5FD /* Animations */,
+				7A52E9C91B1E57410037C5FD /* DGActivityIndicatorAnimationProtocol.h */,
+				7A52E9CA1B1E57410037C5FD /* DGActivityIndicatorView.h */,
+				7A52E9CB1B1E57410037C5FD /* DGActivityIndicatorView.m */,
+			);
+			name = DGActivityIndicatorView;
+			path = Helpers/DGActivityIndicatorView;
+			sourceTree = "<group>";
+		};
+		7A52E9BC1B1E57410037C5FD /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				7A52E9BD1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.h */,
+				7A52E9BE1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.m */,
+				7A52E9BF1B1E57410037C5FD /* DGActivityIndicatorFiveDotsAnimation.h */,
+				7A52E9C01B1E57410037C5FD /* DGActivityIndicatorFiveDotsAnimation.m */,
+				7A52E9C11B1E57410037C5FD /* DGActivityIndicatorNineDotsAnimation.h */,
+				7A52E9C21B1E57410037C5FD /* DGActivityIndicatorNineDotsAnimation.m */,
+				7A52E9C31B1E57410037C5FD /* DGActivityIndicatorRotatingSquaresAnimation.h */,
+				7A52E9C41B1E57410037C5FD /* DGActivityIndicatorRotatingSquaresAnimation.m */,
+				7A52E9C51B1E57410037C5FD /* DGActivityIndicatorTriplePulseAnimation.h */,
+				7A52E9C61B1E57410037C5FD /* DGActivityIndicatorTriplePulseAnimation.m */,
+				7A52E9C71B1E57410037C5FD /* DGActivityIndicatorTwoDotsAnimation.h */,
+				7A52E9C81B1E57410037C5FD /* DGActivityIndicatorTwoDotsAnimation.m */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		7A694E6E1B18CF2400A99BE1 /* Classes */ = {
@@ -1416,6 +1471,7 @@
 				7A3693251AF089F00049058F /* StringEx.swift */,
 				7AB375F41B02EB1800574BD8 /* AddThemeColors.swift */,
 				7A1A9B711B068C180017ADCB /* ExString.swift */,
+				7A52E9D31B1E60B00037C5FD /* Loader.swift */,
 			);
 			name = Components;
 			path = Helpers/Components;
@@ -1689,6 +1745,7 @@
 		ECCCA5DF1A65AE5E004C5858 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7A52E9BB1B1E57410037C5FD /* DGActivityIndicatorView */,
 				7AB376491B03EF0900574BD8 /* FrameWorks */,
 				7AB376071B03EAF200574BD8 /* CorePhotoBroswerVC */,
 				7AB376061B03EAE800574BD8 /* Frameworks */,
@@ -2191,15 +2248,18 @@
 				ECA791C61A92A0E1003D0A41 /* Connection.swift in Sources */,
 				ECEC50251A8D1E9400AC5853 /* JOTextField.swift in Sources */,
 				EC54A6FA1A7ACC59007F6ABF /* LeftMenu.swift in Sources */,
+				7A52E9CD1B1E57410037C5FD /* DGActivityIndicatorFiveDotsAnimation.m in Sources */,
 				ECFAD2091A83E47600B5652C /* TimeLineViewControl.m in Sources */,
 				ECB6C25F1A79997800AD1BCB /* JOCentralMenu.swift in Sources */,
 				7AB376451B03EEFC00574BD8 /* PBScrollView.m in Sources */,
 				EC5FD8ED1A9CF3E5004192A3 /* FilterVC.swift in Sources */,
+				7A52E9D41B1E60B00037C5FD /* Loader.swift in Sources */,
 				EC399EA51A828BB4003DD89F /* Info.swift in Sources */,
 				7AB376E41B03EF0A00574BD8 /* UIButton+SD.m in Sources */,
 				7AB376D01B03EF0900574BD8 /* UIView+Extend.m in Sources */,
 				7AB376DB1B03EF0900574BD8 /* SDWebImageManager.m in Sources */,
 				7AB376D91B03EF0900574BD8 /* SDWebImageDownloader.m in Sources */,
+				7A52E9D21B1E57410037C5FD /* DGActivityIndicatorView.m in Sources */,
 				ECEC50231A8D1E1100AC5853 /* SignIn.swift in Sources */,
 				7AB376CA1B03EF0900574BD8 /* UIImage+Color.m in Sources */,
 				7AB376EB1B03EF0A00574BD8 /* LFRoundProgressView.m in Sources */,
@@ -2225,6 +2285,7 @@
 				7AB376D81B03EF0900574BD8 /* SDWebImageDecoder.m in Sources */,
 				7AB376C01B03EF0900574BD8 /* CALayer+Anim.m in Sources */,
 				7AB376191B03EB0700574BD8 /* PhotoBroswerVC.m in Sources */,
+				7A52E9D11B1E57410037C5FD /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,
 				7AB376C91B03EF0900574BD8 /* UIFont+Extend.m in Sources */,
 				ECF7DBD61A744761000E8967 /* CategoryCollViewCell.swift in Sources */,
 				EC4A5ABA1A7BF15A007DD7CB /* JOTabBar.swift in Sources */,
@@ -2238,6 +2299,7 @@
 				ECB6C26F1A79ADD700AD1BCB /* SubCategoryCell.swift in Sources */,
 				EC399EAB1A828C2B003DD89F /* Links.swift in Sources */,
 				7AB375FD1B0306C800574BD8 /* FilterMasterVC.swift in Sources */,
+				7A52E9D01B1E57410037C5FD /* DGActivityIndicatorTriplePulseAnimation.m in Sources */,
 				7AB376DF1B03EF0A00574BD8 /* UIImage+MultiFormat.m in Sources */,
 				7AB376E11B03EF0A00574BD8 /* UIImageView+HighlightedWebCache.m in Sources */,
 				7AB376E31B03EF0A00574BD8 /* UIView+WebCacheOperation.m in Sources */,
@@ -2246,10 +2308,12 @@
 				7AB376CF1B03EF0900574BD8 /* UITableViewCell+Extend.m in Sources */,
 				EC5FD8E81A9CF356004192A3 /* CommentVC.swift in Sources */,
 				7AB376CB1B03EF0900574BD8 /* UIImage+Cut.m in Sources */,
+				7A52E9CF1B1E57410037C5FD /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */,
 				7AB376DC1B03EF0900574BD8 /* SDWebImagePrefetcher.m in Sources */,
 				7AB375F51B02EB1800574BD8 /* AddThemeColors.swift in Sources */,
 				EC7701941A7204B300378515 /* LNERadialMenu.m in Sources */,
 				ECB475C01ABF82FC001B1BE1 /* JOAlert.m in Sources */,
+				7A52E9CE1B1E57410037C5FD /* DGActivityIndicatorNineDotsAnimation.m in Sources */,
 				7AB376E21B03EF0A00574BD8 /* UIImageView+WebCache.m in Sources */,
 				7AB376C81B03EF0900574BD8 /* UIDevice+Extend.m in Sources */,
 				7AB3763E1B03EEFC00574BD8 /* PBConst.m in Sources */,
@@ -2268,6 +2332,7 @@
 				7AB376BE1B03EF0900574BD8 /* NSString+File.m in Sources */,
 				EC85A76B1AA6531C000C8849 /* JSImagePickerViewController.m in Sources */,
 				EC54A7011A7ACC79007F6ABF /* LayoutHelper.swift in Sources */,
+				7A52E9CC1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */,
 				7AB376D51B03EF0900574BD8 /* NSData+ImageContentType.m in Sources */,
 				7AB376CE1B03EF0900574BD8 /* UIImage+Water.m in Sources */,
 			);
