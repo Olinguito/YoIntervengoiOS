@@ -19,13 +19,13 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     var opened = false
     let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
     var collectionView:UICollectionView!
-    var loc:[RMAnnotation]!
+    var loc:[Report]!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    init(frame: CGRect, array:Array<RMAnnotation>) {
+    init(frame: CGRect, array:Array<Report>) {
         super.init(frame: frame)
         loc = array
         
@@ -52,12 +52,6 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         self.addSubview(collectionView)
         
         let shadowW = frame.width*0.10
-        
-        //var left = Gradient(frame: CGRect(x: 0, y: 0, width: shadowW, height: frame.size.height), type: "Left")
-        //addSubview(left)
-        
-        //var right = Gradient(frame: CGRect(x: frame.size.width - shadowW, y: 0, width: shadowW , height: frame.size.height), type: "Right")
-        //addSubview(right)
     }
     
     func show(){
@@ -79,7 +73,6 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     }
     
     func go2Page (page:NSIndexPath){
-        print("Buscando Pagina: \(page.row)")
         collectionView.scrollToItemAtIndexPath(page, atScrollPosition:UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
     }
     
@@ -94,28 +87,33 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as! publicWCell
-        var infoPin: AnyObject = (loc[indexPath.row] as RMAnnotation).userInfo!
+        var report:Report = loc[indexPath.row] as Report
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
-        cell.iconPublic.image = UIImage(named: infoPin["icon"] as! String)
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            let image = UIImage(data: NSData(contentsOfURL: NSURL(string: infoPin["thumb"] as! String)!)!)
-            // do some task
-            dispatch_async(dispatch_get_main_queue()) {
-                // update some UI
-                cell.imgPublic.image = image
+        cell.iconPublic.image = UIImage(named: report.category.icon)
+        
+        cell.imgPublic.image = UIImage(named: "image-placeholder")
+        
+        if (report.image == nil){
+            dispatch_async(dispatch_get_global_queue(0, 0)) {
+                var url = "http://res.cloudinary.com/demo/image/fetch/w_170,h_75,c_fill,e_saturation:50,f_auto/" + report.urlImage
+                let image = UIImage(data: NSData(contentsOfURL: NSURL(string: url)!)!)
+                dispatch_async(dispatch_get_main_queue()) {
+                    (self.loc[indexPath.row] as Report).image = image
+                    cell.imgPublic.image = image
+                }
             }
+        }else{
+            cell.imgPublic.image = report.image
         }
-
         cell.imgPublic.layer.masksToBounds = true
-        cell.lblTitle.text = (infoPin["title"] as! String)
-        cell.subTitle.text = (infoPin["subcategory"] as! String)
-        cell.lblDescr.text = (infoPin["description"] as! String)
+        cell.lblTitle.text = report.title
+        cell.subTitle.text = report.category.name
+        cell.lblDescr.text = report.desc
         cell.goReport.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
-        cell.goReport.tag = infoPin["num"] as! Int
-        cell.bgIcon.backgroundColor = (infoPin["type"] as! Int) == 1 ? UIColor.orangeYI() : UIColor.blurYI()
-        cell.follower.setTitle(String(infoPin["followers"] as! Int), forState: UIControlState.Normal)
+        cell.goReport.tag = 0//infoPin["num"] as! Int
+        cell.bgIcon.backgroundColor = report.color
+        cell.follower.setTitle(String(report.followers), forState: UIControlState.Normal)
         cell.follower.tag = indexPath.row
         cell.follower.addTarget(self, action: Selector("followReport:"), forControlEvents: UIControlEvents.TouchUpInside)
         cell.alpha = 0
@@ -124,32 +122,21 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     
     
     func goReport(sender:UIButton!){
-        println("going there")
         self.delegate?.goDetail!(sender)
     }
     
     func followReport(sender:UIButton!){
-        println("Following")
         var cell = collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as! publicWCell
-        var infoPin: AnyObject = (loc[sender.tag] as RMAnnotation).userInfo!
+        var report:Report = loc[sender.tag] as Report
         cell.follower.backgroundColor = UIColor.greyLight()
-        cell.follower.backgroundColor = (infoPin["type"] as! Int) == 1 ? UIColor.orangeYI() : UIColor.blurYI()
-        cell.follower.setTitle(String((infoPin["followers"] as! Int)+1), forState: UIControlState.Normal)
+        cell.follower.backgroundColor = report.color
+        cell.follower.setTitle(String(report.followers+1), forState: UIControlState.Normal)
         cell.follower.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         cell.follower.tintColor = UIColor.whiteColor()
         cell.follow()
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath){
-        var s = CGFloat((90.0*M_PI)/180)
-        var rotation = CATransform3DMakeRotation(s, 0.0, 0.7, 0.4)
-        //var fg = CATransform3DMakeScale(0.0, 0.23, 0.34)
-        //rotation.m34 = -1.0/600.0
-        cell.layer.shadowColor = UIColor.blackColor().CGColor
-        cell.layer.shadowOffset = CGSizeMake(0, 0.5)
-        UIView.beginAnimations("rotation", context: nil)
-        UIView.setAnimationDuration(0.8)
-        //cell.layer.transform = fg
         cell.alpha = 1
         cell.layer.shadowOffset = CGSizeMake(0, 0) 
         UIView.commitAnimations()

@@ -15,7 +15,7 @@
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DiZ-pm-VyC">
                         <rect key="frame" x="0.0" y="0.0" width="366" height="184"/>
-                        <state key="normal" image="bg1.png">
+                        <state key="normal" backgroundImage="image-placeholder.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
@@ -36,6 +36,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="bg1.png" width="366" height="184"/>
+        <image name="image-placeholder.png" width="320" height="320"/>
     </resources>
 </document>

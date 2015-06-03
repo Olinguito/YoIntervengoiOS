@@ -14,16 +14,16 @@ class Info: UIView {
     var tabBar:UIView!
     
     var colorView:UIColor!
-    var data:NSDictionary!
+    var report:Report!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    init(index:Int, data:NSDictionary, color:UIColor, frame:CGRect) {
+    init(index:Int, report:Report, color:UIColor, frame:CGRect) {
         super.init(frame:CGRectZero)
         var wS:CGFloat = frame.width
-        self.data = data
+        self.report = report
         self.colorView = color
         tabBar = UIView(frame: CGRect(x: 0, y: 0, width: wS, height: max(139, frame.width-140)))
         tabBar.backgroundColor = UIColor.whiteColor()
@@ -34,7 +34,7 @@ class Info: UIView {
         tabBar.addSubview(grad3)
         
         var lblInfo = UILabel()
-        var text = self.data["description"] as! String
+        var text = report.desc
         lblInfo.text = text
         lblInfo.textColor = UIColor.greyDark()
         lblInfo.font = UIFont(name: "RobotoSlab-Light", size: 15)

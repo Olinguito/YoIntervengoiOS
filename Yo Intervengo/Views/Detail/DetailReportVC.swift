@@ -23,7 +23,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     var lblAdds:UILabel!
     var lblCoun:UILabel!
     var story:UIStoryboard!
-    var report:ReportVC!
+    var reportView:ReportVC!
     
     var colorView:UIColor!
     
@@ -31,7 +31,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     var pop2:POPSpringAnimation!
     var tab:JOTabBar!
     
-    var data:NSDictionary!
+    var report:Report!
     
     
     override func viewWillAppear(animated: Bool) {
@@ -41,31 +41,34 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        APIManagerClass.getReportWithID(data["id"] as! String)
-        
+        APIManagerClass.getReportWithID(report.idAPI)
         self.view.backgroundColor = UIColor.whiteColor()
-        
         self.navigationController?.interactivePopGestureRecognizer.delegate = self
         story = UIStoryboard(name: "Main", bundle: nil)
-        report = story.instantiateViewControllerWithIdentifier("denunciaView") as! ReportVC
+        reportView = story.instantiateViewControllerWithIdentifier("denunciaView") as! ReportVC
         
         imgWork = UIImageView(frame: CGRect(x: 0, y: 0, width: vW, height: 194))
-        
-        imgWork.image = UIImage(data: NSData(contentsOfURL: NSURL(string: data["thumb"] as! String)!)!)
+        self.imgWork.image = UIImage(named: "image-placeholder")
+        self.imgWork.contentMode = UIViewContentMode.Center
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            var url = "http://res.cloudinary.com/demo/image/fetch/w_\(Int(self.view.frame.width)),h_200,c_fill,e_saturation:50,f_auto/" + self.report.urlImage
+            let image = UIImage(data: NSData(contentsOfURL: NSURL(string: url)!)!)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.imgWork.image = image
+            }
+        }
         imgWork.layer.masksToBounds = true
         self.view.addSubview(imgWork)
-        
         grad2 = Gradient(frame: CGRect(x: 0, y: -50, width: vW, height: 254), type: "Bottom")
         self.view.insertSubview(grad2, aboveSubview: imgWork)
-        
         scroll = UIScrollView(frame: self.view.frame)
         scroll.delegate = self
         scroll.backgroundColor = UIColor.clearColor()
         scroll.maximumZoomScale = 10
         scroll.multipleTouchEnabled = false
         self.view.addSubview(scroll)
-        
-        colorView = (data["type"] as! Int) == 1 ? UIColor.orangeYI() : UIColor.blurYI()
+        colorView = report.color
         
         banner = UIView(frame: CGRect(x: 0, y: 125, width: vW, height: 135))
         banner.backgroundColor = UIColor(red:0.180, green:0.180, blue:0.180, alpha: 1)
@@ -75,29 +78,30 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         maskLayer.frame = banner.bounds
         maskLayer.contents = UIImage(named: "mask")?.CGImage
         banner.layer.mask = maskLayer
-        
         var fram:CGRect = CGRect(x: 0, y: 42, width: 120, height: 93)
-        map = RMStaticMapView(frame: fram, mapID: "robjalkh.a4368786", centerCoordinate: CLLocationCoordinate2DMake(4.6015,-74.0698), zoomLevel: 15, completionHandler: nil)
-        //map.centerCoordinate = CLLocationCoordinate2DMake(4.6015,-74.0698)
-        banner.addSubview(map)
         
-        var pin = UIImageView(image: UIImage(named: (data["type"] as! Int) == 1 ? "subPin" : "subPin2"))
-        pin.center = map.center
-        banner.addSubview(pin)
         
-        lblAdds = UILabel(frame: CGRect(x: map.frame.maxX, y: map.center.y-20, width: self.view.frame.width - 120, height: 13))
-        lblAdds.textColor = UIColor.whiteColor()
-        lblAdds.textAlignment = NSTextAlignment.Center
-        lblAdds.font = UIFont(name: "Roboto-Light", size: 13)
-        lblAdds.text = "Calle 57 # 12- 84" 
-        banner.addSubview(lblAdds)
-        
-        lblCoun = UILabel(frame: CGRect(x: map.frame.maxX, y: map.center.y, width: self.view.frame.width - 120, height: 13))
-        lblCoun.textColor = UIColor.whiteColor()
-        lblCoun.textAlignment = NSTextAlignment.Center
-        lblCoun.font = UIFont(name: "Roboto-Light", size: 13)
-        lblCoun.text = "Bogotá - Colombia"
-        banner.addSubview(lblCoun)
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            self.map = RMStaticMapView(frame: fram, mapID: "robjalkh.a4368786", centerCoordinate: CLLocationCoordinate2DMake(4.6015,-74.0698), zoomLevel: 15, completionHandler: nil)
+            self.banner.addSubview(self.map)
+            dispatch_async(dispatch_get_main_queue()) {
+                var pin = UIImageView(image: UIImage(named: self.report.type == 1 ? "subPin" : "subPin2"))
+                pin.center = self.map.center
+                self.banner.addSubview(pin)
+                self.lblAdds = UILabel(frame: CGRect(x: self.map.frame.maxX, y: self.map.center.y-20, width: self.view.frame.width - 120, height: 13))
+                self.lblAdds.textColor = UIColor.whiteColor()
+                self.lblAdds.textAlignment = NSTextAlignment.Center
+                self.lblAdds.font = UIFont(name: "Roboto-Light", size: 13)
+                self.lblAdds.text = "Calle 57 # 12- 84"
+                self.banner.addSubview(self.lblAdds)
+                self.lblCoun = UILabel(frame: CGRect(x: fram.width, y: self.lblAdds.frame.maxY, width: self.view.frame.width - 120, height: 13))
+                self.lblCoun.textColor = UIColor.whiteColor()
+                self.lblCoun.textAlignment = NSTextAlignment.Center
+                self.lblCoun.font = UIFont(name: "Roboto-Light", size: 13)
+                self.lblCoun.text = "Bogotá - Colombia"
+                self.banner.addSubview(self.lblCoun)
+            }
+        }
         
         pop1 = POPSpringAnimation(propertyNamed: kPOPViewCenter)
         pop1.fromValue = NSValue(CGPoint: CGPoint(x: self.view.frame.width - 35, y: self.view.frame.height - 35))
@@ -109,6 +113,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: vW, height: 64), type: "Top")
         self.view.addSubview(grad1)
+                println("111")
     }
     
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -117,7 +122,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     
     func goReport(sender:UIButton!){
 
-        self.showViewController(report, sender: self)
+        self.showViewController(reportView, sender: self)
     }
     
     
@@ -220,7 +225,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         var dataDetail = JSON(responseObject)
         var a:NSMutableArray = NSMutableArray()
         
-        var info = Info(index: 2, data: data, color: colorView, frame: self.view.frame)
+        var info = Info(index: 2, report: report, color: colorView, frame: self.view.frame)
         var histo = History(index: 2, frame:self.view.frame, data: dataDetail)
         var pictures = Pictures(index: 2, frame: self.view.frame, ini: banner.frame.maxY, data: dataDetail)
         //var links = Links(index: 2, frame:self.view.frame, data:dataDetail[""])
@@ -249,14 +254,14 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         
         lblTitle = UILabel(frame: CGRect(x: 0, y: btnInfo.frame.maxY + 10, width: vW, height: 18))
         lblTitle.font = UIFont(name: "Roboto-Regular", size: 17)
-        lblTitle.text = (data["title"] as! String)
+        lblTitle.text = report.title
         lblTitle.textAlignment = NSTextAlignment.Center
         lblTitle.textColor = UIColor.whiteColor()
         self.scroll.addSubview(lblTitle)
         
         lblSubTit = UILabel(frame: CGRect(x: 0, y: lblTitle.frame.maxY+5, width: vW, height: 13))
         lblSubTit.font = UIFont(name: "Roboto-Medium", size: 12.5)
-        lblSubTit.text = "CATEGORÍA > " + (data["subcategory"] as! String).uppercaseString
+        lblSubTit.text = "CATEGORÍA > " + report.category.name.uppercaseString
         lblSubTit.textAlignment = NSTextAlignment.Center
         lblSubTit.textColor = colorView
         self.scroll.addSubview(lblSubTit)

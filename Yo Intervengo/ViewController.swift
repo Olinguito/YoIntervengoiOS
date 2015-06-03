@@ -17,7 +17,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     var snaBeh: UISnapBehavior!
     var initLoc: CGPoint!
     var test: BottomPager!
-    var loc:[RMAnnotation]! = []
+    var loc:[Report]! = []
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var btnMenu: UIButton!
     @IBOutlet weak var btnSearch: UIButton!
@@ -42,7 +42,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
                 })
                 println("Finally")
                 //self.navigationController?.popToRootViewControllerAnimated(false)
-
             }else{
                 if !alertInternet.isDescendantOfView(self.view){
                     self.view.addSubview(alertInternet)
@@ -121,7 +120,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
             else{
                 map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(annotation.coordinate).x, y: map.coordinateToPixel(annotation.coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 100)), animated: true)
                 test.show()
-                print("Entrando a: \(annotation.title.toInt())")
                 test.go2Page(NSIndexPath(forRow: annotation.title.toInt()!, inSection: 0))
             }
         }
@@ -170,8 +168,8 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         }
         else
         {
-            var dic = annotation.userInfo as! NSDictionary
-            let marker = RMMarker(UIImage: UIImage.getPinByName(dic["type"] as! Int, Category: dic["icon"] as! String))
+            var report = annotation.userInfo as! Report
+            let marker = RMMarker(UIImage: UIImage.getPinByName(report.type, Category: report.category.icon))
             return marker
         }
     }
@@ -201,7 +199,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     
     @IBAction func getLocation(sender: AnyObject) {
         map.setCenterCoordinate(map.userLocation.coordinate, animated: true);
-       //map.setCenterCoordinate(CLLocationCoordinate2DMake(4.6615,-74.0688), animated: true)
     }
     @IBAction func search(sender: AnyObject) {
     }
@@ -213,19 +210,18 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     }
     
     func pageSetted(index:NSIndexPath){
-        map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(loc[index.row].coordinate).x, y: map.coordinateToPixel(loc[index.row].coordinate).y + (self.view.frame.size.height - test.frame.size.height)/2 - 100)), animated: true)
+        map.setCenterCoordinate(map.pixelToCoordinate(CGPoint(x: map.coordinateToPixel(loc[index.row].location).x, y: map.coordinateToPixel(loc[index.row].location).y + (self.view.frame.size.height - test.frame.size.height)/2 - 100)), animated: true)
     }
     
     //MARK: DATA
     func goDetail(sender:UIButton){
         var view2 = DetailReportVC()
-        view2.data = (loc[sender.tag].userInfo) as! NSDictionary
+        view2.report = loc[sender.tag]
         view2.center = map.userLocation.coordinate
         self.showViewController(view2, sender: self)
     }
     
     func reportCreated(location:CLLocationCoordinate2D, type:Int,category:Category){
-        // Adjuntar el resto de valores
         addAnnotation(location, data: ["type":type,"icon":category.icon])
     }
     
@@ -236,28 +232,29 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
                 var newANN:RMAnnotation!
                 var counter = 0
                 for report in responseObject as! NSMutableArray{
-                    var idReport = report["id"] as! String
-                    var location = report["location"] as! NSDictionary
-                    var photos = report["photo"] as! NSDictionary
-                    var type = report["type"] as? Int ?? 3
-                    var category = report["category"] as! NSDictionary
-                    var imageIcon = category["icon"] as! String
-                    //Valores faltantes:
-                    var thumb = photos["thumbUrl"] as! String
-                    var subcategory = category["name"] as! String
-                    var followers = 200
-                    ////////////////////////////////
-                    var lat = location["lat"] as! CLLocationDegrees
-                    var lng = location["lng"] as! CLLocationDegrees
-                    var title = report["title"] as? NSString ?? "No se trajo información"
-                    var description = report["description"] as? NSString ?? "No se trajo información"
-                    newANN = RMAnnotation(mapView: map, coordinate: CLLocationCoordinate2DMake(lat,lng), andTitle:(String(counter)));
-                    newANN.userInfo =  ["id":idReport,"type":type,"icon":imageIcon,"title":title,"description":description,"subcategory":subcategory,"followers":followers,"num":counter, "thumb":thumb]
+                    let location  = report["location"] as! NSDictionary
+                    let lat       = location["lat"] as! CLLocationDegrees
+                    let lng       = location["lng"] as! CLLocationDegrees
+                    let photos    = report["photo"] as! NSDictionary
+                    let category  = report["category"] as! NSDictionary
+                    let imageIcon = category["icon"] as! String
+                    
+                    var rep           = Report(type: report["type"] as! Int)
+                    rep.idAPI         = report["id"] as! String
+                    rep.urlImage      = photos["thumbUrl"] as! String
+                    rep.followers     = 200
+                    rep.category.name = category["name"] as! String
+                    rep.category.icon = category["icon"] as! String
+                    rep.location      = CLLocationCoordinate2DMake(lat,lng)
+                    rep.title         = report["title"] as! String
+                    rep.desc          = report["description"] as! String
+                    newANN            = RMAnnotation(mapView: map, coordinate: rep.location, andTitle:(String(counter)));
+                    newANN.userInfo   = rep
                     map.addAnnotation(newANN)
-                    loc.append(newANN)
+                    loc.append(rep)
                     counter++
                 }
-                test.loc = loc;
+                test.loc = loc
                 test.collectionView.reloadData()
             default: print("Any")
         }
