@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @objc protocol PicContainerDelegate{
-    optional func picTapped(index:Int)
+    optional func picTapped(index:UIButton)
 }
 
 
@@ -30,8 +30,13 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
         data = array
         let coll = UICollectionViewFlowLayout()
         coll.scrollDirection = UICollectionViewScrollDirection.Vertical
-        coll.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        coll.itemSize = CGSize(width: 90, height: 90)
+        coll.sectionInset = UIEdgeInsets(top: 10, left: 3, bottom: 10, right: 3)
+
+        coll.minimumLineSpacing = 0
+        coll.minimumInteritemSpacing = 0
+        
+        
+        coll.itemSize = CGSize(width: 104, height: 104)
         collectionView = UICollectionView(frame: CGRect(x: 0,y: 0,width: frame.width,height: frame.height) , collectionViewLayout: coll)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -40,13 +45,20 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
         self.addSubview(collectionView)
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 1
+    }
+    
     
     func go2Page (page:NSIndexPath){
         collectionView.scrollToItemAtIndexPath(page, atScrollPosition:UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
     }
     
     //Collection delegate
-    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -54,17 +66,33 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
+    
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PicContainerCell", forIndexPath: indexPath) as! PicContainerCell
+        var pic = data.objectAtIndex(indexPath.row) as! Picture
         cell.alpha = 0
-        cell.layer.cornerRadius = 5
-        cell.imageBtn.setImage(data.objectAtIndex(indexPath.row) as! UIImage, forState: UIControlState.Normal)
+        cell.layer.cornerRadius = 2
+        cell.imageBtn.setImage(UIImage(named: "image-placeholder"), forState: UIControlState.Normal)
+        cell.imageBtn.tag = pic.id
+        if (pic.image == nil){
+            dispatch_async(dispatch_get_global_queue(0, 0)) {
+                var url = "http://res.cloudinary.com/demo/image/fetch/w_104,h_104,c_fill,e_saturation:50,f_auto/" + pic.urlImage
+                let image = UIImage(data: NSData(contentsOfURL: NSURL(string: url)!)!)
+                dispatch_async(dispatch_get_main_queue()) {
+                    (self.data.objectAtIndex(indexPath.row) as! Picture).image = image
+                    cell.imageBtn.setImage(image, forState: UIControlState.Normal)
+                }
+            }
+        }else{
+            cell.imageBtn.setImage(pic.image, forState: UIControlState.Normal)
+        }
         cell.imageBtn.addTarget(self, action: Selector("goPicture:"), forControlEvents: UIControlEvents.TouchUpInside)
         return cell
     }
     
     func goPicture(sender:UIButton!){
-        self.delegate?.picTapped!(sender.tag)
+        self.delegate?.picTapped!(sender)
     }
     
     func followReport(sender:UIButton!){
@@ -76,14 +104,7 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath){
-        var s = CGFloat((90.0*M_PI)/180)
-        var rotation = CATransform3DMakeRotation(s, 0.0, 0.7, 0.4)
-        cell.layer.shadowColor = UIColor.blackColor().CGColor
-        cell.layer.shadowOffset = CGSizeMake(0, 0.5)
-        UIView.beginAnimations("rotation", context: nil)
-        UIView.setAnimationDuration(0.8)
         cell.alpha = 1
-        cell.layer.shadowOffset = CGSizeMake(0, 0)
         UIView.commitAnimations()
     }
 }

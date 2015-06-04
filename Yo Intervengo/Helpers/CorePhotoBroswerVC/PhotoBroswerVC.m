@@ -15,13 +15,20 @@
 #import "CoreSVP.h"
 #import "CoreArchive.h"
 #import "PBScrollView.h"
-
-
-
+#import "CALayer+Transition.h"
 
 
 
 @interface PhotoBroswerVC ()<UIScrollViewDelegate>
+
+
+/** 外部操作控制器 */
+@property (nonatomic,weak) UIViewController *handleVC;
+
+
+/** 类型 */
+@property (nonatomic,assign) PhotoBroswerVCType type;
+
 
 /** scrollView */
 @property (weak, nonatomic) IBOutlet PBScrollView *scrollView;
@@ -30,10 +37,13 @@
 /** 顶部条管理视图 */
 @property (weak, nonatomic) IBOutlet UIView *topBarView;
 
+
 /** 顶部label */
 @property (weak, nonatomic) IBOutlet UILabel *topBarLabel;
 
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBarHeightC;
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewRightMarginC;
 
@@ -78,20 +88,21 @@
 @implementation PhotoBroswerVC
 
 
-+(void)show:(UIViewController *)vc index:(NSInteger)index photoModelBlock:(NSMutableArray *)array{
++(void)show:(UIViewController *)handleVC type:(PhotoBroswerVCType)type index:(NSInteger)index photoModelBlock:(NSMutableArray*)array{
     
     //取出相册数组
-    //NSArray *photoModels = photoModelBlock();
     NSMutableArray *photoModels = array;
     
     if(photoModels == nil || photoModels.count == 0) return;
     
-    BOOL isOK = [PhotoModel check:photoModels];
+    NSString *result= [PhotoModel check:photoModels type:type];
     
-    if(!isOK){
-        NSLog(@"错误：请为每个相册模型对象传入唯一的mid标识，因为保存图片涉及缓存等需要唯一标识,且不能为0");
+    if(result !=nil){
+        NSLog(@"%@",result);
         return;
     }
+    
+    
     
     PhotoBroswerVC *pbVC = [[self alloc] init];
     
@@ -101,15 +112,111 @@
     }
     
     //记录
-    pbVC.photoModels = photoModels;
     pbVC.index = index;
     
-    [vc.navigationController pushViewController:pbVC animated:YES];
+    pbVC.photoModels = photoModels;
+    
+    //记录
+    pbVC.type =type;
+    
+    pbVC.handleVC = handleVC;
+    
+    //展示
+    [pbVC show];
 }
 
 
+/** 真正展示 */
+-(void)show{
+    
+    switch (_type) {
+        case PhotoBroswerVCTypePush://push
+            
+            [self pushPhotoVC];
+            
+            break;
+        case PhotoBroswerVCTypeModal://modal
+            
+            [self modalPhotoVC];
+            
+            break;
+            
+        case PhotoBroswerVCTypeTransition://transition
+            
+            [self transitionPhotoVC];
+            
+            break;
+            
+        case PhotoBroswerVCTypeZoom://zoom
+            
+            [self zoomPhotoVC];
+            
+            break;
+            
+        default:
+            break;
+    }
+}
 
 
+/** push */
+-(void)pushPhotoVC{
+    
+    [_handleVC.navigationController pushViewController:self animated:YES];
+}
+
+
+/** modal */
+-(void)modalPhotoVC{
+    
+    [_handleVC presentViewController:self animated:YES completion:nil];
+}
+
+
+/** transition */
+-(void)transitionPhotoVC{
+    [_handleVC.navigationController pushViewController:self animated:NO];
+    [_handleVC.navigationController.view.layer transitionWithAnimType:TransitionAnimTypeRamdom subType:TransitionSubtypesFromRamdom curve:TransitionCurveRamdom duration:2.0f];
+}
+
+
+/** zoom */
+-(void)zoomPhotoVC{
+    
+    
+    //拿到window
+    UIWindow *window = _handleVC.view.window;
+    
+    if(window == nil){
+        
+        NSLog(@"错误：窗口为空！");
+        return;
+    }
+    
+    PhotoModel *photoModel = self.photoModels[self.index];
+    
+    photoModel.sourceImageView.hidden = YES;
+    
+    self.view.frame=[UIScreen mainScreen].bounds;
+    
+    //添加视图
+    [window addSubview:self.view];
+    
+    //添加子控制器
+    [_handleVC addChildViewController:self];
+    
+    self.topBarView.alpha=0;
+    
+    [UIView animateWithDuration:.25f animations:^{
+        self.topBarView.alpha=1;
+    } completion:^(BOOL finished) {
+        photoModel.sourceImageView.hidden = NO;
+    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.view.backgroundColor = [UIColor blackColor];
+    });
+}
 
 
 
@@ -121,11 +228,23 @@
     [self vcPrepare];
 }
 
+
+
+
 -(void)viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 
@@ -138,15 +257,11 @@
     //去除自动处理
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.navigationController.navigationBarHidden = YES;
-    
     //每页准备
     [self pagesPrepare];
     
     //间距
     _scrollViewRightMarginC.constant = - PBMargin;
-    
-    
 }
 
 
@@ -165,7 +280,6 @@
     self.scrollView.contentSize = CGSizeMake(widthEachPage * self.photoModels.count, 0);
 
     self.scrollView.index = _index;
-    
 }
 
 
@@ -187,14 +301,12 @@
         photoItemView = [PhotoItemView viewFromXIB];
     }
     
-    
     NSLog(@"%p",&photoItemView);
     
     //数据覆盖
     photoItemView.ItemViewSingleTapBlock = ^(){
         [self singleTap];
     };
-    
     
     //到这里，photoItemView一定有值，而且一定显示为当前页
     //加入到当前显示中的字典
@@ -203,21 +315,26 @@
     //传递数据
     //设置页标
     photoItemView.pageIndex = page;
+    photoItemView.type = self.type;
     photoItemView.photoModel = self.photoModels[page];
-    photoItemView.alpha=0;
 
     [self.scrollView addSubview:photoItemView];
     
+    //    [UIView animateWithDuration:.01 animations:^{
+    photoItemView.alpha=1;
+    //    }];
+    
     //这里有一个奇怪的重影bug，必须这样解决
-    [UIView animateWithDuration:.01 animations:^{
-        photoItemView.alpha=1;
-    }];
+
+//    photoItemView.hidden=YES;
+//    [UIView animateWithDuration:.01 animations:^{
+//        photoItemView.alpha=1;
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            photoItemView.hidden=NO;
+//        });
+//    
+//    }];
 }
-
-
-
-
-
 
 
 
@@ -248,9 +365,6 @@
         }
     }];
 }
-
-
-
 
 
 
@@ -288,12 +402,14 @@
 
 
 
+
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     
     NSUInteger page = [self pageCalWithScrollView:scrollView];
     
     [self reuserAndVisibleHandle:page];
 }
+
 
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
@@ -303,12 +419,17 @@
 }
 
 
+
 -(void)reuserAndVisibleHandle:(NSUInteger)page{
     
     //遍历可视视图字典，除了page之外的所有视图全部移除，并加入重用集合
     [self.visiblePhotoItemViewDictM enumerateKeysAndObjectsUsingBlock:^(NSValue *key, PhotoItemView *photoItemView, BOOL *stop) {
         
         if(![key isEqualToValue:@(page)]){
+            
+            photoItemView.zoomScale=1;
+            
+            photoItemView.alpha=0;
             
             [self.reusablePhotoItemViewSetM addObject:photoItemView];
             
@@ -323,7 +444,9 @@
 
 
 -(NSUInteger)pageCalWithScrollView:(UIScrollView *)scrollView{
+    
     NSUInteger page = scrollView.contentOffset.x / scrollView.bounds.size.width + .5f;
+    
     return page;
 }
 
@@ -337,6 +460,10 @@
     _photoModels = photoModels;
     
     self.pageCount = photoModels.count;
+    
+    //设置源frame标记，以获得动画效果
+    PhotoModel *sourcePhotoModel= photoModels[_index];
+    sourcePhotoModel.isFromSourceFrame = YES;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         //初始化页码信息
@@ -364,12 +491,14 @@
         [self.topBarLabel layoutIfNeeded];
     });
     
-    //显示对应的页面
-    [self showWithPage:page];
-    
-    
-    //获取当前显示中的photoItemView
-    self.currentItemView = [self.visiblePhotoItemViewDictM objectForKey:@(self.page)];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        //显示对应的页面
+        [self showWithPage:page];
+        
+        //获取当前显示中的photoItemView
+        self.currentItemView = [self.visiblePhotoItemViewDictM objectForKey:@(self.page)];
+    });
 }
 
 
@@ -384,7 +513,8 @@
 
 
 - (IBAction)leftBtnClick:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    [self dismiss];
 }
 
 - (IBAction)rightBtnClick:(id)sender {
@@ -486,6 +616,111 @@
     [self showWithPage:nextPage];
 }
 
+
+
+
+-(void)dismiss{
+    
+    
+    
+    switch (_type) {
+        case PhotoBroswerVCTypePush://push
+
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+        case PhotoBroswerVCTypeModal://modal
+            [self dismissViewControllerAnimated:YES completion:nil];
+            break;
+            
+        case PhotoBroswerVCTypeTransition://transition
+            
+            [_handleVC.navigationController.view.layer transitionWithAnimType:TransitionAnimTypeRamdom subType:TransitionSubtypesFromRamdom curve:TransitionCurveRamdom duration:2.0f];
+            [self.navigationController popViewControllerAnimated:NO];
+            break;
+            
+        case PhotoBroswerVCTypeZoom://zoom
+        {
+            self.view.backgroundColor = [UIColor clearColor];
+            
+            if(self.currentItemView.zoomScale>1){
+                
+                self.currentItemView.zoomScale=1;
+                self.view.userInteractionEnabled = NO;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    self.view.userInteractionEnabled = YES;
+                    [self zoomOut];
+                });
+                
+            }else{
+                
+                [self zoomOut];
+            }
+        }
+
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
+-(void)zoomOut{
+    
+    [UIView animateWithDuration:.4f animations:^{
+        self.topBarView.alpha=0;
+    }];
+    
+    
+    PhotoModel *photoModel = self.photoModels[self.page];
+    
+    CGRect sourceF = photoModel.sourceFrame;
+    
+    //检查sourceF是否在屏幕里面
+    CGRect screenF =[UIScreen mainScreen].bounds;
+    
+    BOOL isInScreen = CGRectIntersectsRect(sourceF, screenF);
+    
+    if(self.currentItemView == nil) isInScreen = NO;
+    
+    if(isInScreen){
+        
+        NSLog(@"currentItemView:%@",self.currentItemView);
+        
+        [self.currentItemView zoomDismiss:^{
+            
+            [self zoomOutHandle];
+        }];
+        
+    }else{
+        
+        [UIView animateWithDuration:.5f animations:^{
+            
+            self.view.transform= CGAffineTransformMakeScale(1.2, 1.2);
+            self.view.alpha = 0;
+            
+        } completion:^(BOOL finished) {
+            
+            [self zoomOutHandle];
+        }];
+    }
+}
+
+
+-(void)zoomOutHandle{
+    
+    _handleVC =nil;
+    
+    self.photoModels = nil;
+    
+    //移除视图
+    [self.view removeFromSuperview];
+    
+    self.view = nil;
+    
+    //移除
+    [self removeFromParentViewController];
+}
 
 
 @end

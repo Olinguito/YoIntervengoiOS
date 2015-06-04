@@ -13,6 +13,7 @@ class Pictures: UIView, PicContainerDelegate {
     var data:JSON!
     var frame2:CGRect!
     var view:UIView!
+    var ms:NSMutableArray!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -22,89 +23,40 @@ class Pictures: UIView, PicContainerDelegate {
         super.init(frame:CGRectZero)
         self.data = data
         frame2 = frame
-        var ms = NSMutableArray()
+        ms = NSMutableArray()
         self.backgroundColor = UIColor.whiteColor()
         
-        println(data)
         for (index,picture) in enumerate(self.data[0]["pictures"]){
-            let url = NSURL(string: picture.1["url"].string!)!
-            var data = NSData(contentsOfURL: url)
-            ms.addObject(UIImage(data: data!)!)
+            var pic = Picture()
+            pic.id = index
+            pic.urlImage = picture.1["url"].string
+            pic.desc = String.getDate(picture.1["date"].string!)
+            pic.title = picture.1["description"].string
+            ms.addObject(pic)
         }
-        
-        
         picCont = PicContainer(frame: CGRect(x: 0, y: 0, width: frame.width, height: ((frame.height - ini))-55), array: ms)
         picCont.delegate = self
         self.addSubview(picCont)
-        
         self.frame = CGRect(x: 0, y: 0, width: frame.width, height: (frame.height - CGFloat(ini))-55)
     }
     
-    func picTapped(index: Int) {
-
-        
-        
-        //PhotoBroswerVC.show(self, index: 0, photoModelBlock: { () -> in return modelsM})
-        var localImages = [UIImage(named: "bg1"),UIImage(named: "bg1"),UIImage(named: "bg1")]
-        var modelsM = NSMutableArray(capacity: localImages.count)
-        for (var i = 0; i<localImages.count; i++){
+    func reloadData(){
+        picCont.collectionView.reloadData()
+    }
+    
+    func picTapped(index: UIButton) {
+        var modelsM = NSMutableArray(capacity: ms.count)
+        for (var i = 0; i<ms.count; i++){
             var pbModel = PhotoModel()
-            pbModel.mid = i+1
-            pbModel.title = "Hola Mundo que colmo?"
-            pbModel.desc = "Hola Mundo que colmo?"
-            pbModel.image = localImages[i]
+            var pic = ms.objectAtIndex(i) as! Picture
+            pbModel.mid   = i+1
+            pbModel.title = pic.title
+            pbModel.desc  = pic.desc
+            pbModel.image_HD_U = pic.urlImage
+            pbModel.sourceImageView = index.imageView
             modelsM.addObject(pbModel)
         }
-        PhotoBroswerVC.show(self.parentViewController(), index: 0, photoModelBlock: modelsM)
-        
-//        PhotoBroswerVC.show(self, index: 0, photoModelBlock: modelsM)
-        
-        /*view = UIView(frame: frame2)
-        view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.85)
-        
-        self.superview?.superview?.superview?.addSubview(view)
-        
-        let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100), type: "Top")
-        view.addSubview(grad1)
-        let grad2 = Gradient(frame: CGRect(x: 0, y: view.frame.height-100, width: view.frame.width, height: 100), type: "Bottom")
-        view.addSubview(grad2)
-        
-        
-        var image = UIImageView(image: UIImage(named: "bg1"))
-        image.center.y = view.center.y
-        view.addSubview(image)
-        
-        var panel = Panel(frame: CGRectZero, data: NSMutableArray())
-        panel.center.x = view.center.x
-        panel.frame.origin.y = view.frame.maxY - 40
-        view.addSubview(panel)
-        
-        var desc = UILabel(frame: CGRect(x: 25, y: (panel.frame.minY-20) , width: 270, height: 14))
-        desc.text = "No se ven a los obreros trabajando a ninguna hora."
-        desc.font = UIFont(name: "Roboto-LightItalic", size: 12)
-        desc.textColor = UIColor.whiteColor()
-        view.addSubview(desc)
-        
-        var userDate = UILabel(frame: CGRect(x: 25, y: (desc.frame.minY-20) , width: 270, height: 14))
-
-        var txt1 = "SandroNino_Bravo " as NSString
-        var txt2 = "Ene. 26, 2014 - 2:25pm" as NSString
-        
-        var myMutableString = NSMutableAttributedString(string: (txt1 as String)+(txt2 as String), attributes: [NSFontAttributeName:UIFont(name: "Roboto-Light", size: 12)!])
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orangeYI(), range: NSRange(location:0,length:txt1.length))
-        myMutableString.addAttribute(NSFontAttributeName, value:UIFont(name: "Roboto-Light", size: 12)!, range: NSRange(location:0,length:txt1.length))
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.whiteColor(), range: NSRange(location:txt1.length,length:txt2.length))
-        myMutableString.addAttribute(NSFontAttributeName, value:UIFont(name: "Roboto-Light", size: 10)!, range: NSRange(location:txt1.length,length:txt2.length))
-        
-        userDate.attributedText = myMutableString
-        
-        view.addSubview(userDate)
-        
-        var close = UIButton(frame: CGRect(x: view.frame.width - 40, y:20, width: 40, height: 40))
-        close.setImage(UIImage(named: "btnClose"), forState: UIControlState.Normal)
-        close.addTarget(self, action: Selector("close:"), forControlEvents: UIControlEvents.TouchUpInside)
-        view.addSubview(close)*/
-        
+        PhotoBroswerVC.show(self.parentViewController(), type: PhotoBroswerVCTypePush , index: index.tag, photoModelBlock: modelsM)
     }
     
     func close(sender:UIButton){

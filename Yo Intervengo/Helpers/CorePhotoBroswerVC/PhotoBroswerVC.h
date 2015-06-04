@@ -112,11 +112,17 @@
 
 #import <UIKit/UIKit.h>
 #import "PhotoModel.h"
+#import "PhotoBroswerType.h"
+
+
+
+
 
 
 @interface PhotoBroswerVC : UIViewController
 
-+(void)show:(UIViewController *)vc index:(NSInteger)index photoModelBlock:(NSMutableArray *) array;
+
++(void)show:(UIViewController *)handleVC type:(PhotoBroswerVCType)type index:(NSInteger)index photoModelBlock:(NSMutableArray*)array;
 
 
 @end

@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol JOaddReportDelegate{
-    func reportCreated(location:CLLocationCoordinate2D, type:Int,category:Category)
+    func reportCreated(report:Report)
 }
 
 class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBarMenuDelegate,JOCentralMenuDelegate,JSImagePickerViewControllerDelegate,UITextFieldDelegate, UITextViewDelegate, APIManagerDelegate{
@@ -38,7 +38,6 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     var subcatId:Int!
     
     //STEP 4
-    var localization:CLLocationCoordinate2D!
     var btnBack:UIButton!
     var btnContinue:UIButton!
     var mapLocation:RMMapView!
@@ -54,13 +53,12 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     //STEP 6
     var imgReport:UIImageView!
     var btnAddImage:UIButton!
-    var type:Int!
     var alert:JOAlert!
     var APIManagerClass:APIManager!
     var txtTit:String!
     var txtDes:String!
     var dataRep:NSDictionary!
-    var category:Category!
+    var report:Report!
     
     // MARK: -INIT
     required init(coder aDecoder: NSCoder) {
@@ -69,11 +67,12 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     
     init(frame: CGRect, bttnClose:UIButton, labels:Int, coodinate:CLLocationCoordinate2D) {
         super.init(frame: frame)
+        report = Report(type: 0)
         step = 1
         APIManagerClass = APIManager()
         APIManagerClass.delegate = self
         alert = JOAlert(textNFrame: "", self.frame, true)
-        localization = coodinate
+        report.location = coodinate
         txtTit = ""
         txtDes = ""
         btnClose = UIButton(frame: bttnClose.frame)
@@ -143,11 +142,11 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         configButton(step)
         switch (step){
         case 1:
-            var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
-            an.toValue = -0.75
-            an.springBounciness = 10
-            btnClose.layer.pop_addAnimation(an, forKey: "Rotate")
-            var thisMenu = LNERadialMenu(fromPoint: point, withDataSource: self, andDelegate: self,withFrame: self.frame, andLabels:Boolean(labels))
+                var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+                an.toValue = -0.75
+                an.springBounciness = 10
+                btnClose.layer.pop_addAnimation(an, forKey: "Rotate")
+                var thisMenu = LNERadialMenu(fromPoint: point, withDataSource: self, andDelegate: self,withFrame: self.frame, andLabels:Boolean(labels))
                 thisMenu.radialMenuIdentifier = "show"
                 self.insertSubview(thisMenu, belowSubview: btnClose)
                 thisMenu.showMenu()
@@ -160,9 +159,9 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
         case 3:
                 var d = NSMutableArray()
                 var t = (self.frame.size.height-450)/2
-                type = lblIndicator.text == "REPORTE" ? 1 : 0
+                report.type = lblIndicator.text == "REPORTE" ? 1 : 0
                 centralData = conn.getSubcategories(catId)
-                this2 = JOCentralMenu(frame: CGRectMake(0, t, 320, 400) , data: centralData, type: type)
+                this2 = JOCentralMenu(frame: CGRectMake(0, t, 320, 400) , data: centralData, type: report.type)
                 this2.delegate = self
                 self.insertSubview(this2, belowSubview: btnCategoty)
         case 4:
@@ -170,10 +169,10 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 btnContinue.frame.origin.y = btnCategoty.frame.minY - 55
                 mapLocation.frame = CGRect(x: 15, y: 40, width: self.frame.width - 30, height: btnBack.frame.minY - 70)
                 mapLocation.setZoom(15, animated: true)
-                mapLocation.centerCoordinate = localization
+                mapLocation.centerCoordinate = report.location
                 mapLocation.layer.cornerRadius = 10
                 self.addSubview(mapLocation)
-                pinIcon = UIImageView(image: UIImage.getPin(type, Category: catId))
+                pinIcon = UIImageView(image: UIImage.getPinByName(report.type, Category: conn.getCategory(catId).icon))
                 pinIcon.center = mapLocation.center
                 self.addSubview(pinIcon)
         case 5:
@@ -220,8 +219,9 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 alert.showAlert()
                 configButton(self.step)
             }else{
-                txtTit = txtTitle.text
-                txtDes = txtD.text
+                report.title = txtTitle.text
+                report.desc = txtD.text
+                
                 btnContinue.userInteractionEnabled = false
                 txtTitle.removeFromSuperview()
                 txtDesc.removeFromSuperview()
@@ -239,8 +239,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
                 self.addSubview(btnAddImage)
             }
         case 7:
-                category = conn.getCategoryByDBId(subcatId) as Category
-               
+                report.category = conn.getCategoryByDBId(subcatId) as Category
                 APIManagerClass.postImage(imgReport.image!)
         default: println("Default")
         }
@@ -372,7 +371,7 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     func imagePickerDidSelectImage(image: UIImage!) {
         imgReport.image = image
         btnContinue.userInteractionEnabled = true
-        if type == 1 {
+        if report.type == 1 {
             btnContinue.setTitle("Crear Reporte", forState: UIControlState.Normal)
             btnContinue.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             btnContinue.backgroundColor = UIColor.orangeYI()
@@ -488,14 +487,17 @@ class JOaddReport: UIView,LNERadialMenuDataSource,LNERadialMenuDelegate,JOSideBa
     func returnObt(responseObject: AnyObject, url: String) {
         var response = JSON(responseObject)
         switch url{
-        case "image":   var dateFormatter = NSDateFormatter()
-                        dateFormatter.dateFormat = "dd/MM/YYYY" //format style. Browse online to get a format that fits your needs.
-                        var dateString = dateFormatter.stringFromDate(NSDate.new())
-                 dataRep = ["description":txtDes, "location":["lat":localization.latitude, "lng":localization.longitude], "title":txtTit, "type":type, "category":["id": category.idAPI, "slug":category.slug, "name":category.name, "icon": category.icon],"photo":["url": "http://i.imgur.com/"+response["data"]["id"].string!+".png", "thumbUrl": "http://i.imgur.com/"+response["data"]["id"].string!+"m.png", "date": dateString]]
-
-                            APIManagerClass.postReport(dataRep)
-            case "Reports": delegate.reportCreated(localization, type: type, category: category)
-                            self.removeFromSuperview()
+            case "image":
+                var dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "dd/MM/YYYY" //format style. Browse online to get a format that fits your needs.
+                var dateString = dateFormatter.stringFromDate(NSDate.new())
+                report.urlImage = "http://i.imgur.com/"+response["data"]["id"].string!+"m.png"
+                dataRep = ["description":report.desc, "location":["lat":report.location.latitude, "lng":report.location.longitude], "title":report.title, "type":report.type, "category":["id": report.category.idAPI, "slug":report.category.slug, "name":report.category.name, "icon": report.category.icon],"photo":["url": report.urlImage, "thumbUrl": report.urlImage, "date": dateString]]
+                APIManagerClass.postReport(dataRep)
+            case "Reports":
+                    report.idAPI = response["id"].string
+                 delegate.reportCreated(report)
+                 self.removeFromSuperview()
             default: print("")
         }
     }

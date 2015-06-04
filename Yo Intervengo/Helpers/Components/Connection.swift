@@ -27,7 +27,6 @@ class Connection: NSObject {
             category.id = _id.asInt()
         }
         if let icon = row["icon"] {
-            println("*********************************************************************************  Buscando con este ID: \(idDB) e icono \(icon.asString())")
             category.slug = icon.asString()
             category.icon = icon.asString()
         }
@@ -46,6 +45,25 @@ class Connection: NSObject {
         if let apiCat = row["apiID"]{
             category.parentAPI = apiCat.asString()
         }
+        return category
+    }
+    
+    
+    // GET CATEGORIES
+    func getCategory(id:Int) -> Category{
+        var returnArray = NSMutableArray()
+        let data = db.query("SELECT * FROM Category where id = \(id)")
+        let row = data[0]
+        var category = Category()
+            if let _id = row["id"] {
+                category.id = _id.asInt()
+            }
+            if let name = row["name"] {
+                category.name = name.asString()
+            }
+            if let image = row["icon"] {
+                category.icon = image.asString()
+            }
         return category
     }
     

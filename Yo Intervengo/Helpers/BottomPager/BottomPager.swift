@@ -111,7 +111,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         cell.subTitle.text = report.category.name
         cell.lblDescr.text = report.desc
         cell.goReport.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
-        cell.goReport.tag = 0//infoPin["num"] as! Int
+        cell.goReport.tag  = report.id
         cell.bgIcon.backgroundColor = report.color
         cell.follower.setTitle(String(report.followers), forState: UIControlState.Normal)
         cell.follower.tag = indexPath.row
@@ -119,7 +119,6 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         cell.alpha = 0
         return cell
     }
-    
     
     func goReport(sender:UIButton!){
         self.delegate?.goDetail!(sender)

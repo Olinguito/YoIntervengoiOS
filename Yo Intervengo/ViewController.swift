@@ -87,7 +87,6 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     
     func mapView(mapView: RMMapView!, didUpdateUserLocation userLocation: RMUserLocation!) {
         if(!initLocation){
-            //map.setCenterCoordinate(CLLocationCoordinate2DMake(4.6615,-74.0688), animated: true)
             mapView.setCenterCoordinate(userLocation.coordinate, animated: false)
             initLocation = true
         }
@@ -221,8 +220,14 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
         self.showViewController(view2, sender: self)
     }
     
-    func reportCreated(location:CLLocationCoordinate2D, type:Int,category:Category){
-        addAnnotation(location, data: ["type":type,"icon":category.icon])
+    func reportCreated(report:Report){
+        report.id = test.loc.count
+        loc.append(report)
+        test.loc.append(report)
+        test.collectionView.reloadData()
+        var annotation = RMAnnotation(mapView: self.map, coordinate: report.location, andTitle: "\(test.loc.count-1)")
+        annotation.userInfo = report
+        self.map.addAnnotation(annotation)
     }
     
     func returnList(responseObject: AnyObject, url: String!) {
@@ -240,6 +245,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
                     let imageIcon = category["icon"] as! String
                     
                     var rep           = Report(type: report["type"] as! Int)
+                    rep.id            = counter
                     rep.idAPI         = report["id"] as! String
                     rep.urlImage      = photos["thumbUrl"] as! String
                     rep.followers     = 200
@@ -258,11 +264,5 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
                 test.collectionView.reloadData()
             default: print("Any")
         }
-    }
-    
-    func addAnnotation(localization:CLLocationCoordinate2D, data:NSDictionary){
-        var newANN = RMAnnotation(mapView: map, coordinate: localization, andTitle:"1")
-        newANN.userInfo = data
-        map.addAnnotation(newANN)
     }
 }

@@ -40,7 +40,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2q-sR-DMR" userLabel="SaveButton" customClass="PBSaveBtn">
+                        <button opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2q-sR-DMR" userLabel="SaveButton" customClass="PBSaveBtn">
                             <rect key="frame" x="558" y="26" width="32" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="d2q-sR-DMR" secondAttribute="height" multiplier="1:1" id="TmB-sW-eqQ"/>
@@ -65,7 +65,7 @@
                                 <constraint firstAttribute="height" constant="30" id="Xg8-2e-nOK"/>
                                 <constraint firstAttribute="width" constant="30" id="gwc-jc-ZC6"/>
                             </constraints>
-                            <state key="normal" image="PB.bundle/back_arrow.png">
+                            <state key="normal" image="btnBack.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -89,7 +89,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="aju-yJ-YWP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="04D-fi-2NY"/>
                 <constraint firstAttribute="bottom" secondItem="RLq-hQ-X8E" secondAttribute="bottom" id="NXy-TB-ShD"/>
@@ -99,10 +99,10 @@
                 <constraint firstItem="RLq-hQ-X8E" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mr6-yK-Tcv"/>
                 <constraint firstItem="aju-yJ-YWP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="z0u-B8-TAv"/>
             </constraints>
-            <point key="canvasLocation" x="-498" y="104"/>
+            <point key="canvasLocation" x="-906" y="292"/>
         </view>
     </objects>
     <resources>
-        <image name="PB.bundle/back_arrow.png" width="641" height="961"/>
+        <image name="btnBack.png" width="17" height="18"/>
     </resources>
 </document>

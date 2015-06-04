@@ -24,6 +24,10 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     var lblCoun:UILabel!
     var story:UIStoryboard!
     var reportView:ReportVC!
+    var info:Info!
+    var histo:History!
+    var pictures:Pictures!
+    var links:Links!
     
     var colorView:UIColor!
     
@@ -113,7 +117,6 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
         
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: vW, height: 64), type: "Top")
         self.view.addSubview(grad1)
-                println("111")
     }
     
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -121,7 +124,6 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     }
     
     func goReport(sender:UIButton!){
-
         self.showViewController(reportView, sender: self)
     }
     
@@ -207,6 +209,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     }
     
     func imagePickerDidSelectImage(image: UIImage!) {
+        APIManagerClass.postImage(image)
         /*imgReport.image = image
         btnContinue.userInteractionEnabled = true
         if type == 1 {
@@ -221,52 +224,72 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
     
 
     func returnObt(responseObject: AnyObject, url: String) {
-        //print(responseObject)
-        var dataDetail = JSON(responseObject)
-        var a:NSMutableArray = NSMutableArray()
+        var response = JSON(responseObject)
+        switch(url){
+            case "report_detail":
+                var dataDetail = JSON(responseObject)
+                var a:NSMutableArray = NSMutableArray()
+                
+                info = Info(index: 2, report: report, color: colorView, frame: self.view.frame)
+                histo = History(index: 2, frame:self.view.frame, data: dataDetail)
+                pictures = Pictures(index: 2, frame: self.view.frame, ini: banner.frame.maxY, data: dataDetail)
+                links = Links(index: 2, frame: self.view.frame, data: dataDetail)
+                
+                a.addObject(["Info", info])
+                a.addObject(["Historial", histo])
+                a.addObject(["Fotos",pictures])
+                a.addObject(["Enlaces",links])
+                
+                tab = JOTabBar(frame: CGRect(x: 0, y: banner.frame.maxY, width: self.view.frame.width, height: self.view.frame.height), data: a, color: colorView)
+                tab.delegate = self
+                self.scroll.addSubview(tab)
+                
+                scroll.contentSize = CGSize(width: vW, height: self.view.frame.height+1)
+                
+                btnBack = UIButton(frame: CGRect(x: 0, y: 10, width: 56, height: 56))
+                btnBack.setImage(UIImage(named: "btnBack"), forState: UIControlState.Normal)
+                btnBack.addTarget(self, action: Selector("goBack"), forControlEvents: UIControlEvents.TouchUpInside)
+                self.view.addSubview(btnBack)
+                
+                btnInfo = UIButton(frame: CGRect(x: self.view.frame.maxX - 56, y: 10, width: 56, height: 56))
+                btnInfo.setImage(UIImage(named: "btnInfo"), forState: UIControlState.Normal)
+                btnInfo.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
+                self.view.addSubview(btnInfo)
+                
+                lblTitle = UILabel(frame: CGRect(x: 0, y: btnInfo.frame.maxY + 10, width: vW, height: 18))
+                lblTitle.font = UIFont(name: "Roboto-Regular", size: 17)
+                lblTitle.text = report.title
+                lblTitle.textAlignment = NSTextAlignment.Center
+                lblTitle.textColor = UIColor.whiteColor()
+                self.scroll.addSubview(lblTitle)
+                
+                lblSubTit = UILabel(frame: CGRect(x: 0, y: lblTitle.frame.maxY+5, width: vW, height: 13))
+                lblSubTit.font = UIFont(name: "Roboto-Medium", size: 12.5)
+                lblSubTit.text = "CATEGORÍA > " + report.category.name.uppercaseString
+                lblSubTit.textAlignment = NSTextAlignment.Center
+                lblSubTit.textColor = colorView
+                self.scroll.addSubview(lblSubTit)
+                
+                buttonHelper = UIButton()
+            case "image":
+                var dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "dd/MM/YYYY" //format style. Browse online to get a format that fits your needs.
+                var dateString = dateFormatter.stringFromDate(NSDate.new())
+                var picture = Picture()
+                picture.urlImage = "http://i.imgur.com/"+response["data"]["id"].string!+".png"
+                picture.urlThumbImage = "http://i.imgur.com/"+response["data"]["id"].string!+"m.png"
+                APIManagerClass.postNewImage(picture, report: report)
+            case "Report_photo":
+                var pic = Picture()
+                pic.id = pictures.ms.count+1
+                pic.urlImage = response["url"].string
+                pic.desc  = String.getDate(response["url"].string!)
+                pic.title = response["description"].string
+                pictures.ms.addObject(pic)
+                pictures.reloadData()
+            default: print("")
+        }
         
-        var info = Info(index: 2, report: report, color: colorView, frame: self.view.frame)
-        var histo = History(index: 2, frame:self.view.frame, data: dataDetail)
-        var pictures = Pictures(index: 2, frame: self.view.frame, ini: banner.frame.maxY, data: dataDetail)
-        //var links = Links(index: 2, frame:self.view.frame, data:dataDetail[""])
-        var links = Links(index: 2, frame: self.view.frame, data: dataDetail)
-        
-        a.addObject(["Info", info])
-        a.addObject(["Historial", histo])
-        a.addObject(["Fotos",pictures])
-        a.addObject(["Enlaces",links])
-        
-        tab = JOTabBar(frame: CGRect(x: 0, y: banner.frame.maxY, width: self.view.frame.width, height: self.view.frame.height), data: a, color: colorView)
-        tab.delegate = self
-        self.scroll.addSubview(tab)
-        
-        scroll.contentSize = CGSize(width: vW, height: self.view.frame.height+1)
-        
-        btnBack = UIButton(frame: CGRect(x: 0, y: 10, width: 56, height: 56))
-        btnBack.setImage(UIImage(named: "btnBack"), forState: UIControlState.Normal)
-        btnBack.addTarget(self, action: Selector("goBack"), forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(btnBack)
-        
-        btnInfo = UIButton(frame: CGRect(x: self.view.frame.maxX - 56, y: 10, width: 56, height: 56))
-        btnInfo.setImage(UIImage(named: "btnInfo"), forState: UIControlState.Normal)
-        btnInfo.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(btnInfo)
-        
-        lblTitle = UILabel(frame: CGRect(x: 0, y: btnInfo.frame.maxY + 10, width: vW, height: 18))
-        lblTitle.font = UIFont(name: "Roboto-Regular", size: 17)
-        lblTitle.text = report.title
-        lblTitle.textAlignment = NSTextAlignment.Center
-        lblTitle.textColor = UIColor.whiteColor()
-        self.scroll.addSubview(lblTitle)
-        
-        lblSubTit = UILabel(frame: CGRect(x: 0, y: lblTitle.frame.maxY+5, width: vW, height: 13))
-        lblSubTit.font = UIFont(name: "Roboto-Medium", size: 12.5)
-        lblSubTit.text = "CATEGORÍA > " + report.category.name.uppercaseString
-        lblSubTit.textAlignment = NSTextAlignment.Center
-        lblSubTit.textColor = colorView
-        self.scroll.addSubview(lblSubTit)
-        
-        buttonHelper = UIButton()
     }
     
 }

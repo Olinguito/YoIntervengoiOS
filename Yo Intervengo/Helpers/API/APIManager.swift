@@ -73,7 +73,7 @@ class APIManager: NSObject {
     }
     
     func postReport(data:NSDictionary!){
-        performPost("Reports", token: "", data: data, list: true, successMsg: "Creado datisfactoriamente", failMsg: "Ocurrio un error, intente más tarde.")
+        performPost("Reports", token: "", data: data, list: true, successMsg: "Creado datisfactoriamente", failMsg: "Ocurrio un error, intente más tarde.", transac: "Reports")
     }
 
     func postImage(image:UIImage){
@@ -84,13 +84,20 @@ class APIManager: NSObject {
             var res = data.appendPartWithFileData(imageData, name: "image", fileName: "upload", mimeType: "image/jpeg")
             println("was file added properly to the body? \(res)")
         }, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
-                println(responseObject)
                 //let responseDict = responseObject as! Dictionary<String, AnyObject>
                 self.delegate.returnObt!(responseObject, url: "image")
             }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
-                print(error)
                 self.delegate.returnError!("image")
         })
+    }
+    
+    func postNewImage(picture:Picture,report:Report){
+        print("entra por aca a subir imagen? con id \(picture.urlImage)")
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY"
+        var dateString = dateFormatter.stringFromDate(NSDate.new())
+        var dataRep = ["description":report.desc,"url":picture.urlImage,"thumbUrl":picture.urlThumbImage,"date":dateString,"reportId":report.idAPI]
+        performPost("Reports/"+report.idAPI+"/pictures", token: "", data: dataRep, list: false, successMsg: "Imagen posteada", failMsg: "Fallo en subida de imagen", transac: "Report_photo")
     }
     
     
@@ -156,7 +163,7 @@ class APIManager: NSObject {
         })
     }
     
-    func performPost(url:String!, token:String!, data:NSDictionary, list:Bool, successMsg:String, failMsg:String){
+    func performPost(url:String!, token:String!, data:NSDictionary, list:Bool, successMsg:String, failMsg:String, transac:String){
         var operationManager = AFHTTPRequestOperationManager()
         operationManager.requestSerializer  = AFJSONRequestSerializer()
         operationManager.responseSerializer = AFJSONResponseSerializer()
@@ -165,9 +172,7 @@ class APIManager: NSObject {
         println("se fue con estos datos \(data)")
         operationManager.POST(URLAPI+url, parameters: data, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
                 println(responseObject.description)
-//                let responseDict = responseObject as! Dictionary<String, AnyObject>
-//                var token = responseDict["token"] as! String!
-                self.delegate.returnObt!(responseObject, url: url)
+                self.delegate.returnObt!(responseObject, url: transac)
             }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
                 print(error)
             })
