@@ -27,6 +27,7 @@ class ViewController: GenericViewController,RMMapViewDelegate,BottomPagerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoader()
         if !loaded{
             let reachability2 = Reachability.reachabilityForInternetConnection()
             

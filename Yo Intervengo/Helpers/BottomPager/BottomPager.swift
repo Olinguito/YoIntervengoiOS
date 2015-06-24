@@ -73,6 +73,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     }
     
     func go2Page (page:NSIndexPath){
+        print("Hola Mundororotototote?")
         collectionView.scrollToItemAtIndexPath(page, atScrollPosition:UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
     }
     
@@ -145,8 +146,10 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
         var visibleRect = CGRect(x: self.collectionView.contentOffset.x, y: self.collectionView.contentOffset.y, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
         var visiblePoint = CGPointMake(CGRectGetMidX(visibleRect), CGRectGetMidY(visibleRect));
         var visibleIndexPath = self.collectionView.indexPathForItemAtPoint(visiblePoint)
-        go2Page(visibleIndexPath!)
-        self.delegate?.pageSetted!(visibleIndexPath!)
+        if(visibleIndexPath != nil){
+            go2Page(visibleIndexPath!)
+            self.delegate?.pageSetted!(visibleIndexPath!)
+        }
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {

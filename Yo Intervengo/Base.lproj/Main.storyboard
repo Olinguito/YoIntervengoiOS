@@ -48,7 +48,7 @@
                                     <action selector="getLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dh2-th-b8v"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9d-ve-JFc" customClass="view">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9d-ve-JFc" customClass="view">
                                 <rect key="frame" x="544" y="12" width="56" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="rRF-y8-Qcn"/>
@@ -70,7 +70,7 @@
                                     <action selector="getMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dwX-fT-sPM"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uuw-FR-LVH">
+                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uuw-FR-LVH">
                                 <rect key="frame" x="700" y="0.0" width="281" height="600"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBW-c6-sds">

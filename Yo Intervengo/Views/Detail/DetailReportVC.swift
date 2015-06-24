@@ -254,7 +254,7 @@ class DetailReportVC: GenericViewController,UIScrollViewDelegate,JOTabBarDelegat
                 btnInfo = UIButton(frame: CGRect(x: self.view.frame.maxX - 56, y: 10, width: 56, height: 56))
                 btnInfo.setImage(UIImage(named: "btnInfo"), forState: UIControlState.Normal)
                 btnInfo.addTarget(self, action: Selector("goReport:"), forControlEvents: UIControlEvents.TouchUpInside)
-                self.view.addSubview(btnInfo)
+                //self.view.addSubview(btnInfo)
                 
                 lblTitle = UILabel(frame: CGRect(x: 0, y: btnInfo.frame.maxY + 10, width: vW, height: 18))
                 lblTitle.font = UIFont(name: "Roboto-Regular", size: 17)

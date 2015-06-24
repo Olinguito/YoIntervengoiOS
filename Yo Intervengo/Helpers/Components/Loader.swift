@@ -21,9 +21,6 @@ class Loader: UIView {
     }
     
     func show(){
-        //var popAnimation = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
-        //popAnimation.toValue = 1
-        //self.pop_addAnimation(popAnimation, forKey: "show")
         activityIndicatorView.startAnimating()
     }
     

@@ -68,7 +68,15 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         loaded = false
         
         loader = Loader(frame: self.view.frame, c1: UIColor.darkGrayColor().colorWithAlphaComponent(0.9), c2: UIColor.whiteColor())
+        
+    }
+    
+    func showLoader(){
         self.view.addSubview(loader)
+    }
+    
+    func hideLoader(){
+        loader.removeFromSuperview()
     }
     
     func goRoot(){
