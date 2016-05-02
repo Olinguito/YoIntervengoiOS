@@ -9,40 +9,40 @@
 import UIKit
 
 class LayoutHelper: UICollectionViewFlowLayout {
- 
+    
     
     override func collectionViewContentSize() -> CGSize {
         let count = self.collectionView?.dataSource?.collectionView(self.collectionView!, numberOfItemsInSection: 0)
-        var canvasSize = self.collectionView?.frame.size
+        let canvasSize = self.collectionView?.frame.size
         var contentSize = canvasSize
-        var canW = canvasSize?.width
-        var canH = canvasSize?.height
+        let canW = canvasSize?.width
+        let canH = canvasSize?.height
         
         if self.scrollDirection == UICollectionViewScrollDirection.Horizontal
         {
-            var rowCount = (canH! - self.itemSize.height) / (self.itemSize.height + self.minimumInteritemSpacing) + 1
-            var columnCount = (canW! - self.itemSize.width) / (self.itemSize.width + self.minimumLineSpacing) + 1
+            let rowCount = (canH! - self.itemSize.height) / (self.itemSize.height + self.minimumInteritemSpacing) + 1
+            let columnCount = (canW! - self.itemSize.width) / (self.itemSize.width + self.minimumLineSpacing) + 1
             
-            var t = Float(count!) / (Float(rowCount) * Float(columnCount))
-            var page = ceilf(t)
+            let t = Float(count!) / (Float(rowCount) * Float(columnCount))
+            let page = ceilf(t)
             contentSize?.height = CGFloat(page) * canW!;
         }
-
+        
         return contentSize!
     }
     
     
     func frameForItemAtIndexPath(indexPath:NSIndexPath)->CGRect{
-        var canvasSize = self.collectionView?.frame
-        var rowCount = (canvasSize!.height - self.itemSize.height) / (self.itemSize.height + self.minimumInteritemSpacing) + 1
-        var columnCount = (canvasSize!.width - self.itemSize.width) / (self.itemSize.width + self.minimumLineSpacing) + 1
-        var pageMarginX = (canvasSize!.width - columnCount * self.itemSize.width - (columnCount > 1 ? (columnCount - 1) * self.minimumLineSpacing : 0)) / 2.0
-        var pageMarginY = (canvasSize!.height - rowCount * self.itemSize.height - (rowCount > 1 ? (rowCount - 1) * self.minimumInteritemSpacing : 0)) / 2.0
+        let canvasSize = self.collectionView?.frame
+        let rowCount = (canvasSize!.height - self.itemSize.height) / (self.itemSize.height + self.minimumInteritemSpacing) + 1
+        let columnCount = (canvasSize!.width - self.itemSize.width) / (self.itemSize.width + self.minimumLineSpacing) + 1
+        let pageMarginX = (canvasSize!.width - columnCount * self.itemSize.width - (columnCount > 1 ? (columnCount - 1) * self.minimumLineSpacing : 0)) / 2.0
+        let pageMarginY = (canvasSize!.height - rowCount * self.itemSize.height - (rowCount > 1 ? (rowCount - 1) * self.minimumInteritemSpacing : 0)) / 2.0
         
-        var page = Float(indexPath.row) / Float(rowCount * columnCount);
-        var remainder = Float(indexPath.row) - Float(page) * Float(rowCount * columnCount);
-        var row = Float(remainder) / Float(columnCount);
-        var column = Float(remainder) - Float(row) * Float(columnCount);
+        let page = Float(indexPath.row) / Float(rowCount * columnCount);
+        let remainder = Float(indexPath.row) - Float(page) * Float(rowCount * columnCount);
+        let row = Float(remainder) / Float(columnCount);
+        let column = Float(remainder) - Float(row) * Float(columnCount);
         
         var cellFrame = CGRectZero
         cellFrame.origin.x = pageMarginX + CGFloat(column) * (self.itemSize.width + self.minimumLineSpacing);
@@ -57,27 +57,26 @@ class LayoutHelper: UICollectionViewFlowLayout {
         
         return cellFrame
     }
-
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
-        var attr =  super.layoutAttributesForItemAtIndexPath(indexPath)
-        attr.frame = self.frameForItemAtIndexPath(indexPath)
+    
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        let attr =  super.layoutAttributesForItemAtIndexPath(indexPath)
+        attr!.frame = self.frameForItemAtIndexPath(indexPath)
         return attr
     }
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
-        var originAttrs = super.layoutAttributesForElementsInRect(rect)
-        var attrs = NSMutableArray()
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let originAttrs = super.layoutAttributesForElementsInRect(rect)
+        let attrs = NSMutableArray()
         
-        for (index, attr) in enumerate(originAttrs!) {
-            var idxPath = attr.indexPath
-            var itemFrame = self.frameForItemAtIndexPath(idxPath)
+        for (_, attr) in (originAttrs!).enumerate() {
+            let idxPath = attr.indexPath
+            let itemFrame = self.frameForItemAtIndexPath(idxPath)
             if (CGRectIntersectsRect(itemFrame, rect))
             {
-                var attr2 = self.layoutAttributesForItemAtIndexPath(idxPath)
-                attrs.addObject(attr2)
+                let attr2 = self.layoutAttributesForItemAtIndexPath(idxPath)
+                attrs.addObject(attr2!)
             }
         }
-        return attrs as [AnyObject]
+        return attrs as? [UICollectionViewLayoutAttributes]
     }
-    
 }

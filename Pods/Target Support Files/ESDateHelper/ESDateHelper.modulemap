@@ -1,0 +1,6 @@
+framework module ESDateHelper {
+  umbrella header "ESDateHelper-umbrella.h"
+
+  export *
+  module * { export * }
+}

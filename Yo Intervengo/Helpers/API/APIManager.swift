@@ -7,22 +7,22 @@
 //
 
 import UIKit
+import MapKit
 
-
-@objc protocol APIManagerDelegate{
-    optional func percentageDownloaded(dataDownloaded:Double)
-    optional func loadedImage(imageLoaded:UIImage)
-    optional func loaded(checker:Bool,msg:NSString,tokenR:NSString)
-    optional func returnResponse(msg:String,response:AnyObject)
-    optional func returnList(responseObject:AnyObject, url:String)
-    optional func returnObt(responseObject:AnyObject, url:String)
-    optional func returnBool(response:Bool)
-    optional func returnError(url:String)
+protocol APIManagerDelegate{
+    func percentageDownloaded(dataDownloaded:Double)
+    func loadedImage(imageLoaded:UIImage)
+    func loaded(checker:Bool,msg:NSString,tokenR:NSString)
+    func returnResponse(msg:String,response:AnyObject)
+    func returnList(responseObject:AnyObject, url:String)
+    func returnObt(responseObject:AnyObject, url:String)
+    func returnBool(response:Bool)
+    func returnError(url:String)
 }
 
 class APIManager: NSObject {
     var URLAPI = "http://api.yointervengo.co/v1/"
-//    var URLAPI = "http://10.0.1.203:3000/v1/"
+    //    var URLAPI = "http://10.0.1.203:3000/v1/"
     var delegate:APIManagerDelegate!
     
     override init() {
@@ -43,12 +43,12 @@ class APIManager: NSObject {
     }
     
     func logout(){
-    
+        
     }
     
     //MARK: -ACCOUNT
     func createAccount(){
-    
+        
     }
     
     func editAccount(){
@@ -75,34 +75,34 @@ class APIManager: NSObject {
     func postReport(data:NSDictionary!){
         performPost("Reports", token: "", data: data, list: true, successMsg: "Creado datisfactoriamente", failMsg: "Ocurrio un error, intente más tarde.", transac: "Reports")
     }
-
+    
     func postImage(image:UIImage){
-        var operationManager =  AFHTTPRequestOperationManager() as AFHTTPRequestOperationManager
-        operationManager.requestSerializer.setValue("Client-ID e84b4d7dc9700e0", forHTTPHeaderField: "Authorization")
-        var imageData = UIImageJPEGRepresentation(image,0.5)
-        operationManager.POST("https://api.imgur.com/3/image", parameters: nil, constructingBodyWithBlock: { (data: AFMultipartFormData!) in
-            var res = data.appendPartWithFileData(imageData, name: "image", fileName: "upload", mimeType: "image/jpeg")
-            println("was file added properly to the body? \(res)")
-        }, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
-                //let responseDict = responseObject as! Dictionary<String, AnyObject>
-                self.delegate.returnObt!(responseObject, url: "image")
-            }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
-                self.delegate.returnError!("image")
-        })
+        //        var operationManager =  AFHTTPRequestOperationManager() as AFHTTPRequestOperationManager
+        //        operationManager.requestSerializer.setValue("Client-ID e84b4d7dc9700e0", forHTTPHeaderField: "Authorization")
+        //        var imageData = UIImageJPEGRepresentation(image,0.5)
+        //        operationManager.POST("https://api.imgur.com/3/image", parameters: nil, constructingBodyWithBlock: { (data: AFMultipartFormData!) in
+        //            var res = data.appendPartWithFileData(imageData, name: "image", fileName: "upload", mimeType: "image/jpeg")
+        //            print("was file added properly to the body? \(res)")
+        //            }, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+        //                //let responseDict = responseObject as! Dictionary<String, AnyObject>
+        //                self.delegate.returnObt!(responseObject, url: "image")
+        //            }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
+        //                self.delegate.returnError!("image")
+        //        })
     }
     
     func postNewImage(picture:Picture,report:Report){
         print("entra por aca a subir imagen? con id \(picture.urlImage)")
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd/MM/YYYY"
-        var dateString = dateFormatter.stringFromDate(NSDate.new())
-        var dataRep = ["description":report.desc,"url":picture.urlImage,"thumbUrl":picture.urlThumbImage,"date":dateString,"reportId":report.idAPI]
+        let dateString = dateFormatter.stringFromDate(NSDate())
+        let dataRep = ["description":report.desc,"url":picture.urlImage,"thumbUrl":picture.urlThumbImage,"date":dateString,"reportId":report.idAPI]
         performPost("Reports/"+report.idAPI+"/pictures", token: "", data: dataRep, list: false, successMsg: "Imagen posteada", failMsg: "Fallo en subida de imagen", transac: "Report_photo")
     }
     
     
     func followReport(){
-    
+        
     }
     
     //MARK: -LINKS
@@ -121,77 +121,76 @@ class APIManager: NSObject {
     }
     
     func getLocalJSON(url:String!, transac: String!){
-        var filePath =   NSBundle.mainBundle().pathForResource(transac, ofType: "json")
-        var JSONData =   NSData.dataWithContentsOfMappedFile(filePath!) as! NSData
-        //var jsonObject = NSJSONSerialization.JSONObjectWithData (JSONData, options: NSJSONReadingOptions.MutableContainers, error: nil)
-        var stringJSON = NSString(data:JSONData, encoding:NSUTF8StringEncoding) as! String
-        self.delegate.returnObt!(JSONData, url:transac)
+        //        var filePath =   NSBundle.mainBundle().pathForResource(transac, ofType: "json")
+        //        var JSONData =   NSData.dataWithContentsOfMappedFile(filePath!) as! NSData
+        //        //var jsonObject = NSJSONSerialization.JSONObjectWithData (JSONData, options: NSJSONReadingOptions.MutableContainers, error: nil)
+        //        var stringJSON = NSString(data:JSONData, encoding:NSUTF8StringEncoding) as! String
+        //        self.delegate.returnObt!(JSONData, url:transac)
     }
     
     
     func nominatim(location:CLLocationCoordinate2D){
-        var operationManager = AFHTTPRequestOperationManager()
-        operationManager.responseSerializer = AFJSONResponseSerializer()
-        operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
-        //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
-        operationManager.GET("http://nominatim.openstreetmap.org/reverse?lat=\(location.latitude)&lon=\(location.longitude)=json", parameters: nil,
-            success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-                self.delegate.returnObt!(responseObject, url: "nominatim")
-            },
-            failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
-                println("Error: " + error.localizedDescription)
-        })
+        //        var operationManager = AFHTTPRequestOperationManager()
+        //        operationManager.responseSerializer = AFJSONResponseSerializer()
+        //        operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
+        //        //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
+        //        operationManager.GET("http://nominatim.openstreetmap.org/reverse?lat=\(location.latitude)&lon=\(location.longitude)=json", parameters: nil,
+        //                             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
+        //                                self.delegate.returnObt!(responseObject, url: "nominatim")
+        //            },
+        //                             failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
+        //                                print("Error: " + error.localizedDescription)
+        //        })
     }
     
-
+    
     //MARK: -AFNETWORKING DELEGATE
     func performGet(url:String!, token:String!, list:Bool, transac: String!){
-        var operationManager = AFHTTPRequestOperationManager()
-        operationManager.responseSerializer = AFJSONResponseSerializer()
-        operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
-        //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
-        operationManager.GET(URLAPI+url, parameters: nil,
-            success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-                if list{
-                    self.delegate.returnList!(responseObject, url: transac)
-                }else{
-                    self.delegate.returnObt!(responseObject, url: transac)
-                }
-            },
-            failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
-                println("Error: " + error.localizedDescription)
-        })
+        //        var operationManager = AFHTTPRequestOperationManager()
+        //        operationManager.responseSerializer = AFJSONResponseSerializer()
+        //        operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
+        //        //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
+        //        operationManager.GET(URLAPI+url, parameters: nil,
+        //                             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
+        //                                if list{
+        //                                    self.delegate.returnList!(responseObject, url: transac)
+        //                                }else{
+        //                                    self.delegate.returnObt!(responseObject, url: transac)
+        //                                }
+        //            },
+        //                             failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
+        //                                print("Error: " + error.localizedDescription)
+        //        })
     }
     
     func performPost(url:String!, token:String!, data:NSDictionary, list:Bool, successMsg:String, failMsg:String, transac:String){
-        var operationManager = AFHTTPRequestOperationManager()
-        operationManager.requestSerializer  = AFJSONRequestSerializer()
-        operationManager.responseSerializer = AFJSONResponseSerializer()
-        operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
-        //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
-        println("se fue con estos datos \(data)")
-        operationManager.POST(URLAPI+url, parameters: data, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
-                println(responseObject.description)
-                self.delegate.returnObt!(responseObject, url: transac)
-            }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
-                print(error)
-            })
+        //        var operationManager = AFHTTPRequestOperationManager()
+        //        operationManager.requestSerializer  = AFJSONRequestSerializer()
+        //        operationManager.responseSerializer = AFJSONResponseSerializer()
+        //        operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
+        //        //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
+        //        print("se fue con estos datos \(data)")
+        //        operationManager.POST(URLAPI+url, parameters: data, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+        //            print(responseObject.description)
+        //            self.delegate.returnObt!(responseObject, url: transac)
+        //            }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
+        //                print(error)
+        //        })
     }
     
     func performPut(url:String!, token:String!, data:NSDictionary, list:Bool, successMsg:String, failMsg:String){
-        var operationManager = AFHTTPRequestOperationManager()
-        // operationManager.requestSerializer  = AFJSONRequestSerializer()
-        operationManager.responseSerializer = AFJSONResponseSerializer()
-        operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
-        //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
-        print(URLAPI+url)
-        operationManager.POST(URLAPI+url, parameters: nil, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
-            println(responseObject.description)
-            let responseDict = responseObject as! Dictionary<String , AnyObject>
-            var token = responseDict["token"] as! String!
-            println(token)
-            }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
-        })
+        //        var operationManager = AFHTTPRequestOperationManager()
+        //        // operationManager.requestSerializer  = AFJSONRequestSerializer()
+        //        operationManager.responseSerializer = AFJSONResponseSerializer()
+        //        operationManager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
+        //        //[operationManager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
+        //        print(URLAPI+url)
+        //        operationManager.POST(URLAPI+url, parameters: nil, success:  { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
+        //            print(responseObject.description)
+        //            let responseDict = responseObject as! Dictionary<String , AnyObject>
+        //            var token = responseDict["token"] as! String!
+        //            print(token)
+        //            }, failure:  { (operation: AFHTTPRequestOperation!, error: NSError!) in
+        //        })
     }
-    
 }

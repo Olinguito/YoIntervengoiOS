@@ -21,7 +21,7 @@ class LinkComponent: UIView {
         super.init(frame: frame)
     }
     
-
+    
     
     convenience init(type:Int, frame:CGRect) {
         self.init()
@@ -71,9 +71,9 @@ class LinkComponent: UIView {
             addSubview(actionPanel)
             
             
-            var line = UIBezierPath(rect: CGRect(x: 0, y: frame.maxY-1, width: frame.width, height: 0))
-            var shape = CAShapeLayer(layer: line)
-            var staticLine = CAShapeLayer()
+            let line = UIBezierPath(rect: CGRect(x: 0, y: frame.maxY-1, width: frame.width, height: 0))
+            _ = CAShapeLayer(layer: line)
+            let staticLine = CAShapeLayer()
             staticLine.path = line.CGPath
             staticLine.strokeColor = UIColor.greyLight().CGColor
             self.layer.addSublayer(staticLine)

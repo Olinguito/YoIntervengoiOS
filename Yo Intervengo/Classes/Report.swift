@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class Report: NSObject {
     var id:Int!
@@ -38,5 +39,5 @@ class Report: NSObject {
         location = CLLocationCoordinate2D()
         self.color = self.type == 1 ? UIColor.orangeYI() : UIColor.blurYI()
     }
-   
+    
 }

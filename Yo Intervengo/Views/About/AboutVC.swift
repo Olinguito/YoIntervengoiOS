@@ -24,8 +24,8 @@ class AboutVC: GenericViewController {
         scroll.multipleTouchEnabled = false
         self.view.addSubview(scroll)
         
-        var lblInfo = UILabel()
-        var text = "Reportar y solicitar una obra pública nunca fue tan fácil. Con Yo Intervengo puedes hacer un reporte de una falla en el alcantarillado, un hueco sobre la vía, la existencia de un elefante blanco o cualquier otro problema que afecte a tu comunidad. Yo Intervengo también te permitirá interactuar con tus vecinos y respaldar la solicitud de la construcción de una obra pública. ¡Empieza a reportar y respaldar con Yo Intervengo para hacer más visibles los problemas de tu comunidad! \r\n \r\n Este proyecto fue desarrollado con ♥ desde Bogotá - Colombia por: \r\n \r\n OLINGUITO \r\n \r\n Daniel Olano | Fullstack Dev \r\n Jorge Ovalle | Mobile Dev \r\n Roberto Sarmiento Jalkh | UX UI\r\n Daniel Suárez Pérez | Data Journalist \r\n \r\n"
+        let lblInfo = UILabel()
+        let text = "Reportar y solicitar una obra pública nunca fue tan fácil. Con Yo Intervengo puedes hacer un reporte de una falla en el alcantarillado, un hueco sobre la vía, la existencia de un elefante blanco o cualquier otro problema que afecte a tu comunidad. Yo Intervengo también te permitirá interactuar con tus vecinos y respaldar la solicitud de la construcción de una obra pública. ¡Empieza a reportar y respaldar con Yo Intervengo para hacer más visibles los problemas de tu comunidad! \r\n \r\n Este proyecto fue desarrollado con ♥ desde Bogotá - Colombia por: \r\n \r\n OLINGUITO \r\n \r\n Daniel Olano | Fullstack Dev \r\n Jorge Ovalle | Mobile Dev \r\n Roberto Sarmiento Jalkh | UX UI\r\n Daniel Suárez Pérez | Data Journalist \r\n \r\n"
         lblInfo.text = text
         lblInfo.textColor = UIColor.greyDark()
         lblInfo.font = UIFont(name: "RobotoSlab-Light", size: 15)

@@ -1,0 +1,6 @@
+framework module ESObjectPool {
+  umbrella header "ESObjectPool-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import pop
 
 @objc protocol LeftMenuDelegate{
     optional func goTo(index:Int)
@@ -23,14 +24,14 @@ class LeftMenu: UIView{
     var delegate:LeftMenuDelegate?
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor(red:0.200, green:0.200, blue:0.200, alpha: 0.95)
-        let spacer = 10
+        _ = 10
         btnRep  = UIButton(frame: CGRect(x: 20, y: 76, width: 120, height: 26))
         btnWiki = UIButton(frame: CGRect(x: 20, y: btnRep.frame.maxY+10, width: 120, height: 26))
         btnStat = UIButton(frame: CGRect(x: 20, y: btnWiki.frame.maxY+10, width: 120, height: 26))
@@ -70,23 +71,23 @@ class LeftMenu: UIView{
         btnProf.tag = 3333;
         btnSett.tag = 3334;
         
-        btnRep.addTarget(self,  action: "goBtn:", forControlEvents: UIControlEvents.TouchUpInside)
-        btnWiki.addTarget(self, action: "goBtn:", forControlEvents: UIControlEvents.TouchUpInside)
-        btnStat.addTarget(self, action: "goBtn:", forControlEvents: UIControlEvents.TouchUpInside)
-        btnProf.addTarget(self, action: "goBtn:", forControlEvents: UIControlEvents.TouchUpInside)
-        btnSett.addTarget(self, action: "goBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+        btnRep.addTarget(self,  action: #selector(LeftMenu.goBtn(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        btnWiki.addTarget(self, action: #selector(LeftMenu.goBtn(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        btnStat.addTarget(self, action: #selector(LeftMenu.goBtn(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        btnProf.addTarget(self, action: #selector(LeftMenu.goBtn(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        btnSett.addTarget(self, action: #selector(LeftMenu.goBtn(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.addSubview(btnRep)
         self.addSubview(btnWiki)
         /*self.addSubview(btnStat)
-        self.addSubview(btnProf)
-        self.addSubview(btnSett)*/
+         self.addSubview(btnProf)
+         self.addSubview(btnSett)*/
         
         opened = false
     }
     
     func interact(){
-        var spAn = POPBasicAnimation(propertyNamed:kPOPViewCenter)
+        let spAn = POPBasicAnimation(propertyNamed:kPOPViewCenter)
         spAn.timingFunction =  CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         if opened{
             spAn.toValue = NSValue(CGPoint: CGPointMake(-100, self.center.y))

@@ -13,7 +13,7 @@ class Panel: UIView {
     var report:UIButton!
     var like:UIButton!
     var dislike:UIButton!
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -43,7 +43,7 @@ class Panel: UIView {
         dislike.setImage(UIImage(named: "dislike_panel"), forState: UIControlState.Normal)
         
         var title:String = like.titleLabel?.text ?? "3333"
-        var vw:CGFloat = CGFloat(count(title))*10
+        var vw:CGFloat = CGFloat(title.characters.count)*10
         
         print(vw)
         like.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
@@ -51,20 +51,20 @@ class Panel: UIView {
         like.imageEdgeInsets = UIEdgeInsetsMake(0.0, 15 + vw, 0.0, 0.0)
         
         title = dislike.titleLabel?.text ?? "333"
-        vw = CGFloat(count(title))*10
-                print(vw)
+        vw = CGFloat(title.characters.count)*10
+        print(vw)
         dislike.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         dislike.titleEdgeInsets = UIEdgeInsetsMake(0.0, -11, 0.0, 0.0)
         dislike.imageEdgeInsets = UIEdgeInsetsMake(0.0, 15 + vw, 0.0, 0.0)
-
+        
         configure(share)
         configure(report)
         configure(like)
         configure(dislike)
         
         for(var i:CGFloat=1;i<=3;i++){
-            var line = UIBezierPath(rect: CGRect(x: i*w, y: 3, width: 0, height: 18))
-            var staticLine = CAShapeLayer()
+            let line = UIBezierPath(rect: CGRect(x: i*w, y: 3, width: 0, height: 18))
+            let staticLine = CAShapeLayer()
             staticLine.path = line.CGPath
             staticLine.strokeColor = UIColor.greyLight().CGColor
             self.layer.addSublayer(staticLine)

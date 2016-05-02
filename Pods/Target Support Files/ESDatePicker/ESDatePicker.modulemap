@@ -1,0 +1,6 @@
+framework module ESDatePicker {
+  umbrella header "ESDatePicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -14,23 +14,23 @@ extension UIImage {
     
     // MARK: - Flat colors
     class func getPin(type:Int, Category:Int) -> UIImage {
-        var bg = type == 1 ? UIImage(named: "Pin@2x")!:UIImage(named: "Pin2@2x")!
-        var logo = UIImage(named: "ic-0\(Category)@2x.png")!
+        let bg = type == 1 ? UIImage(named: "Pin@2x")!:UIImage(named: "Pin2@2x")!
+        let logo = UIImage(named: "ic-0\(Category)@2x.png")!
         UIGraphicsBeginImageContextWithOptions(bg.size, false, 2)
         bg.drawInRect(CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: bg.size.width, height: bg.size.height)))
         logo.drawInRect(CGRect(origin: CGPoint(x: (bg.size.width-logo.size.width)/2, y: 15), size: CGSize(width: 30, height: 30)))
-        var newImage = UIGraphicsGetImageFromCurrentImageContext()
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage
     }
     
     class func getPinByName(type:Int, Category:String) -> UIImage {
-        var bg = type == 1 ? UIImage(named: "Pin@2x")!:UIImage(named: "Pin2@2x")!
-        var logo = UIImage(named: "\(Category)@2x.png")!
+        let bg = type == 1 ? UIImage(named: "Pin@2x")!:UIImage(named: "Pin2@2x")!
+        let logo = UIImage(named: "\(Category)@2x.png")!
         UIGraphicsBeginImageContextWithOptions(bg.size, false, 2)
         bg.drawInRect(CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: bg.size.width, height: bg.size.height)))
         logo.drawInRect(CGRect(origin: CGPoint(x: (bg.size.width-logo.size.width)/2, y: 15), size: CGSize(width: 30, height: 30)))
-        var newImage = UIGraphicsGetImageFromCurrentImageContext()
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage
     }

@@ -22,19 +22,19 @@ class Info: UIView {
     
     init(index:Int, report:Report, color:UIColor, frame:CGRect) {
         super.init(frame:CGRectZero)
-        var wS:CGFloat = frame.width
+        let wS:CGFloat = frame.width
         self.report = report
         self.colorView = color
         tabBar = UIView(frame: CGRect(x: 0, y: 0, width: wS, height: max(139, frame.width-140)))
         tabBar.backgroundColor = UIColor.whiteColor()
         addSubview(tabBar)
         backgroundColor = UIColor(red:0.180, green:0.180, blue:0.180, alpha: 1)
-        var grad3 = Gradient(frame: CGRect(x: 0, y: self.tabBar.frame.height - 10, width: wS, height: 10), type: "Bottom")
+        let grad3 = Gradient(frame: CGRect(x: 0, y: self.tabBar.frame.height - 10, width: wS, height: 10), type: "Bottom")
         grad3.alpha = 0.2
         tabBar.addSubview(grad3)
         
-        var lblInfo = UILabel()
-        var text = report.desc
+        let lblInfo = UILabel()
+        let text = report.desc
         lblInfo.text = text
         lblInfo.textColor = UIColor.greyDark()
         lblInfo.font = UIFont(name: "RobotoSlab-Light", size: 15)
@@ -49,11 +49,11 @@ class Info: UIView {
         wikiBar.backgroundColor = UIColor.greyButtons()
         addSubview(wikiBar)
         
-        var butWiki = UIButton(frame: CGRect(x: lblInfo.frame.minX, y: 15, width: lblInfo.frame.width, height: 40))
+        let butWiki = UIButton(frame: CGRect(x: lblInfo.frame.minX, y: 15, width: lblInfo.frame.width, height: 40))
         butWiki.titleLabel?.numberOfLines = 0
         butWiki.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         
-        var myMutableString = NSMutableAttributedString(string: "Para lograr un mayor impacto asocia este reporte a un contrato. Enlazar a Wiki", attributes: [NSFontAttributeName:UIFont(name: "Roboto-LightItalic", size: 14.0)!])
+        let myMutableString = NSMutableAttributedString(string: "Para lograr un mayor impacto asocia este reporte a un contrato. Enlazar a Wiki", attributes: [NSFontAttributeName:UIFont(name: "Roboto-LightItalic", size: 14.0)!])
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greyDark(), range: NSRange(location:0,length:64))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: self.colorView, range: NSRange(location:64,length:14))
         

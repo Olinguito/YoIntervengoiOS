@@ -22,7 +22,7 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
     var collectionView:UICollectionView!
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     init(frame: CGRect, array:NSMutableArray) {
@@ -70,14 +70,14 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PicContainerCell", forIndexPath: indexPath) as! PicContainerCell
-        var pic = data.objectAtIndex(indexPath.row) as! Picture
+        let pic = data.objectAtIndex(indexPath.row) as! Picture
         cell.alpha = 0
         cell.layer.cornerRadius = 2
         cell.imageBtn.setImage(UIImage(named: "image-placeholder"), forState: UIControlState.Normal)
         cell.imageBtn.tag = pic.id
         if (pic.image == nil){
             dispatch_async(dispatch_get_global_queue(0, 0)) {
-                var url = "http://res.cloudinary.com/demo/image/fetch/w_104,h_104,c_fill,e_saturation:50,f_auto/" + pic.urlImage
+                let url = "http://res.cloudinary.com/demo/image/fetch/w_104,h_104,c_fill,e_saturation:50,f_auto/" + pic.urlImage
                 let image = UIImage(data: NSData(contentsOfURL: NSURL(string: url)!)!)
                 dispatch_async(dispatch_get_main_queue()) {
                     (self.data.objectAtIndex(indexPath.row) as! Picture).image = image
@@ -87,7 +87,7 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
         }else{
             cell.imageBtn.setImage(pic.image, forState: UIControlState.Normal)
         }
-        cell.imageBtn.addTarget(self, action: Selector("goPicture:"), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.imageBtn.addTarget(self, action: #selector(PicContainer.goPicture(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         return cell
     }
     
@@ -96,7 +96,7 @@ class PicContainer: UIView, UICollectionViewDelegateFlowLayout, UICollectionView
     }
     
     func followReport(sender:UIButton!){
-        var cell = collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as! publicWCell
+        let cell = collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as! publicWCell
         cell.follower.backgroundColor = UIColor.greyLight()
         cell.follower.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         cell.follower.tintColor = UIColor.whiteColor()

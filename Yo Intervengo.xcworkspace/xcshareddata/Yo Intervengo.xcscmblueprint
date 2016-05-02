@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DEC48909D15FF05C67EF587765709B4173809939",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DEC48909D15FF05C67EF587765709B4173809939" : 0,
+    "2CEAEAA908B469CE9CCCDB1039DB2B0AEEA5CDA4" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "42803C03-E6F5-4A9B-8B82-9FC832135DBC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DEC48909D15FF05C67EF587765709B4173809939" : "Yo%20Intervengo",
+    "2CEAEAA908B469CE9CCCDB1039DB2B0AEEA5CDA4" : "Yo%20Intervengo\/Yo%20Intervengo\/Helpers\/SQLiteDB"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Yo Intervengo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Yo Intervengo.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/FahimF\/SQLiteDB.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2CEAEAA908B469CE9CCCDB1039DB2B0AEEA5CDA4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/lojals\/yo-intervengo-ios-v2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DEC48909D15FF05C67EF587765709B4173809939"
+    }
+  ]
+}

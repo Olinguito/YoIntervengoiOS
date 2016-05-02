@@ -25,7 +25,7 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
     var lblHeader:UILabel!
     var btnLeft:UIButton!
     var btnRight:UIButton!
-    var reachability:Reachability!
+    //    var reachability:Reachability!
     
     var loaded:Bool!
     
@@ -36,7 +36,7 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         
         APIManagerClass = APIManager()
         APIManagerClass.delegate = self
-
+        
         alert = JOAlert(textNFrame: "", self.view.frame, true)
         alertInternet = JOAlert(textNFrame: "No tienes internet!", self.view.frame, false)
         
@@ -56,14 +56,14 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         
         btnLeft = UIButton(frame: CGRectMake(0, 20, 50, 44))
         btnLeft.setImage(UIImage(named: "btnBack"), forState: UIControlState.Normal)
-        btnLeft.addTarget(self, action: Selector("goBack:"), forControlEvents: UIControlEvents.TouchUpInside)
+        btnLeft.addTarget(self, action: #selector(GenericViewController.goBack(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         navBar.addSubview(btnLeft)
         
         showNavBar(false)
         
-        reachability = Reachability.reachabilityForInternetConnection()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: reachability)
-        reachability.startNotifier()
+        //        reachability = Reachability.reachabilityForInternetConnection()
+        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: ReachabilityChangedNotification, object: reachability)
+        //        reachability.startNotifier()
         
         loaded = false
         
@@ -80,7 +80,7 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
     }
     
     func goRoot(){
-        println("Going to root")
+        print("Going to root")
         self.viewDidAppear(false)
         self.navigationController?.popToRootViewControllerAnimated(false)
         alertInternet.dismissAlert()
@@ -91,23 +91,23 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
     }
     
     func reachabilityChanged(note: NSNotification) {
-        let reachability = note.object as! Reachability
-        if reachability.isReachable() {
-            println("Reachable")
-            if (self.navigationController != nil) {
-                var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("goRoot"), userInfo: nil, repeats: false)
-            }else{
-                alertInternet.dismissAlert()
-                self.viewDidLoad()
-            }
-        } else {
-            println("UnReachable")
-            //self.presentViewController(NoNetworkVC(), animated: false, completion: nil)
-            if !alertInternet.isDescendantOfView(self.view){
-                self.view.addSubview(alertInternet)
-            }
-            alertInternet.showAlert()
-        }
+        //        let reachability = note.object as! Reachability
+        //        if reachability.isReachable() {
+        //            print("Reachable")
+        //            if (self.navigationController != nil) {
+        //                var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("goRoot"), userInfo: nil, repeats: false)
+        //            }else{
+        //                alertInternet.dismissAlert()
+        //                self.viewDidLoad()
+        //            }
+        //        } else {
+        //            print("UnReachable")
+        //            //self.presentViewController(NoNetworkVC(), animated: false, completion: nil)
+        //            if !alertInternet.isDescendantOfView(self.view){
+        //                self.view.addSubview(alertInternet)
+        //            }
+        //            alertInternet.showAlert()
+        //        }
     }
     
     func showNavBar(value:Bool){
@@ -123,7 +123,7 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -136,15 +136,15 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         print(String(actView) + "y" + String(index))
         if actView != index {
             switch (index){
-                case 0:
-
-                        self.navigationController?.popToRootViewControllerAnimated(false)
-                case 1: var c  = AboutVC()
-
-                        self.navigationController?.pushViewController(c, animated: false)
-                case 2: print(3)
-                case 3: print(4)
-                default: print(5)
+            case 0:
+                
+                self.navigationController?.popToRootViewControllerAnimated(false)
+            case 1: let c  = AboutVC()
+            
+            self.navigationController?.pushViewController(c, animated: false)
+            case 2: print(3)
+            case 3: print(4)
+            default: print(5)
             }
             menuView.interact()
         }
@@ -159,4 +159,19 @@ class GenericViewController: UIViewController,APIManagerDelegate,LeftMenuDelegat
         label.sizeToFit()
         return label.frame.height
     }
+    
+    
+    
+    
+    
+    func percentageDownloaded(dataDownloaded:Double){}
+    func loadedImage(imageLoaded:UIImage){}
+    func loaded(checker:Bool,msg:NSString,tokenR:NSString){}
+    func returnResponse(msg:String,response:AnyObject){}
+    func returnList(responseObject:AnyObject, url:String){}
+    func returnObt(responseObject:AnyObject, url:String){}
+    func returnBool(response:Bool){}
+    func returnError(url:String){}
+    
+    
 }

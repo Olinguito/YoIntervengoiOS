@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class FilterMasterVC: UITableViewController,UITableViewDelegate,APIManagerDelegate {
+class FilterMasterVC: UITableViewController,APIManagerDelegate {
     var APIManagerClass:APIManager!
     var filters = [JSON]()
     
@@ -25,7 +26,7 @@ class FilterMasterVC: UITableViewController,UITableViewDelegate,APIManagerDelega
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var detail = FilterDetailVC()
+        let detail = FilterDetailVC()
         var jsonObj = filters[indexPath.row]
         detail.options = jsonObj["data"].array!
         print(detail.options)
@@ -40,8 +41,9 @@ class FilterMasterVC: UITableViewController,UITableViewDelegate,APIManagerDelega
         }
     }
     
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "")
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "")
         var jsonObj = filters[indexPath.row]
         cell.textLabel?.text = jsonObj["name"].string
         cell.textLabel?.font = UIFont(name: "Roboto-Light", size: 20)
@@ -51,7 +53,7 @@ class FilterMasterVC: UITableViewController,UITableViewDelegate,APIManagerDelega
         return cell
     }
     
-   
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filters.count
@@ -62,8 +64,14 @@ class FilterMasterVC: UITableViewController,UITableViewDelegate,APIManagerDelega
     }
     
     /*override func tableView(tableView: UITableView, accessoryTypeForRowWithIndexPath indexPath: NSIndexPath!) -> UITableViewCellAccessoryType {
-        UITableViewCellAccessoryType.DisclosureIndicator
-    }*/
-    
+     UITableViewCellAccessoryType.DisclosureIndicator
+     }*/
+    func percentageDownloaded(dataDownloaded:Double){}
+    func loadedImage(imageLoaded:UIImage){}
+    func loaded(checker:Bool,msg:NSString,tokenR:NSString){}
+    func returnResponse(msg:String,response:AnyObject){}
+    func returnList(responseObject:AnyObject, url:String){}
+    func returnBool(response:Bool){}
+    func returnError(url:String){}
     
 }

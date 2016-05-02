@@ -20,7 +20,7 @@ class SignIn: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var myMutableString = NSMutableAttributedString(string: "¡OOPS! OLIVIDÉ MI CONTRASEÑA", attributes: [NSFontAttributeName:UIFont(name: "Roboto-Light", size: 12.5)!])
+        let myMutableString = NSMutableAttributedString(string: "¡OOPS! OLIVIDÉ MI CONTRASEÑA", attributes: [NSFontAttributeName:UIFont(name: "Roboto-Light", size: 12.5)!])
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greyDark(), range: NSRange(location:0,length:18))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orangeYI(), range: NSRange(location:18,length:10))
         
@@ -30,7 +30,7 @@ class SignIn: UIViewController {
         btnLogin.layer.cornerRadius = 5
         btnLogin.titleLabel?.font = UIFont(name: "Roboto-Light", size: 16)
         
-        singleTap = UITapGestureRecognizer(target: self, action: Selector("singleTap:"))
+        singleTap = UITapGestureRecognizer(target: self, action: #selector(SignIn.singleTap(_:)))
         self.view.addGestureRecognizer(singleTap)
         bg.addGestureRecognizer(singleTap)
     }

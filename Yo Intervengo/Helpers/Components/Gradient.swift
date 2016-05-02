@@ -17,25 +17,26 @@ class Gradient: UIView{
     let colorBottom = UIColor(red:0.000, green:0.000, blue:0.000, alpha: 0.0).CGColor
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
+    
     init(frame: CGRect, type: String = "Top") {
         super.init(frame: frame)
         let mapGrad = CAGradientLayer()
         mapGrad.colors = ((type == "Top") ? [colorTop,colorBottom] : [colorBottom,colorTop])
         mapGrad.locations = [0,1]
-
+        
         switch type{
-            case "Left":
-                mapGrad.colors = [colorTop,colorBottom]
-                mapGrad.startPoint = CGPointMake(0.0, 0.5)
-                mapGrad.endPoint = CGPointMake(1.0, 0.5)
-            case "Right":
-                mapGrad.colors = [colorBottom,colorTop]
-                mapGrad.startPoint = CGPointMake(0.0, 0.5)
-                mapGrad.endPoint = CGPointMake(1.0, 0.5)
-            default:
-                mapGrad.colors = ((type == "Top") ? [colorTop,colorBottom] : [colorBottom,colorTop])
+        case "Left":
+            mapGrad.colors = [colorTop,colorBottom]
+            mapGrad.startPoint = CGPointMake(0.0, 0.5)
+            mapGrad.endPoint = CGPointMake(1.0, 0.5)
+        case "Right":
+            mapGrad.colors = [colorBottom,colorTop]
+            mapGrad.startPoint = CGPointMake(0.0, 0.5)
+            mapGrad.endPoint = CGPointMake(1.0, 0.5)
+        default:
+            mapGrad.colors = ((type == "Top") ? [colorTop,colorBottom] : [colorBottom,colorTop])
         }
         
         

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import pop
 
-class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePickerDelegate {
-
+class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate/*,ESDatePickerDelegate*/ {
+    
     var step = 0
     let blurEffect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
     var btnClose:UIButton!
@@ -20,7 +21,7 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     var this:JOSideBarMenu!
     var this2:JOCentralMenu!
     var placeholder:NSAttributedString!
-    var datePicker:ESDatePicker!
+    //    var datePicker:ESDatePicker!
     
     var str1:String!
     var str2:String!
@@ -52,21 +53,21 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         btnClose = UIButton(frame: bttnClose.frame)
         btnClose.center = bttnClose.center
         btnClose.setImage(UIImage(named: "mas"), forState: UIControlState.Normal)
-        btnClose.addTarget(self, action: Selector("close"), forControlEvents: UIControlEvents.TouchUpInside)
+        btnClose.addTarget(self, action: #selector(CreateReport.close), forControlEvents: UIControlEvents.TouchUpInside)
         
         let bg = UIView(frame: self.frame)
         bg.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         self.addSubview(bg)
         
         blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        //        blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
         blurView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         blurView.alpha = 1
-        var lay = CALayer()
+        let lay = CALayer()
         lay.frame = frame
         lay.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.1).CGColor
         blurView.layer.insertSublayer(lay, atIndex: 0)
-    
+        
         self.addSubview(blurView)
         self.addSubview(btnClose)
         showMenu(1, atPoint: CGPointZero)
@@ -76,38 +77,38 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         card.setAsNew()
         self.addSubview(card)
         
-        datePicker =  ESDatePicker(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
-        datePicker.alpha = 0
-        datePicker.delegate = self
+        //        datePicker =  ESDatePicker(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
+        //        datePicker.alpha = 0
+        //        datePicker.delegate = self
         
         container = UIView(frame: CGRect(x: 0, y: 100, width: 320, height: 270))
         createForm()
-        singleTap = UITapGestureRecognizer(target: self, action: Selector("singleTap:"))
+        singleTap = UITapGestureRecognizer(target: self, action: #selector(CreateReport.singleTap(_:)))
     }
     
     func showMenu(step:Int, atPoint point:CGPoint){
         switch (step){
         case 1:
-            var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+            let an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
             an.toValue = -0.75
             an.springBounciness = 10
             btnClose.layer.pop_addAnimation(an, forKey: "Rotate")
             
-            var an2 = POPSpringAnimation(propertyNamed: kPOPViewSize)
+            let an2 = POPSpringAnimation(propertyNamed: kPOPViewSize)
             an2.toValue = NSValue(CGSize: CGSize(width: 50, height: 50))
             an2.springBounciness = 10
             btnClose.layer.pop_addAnimation(an2, forKey: "size")
             
-            this = JOSideBarMenu(frame: CGRectMake(0, 0, 320, min(350, self.frame.height - (100 + btnClose.frame.height)))  , data: sideData)
-            this.frame.origin = CGPoint(x: 0, y: (frame.height - btnClose.frame.height)-this.frame.height)
-            this.delegate = self
-            self.addSubview(this)
+            //            this = JOSideBarMenu(frame: CGRectMake(0, 0, 320, min(350, self.frame.height - (100 + btnClose.frame.height)))  , data: sideData)
+            //            this.frame.origin = CGPoint(x: 0, y: (frame.height - btnClose.frame.height)-this.frame.height)
+            //            this.delegate = self
+        //            self.addSubview(this)
         case 2:
             self.addSubview(container)
             container.center = self.center
             blurView.addGestureRecognizer(singleTap)
-        case 3: println(2)
-        default: println("Default")
+        case 3: print(2)
+        default: print("Default")
         }
     }
     
@@ -125,9 +126,9 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         date.setTitleColor(UIColor.addThemeContrast(), forState: UIControlState.Normal)
         date.layer.borderColor = UIColor.addThemeContrast().CGColor
         date.layer.borderWidth = 1.0
-        date.addTarget(self, action: Selector("addDatePicker:"), forControlEvents: UIControlEvents.TouchUpInside)
+        date.addTarget(self, action: #selector(CreateReport.addDatePicker(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         container.addSubview(date)
-        datePicker.frame = date.frame
+        //        datePicker.frame = date.frame
         
         textUrl = UITextField(frame: CGRect(x: -1, y: date.frame.maxY, width: 322, height: 49))
         placeholder = NSAttributedString(string: "Pegar URL", attributes: [NSForegroundColorAttributeName : UIColor.addThemeContrast()])
@@ -188,9 +189,9 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         placeholder = NSAttributedString(string: textField.placeholder!, attributes: [NSForegroundColorAttributeName : UIColor.addThemeContrast()])
         textField.attributedPlaceholder = placeholder
         switch(textField.tag){
-            case (2): card.title.setTitle(textSource.text, forState: UIControlState.Normal)
-            case (3): card.subtitle.text = textTitle.text
-            default: print("")
+        case (2): card.title.setTitle(textSource.text, forState: UIControlState.Normal)
+        case (3): card.subtitle.text = textTitle.text
+        default: print("")
         }
     }
     
@@ -201,52 +202,52 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
     }
     
     func addDatePicker(sender:UIButton!){
-        datePicker.show()
-        datePicker.frame = CGRect(x: 0, y: 100, width: 320, height: 300)
-        self.addSubview(datePicker)
-        var animDate2 = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
-        animDate2.toValue = 1
-        datePicker.pop_addAnimation(animDate2, forKey: "DateAlpha")
-        
-        var animDate = POPSpringAnimation(propertyNamed: kPOPViewFrame)
-        animDate.fromValue = NSValue(CGRect: date.frame)
-        animDate.toValue = NSValue(CGRect: CGRect(x: 0, y: 100, width: 320, height: 300))
-        datePicker.pop_addAnimation(animDate, forKey: "Dateanim")
-        textSource.resignFirstResponder()
-        textTitle.resignFirstResponder()
-        textUrl.resignFirstResponder()
+        //        datePicker.show()
+        //        datePicker.frame = CGRect(x: 0, y: 100, width: 320, height: 300)
+        //        self.addSubview(datePicker)
+        //        let animDate2 = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
+        //        animDate2.toValue = 1
+        //        datePicker.pop_addAnimation(animDate2, forKey: "DateAlpha")
+        //        
+        //        let animDate = POPSpringAnimation(propertyNamed: kPOPViewFrame)
+        //        animDate.fromValue = NSValue(CGRect: date.frame)
+        //        animDate.toValue = NSValue(CGRect: CGRect(x: 0, y: 100, width: 320, height: 300))
+        //        datePicker.pop_addAnimation(animDate, forKey: "Dateanim")
+        //        textSource.resignFirstResponder()
+        //        textTitle.resignFirstResponder()
+        //        textUrl.resignFirstResponder()
     }
     
     // DATEPICKER DELEGATE
-    func datePicker(datePicker: ESDatePicker!, dateSelected date: NSDate!) {
-        textSource.resignFirstResponder()
-        textTitle.resignFirstResponder()
-        textUrl.resignFirstResponder()
-        var format = NSDateFormatter()
-        format.dateFormat = "MMM dd, yyyy"
-        card.setDates(format.stringFromDate(date))
-        self.date.setTitle(format.stringFromDate(date), forState: UIControlState.Normal)
-        closeDatePicker()
-    }
+    //    func datePicker(datePicker: ESDatePicker!, dateSelected date: NSDate!) {
+    //        textSource.resignFirstResponder()
+    //        textTitle.resignFirstResponder()
+    //        textUrl.resignFirstResponder()
+    //        let format = NSDateFormatter()
+    //        format.dateFormat = "MMM dd, yyyy"
+    //        card.setDates(format.stringFromDate(date))
+    //        self.date.setTitle(format.stringFromDate(date), forState: UIControlState.Normal)
+    //        closeDatePicker()
+    //    }
     
     func closeDatePicker(){
-        var animDate = POPSpringAnimation(propertyNamed: kPOPViewFrame)
-        animDate.fromValue = NSValue(CGRect: CGRect(x: 0, y: 100, width: 320, height: 300))
-        animDate.toValue = NSValue(CGRect: self.date.frame)
-        datePicker.pop_addAnimation(animDate, forKey: "Dateanim2")
-        var animDate2 = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
-        animDate2.toValue = 0
-        animDate2.completionBlock = {(Bool)  in
-            self.datePicker.removeFromSuperview()
-        }
-        datePicker.pop_addAnimation(animDate2, forKey: "DateAlpha")
+        //        let animDate = POPSpringAnimation(propertyNamed: kPOPViewFrame)
+        //        animDate.fromValue = NSValue(CGRect: CGRect(x: 0, y: 100, width: 320, height: 300))
+        //        animDate.toValue = NSValue(CGRect: self.date.frame)
+        //        datePicker.pop_addAnimation(animDate, forKey: "Dateanim2")
+        //        let animDate2 = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
+        //        animDate2.toValue = 0
+        //        animDate2.completionBlock = {(Bool)  in
+        //            self.datePicker.removeFromSuperview()
+        //        }
+        //        datePicker.pop_addAnimation(animDate2, forKey: "DateAlpha")
     }
     
     // SIDE BAR DELEGATE
     
     func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String, id:Int){
         sideBar.closeSideView()
-
+        
         var dic:Dictionary<String, String> = (sideData.objectAtIndex(button.tag) as! Dictionary)
         card.setIcon(UIImage(named: dic["BG"]!)!)
         
@@ -254,15 +255,15 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         btnCategoty.center = btnClose.center
         btnCategoty.setBackgroundImage(button.image, forState: UIControlState.Normal)
         btnCategoty.tag = button.tag
-        btnCategoty.addTarget(self, action: Selector("goBack:"), forControlEvents: UIControlEvents.TouchUpInside)
+        btnCategoty.addTarget(self, action: #selector(CreateReport.goBack(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(btnCategoty)
         
-        var pop = POPSpringAnimation(propertyNamed: kPOPViewCenter)
+        let pop = POPSpringAnimation(propertyNamed: kPOPViewCenter)
         pop.toValue = NSValue(CGPoint: CGPoint(x: btnClose.frame.minX - 40, y: btnClose.center.y))
-        var t = Int(btnCategoty.frame.origin.x) - 265
+        let t = Int(btnCategoty.frame.origin.x) - 265
         lblIndicator = UILabel(frame: CGRect(x: t, y: (Int(btnCategoty.center.y) - 20), width: 200, height: 40))
         
-        var pot = POPSpringAnimation(propertyNamed: kPOPViewCenter)
+        let pot = POPSpringAnimation(propertyNamed: kPOPViewCenter)
         pot.toValue = NSValue(CGPoint: CGPoint(x: btnClose.frame.minX-20, y: btnClose.center.y))
         btnCategoty.pop_addAnimation(pot, forKey: "TEST")
         
@@ -277,29 +278,29 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         lblIndicator.font = UIFont(name: "Roboto-Regular", size: 15)
         self.addSubview(lblIndicator)
         
-        var pop2 = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        let pop2 = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
         pop2.duration = 2
         pop2.toValue = 1
         lblIndicator.pop_addAnimation(pop2, forKey: "Test2")
-
+        
         showMenu(2, atPoint: CGPointZero)
     }
     
     func singleTap(gesture:UITapGestureRecognizer){
-        if datePicker.isDescendantOfView(self){
-            closeDatePicker()
-        }
-        textSource.resignFirstResponder()
-        textTitle.resignFirstResponder()
-        textUrl.resignFirstResponder()
+        //        if datePicker.isDescendantOfView(self){
+        //            closeDatePicker()
+        //        }
+        //        textSource.resignFirstResponder()
+        //        textTitle.resignFirstResponder()
+        //        textUrl.resignFirstResponder()
     }
-
+    
     func close(){
-        var an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
+        let an = POPSpringAnimation(propertyNamed: kPOPLayerRotation)
         an.toValue = 0
         an.springBounciness = 10
         btnClose.layer.pop_addAnimation(an, forKey: "Rotate")
-        var an2 = POPSpringAnimation(propertyNamed: kPOPViewSize)
+        let an2 = POPSpringAnimation(propertyNamed: kPOPViewSize)
         an2.toValue = NSValue(CGSize: CGSize(width: 71, height: 70))
         an2.springBounciness = 10
         btnClose.layer.pop_addAnimation(an2, forKey: "size")
@@ -318,9 +319,9 @@ class CreateReport: UIView,JOSideBarMenuDelegate,UITextFieldDelegate,ESDatePicke
         btnCategoty.removeFromSuperview()
         lblIndicator.removeFromSuperview()
         container.removeFromSuperview()
-        if datePicker.isDescendantOfView(self){
-            closeDatePicker()
-        }
+        //        if datePicker.isDescendantOfView(self){
+        //            closeDatePicker()
+        //        }
         blurView.removeGestureRecognizer(singleTap)
     }
     

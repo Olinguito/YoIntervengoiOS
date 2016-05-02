@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import pop
 
 class Loader: UIView {
     var activityIndicatorView:DGActivityIndicatorView!
-
+    
     init(frame: CGRect, c1:UIColor, c2:UIColor) {
         super.init(frame: frame)
         self.backgroundColor = c1
@@ -31,11 +32,11 @@ class Loader: UIView {
     
     func dismissAnimate()
     {
-        var dismissAnimation = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
+        let dismissAnimation = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
         dismissAnimation.toValue = 0
         self.pop_addAnimation(dismissAnimation, forKey: "dismiss")
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

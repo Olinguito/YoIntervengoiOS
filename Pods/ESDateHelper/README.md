@@ -1,15 +1,16 @@
 # ESDateHelper
 
 [![Build](https://travis-ci.org/e-sites/ESDateHelper.svg)](https://travis-ci.org/e-sites/ESDateHelper)
+[![Coverage Status](https://coveralls.io/repos/e-sites/ESDateHelper/badge.svg?branch=master&service=github&cacheBuster=123)](https://coveralls.io/github/e-sites/ESDateHelper?branch=master)
 [![Platform](https://cocoapod-badges.herokuapp.com/p/ESDateHelper/badge.png)](http://cocoadocs.org/docsets/ESDateHelper)
 [![Version](https://cocoapod-badges.herokuapp.com/v/ESDateHelper/badge.png)](http://cocoadocs.org/docsets/ESDateHelper)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 Helper category for making the usage of NSDates easier
 
 ## Class methods
 ```objective-c
 + (BOOL)is24HourNotation;
++ (BOOL)isTimeInPast:(NSString *)time;
 ```
 
 # NSDate category
@@ -84,4 +85,43 @@ Helper category for making the usage of NSDates easier
 - (NSInteger)weeksFromDate:(NSDate *)date;
 
 - (BOOL)isBetweenDates:(NSDate *)beginDate andDate:(NSDate *)endDate;
+```
+
+# ESDateRange class
+
+## Class methods
+
+```objective-c
+
++ (notnull instancetype)infiniteRange;
++ (notnull instancetype)rangeFromDate:(nullable NSDate *)from toDate:(nullable NSDate *)to;
++ (notnull instancetype)rangeFromDate:(nullable NSDate *)date;
++ (notnull instancetype)rangeToDate:(nullable NSDate *)date;
+```
+
+## Instance methods
+
+```objective-c
+- (notnull instancetype)initWithFromDate:(nullable NSDate *)fromDate toDate:(nullable NSDate *)toDate;
+- (notnull instancetype)initWithFromDate:(nullable NSDate *)fromDate;
+- (notnull instancetype)initWithToDate:(nullable NSDate *)toDate;
+
+- (BOOL)containsDate:(notnull NSDate *)date;
+
+- (void)shiftWithSeconds:(NSInteger)seconds;
+- (void)shiftWithMinutes:(NSInteger)minutes;
+- (void)shiftWithHours:(NSInteger)hours;
+- (void)shiftWithDays:(NSInteger)days;
+- (void)shiftWithWeeks:(NSInteger)weeks;
+- (void)shiftWithMonths:(NSInteger)months;
+- (void)shiftWithYears:(NSInteger)years;
+- (void)shiftWithEras:(NSInteger)eras;
+- (void)shiftWithComponents:(notnull NSDateComponentsBlock)componentsBlock;
+```
+
+## Properties
+
+```objective-c
+@property (nullable, nonatomic, strong) NSDate *fromDate;
+@property (nullable, nonatomic, strong) NSDate *toDate;
 ```

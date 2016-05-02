@@ -24,8 +24,8 @@ class SignUpVC: UIViewController {
         super.viewDidLoad()
         btnSendReg.layer.cornerRadius = 5
         btnSendReg.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 16)
-        singleTap = UITapGestureRecognizer(target: self, action: Selector("singleTap:"))
-        singleTap2 = UITapGestureRecognizer(target: self, action: Selector("singleTap:"))
+        singleTap = UITapGestureRecognizer(target: self, action: #selector(SignUpVC.singleTap(_:)))
+        singleTap2 = UITapGestureRecognizer(target: self, action: #selector(SignUpVC.singleTap(_:)))
         self.view.addGestureRecognizer(singleTap)
         bg.addGestureRecognizer(singleTap2)
     }

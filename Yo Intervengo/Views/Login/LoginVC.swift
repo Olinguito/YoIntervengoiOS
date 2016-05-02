@@ -22,20 +22,20 @@ class LoginVC: UIViewController {
         btnSignUp.titleLabel?.font = UIFont(name: "Roboto-Light", size: 12.5)
         
         
-        var myMutableString = NSMutableAttributedString(string: "¿Ya posees una cuenta? Inicia sesión", attributes: [NSFontAttributeName:UIFont(name: "Roboto-Light", size: 12.5)!])
+        let myMutableString = NSMutableAttributedString(string: "¿Ya posees una cuenta? Inicia sesión", attributes: [NSFontAttributeName:UIFont(name: "Roboto-Light", size: 12.5)!])
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.greyDark(), range: NSRange(location:0,length:23))
         myMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.orangeYI(), range: NSRange(location:23,length:13))
         
         btnSignIn.titleLabel?.textAlignment = NSTextAlignment.Center
         btnSignIn.setAttributedTitle(myMutableString, forState: .Normal)
-
-        var maxY = btnSignIn.frame.maxY
-        var h = self.view.frame.height
+        
+        _ = btnSignIn.frame.maxY
+        _ = self.view.frame.height
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
 }

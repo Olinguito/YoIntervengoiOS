@@ -24,11 +24,11 @@ extension UIColor {
     
     func bd_hexFromColor() -> String
     {
-        var components = self.bd_componentsFromColor()
+        let components = self.bd_componentsFromColor()
         // convert into integer
-        var r: Int = Int(255.0 * components.red)
-        var g: Int = Int(255.0 * components.green)
-        var b: Int = Int(255.0 * components.blue)
+        let r: Int = Int(255.0 * components.red)
+        let g: Int = Int(255.0 * components.green)
+        let b: Int = Int(255.0 * components.blue)
         return String(NSString(format: "%02x%02x%02x", r, g, b))
     }
     
@@ -43,6 +43,6 @@ extension UIColor {
         
     }
     
-
+    
     
 }

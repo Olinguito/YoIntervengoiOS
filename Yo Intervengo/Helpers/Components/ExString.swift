@@ -11,9 +11,9 @@ import UIKit
 
 extension String {
     static func getDate(dateintro:String) -> String {
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd'T'hh:mm:ss.SSS'Z'"
-        var date = dateFormatter.dateFromString(dateintro)
+        let date = dateFormatter.dateFromString(dateintro)
         dateFormatter.dateFormat = "dd-MM-YYYY"
         return dateFormatter.stringFromDate(date!)
     }

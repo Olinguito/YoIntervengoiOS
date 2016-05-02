@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class Links: UIView {
     var data:JSON!
@@ -18,11 +19,11 @@ class Links: UIView {
         super.init(frame:CGRectZero)
         self.data = data
         backgroundColor = UIColor.whiteColor()
-
-        var counter = data[0]["links"].count
-//        print(data[0]["links"][0])
-        for (var i=0; i<counter; i++){
-            var link = LinkComponent(type: 1,frame:CGRectMake(0, 0, frame.width, 106))
+        
+        let counter = data[0]["links"].count
+        //        print(data[0]["links"][0])
+        for i in 0 ..< counter{
+            let link = LinkComponent(type: 1,frame:CGRectMake(0, 0, frame.width, 106))
             link.frame.origin = CGPoint(x: 0, y: 106*i)
             link.iconLink.image = UIImage.getLinkImage(data[0]["links"][i]["type"].intValue)
             link.date.text = String.getDate(data[0]["links"][i]["date"].string!)

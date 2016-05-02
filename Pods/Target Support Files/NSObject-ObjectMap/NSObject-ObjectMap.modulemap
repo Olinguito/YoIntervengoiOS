@@ -1,0 +1,6 @@
+framework module NSObject_ObjectMap {
+  umbrella header "NSObject-ObjectMap-umbrella.h"
+
+  export *
+  module * { export * }
+}

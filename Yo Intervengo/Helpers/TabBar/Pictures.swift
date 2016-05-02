@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class Pictures: UIView, PicContainerDelegate {
     var picCont:PicContainer!
@@ -16,7 +17,7 @@ class Pictures: UIView, PicContainerDelegate {
     var ms:NSMutableArray!
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     init(index:Int, frame:CGRect, ini:CGFloat, data:JSON) {
@@ -26,8 +27,8 @@ class Pictures: UIView, PicContainerDelegate {
         ms = NSMutableArray()
         self.backgroundColor = UIColor.whiteColor()
         
-        for (index,picture) in enumerate(self.data[0]["pictures"]){
-            var pic = Picture()
+        for (index,picture) in (self.data[0]["pictures"]).enumerate(){
+            let pic = Picture()
             pic.id = index
             pic.urlImage = picture.1["url"].string
             pic.desc = String.getDate(picture.1["date"].string!)
@@ -45,10 +46,10 @@ class Pictures: UIView, PicContainerDelegate {
     }
     
     func picTapped(index: UIButton) {
-        var modelsM = NSMutableArray(capacity: ms.count)
-        for (var i = 0; i<ms.count; i++){
-            var pbModel = PhotoModel()
-            var pic = ms.objectAtIndex(i) as! Picture
+        let modelsM = NSMutableArray(capacity: ms.count)
+        for i in 0 ..< ms.count{
+            let pbModel = PhotoModel()
+            let pic = ms.objectAtIndex(i) as! Picture
             pbModel.mid   = i+1
             pbModel.title = pic.title
             pbModel.desc  = pic.desc

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import pop
 
 @objc protocol JOCentralMenuDelegate{
     optional func buttoTapped(button:UIButton!,withCentralBar sideBar:JOCentralMenu)
@@ -53,12 +54,12 @@ class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
         
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 1.0)
-        cell.btnSubCat.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.btnSubCat.addTarget(self, action: #selector(JOCentralMenu.goSubCategory(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.lblSubCat.text = (data.objectAtIndex(indexPath.row) as! Category).name
         cell.lblSubCat.textColor = UIColor.addThemeContrast()
         cell.alpha = 0
         cell.type = self.type
-        cell.btnSubCat.tag = (data.objectAtIndex(indexPath.row) as! Category).id
+        cell.btnSubCat.tag = Int((data.objectAtIndex(indexPath.row) as! Category).id!)
         return cell
     }
     
@@ -74,8 +75,8 @@ class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath){
-        var s = CGFloat((90.0*M_PI)/180)
-        var rotation = CATransform3DMakeRotation(s, 0.0, 0.7, 0.4)
+        let s = CGFloat((90.0*M_PI)/180)
+        _ = CATransform3DMakeRotation(s, 0.0, 0.7, 0.4)
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 0.5)
         UIView.beginAnimations("rotation", context: nil)
@@ -86,7 +87,7 @@ class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
     }
     
     func closeSideView(){
-        var pop = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
+        let pop = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
         pop.toValue = 0
         self.pop_addAnimation(pop, forKey: "Animation")
         removeFromSuperview()

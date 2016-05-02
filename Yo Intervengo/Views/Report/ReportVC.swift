@@ -30,9 +30,9 @@ class ReportVC: GenericViewController {
         configure(btn2)
         configure(btn3)
 
-        btn1.addTarget(self, action: Selector("setValue:"), forControlEvents: UIControlEvents.TouchUpInside)
-        btn2.addTarget(self, action: Selector("setValue:"), forControlEvents: UIControlEvents.TouchUpInside)
-        btn3.addTarget(self, action: Selector("setValue:"), forControlEvents: UIControlEvents.TouchUpInside)
+        btn1.addTarget(self, action: #selector(ReportVC.setValue(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        btn2.addTarget(self, action: #selector(ReportVC.setValue(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        btn3.addTarget(self, action: #selector(ReportVC.setValue(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
         lblHeader.text = "Denuncia"
 

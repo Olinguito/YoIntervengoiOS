@@ -12,7 +12,7 @@ import UIKit
 extension CATransition {
     
     class func viewTransition() -> CATransition {
-        var transition = CATransition()
+        let transition = CATransition()
         transition.duration = 0.4
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         transition.type = kCATransitionFade

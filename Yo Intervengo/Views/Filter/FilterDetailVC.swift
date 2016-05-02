@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class FilterDetailVC: UITableViewController,UIGestureRecognizerDelegate {
     var options = [JSON]()
@@ -14,9 +15,9 @@ class FilterDetailVC: UITableViewController,UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.clearColor()
-        self.navigationController?.interactivePopGestureRecognizer.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer!.delegate = self
         
-        let backButton = UIBarButtonItem(title: "  Atrás", style: UIBarButtonItemStyle.Plain, target: self, action: "goBack")
+        let backButton = UIBarButtonItem(title: "  Atrás", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(FilterDetailVC.goBack))
         backButton.tintColor = UIColor.orangeYI()
         navigationItem.leftBarButtonItem = backButton
         navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Roboto-Regular", size: 16)!], forState: UIControlState.Normal)
@@ -42,7 +43,7 @@ class FilterDetailVC: UITableViewController,UIGestureRecognizerDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "")
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "")
         var jsonObj = options[indexPath.row]
         cell.textLabel?.text = jsonObj["name"].string
         cell.textLabel?.font = UIFont(name: "Roboto-Light", size: 20)

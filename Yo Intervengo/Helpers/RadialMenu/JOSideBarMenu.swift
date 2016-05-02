@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import pop
 
 @objc protocol JOSideBarMenuDelegate{
     optional func buttoTapped(button:UIImageView!,withSideBar sideBar:JOSideBarMenu,label:String, id:Int)
@@ -15,10 +16,10 @@ import UIKit
 
 class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
     var collectionView:UICollectionView!
-    var data:NSMutableArray!
+    var data:[AnyObject]?
     var delegate:JOSideBarMenuDelegate?
     
-    init(frame: CGRect, data: NSMutableArray?) {
+    init(frame: CGRect, data: [AnyObject]?) {
         super.init(frame: frame)
         self.data = data
         self.layer.masksToBounds = true
@@ -32,12 +33,12 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.clearColor()
-        collectionView.scrollToItemAtIndexPath(NSIndexPath(forRow: 4, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: true)
+        //        collectionView.scrollToItemAtIndexPath(NSIndexPath(forRow: 4, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: true)
         
         collectionView.registerNib(UINib(nibName: "CategoryCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCell")
         self.addSubview(collectionView)
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -46,28 +47,28 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     //COLLECTION VIEW DELEGATE
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return data!.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCollViewCell
         cell.btnCategory.tag = indexPath.row
         cell.imgCategory.tag = indexPath.row
-        cell.btnCategory.setTitle(((data.objectAtIndex(indexPath.row))["ID"]) as? String, forState: UIControlState.Normal)
+        cell.btnCategory.setTitle(((data![indexPath.row] as! Category).slug), forState: UIControlState.Normal)
         cell.btnCategory.setTitleColor(UIColor.clearColor(), forState: UIControlState.Normal)
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         //cell.layer.shadowOffset = CGSizeMake(0, 1.0)
-        cell.lblTitle.text = ((data.objectAtIndex(indexPath.row))["NAME"]) as? String
+        cell.lblTitle.text = ((data![indexPath.row] as! Category).name)
         cell.lblTitle.textColor = UIColor.addThemeContrast()
-        cell.imgCategory.image = UIImage(named: ((data.objectAtIndex(indexPath.row))["ICON"]) as! String!)
-        cell.btnCategory.addTarget(self, action: Selector("goSubCategory:"), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.imgCategory.image = UIImage(named: ((data![indexPath.row] as! Category).icon)!)
+        cell.btnCategory.addTarget(self, action: #selector(JOSideBarMenu.goSubCategory(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.alpha = 0
         return cell
     }
     
     func goSubCategory(sender:UIButton!){
-        var a:CategoryCollViewCell = self.collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as! CategoryCollViewCell
-        self.delegate?.buttoTapped!(a.imgCategory, withSideBar: self,label: a.lblTitle.text!, id:sender.titleLabel?.text?.toInt() ?? 1)
+        let a:CategoryCollViewCell = self.collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as! CategoryCollViewCell
+        self.delegate?.buttoTapped!(a.imgCategory, withSideBar: self,label: a.lblTitle.text!, id: Int((sender.titleLabel?.text)!) ?? 1)
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
@@ -78,8 +79,8 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath){
-        var s = CGFloat((90.0*M_PI)/180)
-        var rotation = CATransform3DMakeRotation(s, 0.0, 0.7, 0.4)
+        let s = CGFloat((90.0*M_PI)/180)
+        _ = CATransform3DMakeRotation(s, 0.0, 0.7, 0.4)
         cell.layer.shadowColor = UIColor.blackColor().CGColor
         cell.layer.shadowOffset = CGSizeMake(0, 0.5)
         UIView.beginAnimations("rotation", context: nil)
@@ -90,7 +91,7 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     }
     
     func closeSideView(){
-        var pop = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
+        let pop     = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
         pop.toValue = 0
         self.pop_addAnimation(pop, forKey: "Animation")
         removeFromSuperview()

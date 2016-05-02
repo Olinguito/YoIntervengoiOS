@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class History: UIView {
     var data:JSON!
@@ -16,20 +17,20 @@ class History: UIView {
     
     init(index:Int, frame:CGRect, data:JSON) {
         super.init(frame:frame)
-       
-        var history:UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: 400))
+        
+        let history:UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: 400))
         history.backgroundColor = UIColor.whiteColor()
         self.addSubview(history)
         
-        var times = NSMutableArray()
-        var descriptions = NSMutableArray()
-        for (index,history_node) in enumerate(data[0]["history-nodes"]){
+        _ = NSMutableArray()
+        let descriptions = NSMutableArray()
+        for (index,history_node) in (data[0]["history-nodes"]).enumerate(){
             descriptions[index] = ["icon":"btn_add_links_otros","title":history_node.1["description"].string!,"date":String.getDate(history_node.1["date"].string!),"desc":"Pepe Veraz"]
         }
         
         
-        var timeLine = TimeLineViewControl(timeArray: descriptions, andCurrentStatus: 0, andFrame: CGRect(x: 0, y: 30, width: frame.width, height: self.frame.height))
-    
+        let timeLine = TimeLineViewControl(timeArray: descriptions, andCurrentStatus: 0, andFrame: CGRect(x: 0, y: 30, width: frame.width, height: self.frame.height))
+        
         
         
         self.addSubview(timeLine)
@@ -41,5 +42,5 @@ class History: UIView {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }

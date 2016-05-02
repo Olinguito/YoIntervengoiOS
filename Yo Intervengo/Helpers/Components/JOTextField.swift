@@ -21,12 +21,12 @@ class JOTextField: UITextField,UITextFieldDelegate {
         layer.borderWidth = 1
         leftV = UIView(frame: CGRect(x:0, y: 1, width: 45, height: 52))
         leftV.backgroundColor = UIColor.whiteColor()
-        icon = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        icon = UIButton(type: UIButtonType.System)
         icon.frame = CGRect(x: 0, y: 0, width: 35, height: 52)
         
         leftV.addSubview(icon)
         
-        var left = Gradient(frame: CGRect(x: 35, y: 0, width: 4, height:52), type: "Left")
+        let left = Gradient(frame: CGRect(x: 35, y: 0, width: 4, height:52), type: "Left")
         left.alpha = 0.3
         leftV.addSubview(left)
         
@@ -38,11 +38,11 @@ class JOTextField: UITextField,UITextFieldDelegate {
         self.leftViewMode = UITextFieldViewMode.Always
         
         switch type {
-            case "email": setEmail(self)
-            case "password": setPassword(self)
-            case "confpassword": setConfPassword(self)
-            case "username": setUsername(self)
-            default: print("")
+        case "email": setEmail(self)
+        case "password": setPassword(self)
+        case "confpassword": setConfPassword(self)
+        case "username": setUsername(self)
+        default: print("")
         }
         self.keyboardAppearance = UIKeyboardAppearance.Dark
         deselected()
@@ -61,7 +61,7 @@ class JOTextField: UITextField,UITextFieldDelegate {
         textField.keyboardType = UIKeyboardType.EmailAddress
         textField.autocorrectionType = UITextAutocorrectionType.No
     }
-
+    
     func setPassword(textField:UITextField!){
         icon.setImage(UIImage(named: "bgPassword"), forState: UIControlState.Normal)
         textField.placeholder = "Contraseña"
