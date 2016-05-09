@@ -15,6 +15,8 @@
 		7A3693291AF1E00E0049058F /* subPin2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3693271AF1E00E0049058F /* subPin2@2x.png */; };
 		7A36932A1AF1E00E0049058F /* subPin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3693281AF1E00E0049058F /* subPin2.png */; };
 		7A36932D1AF1E8900049058F /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36932C1AF1E8900049058F /* AboutVC.swift */; };
+		7A447E911CE017A200A8A84E /* SelectReportTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A447E901CE017A200A8A84E /* SelectReportTypeViewController.swift */; };
+		7A447E931CE0263100A8A84E /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A447E921CE0263100A8A84E /* SelectCategoryViewController.swift */; };
 		7A52E9CC1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A52E9BE1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.m */; };
 		7A52E9CD1B1E57410037C5FD /* DGActivityIndicatorFiveDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A52E9C01B1E57410037C5FD /* DGActivityIndicatorFiveDotsAnimation.m */; };
 		7A52E9CE1B1E57410037C5FD /* DGActivityIndicatorNineDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A52E9C21B1E57410037C5FD /* DGActivityIndicatorNineDotsAnimation.m */; };
@@ -366,6 +368,8 @@
 		7A3693271AF1E00E0049058F /* subPin2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "subPin2@2x.png"; sourceTree = "<group>"; };
 		7A3693281AF1E00E0049058F /* subPin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subPin2.png; sourceTree = "<group>"; };
 		7A36932C1AF1E8900049058F /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutVC.swift; path = Views/About/AboutVC.swift; sourceTree = "<group>"; };
+		7A447E901CE017A200A8A84E /* SelectReportTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectReportTypeViewController.swift; sourceTree = "<group>"; };
+		7A447E921CE0263100A8A84E /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
 		7A52E9BD1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorDoubleBounceAnimation.h; sourceTree = "<group>"; };
 		7A52E9BE1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorDoubleBounceAnimation.m; sourceTree = "<group>"; };
 		7A52E9BF1B1E57410037C5FD /* DGActivityIndicatorFiveDotsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorFiveDotsAnimation.h; sourceTree = "<group>"; };
@@ -839,6 +843,16 @@
 				7A36932C1AF1E8900049058F /* AboutVC.swift */,
 			);
 			name = About;
+			sourceTree = "<group>";
+		};
+		7A447E8F1CE0175B00A8A84E /* new_report */ = {
+			isa = PBXGroup;
+			children = (
+				7A447E901CE017A200A8A84E /* SelectReportTypeViewController.swift */,
+				7A447E921CE0263100A8A84E /* SelectCategoryViewController.swift */,
+			);
+			name = new_report;
+			path = Views/new_report;
 			sourceTree = "<group>";
 		};
 		7A52E9BB1B1E57410037C5FD /* DGActivityIndicatorView */ = {
@@ -1474,6 +1488,7 @@
 		EC4EECC31A7044FB0034C0EB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7A447E8F1CE0175B00A8A84E /* new_report */,
 				7A36932B1AF1E8600049058F /* About */,
 				EC5FD8E91A9CF3E5004192A3 /* Filter */,
 				EC5FD8EB1A9CF3E5004192A3 /* Detail */,
@@ -2265,12 +2280,14 @@
 				ECEC50151A8C29E600AC5853 /* LoginVC.swift in Sources */,
 				7A3693261AF089F00049058F /* StringEx.swift in Sources */,
 				7A52E9DA1B1EAC780037C5FD /* Report.swift in Sources */,
+				7A447E931CE0263100A8A84E /* SelectCategoryViewController.swift in Sources */,
 				7AB376E81B03EF0A00574BD8 /* SVIndefiniteAnimatedView.m in Sources */,
 				7AB376D61B03EF0900574BD8 /* SDImageCache.m in Sources */,
 				7AB376C61B03EF0900574BD8 /* NSString+Password.m in Sources */,
 				ECFAD2261A86BA6100B5652C /* LinkComponent.swift in Sources */,
 				7AB376D21B03EF0900574BD8 /* UIImage+ReMake.m in Sources */,
 				7AB376E01B03EF0A00574BD8 /* UIImage+WebP.m in Sources */,
+				7A447E911CE017A200A8A84E /* SelectReportTypeViewController.swift in Sources */,
 				7AB376BF1B03EF0900574BD8 /* CoreArchive.m in Sources */,
 				7AB376DD1B03EF0900574BD8 /* UIButton+WebCache.m in Sources */,
 				7A36932D1AF1E8900049058F /* AboutVC.swift in Sources */,

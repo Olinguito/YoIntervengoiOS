@@ -9,10 +9,15 @@
 import UIKit
 import Mapbox
 
-class ViewController: GenericViewController,BottomPagerDelegate,JOaddReportDelegate {
-    var map: MGLMapView!
-    var initLocation:Bool = false
+class ViewController: GenericViewController,BottomPagerDelegate {
+    var located:Bool = false
+    
+    
     var openedReport:Bool = false
+    
+    
+    var map: MGLMapView!
+    
     var animator:UIDynamicAnimator!
     var attachmentBeh: UIAttachmentBehavior!
     var snaBeh: UISnapBehavior!
@@ -25,8 +30,6 @@ class ViewController: GenericViewController,BottomPagerDelegate,JOaddReportDeleg
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var btnLocal: UIButton!
     @IBOutlet weak var btnReport: UIButton!
-    
-    var manager: OneShotLocationManager?
     
     
     override func viewDidLoad() {
@@ -45,14 +48,6 @@ class ViewController: GenericViewController,BottomPagerDelegate,JOaddReportDeleg
         map.userTrackingMode  = .FollowWithHeading
         map.tintColor         = UIColor.greenColor()
         map.setZoomLevel(11, animated: true)
-        //        map.removeAllAnnotations()
-        
-        //        loader.show()
-        
-        //
-        //        map.clusterAreaSize = CGSize(width: 2, height: 2)
-        //        map.positionClusterMarkersAtTheGravityCenter = true
-        //        map.clusteringEnabled = true
         
         animator = UIDynamicAnimator(referenceView: view)
         view.insertSubview(menuView, belowSubview: btnMenu)
@@ -60,7 +55,6 @@ class ViewController: GenericViewController,BottomPagerDelegate,JOaddReportDeleg
         let grad1 = Gradient(frame: CGRect(x: 0, y: 0, width: fram.width, height: 64), type: "Top")
         self.view.insertSubview(grad1, aboveSubview: map)
         test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 190), array: loc)
-        //        test.delegate = self
         self.view.insertSubview(test, belowSubview: menuView)
         
         
@@ -75,6 +69,14 @@ class ViewController: GenericViewController,BottomPagerDelegate,JOaddReportDeleg
         initLoc = listView.center
         actView = 0
         self.menuView.setColor(actView+3330)
+    }
+    
+    
+    func mapView(mapView: MGLMapView, didUpdateUserLocation userLocation: MGLUserLocation?) {
+        if !located{
+            self.map.setCenterCoordinate((userLocation?.coordinate)!, animated: true)
+            located = true
+        }
     }
     
     // MAP DELEGATE
@@ -158,11 +160,11 @@ class ViewController: GenericViewController,BottomPagerDelegate,JOaddReportDeleg
     @IBAction func search(sender: AnyObject) {
     }
     
-    @IBAction func newReport(sender: AnyObject) {        
-        let thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport, labels: 1, coodinate: map.userLocation!.coordinate)
-        thisMenu.delegate = self
-        self.view.addSubview(thisMenu)
-        thisMenu.showMenu(1, atPoint: sender.center)
+    @IBAction func newReport(sender: AnyObject) {
+        let view  = SelectReportTypeViewController()
+        view.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        view.modalTransitionStyle   = .CrossDissolve
+        self.presentViewController(view, animated: true, completion: nil)
     }
     
     func pageSetted(index:NSIndexPath){

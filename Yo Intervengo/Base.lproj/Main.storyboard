@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oPP-eP-kLq">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
@@ -156,6 +155,51 @@
                 </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1376" y="279"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="0ym-lF-euG">
+            <objects>
+                <viewController id="lJD-NK-L0y" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4MS-7u-TUT"/>
+                        <viewControllerLayoutGuide type="bottom" id="fQD-Cd-Pmd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Iz-HL-RjD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOp-qn-eYO">
+                                <rect key="frame" x="547" y="180" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="d4f-ez-y3k" kind="presentation" id="8Lc-hU-eXB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HGd-wX-eIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1939" y="-436"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="syt-d8-Q8a">
+            <objects>
+                <viewController id="d4f-ez-y3k" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="glA-la-IGs"/>
+                        <viewControllerLayoutGuide type="bottom" id="PSX-dE-HMX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aJo-AA-KLB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w3m-FW-7sS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2613" y="-351"/>
         </scene>
         <!--FilterVC-->
         <scene sceneID="IHv-qw-mtx">
