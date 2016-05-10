@@ -90,35 +90,35 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as! publicWCell
         let report:Report = loc[indexPath.row] as Report
-        cell.layer.shadowColor = UIColor.blackColor().CGColor
-        cell.layer.shadowOffset = CGSizeMake(0, 1.0)
-        cell.iconPublic.image = UIImage(named: report.category.icon!)
-        
-        cell.imgPublic.image = UIImage(named: "image-placeholder")
-        
-        if (report.image == nil){
-            dispatch_async(dispatch_get_global_queue(0, 0)) {
-                let url = "http://res.cloudinary.com/demo/image/fetch/w_170,h_75,c_fill,e_saturation:50,f_auto/" + report.urlImage
-                let image = UIImage(data: NSData(contentsOfURL: NSURL(string: url)!)!)
-                dispatch_async(dispatch_get_main_queue()) {
-                    (self.loc[indexPath.row] as Report).image = image
-                    cell.imgPublic.image = image
-                }
-            }
-        }else{
-            cell.imgPublic.image = report.image
-        }
-        cell.imgPublic.layer.masksToBounds = true
-        cell.lblTitle.text = report.title
-        cell.subTitle.text = report.category.name
-        cell.lblDescr.text = report.desc
-        cell.goReport.addTarget(self, action: #selector(BottomPager.goReport(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        cell.goReport.tag  = report.id
-        cell.bgIcon.backgroundColor = report.color
-        cell.follower.setTitle(String(report.followers), forState: UIControlState.Normal)
-        cell.follower.tag = indexPath.row
-        cell.follower.addTarget(self, action: #selector(BottomPager.followReport(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        cell.alpha = 0
+        //        cell.layer.shadowColor = UIColor.blackColor().CGColor
+        //        cell.layer.shadowOffset = CGSizeMake(0, 1.0)
+        //        cell.iconPublic.image = UIImage(named: report.category.icon!)
+        //        
+        //        cell.imgPublic.image = UIImage(named: "image-placeholder")
+        //        
+        //        if (report.image == nil){
+        //            dispatch_async(dispatch_get_global_queue(0, 0)) {
+        //                let url = "http://res.cloudinary.com/demo/image/fetch/w_170,h_75,c_fill,e_saturation:50,f_auto/" + report.urlImage
+        //                let image = UIImage(data: NSData(contentsOfURL: NSURL(string: url)!)!)
+        //                dispatch_async(dispatch_get_main_queue()) {
+        //                    (self.loc[indexPath.row] as Report).image = image
+        //                    cell.imgPublic.image = image
+        //                }
+        //            }
+        //        }else{
+        //            cell.imgPublic.image = report.image
+        //        }
+        //        cell.imgPublic.layer.masksToBounds = true
+        //        cell.lblTitle.text = report.title
+        //        cell.subTitle.text = report.category.name
+        //        cell.lblDescr.text = report.desc
+        //        cell.goReport.addTarget(self, action: #selector(BottomPager.goReport(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        //        cell.goReport.tag  = report.id
+        //        cell.bgIcon.backgroundColor = report.color
+        //        cell.follower.setTitle(String(report.followers), forState: UIControlState.Normal)
+        //        cell.follower.tag = indexPath.row
+        //        cell.follower.addTarget(self, action: #selector(BottomPager.followReport(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        //        cell.alpha = 0
         return cell
     }
     
@@ -129,11 +129,11 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     func followReport(sender:UIButton!){
         let cell = collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as! publicWCell
         let report:Report = loc[sender.tag] as Report
-        cell.follower.backgroundColor = UIColor.greyLight()
-        cell.follower.backgroundColor = report.color
-        cell.follower.setTitle(String(report.followers+1), forState: UIControlState.Normal)
-        cell.follower.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        cell.follower.tintColor = UIColor.whiteColor()
+        //        cell.follower.backgroundColor = UIColor.greyLight()
+        //        cell.follower.backgroundColor = report.color
+        //        cell.follower.setTitle(String(report.followers+1), forState: UIControlState.Normal)
+        //        cell.follower.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        //        cell.follower.tintColor = UIColor.whiteColor()
         cell.follow()
     }
     

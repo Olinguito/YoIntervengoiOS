@@ -47,45 +47,45 @@
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            
-            APIManagerClass.getReportWithID(report.idAPI)
-            self.view.backgroundColor = UIColor.whiteColor()
-            self.navigationController?.interactivePopGestureRecognizer!.delegate = self
-            story = UIStoryboard(name: "Main", bundle: nil)
-            reportView = story.instantiateViewControllerWithIdentifier("denunciaView") as! ReportVC
-            
-            imgWork = UIImageView(frame: CGRect(x: 0, y: 0, width: vW, height: 194))
-            self.imgWork.image = UIImage(named: "image-placeholder")
-            self.imgWork.contentMode = UIViewContentMode.Center
-            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-            dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                let url = "http://res.cloudinary.com/demo/image/fetch/w_\(Int(self.view.frame.width)),h_200,c_fill,e_saturation:50,f_auto/" + self.report.urlImage
-                let image = UIImage(data: NSData(contentsOfURL: NSURL(string: url)!)!)
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.imgWork.image = image
-                }
-            }
-            imgWork.layer.masksToBounds = true
-            self.view.addSubview(imgWork)
-            grad2 = Gradient(frame: CGRect(x: 0, y: -50, width: vW, height: 254), type: "Bottom")
-            self.view.insertSubview(grad2, aboveSubview: imgWork)
-            scroll = UIScrollView(frame: self.view.frame)
-            scroll.delegate = self
-            scroll.backgroundColor = UIColor.clearColor()
-            scroll.maximumZoomScale = 10
-            scroll.multipleTouchEnabled = false
-            self.view.addSubview(scroll)
-            colorView = report.color
-            
-            banner = UIView(frame: CGRect(x: 0, y: 125, width: vW, height: 135))
-            banner.backgroundColor = UIColor(red:0.180, green:0.180, blue:0.180, alpha: 1)
-            self.scroll.addSubview(banner)
-            _ = UIImage(named: "mask")
-            let maskLayer = CALayer()
-            maskLayer.frame = banner.bounds
-            maskLayer.contents = UIImage(named: "mask")?.CGImage
-            banner.layer.mask = maskLayer
-            _ = CGRect(x: 0, y: 42, width: 120, height: 93)
+            //            
+            //            APIManagerClass.getReportWithID(report.idAPI)
+            //            self.view.backgroundColor = UIColor.whiteColor()
+            //            self.navigationController?.interactivePopGestureRecognizer!.delegate = self
+            //            story = UIStoryboard(name: "Main", bundle: nil)
+            //            reportView = story.instantiateViewControllerWithIdentifier("denunciaView") as! ReportVC
+            //            
+            //            imgWork = UIImageView(frame: CGRect(x: 0, y: 0, width: vW, height: 194))
+            //            self.imgWork.image = UIImage(named: "image-placeholder")
+            //            self.imgWork.contentMode = UIViewContentMode.Center
+            //            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            //            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            //                let url = "http://res.cloudinary.com/demo/image/fetch/w_\(Int(self.view.frame.width)),h_200,c_fill,e_saturation:50,f_auto/" + self.report.urlImage
+            //                let image = UIImage(data: NSData(contentsOfURL: NSURL(string: url)!)!)
+            //                dispatch_async(dispatch_get_main_queue()) {
+            //                    self.imgWork.image = image
+            //                }
+            //            }
+            //            imgWork.layer.masksToBounds = true
+            //            self.view.addSubview(imgWork)
+            //            grad2 = Gradient(frame: CGRect(x: 0, y: -50, width: vW, height: 254), type: "Bottom")
+            //            self.view.insertSubview(grad2, aboveSubview: imgWork)
+            //            scroll = UIScrollView(frame: self.view.frame)
+            //            scroll.delegate = self
+            //            scroll.backgroundColor = UIColor.clearColor()
+            //            scroll.maximumZoomScale = 10
+            //            scroll.multipleTouchEnabled = false
+            //            self.view.addSubview(scroll)
+            //            colorView = report.color
+            //            
+            //            banner = UIView(frame: CGRect(x: 0, y: 125, width: vW, height: 135))
+            //            banner.backgroundColor = UIColor(red:0.180, green:0.180, blue:0.180, alpha: 1)
+            //            self.scroll.addSubview(banner)
+            //            _ = UIImage(named: "mask")
+            //            let maskLayer = CALayer()
+            //            maskLayer.frame = banner.bounds
+            //            maskLayer.contents = UIImage(named: "mask")?.CGImage
+            //            banner.layer.mask = maskLayer
+            //            _ = CGRect(x: 0, y: 42, width: 120, height: 93)
             
             //            
             //            dispatch_async(dispatch_get_global_queue(priority, 0)) {
@@ -268,7 +268,7 @@
                 
                 lblSubTit = UILabel(frame: CGRect(x: 0, y: lblTitle.frame.maxY+5, width: vW, height: 13))
                 lblSubTit.font = UIFont(name: "Roboto-Medium", size: 12.5)
-                lblSubTit.text = "CATEGORÍA > " + report.category.name!.uppercaseString
+                lblSubTit.text = "CATEGORÍA > " + report.category!.name!.uppercaseString
                 lblSubTit.textAlignment = NSTextAlignment.Center
                 lblSubTit.textColor = colorView
                 self.scroll.addSubview(lblSubTit)

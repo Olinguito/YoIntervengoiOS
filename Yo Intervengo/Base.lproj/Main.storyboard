@@ -16,25 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23R-Sb-C4f">
-                                <rect key="frame" x="539" y="539" width="61" height="61"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="7kD-vp-myb"/>
-                                    <constraint firstAttribute="height" constant="56" id="giy-g9-rEF"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="mas.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="7kD-vp-myb"/>
-                                        <exclude reference="giy-g9-rEF"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="newReport:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L5Y-ZJ-t2e"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8R-OH-qb4">
                                 <rect key="frame" x="0.0" y="544" width="56" height="56"/>
                                 <constraints>
@@ -62,7 +43,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77O-uy-fEd">
-                                <rect key="frame" x="0.0" y="12" width="56" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="29" height="22"/>
                                 <state key="normal" image="menu.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -70,13 +51,13 @@
                                     <action selector="getMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dwX-fT-sPM"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uuw-FR-LVH">
-                                <rect key="frame" x="700" y="0.0" width="281" height="600"/>
+                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uuw-FR-LVH">
+                                <rect key="frame" x="588" y="0.0" width="624" height="600"/>
                                 <subviews>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBW-c6-sds">
-                                        <rect key="frame" x="12" y="0.0" width="269" height="600"/>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBW-c6-sds">
+                                        <rect key="frame" x="12" y="0.0" width="612" height="600"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="07s-j4-rK2">
-                                            <rect key="frame" x="0.0" y="0.0" width="269" height="600"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="612" height="600"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DgU-lX-BJM">
@@ -109,12 +90,31 @@
                                     <outletCollection property="gestureRecognizers" destination="0Kh-Hd-wxy" appends="YES" id="AFU-bH-Yzs"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23R-Sb-C4f">
+                                <rect key="frame" x="531" y="531" width="61" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="7kD-vp-myb"/>
+                                    <constraint firstAttribute="height" constant="50" id="giy-g9-rEF"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="mas.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7kD-vp-myb"/>
+                                        <exclude reference="giy-g9-rEF"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="newReport:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L5Y-ZJ-t2e"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="H9d-ve-JFc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="12" id="3Ox-au-Ywb"/>
-                            <constraint firstAttribute="trailing" secondItem="23R-Sb-C4f" secondAttribute="trailing" id="7Wy-AI-kTD"/>
+                            <constraint firstAttribute="trailing" secondItem="23R-Sb-C4f" secondAttribute="trailing" constant="8" id="7Wy-AI-kTD"/>
                             <constraint firstItem="X8R-OH-qb4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Agr-kV-m8B"/>
                             <constraint firstItem="uuw-FR-LVH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="12" id="Be6-yH-I82"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="X8R-OH-qb4" secondAttribute="bottom" id="Kpn-gi-n2s"/>
@@ -125,7 +125,7 @@
                             <constraint firstItem="uuw-FR-LVH" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="h3f-Hi-IBN"/>
                             <constraint firstItem="uuw-FR-LVH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="24" id="i7b-gt-POa"/>
                             <constraint firstAttribute="trailing" secondItem="H9d-ve-JFc" secondAttribute="trailing" id="paV-EP-Fsy"/>
-                            <constraint firstAttribute="bottom" secondItem="23R-Sb-C4f" secondAttribute="bottom" id="ySK-7i-zd6"/>
+                            <constraint firstAttribute="bottom" secondItem="23R-Sb-C4f" secondAttribute="bottom" constant="8" id="ySK-7i-zd6"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

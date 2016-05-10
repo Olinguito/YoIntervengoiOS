@@ -70,17 +70,17 @@
         
         init(frame: CGRect, bttnClose:UIButton, labels:Int, coodinate:CLLocationCoordinate2D) {
             super.init(frame: frame)
-            report                   = Report(type: 0)
-            step                     = 1
-            APIManagerClass          = APIManager()
-            APIManagerClass.delegate = self
-            alert                    = JOAlert(textNFrame: "", self.frame, true)
-            report.location          = coodinate
-            txtTit                   = ""
-            txtDes                   = ""
-            btnClose                 = UIButton(frame: bttnClose.frame)
-            btnClose.center          = bttnClose.center
-            self.labels = labels
+            //            report                   = Report(type: 0)
+            //            step                     = 1
+            //            APIManagerClass          = APIManager()
+            //            APIManagerClass.delegate = self
+            //            alert                    = JOAlert(textNFrame: "", self.frame, true)
+            //            report.location          = coodinate
+            //            txtTit                   = ""
+            //            txtDes                   = ""
+            //            btnClose                 = UIButton(frame: bttnClose.frame)
+            //            btnClose.center          = bttnClose.center
+            //            self.labels = labels
             btnClose.setImage(bttnClose.backgroundImageForState(UIControlState.Normal), forState: UIControlState.Normal)
             btnClose.addTarget(self, action: #selector(JOaddReport.close), forControlEvents: UIControlEvents.TouchUpInside)
             
@@ -166,12 +166,12 @@
                     })
             case 3:
                 _ = NSMutableArray()
-                let t = (self.frame.size.height-450)/2
-                report.type = lblIndicator.text == "REPORTE" ? 1 : 0
-                centralData = conn.getSubcategories(catId)
-                this2 = JOCentralMenu(frame: CGRectMake(0, t, 320, 400) , data: centralData, type: report.type)
-                this2.delegate = self
-                self.insertSubview(this2, belowSubview: btnCategoty)
+                //                let t = (self.frame.size.height-450)/2
+                //                report.type = lblIndicator.text == "REPORTE" ? 1 : 0
+                //                centralData = conn.getSubcategories(catId)
+                //                this2 = JOCentralMenu(frame: CGRectMake(0, t, 320, 400) , data: centralData, type: report.type)
+                //                this2.delegate = self
+            //                self.insertSubview(this2, belowSubview: btnCategoty)
             case 4: break
                 //                btnBack.frame.origin.y = btnCategoty.frame.minY - 55
                 //                btnContinue.frame.origin.y = btnCategoty.frame.minY - 55
@@ -493,21 +493,21 @@
         
         // MARK -API DELEGATE
         func returnObt(responseObject: AnyObject, url: String) {
-            var response = JSON(responseObject)
-            switch url{
-            case "image":
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "dd/MM/YYYY" //format style. Browse online to get a format that fits your needs.
-                let dateString = dateFormatter.stringFromDate(NSDate())
-                report.urlImage = "http://i.imgur.com/"+response["data"]["id"].string!+"m.png"
-                //                dataRep = ["description":report.desc, "location":["lat":report.location.latitude, "lng":report.location.longitude], "title":report.title, "type":report.type, "category":["id": report.category.idAPI, "slug":report.category.slug, "name":report.category.name, "icon": report.category.icon],"photo":["url": report.urlImage, "thumbUrl": report.urlImage, "date": dateString]]
-            //                APIManagerClass.postReport(dataRep)
-            case "Reports":
-                report.idAPI = response["id"].string
-                delegate.reportCreated(report)
-                self.removeFromSuperview()
-            default: print("")
-            }
+            //            var response = JSON(responseObject)
+            //            switch url{
+            //            case "image":
+            //                let dateFormatter = NSDateFormatter()
+            //                dateFormatter.dateFormat = "dd/MM/YYYY" //format style. Browse online to get a format that fits your needs.
+            //                let dateString = dateFormatter.stringFromDate(NSDate())
+            //                //                report.urlImage = "http://i.imgur.com/"+response["data"]["id"].string!+"m.png"
+            //                //                dataRep = ["description":report.desc, "location":["lat":report.location.latitude, "lng":report.location.longitude], "title":report.title, "type":report.type, "category":["id": report.category.idAPI, "slug":report.category.slug, "name":report.category.name, "icon": report.category.icon],"photo":["url": report.urlImage, "thumbUrl": report.urlImage, "date": dateString]]
+            //            //                APIManagerClass.postReport(dataRep)
+            //            case "Reports":
+            //                //                report.idAPI = response["id"].string
+            //                //                delegate.reportCreated(report)
+            //            //                self.removeFromSuperview()
+            //            default: print("")
+            //            }
         }
         
         func returnError(url: String) {

@@ -57,11 +57,9 @@ class ViewController: GenericViewController,BottomPagerDelegate {
         test = BottomPager(frame: CGRect(x: 0, y: fram.height, width: fram.width, height: 190), array: loc)
         self.view.insertSubview(test, belowSubview: menuView)
         
-        
         map.logoView.alpha          = 0
         map.attributionButton.alpha = 0
     }
-    
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -79,57 +77,6 @@ class ViewController: GenericViewController,BottomPagerDelegate {
         }
     }
     
-    // MAP DELEGATE
-    //    
-    //    func longPressOnMap(map: RMMapView!, at point: CGPoint) {
-    //        if self.map.zoom > 14{
-    //            var thisMenu = JOaddReport(frame: self.view.frame, bttnClose: btnReport, labels: 0, coodinate: map.pixelToCoordinate(point))
-    //            thisMenu.delegate = self
-    //            self.view.addSubview(thisMenu)
-    //            thisMenu.showMenu(1, atPoint: point)
-    //        }else{
-    //            alert.setText("Ups, acercate un poco más")
-    //            self.view.addSubview(alert)
-    //            alert.showAlert()
-    //        }
-    //    }
-    //    
-    //    func singleTapOnMap(map: RMMapView!, at point: CGPoint) {
-    //        test.hide()
-    //    }
-    //    
-    //    func mapView(mapView: RMMapView!, layerForAnnotation annotation: RMAnnotation!) -> RMMapLayer! {
-    //        if annotation.isUserLocationAnnotation{
-    //            return nil
-    //        }
-    //        if annotation.isClusterAnnotation
-    //        {
-    //            let layer = RMMarker(UIImage: UIImage(named: "circle"))
-    //            var southwestCoordinate = annotation.coordinate
-    //            var northeastCoordinate = annotation.coordinate
-    //            for plot in annotation.clusteredAnnotations {
-    //                var latititude = Float(plot.coordinate.latitude)
-    //                var longitude =  Float(plot.coordinate.longitude)
-    //                if Float(southwestCoordinate.latitude) > fabsf(latititude){ southwestCoordinate.latitude = CLLocationDegrees(latititude)}
-    //                if Float(southwestCoordinate.longitude) > fabsf(longitude){ southwestCoordinate.longitude = CLLocationDegrees(longitude)}
-    //                if Float(northeastCoordinate.latitude) < fabsf(latititude){ northeastCoordinate.latitude = CLLocationDegrees(latititude)}
-    //                if Float(northeastCoordinate.longitude) < fabsf(longitude){ northeastCoordinate.longitude = CLLocationDegrees(longitude)}
-    //            }
-    //            var a = map.coordinateToPixel(southwestCoordinate).x - map.coordinateToPixel(northeastCoordinate).x
-    //            var b = map.coordinateToPixel(northeastCoordinate).y - map.coordinateToPixel(southwestCoordinate).y
-    //            var c = max(max(a, b),80)
-    //            layer.bounds = CGRect(x: 0, y: -5, width: 80, height: 80)
-    //            layer.changeLabelUsingText(annotation.title, font: UIFont(name: "Roboto-light", size: 38), foregroundColor: UIColor.whiteColor(), backgroundColor: UIColor.clearColor())
-    //            return layer
-    //        }
-    //        else
-    //        {
-    //            var report = annotation.userInfo as! Report
-    //            let marker = RMMarker(UIImage: UIImage.getPinByName(report.type, Category: report.category.icon))
-    //            return marker
-    //        }
-    //    }
-    //    
     @IBOutlet var gestureRecognizer: UIPanGestureRecognizer!
     @IBAction func HandleBorderGesture(sender: AnyObject) {
         let location = sender.locationInView(view)
@@ -161,10 +108,12 @@ class ViewController: GenericViewController,BottomPagerDelegate {
     }
     
     @IBAction func newReport(sender: AnyObject) {
-        let view  = SelectReportTypeViewController()
+        let view  = ReportNavigationViewController(rootViewController: SelectReportTypeViewController())
         view.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
         view.modalTransitionStyle   = .CrossDissolve
         self.presentViewController(view, animated: true, completion: nil)
+        
+        
     }
     
     func pageSetted(index:NSIndexPath){
@@ -180,10 +129,10 @@ class ViewController: GenericViewController,BottomPagerDelegate {
     }
     
     func reportCreated(report:Report){
-        report.id = test.loc.count
-        loc.append(report)
-        test.loc.append(report)
-        test.collectionView.reloadData()
+        //        report.id = test.loc.count
+        //        loc.append(report)
+        //        test.loc.append(report)
+        //        test.collectionView.reloadData()
         //        var annotation = RMAnnotation(mapView: self.map, coordinate: report.location, andTitle: "\(test.loc.count-1)")
         //        annotation.userInfo = report
         //        self.map.addAnnotation(annotation)
@@ -249,8 +198,4 @@ extension ViewController:MGLMapViewDelegate{
         //            }
         //        }
     }
-    
-    
-    
-    
 }

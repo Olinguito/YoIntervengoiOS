@@ -6,15 +6,31 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="subcategories" inverseEntity="Category" syncable="YES"/>
+        <relationship name="reportsByCategoy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Report" inverseName="category" inverseEntity="Report" syncable="YES"/>
+        <relationship name="reportsBySubCategoy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Report" inverseName="subcategoty" inverseEntity="Report" syncable="YES"/>
         <relationship name="subcategories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="parent" inverseEntity="Category" syncable="YES"/>
+        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Type" inverseName="categories" inverseEntity="Type" syncable="YES"/>
     </entity>
-    <entity name="Report" syncable="YES">
+    <entity name="Report" representedClassName=".Report" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="reportsByCategoy" inverseEntity="Category" syncable="YES"/>
+        <relationship name="subcategoty" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="reportsBySubCategoy" inverseEntity="Category" syncable="YES"/>
+        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Type" inverseName="reports" inverseEntity="Type" syncable="YES"/>
+    </entity>
+    <entity name="Type" representedClassName=".Type" syncable="YES">
+        <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="type" inverseEntity="Category" syncable="YES"/>
+        <relationship name="reports" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Report" inverseName="type" inverseEntity="Report" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-63" positionY="-18" width="128" height="133"/>
-        <element name="Report" positionX="-45" positionY="45" width="128" height="90"/>
+        <element name="Category" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="Report" positionX="333" positionY="3" width="128" height="148"/>
+        <element name="Type" positionX="171" positionY="6" width="128" height="133"/>
     </elements>
 </model>

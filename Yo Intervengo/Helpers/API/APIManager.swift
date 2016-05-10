@@ -93,11 +93,11 @@ class APIManager: NSObject {
     
     func postNewImage(picture:Picture,report:Report){
         print("entra por aca a subir imagen? con id \(picture.urlImage)")
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd/MM/YYYY"
-        let dateString = dateFormatter.stringFromDate(NSDate())
-        let dataRep = ["description":report.desc,"url":picture.urlImage,"thumbUrl":picture.urlThumbImage,"date":dateString,"reportId":report.idAPI]
-        performPost("Reports/"+report.idAPI+"/pictures", token: "", data: dataRep, list: false, successMsg: "Imagen posteada", failMsg: "Fallo en subida de imagen", transac: "Report_photo")
+        //        let dateFormatter = NSDateFormatter()
+        //        dateFormatter.dateFormat = "dd/MM/YYYY"
+        //        let dateString = dateFormatter.stringFromDate(NSDate())
+        //        let dataRep = ["description":report.desc,"url":picture.urlImage,"thumbUrl":picture.urlThumbImage,"date":dateString,"reportId":report.idAPI]
+        //        performPost("Reports/"+report.idAPI+"/pictures", token: "", data: dataRep, list: false, successMsg: "Imagen posteada", failMsg: "Fallo en subida de imagen", transac: "Report_photo")
     }
     
     

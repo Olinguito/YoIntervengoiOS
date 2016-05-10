@@ -1,5 +1,5 @@
 //
-//  Category+CoreDataProperties.swift
+//  Type+CoreDataProperties.swift
 //  Yo Intervengo
 //
 //  Created by Jorge Raul Ovalle Zuleta on 5/9/16.
@@ -12,16 +12,13 @@
 import Foundation
 import CoreData
 
-extension Category {
+extension Type {
 
     @NSManaged var icon: String?
     @NSManaged var id: NSNumber?
     @NSManaged var name: String?
     @NSManaged var slug: String?
-    @NSManaged var subcategories: NSSet?
-    @NSManaged var parent: Category?
-    @NSManaged var type: Type?
-    @NSManaged var reportsByCategoy: Report?
-    @NSManaged var reportsBySubCategoy: Report?
+    @NSManaged var categories: NSSet?
+    @NSManaged var reports: NSSet?
 
 }

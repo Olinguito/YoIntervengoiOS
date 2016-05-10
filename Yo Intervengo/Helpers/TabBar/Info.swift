@@ -41,7 +41,7 @@ class Info: UIView {
         lblInfo.numberOfLines = 0
         
         
-        lblInfo.frame = CGRect(x: 25, y: 5, width: frame.width-50, height: heightForView(text, font: lblInfo.font!, width: frame.width-50))
+        lblInfo.frame = CGRect(x: 25, y: 5, width: frame.width-50, height: heightForView(text!, font: lblInfo.font!, width: frame.width-50))
         tabBar.addSubview(lblInfo)
         
         

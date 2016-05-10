@@ -1,5 +1,5 @@
 //
-//  Category.swift
+//  Report.swift
 //  Yo Intervengo
 //
 //  Created by Jorge Raul Ovalle Zuleta on 5/9/16.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Category: NSManagedObject {
+class Report: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

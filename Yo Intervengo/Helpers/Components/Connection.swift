@@ -74,6 +74,17 @@ class Connection: NSObject {
     
     // GET CATEGORIES
     
+    func getTypes(completion:FetchCompletionHandler){
+        let fetchRequest       = NSFetchRequest(entityName: "Type")
+        //        fetchRequest.predicate = NSPredicate(format: "building == %@", build)
+        do{
+            let fetchResults = try managedObjectContext.executeRequest(fetchRequest) as! NSAsynchronousFetchResult
+            let fetchBuilding    = fetchResults.finalResult as! [Type]
+            completion!(data:fetchBuilding, error: nil)
+        }catch{
+            completion!(data:nil,error: "CoreData error!")
+        }
+    }
     
     func _getCategories(completion:FetchCompletionHandler){
         let fetchRequest       = NSFetchRequest(entityName: "Category")

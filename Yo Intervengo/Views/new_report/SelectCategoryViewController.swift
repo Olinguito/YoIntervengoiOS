@@ -8,12 +8,12 @@
 
 import UIKit
 
-class SelectCategoryViewController: UIViewController {
-    var btnBack:UIButton!
+public class SelectCategoryViewController: BlurredViewController {
+    private var btnBack:UIButton!
+    internal var type:Type?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override public func viewDidLoad() {
+        super.viewDidLoad()        
         btnBack = UIButton(frame: CGRectMake(0,0,100,100))
         btnBack.backgroundColor = UIColor.blackColor()
         btnBack.addTarget(self, action: #selector(self.goBack), forControlEvents: .TouchUpInside)
@@ -21,7 +21,6 @@ class SelectCategoryViewController: UIViewController {
     }
     
     func goBack(){
-        NSNotificationCenter.defaultCenter().postNotificationName("testTest", object: "Holaaaaaa")
-        //        self.dismissViewControllerAnimated(true, completion: nil)
+        (self.navigationController as! ReportNavigationViewController).navigator.subtype = self.type?.categories?.allObjects.first as? Category
     }
 }
