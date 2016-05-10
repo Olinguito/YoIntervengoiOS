@@ -11,6 +11,8 @@ import pop
 
 @objc protocol NavigationViewDelegate{
     optional func closeNavigationReport()
+    optional func cleanType()
+    optional func cleanCategory()
 }
 
 public class NavigationView: UIView {
@@ -163,10 +165,12 @@ public class NavigationView: UIView {
     func cleanFromType(){
         self.subtype = nil
         self.type    = nil
+        delegate?.cleanType!()
     }
     
     func cleanFromSubtype(){
         self.subtype = nil
+        delegate?.cleanCategory!()
     }
     
     required public init?(coder aDecoder: NSCoder) {

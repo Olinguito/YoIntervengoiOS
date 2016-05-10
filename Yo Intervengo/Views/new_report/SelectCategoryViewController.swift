@@ -21,6 +21,7 @@ public class SelectCategoryViewController: BlurredViewController {
     }
     
     func goBack(){
-        (self.navigationController as! ReportNavigationViewController).navigator.subtype = self.type?.categories?.allObjects.first as? Category
+        (self.navigationController as! ReportNavigationViewController).setCategory((self.type?.categories?.allObjects.first as? Category)!)
+        
     }
 }

@@ -47,6 +47,7 @@
 		7A3D23451CE19570000D1423 /* btn_report_security.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3D232D1CE19570000D1423 /* btn_report_security.png */; };
 		7A3D23461CE19570000D1423 /* btn_report_security@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A3D232E1CE19570000D1423 /* btn_report_security@2x.png */; };
 		7A3D23481CE19BEC000D1423 /* SelectSubcategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D23471CE19BEC000D1423 /* SelectSubcategoryViewController.swift */; };
+		7A3D234A1CE19D87000D1423 /* TypeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D23491CE19D87000D1423 /* TypeSelectorView.swift */; };
 		7A447E911CE017A200A8A84E /* SelectReportTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A447E901CE017A200A8A84E /* SelectReportTypeViewController.swift */; };
 		7A447E931CE0263100A8A84E /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A447E921CE0263100A8A84E /* SelectCategoryViewController.swift */; };
 		7A52E9CC1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A52E9BE1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.m */; };
@@ -407,6 +408,7 @@
 		7A3D232D1CE19570000D1423 /* btn_report_security.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_report_security.png; sourceTree = "<group>"; };
 		7A3D232E1CE19570000D1423 /* btn_report_security@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_report_security@2x.png"; sourceTree = "<group>"; };
 		7A3D23471CE19BEC000D1423 /* SelectSubcategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSubcategoryViewController.swift; sourceTree = "<group>"; };
+		7A3D23491CE19D87000D1423 /* TypeSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSelectorView.swift; sourceTree = "<group>"; };
 		7A447E901CE017A200A8A84E /* SelectReportTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectReportTypeViewController.swift; sourceTree = "<group>"; };
 		7A447E921CE0263100A8A84E /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
 		7A52E9BD1B1E57410037C5FD /* DGActivityIndicatorDoubleBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorDoubleBounceAnimation.h; sourceTree = "<group>"; };
@@ -882,6 +884,7 @@
 				7A3D23471CE19BEC000D1423 /* SelectSubcategoryViewController.swift */,
 				7A7120B91CE10AB600B0F18D /* ReportNavigationViewController.swift */,
 				7A3D22F81CE11CB8000D1423 /* NavigationView.swift */,
+				7A3D23491CE19D87000D1423 /* TypeSelectorView.swift */,
 			);
 			name = new_report;
 			path = Views/new_report;
@@ -2413,6 +2416,7 @@
 				7ADE7A5A1B1FE86600635619 /* PhotoBroswerLayout.m in Sources */,
 				7AB376E21B03EF0A00574BD8 /* UIImageView+WebCache.m in Sources */,
 				7AB376C81B03EF0900574BD8 /* UIDevice+Extend.m in Sources */,
+				7A3D234A1CE19D87000D1423 /* TypeSelectorView.swift in Sources */,
 				EC77019E1A74047900378515 /* JOaddReport.swift in Sources */,
 				EC86D55C1A8D7C6B00B0BFA0 /* ReportVC.swift in Sources */,
 				EC7D45451AAF7BE800C27833 /* APIManager.swift in Sources */,

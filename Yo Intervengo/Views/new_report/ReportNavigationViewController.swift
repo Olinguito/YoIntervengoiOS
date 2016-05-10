@@ -27,10 +27,33 @@ public class ReportNavigationViewController: UINavigationController {
         
         navigator.openNavigation()
     }
+    
+    func setType(type:Type){
+        navigator.type = type
+        let view2      = SelectCategoryViewController()
+        view2.type     = type
+        self.pushViewController(view2, animated: false)
+    }
+    
+    func setCategory(category:Category){
+        navigator.subtype = category
+        let view3         = SelectSubcategoryViewController()
+        view3.category    = category
+        self.pushViewController(view3, animated: false)
+    }
+    
 }
 
 extension ReportNavigationViewController:NavigationViewDelegate{
     func closeNavigationReport() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func cleanType() {
+        self.popToRootViewControllerAnimated(false)
+    }
+    
+    func cleanCategory() {
+        self.popViewControllerAnimated(false)
     }
 }
