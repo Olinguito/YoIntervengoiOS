@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C2513" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,17 +13,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="solicitud.png" translatesAutoresizingMaskIntoConstraints="NO" id="bJC-C9-j4h">
-                        <rect key="frame" x="255" y="1" width="61" height="60"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="solicitud.png" translatesAutoresizingMaskIntoConstraints="NO" id="bJC-C9-j4h">
+                        <rect key="frame" x="256" y="1" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="stC-47-q89"/>
+                            <constraint firstAttribute="width" constant="60" id="tUN-YM-XJP"/>
+                        </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asq-Jb-PBG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
-                        <state key="normal">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edificios terrenos" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jq-bb-BO5">
-                        <rect key="frame" x="67" y="16" width="182" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edificios terrenos" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jq-bb-BO5">
+                        <rect key="frame" x="8" y="16" width="240" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="OJV-Xt-vYU"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -31,9 +32,15 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <constraints>
+                <constraint firstItem="bJC-C9-j4h" firstAttribute="centerY" secondItem="CKC-5U-Edk" secondAttribute="centerY" id="0k4-n3-1cT"/>
+                <constraint firstItem="4Jq-bb-BO5" firstAttribute="leading" secondItem="CKC-5U-Edk" secondAttribute="leading" constant="8" id="Fta-aN-B0R"/>
+                <constraint firstItem="bJC-C9-j4h" firstAttribute="leading" secondItem="4Jq-bb-BO5" secondAttribute="trailing" constant="8" id="K5H-2Q-cuY"/>
+                <constraint firstItem="4Jq-bb-BO5" firstAttribute="centerY" secondItem="CKC-5U-Edk" secondAttribute="centerY" id="rFT-i6-RW9"/>
+                <constraint firstAttribute="trailing" secondItem="bJC-C9-j4h" secondAttribute="trailing" constant="4" id="vtR-ik-yd0"/>
+            </constraints>
             <size key="customSize" width="280" height="61"/>
             <connections>
-                <outlet property="btnCategory" destination="asq-Jb-PBG" id="hPM-t2-40G"/>
                 <outlet property="imgCategory" destination="bJC-C9-j4h" id="HXo-A4-OlN"/>
                 <outlet property="lblTitle" destination="4Jq-bb-BO5" id="kNC-aV-n4H"/>
             </connections>

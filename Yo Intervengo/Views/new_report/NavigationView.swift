@@ -38,6 +38,7 @@ public class NavigationView: UIView {
         lblInformation = UILabel()
         lblInformation.textAlignment = .Right
         lblInformation.numberOfLines = 2
+        lblInformation.font = UIFont(name: "Roboto-Regular", size: 15)
         lblInformation.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(lblInformation)
         

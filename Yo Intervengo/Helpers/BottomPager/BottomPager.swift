@@ -89,7 +89,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as! publicWCell
-        let report:Report = loc[indexPath.row] as Report
+        _ = loc[indexPath.row] as Report
         //        cell.layer.shadowColor = UIColor.blackColor().CGColor
         //        cell.layer.shadowOffset = CGSizeMake(0, 1.0)
         //        cell.iconPublic.image = UIImage(named: report.category.icon!)
@@ -128,7 +128,7 @@ class BottomPager:  UIView,UICollectionViewDelegateFlowLayout, UICollectionViewD
     
     func followReport(sender:UIButton!){
         let cell = collectionView(self.collectionView, cellForItemAtIndexPath: NSIndexPath(forRow: sender.tag, inSection: 0)) as! publicWCell
-        let report:Report = loc[sender.tag] as Report
+        _ = loc[sender.tag] as Report
         //        cell.follower.backgroundColor = UIColor.greyLight()
         //        cell.follower.backgroundColor = report.color
         //        cell.follower.setTitle(String(report.followers+1), forState: UIControlState.Normal)

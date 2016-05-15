@@ -43,7 +43,6 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     //COLLECTION VIEW DELEGATE
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -52,16 +51,12 @@ class JOSideBarMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate 
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCollViewCell
-        cell.btnCategory.tag = indexPath.row
-        cell.imgCategory.tag = indexPath.row
-        cell.btnCategory.setTitle(((data![indexPath.row] as! Category).slug), forState: UIControlState.Normal)
-        cell.btnCategory.setTitleColor(UIColor.clearColor(), forState: UIControlState.Normal)
+        
         cell.layer.shadowColor = UIColor.blackColor().CGColor
-        //cell.layer.shadowOffset = CGSizeMake(0, 1.0)
+        cell.layer.shadowOffset = CGSizeMake(0, 1.0)
         cell.lblTitle.text = ((data![indexPath.row] as! Category).name)
         cell.lblTitle.textColor = UIColor.addThemeContrast()
         cell.imgCategory.image = UIImage(named: ((data![indexPath.row] as! Category).icon)!)
-        cell.btnCategory.addTarget(self, action: #selector(JOSideBarMenu.goSubCategory(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.alpha = 0
         return cell
     }

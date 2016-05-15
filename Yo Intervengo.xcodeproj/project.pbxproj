@@ -70,6 +70,7 @@
 		7AAEB7791CD6C96E00BF633F /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEB7781CD6C96E00BF633F /* OneShotLocationManager.swift */; };
 		7AAEB77C1CD6D1DC00BF633F /* YoIntervengoDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEB77A1CD6D1DC00BF633F /* YoIntervengoDataModel.xcdatamodeld */; };
 		7AAEB7821CD6DBCE00BF633F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEB7811CD6DBCE00BF633F /* DataService.swift */; };
+		7AB2FA001CE824DE001B730A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2F9FF1CE824DE001B730A /* Constants.swift */; };
 		7AB375F51B02EB1800574BD8 /* AddThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB375F41B02EB1800574BD8 /* AddThemeColors.swift */; };
 		7AB375F71B03048B00574BD8 /* FilterNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB375F61B03048B00574BD8 /* FilterNav.swift */; };
 		7AB375FD1B0306C800574BD8 /* FilterMasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB375FC1B0306C800574BD8 /* FilterMasterVC.swift */; };
@@ -439,6 +440,7 @@
 		7AAEB7781CD6C96E00BF633F /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
 		7AAEB77B1CD6D1DC00BF633F /* YoIntervengoDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YoIntervengoDataModel.xcdatamodel; sourceTree = "<group>"; };
 		7AAEB7811CD6DBCE00BF633F /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		7AB2F9FF1CE824DE001B730A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Yo Intervengo/Classes/Constants.swift"; sourceTree = SOURCE_ROOT; };
 		7AB375F41B02EB1800574BD8 /* AddThemeColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddThemeColors.swift; sourceTree = "<group>"; };
 		7AB375F61B03048B00574BD8 /* FilterNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterNav.swift; sourceTree = "<group>"; };
 		7AB375FC1B0306C800574BD8 /* FilterMasterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterMasterVC.swift; sourceTree = "<group>"; };
@@ -924,6 +926,7 @@
 		7A694E6E1B18CF2400A99BE1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7AB2F9FF1CE824DE001B730A /* Constants.swift */,
 				7A3D22FA1CE154A5000D1423 /* CoreDataEntities */,
 				7A0BFA241B1FAD3300FF0208 /* Picture.swift */,
 			);
@@ -2382,6 +2385,7 @@
 				7A52E9D11B1E57410037C5FD /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,
 				7AB376C91B03EF0900574BD8 /* UIFont+Extend.m in Sources */,
 				ECF7DBD61A744761000E8967 /* CategoryCollViewCell.swift in Sources */,
+				7AB2FA001CE824DE001B730A /* Constants.swift in Sources */,
 				7ADE7A621B1FE86600635619 /* PhotoItemView.m in Sources */,
 				EC4A5ABA1A7BF15A007DD7CB /* JOTabBar.swift in Sources */,
 				7AB375F71B03048B00574BD8 /* FilterNav.swift in Sources */,

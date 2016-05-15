@@ -99,6 +99,20 @@ class Connection: NSObject {
     }
     
     
+    func _getCategoriesByType(type:Type, completion:FetchCompletionHandler){
+        let fetchRequest       = NSFetchRequest(entityName: "Category")
+        fetchRequest.predicate = NSPredicate(format: "type == %@", type)
+        do{
+            let fetchResults = try managedObjectContext.executeRequest(fetchRequest) as! NSAsynchronousFetchResult
+            let fetchBuilding    = fetchResults.finalResult as! [Category]
+            completion!(data:fetchBuilding, error: nil)
+        }catch{
+            completion!(data:nil,error: "CoreData error!")
+        }
+    }
+    
+    
+    
     func getCategories(report:Bool) -> NSMutableArray{
         
         
