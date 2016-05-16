@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Alamofire.framework"
   install_framework "Pods/Canvas.framework"
+  install_framework "Pods/DGActivityIndicatorView.framework"
   install_framework "Pods/ESDateHelper.framework"
   install_framework "Pods/ESDatePicker.framework"
   install_framework "Pods/ESObjectPool.framework"
@@ -98,6 +99,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Alamofire.framework"
   install_framework "Pods/Canvas.framework"
+  install_framework "Pods/DGActivityIndicatorView.framework"
   install_framework "Pods/ESDateHelper.framework"
   install_framework "Pods/ESDatePicker.framework"
   install_framework "Pods/ESObjectPool.framework"

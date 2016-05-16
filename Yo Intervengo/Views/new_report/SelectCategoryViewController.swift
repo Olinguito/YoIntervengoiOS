@@ -102,6 +102,6 @@ public class SelectCategoryViewController: BlurredViewController, UICollectionVi
     
     
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        (self.navigationController as! ReportNavigationViewController).setCategory(data[indexPath.row])
+        (self.navigationController as! ReportNavigationViewController)._setCategory(data[indexPath.row])
     }
 }

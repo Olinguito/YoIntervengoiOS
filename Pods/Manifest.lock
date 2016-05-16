@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (3.3.1)
   - Canvas (0.1.2)
+  - DGActivityIndicatorView (2.0)
   - ESDateHelper (1.7.1)
   - ESDatePicker (1.4):
     - ESDateHelper (~> 1.2)
@@ -16,6 +17,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Canvas
+  - DGActivityIndicatorView
   - ESDatePicker
   - Mapbox-iOS-SDK
   - NSObject-ObjectMap (~> 2.0)
@@ -34,6 +36,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
+  DGActivityIndicatorView: 52875b025a6ccf6a431a905285c12e2bb95eb559
   ESDateHelper: 2419f415d800f55da039eb9cd61eb143e67bddc1
   ESDatePicker: b94f257056ace2a9eb1709258573c9d1452280f7
   ESObjectPool: 64aa4a622d376642295476b660a8d44b196d42aa

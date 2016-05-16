@@ -220,7 +220,7 @@
              btnContinue.backgroundColor = UIColor.orangeYI()
              }else{
              btnContinue.setTitle("Crear Solicitud", forState: UIControlState.Normal)
-             btnContinue.backgroundColor = UIColor.blurYI()
+             btnContinue.backgroundColor = UIColor.blueYI()
              }
              btnContinue.layer.borderColor = UIColor.clearColor().CGColor*/
         }

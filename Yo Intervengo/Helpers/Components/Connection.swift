@@ -112,6 +112,19 @@ class Connection: NSObject {
     }
     
     
+    func _getSubcategoriesByCategory(category:Category, completion:FetchCompletionHandler){
+        let fetchRequest       = NSFetchRequest(entityName: "Category")
+        fetchRequest.predicate = NSPredicate(format: "parent == %@", category)
+        do{
+            let fetchResults = try managedObjectContext.executeRequest(fetchRequest) as! NSAsynchronousFetchResult
+            let fetchBuilding    = fetchResults.finalResult as! [Category]
+            completion!(data:fetchBuilding, error: nil)
+        }catch{
+            completion!(data:nil,error: "CoreData error!")
+        }
+    }
+    
+    
     
     func getCategories(report:Bool) -> NSMutableArray{
         

@@ -12,32 +12,45 @@ import pop
 public class SelectSubcategoryViewController: BlurredViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     internal var category:Category?
-    
     private var subcategories:[Category] = [Category]()
-    
     private var subcategoryList:UICollectionView!
     private var delegate:JOCentralMenuDelegate?
-    private var type:Int!
-    
+    private var connection:Connection!
     private var heightConstraint:NSLayoutConstraint!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         self.addUIComponents()
         self.addUIConstraints()
+        
+    }
+    
+    public override func viewDidAppear(animated: Bool) {
+        self.connection = Connection()
+        self.connection._getSubcategoriesByCategory(category!) { (data, error) in
+            if error != nil{
+                print(error)
+            }else{
+                self.subcategories = data as! [Category]
+                self.animatedReloadData()
+            }
+        }
     }
     
     private func addUIComponents(){
-        let coll = UICollectionViewFlowLayout()
+        let coll             = UICollectionViewFlowLayout()
         coll.scrollDirection = UICollectionViewScrollDirection.Vertical
-        coll.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        coll.itemSize = CGSize(width: 130, height: 57)
+        coll.sectionInset    = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
-        subcategoryList = UICollectionView(frame: self.view.frame, collectionViewLayout: coll)
-        subcategoryList.backgroundColor = UIColor.redColor()
-        subcategoryList.dataSource = self
-        subcategoryList.delegate = self
+        let w = (self.view.frame.width - 60)/2
+        
+        coll.itemSize        = CGSize(width: w, height: 57)
+        
+        subcategoryList                 = UICollectionView(frame: self.view.frame, collectionViewLayout: coll)
+        subcategoryList.dataSource      = self
+        subcategoryList.delegate        = self
         subcategoryList.backgroundColor = UIColor.clearColor()
+        subcategoryList.translatesAutoresizingMaskIntoConstraints = false
         subcategoryList.registerNib(UINib(nibName: "SubCategoryCell", bundle: nil), forCellWithReuseIdentifier: "SubCategoryCell")
         self.view.addSubview(subcategoryList)
     }
@@ -50,6 +63,16 @@ public class SelectSubcategoryViewController: BlurredViewController, UICollectio
         self.view.addConstraint(heightConstraint)
     }
     
+    private func animatedReloadData(){
+        self.subcategoryList.reloadData()
+        let freeSpace:CGFloat       = (self.view.frame.height - QPostHeightWithSpace) - 20
+        let estimatedHeight:CGFloat = (self.view.frame.height - QPostHeightWithSpace) - 60
+        let an                      = POPSpringAnimation(propertyNamed: kPOPLayoutConstraintConstant)
+        an.toValue                  = min(estimatedHeight, freeSpace)
+        heightConstraint.pop_addAnimation(an, forKey: "HeightAnimaiton")
+    }
+    
+    
     //COLLECTION VIEW DELEGATE
     
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -59,14 +82,20 @@ public class SelectSubcategoryViewController: BlurredViewController, UICollectio
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SubCategoryCell", forIndexPath: indexPath) as! SubCategoryCell
         
-        cell.layer.shadowColor = UIColor.blackColor().CGColor
-        cell.layer.shadowOffset = CGSizeMake(0, 1.0)
-        cell.btnSubCat.addTarget(self, action: #selector(JOCentralMenu.goSubCategory(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.lblSubCat.text = (subcategories[indexPath.row]).name
         cell.lblSubCat.textColor = UIColor.addThemeContrast()
         cell.alpha = 0
-        cell.type = self.type
         cell.btnSubCat.tag = Int((subcategories[indexPath.row]).id!)
+        cell.btnSubCat.tintColor = self.category?.type?.slug == "report" ? UIColor.orangeYI() : UIColor.blueYI()
+        
+        if let cat = self.category{
+            if let type = cat.type{
+                if let slug = type.slug{
+                    cell.btnSubCat.setImage(UIImage(named: "btn_sub_\(slug)_off"), forState: .Normal)
+                    cell.btnSubCat.setImage(UIImage(named: "btn_sub_\(slug)_on"), forState: .Selected)
+                }
+            }
+        }
         return cell
     }
     
@@ -77,14 +106,22 @@ public class SelectSubcategoryViewController: BlurredViewController, UICollectio
         UIView.commitAnimations()
     }
     
+    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let an     = POPSpringAnimation(propertyNamed: kPOPLayoutConstraintConstant)
+        an.toValue = 20
+        heightConstraint.pop_addAnimation(an, forKey: "HeightAnimaiton")
+        _ = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(self.sendCategory(_:)), userInfo: subcategories[indexPath.row], repeats: false)
+    }
+    
+    @objc private func sendCategory(sender:NSTimer){
+        let category = (sender.userInfo as! Category)
+        (self.navigationController as! ReportNavigationViewController)._setSubcategory(category)
+    }
+    
     public func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath){
-        cell.layer.shadowColor = UIColor.blackColor().CGColor
-        cell.layer.shadowOffset = CGSizeMake(0, 0.5)
         UIView.beginAnimations("rotation", context: nil)
         UIView.setAnimationDuration(0.4)
         cell.alpha = 1
-        cell.layer.shadowOffset = CGSizeMake(0, 0)
         UIView.commitAnimations()
     }
-    
 }

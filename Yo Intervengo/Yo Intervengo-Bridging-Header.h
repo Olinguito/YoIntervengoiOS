@@ -11,4 +11,3 @@
 #import "JSImagePickerViewController.h"
 #import "JOAlert.h"
 #import "PhotoBroswerVC.h"
-#import "DGActivityIndicatorView.h"

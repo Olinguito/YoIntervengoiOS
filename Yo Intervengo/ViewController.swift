@@ -8,15 +8,13 @@
 
 import UIKit
 import Mapbox
+import pop
 
 class ViewController: GenericViewController,BottomPagerDelegate {
     var located:Bool = false
-    
-    
     var openedReport:Bool = false
-    
-    
     var map: MGLMapView!
+    
     
     var animator:UIDynamicAnimator!
     var attachmentBeh: UIAttachmentBehavior!
@@ -40,14 +38,14 @@ class ViewController: GenericViewController,BottomPagerDelegate {
     func initialize(){
         APIManagerClass.getReports()
         loc = []
-        map = MGLMapView(frame: view.frame)
+        map = MapView.sharedInstance.map
         map.delegate = self
         view.insertSubview(map, belowSubview: btnReport)
-        map.minimumZoomLevel  = 11
-        map.showsUserLocation = true
-        map.userTrackingMode  = .FollowWithHeading
-        map.tintColor         = UIColor.greenColor()
-        map.setZoomLevel(11, animated: true)
+        //        map.minimumZoomLevel  = 11
+        //        map.showsUserLocation = true
+        //        map.userTrackingMode  = .FollowWithHeading
+        //        map.tintColor         = UIColor.greenColor()
+        //        map.setZoomLevel(11, animated: true)
         
         animator = UIDynamicAnimator(referenceView: view)
         view.insertSubview(menuView, belowSubview: btnMenu)
@@ -59,6 +57,7 @@ class ViewController: GenericViewController,BottomPagerDelegate {
         
         map.logoView.alpha          = 0
         map.attributionButton.alpha = 0
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -69,7 +68,9 @@ class ViewController: GenericViewController,BottomPagerDelegate {
         self.menuView.setColor(actView+3330)
     }
     
-    
+    func mapViewDidFinishLoadingMap(mapView: MGLMapView) {
+        
+    }
     func mapView(mapView: MGLMapView, didUpdateUserLocation userLocation: MGLUserLocation?) {
         if !located{
             self.map.setCenterCoordinate((userLocation?.coordinate)!, animated: true)

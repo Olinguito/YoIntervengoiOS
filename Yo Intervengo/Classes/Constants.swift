@@ -12,3 +12,5 @@ let QDataIninitalizedNotification   = "dataInitialized"
 let QCategoryHeightCellSize:CGFloat = 60
 let QPostHeightWithSpace:CGFloat    = 58
 let QPostHeight:CGFloat             = 50
+
+let QPostButtonsHeight:CGFloat      = 85

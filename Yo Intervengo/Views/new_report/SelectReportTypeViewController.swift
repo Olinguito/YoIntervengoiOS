@@ -24,6 +24,6 @@ public class SelectReportTypeViewController: BlurredViewController, TypeSelector
     }
     
     internal func selectedItem(type: Type) {
-        (self.navigationController as! ReportNavigationViewController).setType(type)
+        (self.navigationController as! ReportNavigationViewController)._setType(type)
     }
 }

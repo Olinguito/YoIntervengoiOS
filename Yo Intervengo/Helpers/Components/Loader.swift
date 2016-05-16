@@ -8,6 +8,7 @@
 
 import UIKit
 import pop
+import DGActivityIndicatorView
 
 class Loader: UIView {
     var activityIndicatorView:DGActivityIndicatorView!

@@ -12,6 +12,10 @@ public class ReportNavigationViewController: UINavigationController {
     
     var navigator:NavigationView!
     
+    var type:Type!
+    var category:Category!
+    var subcategory:Category!
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,18 +32,32 @@ public class ReportNavigationViewController: UINavigationController {
         navigator.openNavigation()
     }
     
-    func setType(type:Type){
+    func _goBack(){
+        self.popViewControllerAnimated(false)
+    }
+    
+    func _setType(type:Type){
+        self.type      = type
         navigator.type = type
         let view2      = SelectCategoryViewController()
         view2.type     = type
         self.pushViewController(view2, animated: false)
     }
     
-    func setCategory(category:Category){
-        navigator.subtype = category
+    func _setCategory(category:Category){
+        self.category = category
+        navigator.category = category
         let view3         = SelectSubcategoryViewController()
         view3.category    = category
         self.pushViewController(view3, animated: false)
+    }
+    
+    func _setSubcategory(category:Category){
+        self.subcategory = category
+        //                navigator.category = category
+        let mapView      = SelectLocationViewController()
+        mapView.type     = self.type
+        self.pushViewController(mapView, animated: false)
     }
     
 }

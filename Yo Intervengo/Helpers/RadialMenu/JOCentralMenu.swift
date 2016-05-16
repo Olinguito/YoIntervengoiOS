@@ -58,7 +58,6 @@ class JOCentralMenu: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
         cell.lblSubCat.text = (data.objectAtIndex(indexPath.row) as! Category).name
         cell.lblSubCat.textColor = UIColor.addThemeContrast()
         cell.alpha = 0
-        cell.type = self.type
         cell.btnSubCat.tag = Int((data.objectAtIndex(indexPath.row) as! Category).id!)
         return cell
     }

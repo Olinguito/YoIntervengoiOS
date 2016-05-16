@@ -18,7 +18,7 @@ import pop
 public class NavigationView: UIView {
     
     internal var type:Type?        { didSet{reloadType()}}
-    internal var subtype:Category? { didSet{reloadSubtype()}}
+    internal var category:Category? { didSet{reloadCategory()}}
     
     private var btnClose:UIButton!
     private var btnType:UIButton!
@@ -44,7 +44,7 @@ public class NavigationView: UIView {
         
         btnSubtype = UIButton()
         btnSubtype.translatesAutoresizingMaskIntoConstraints = false
-        btnSubtype.addTarget(self, action: #selector(self.cleanFromSubtype), forControlEvents: .TouchUpInside)
+        btnSubtype.addTarget(self, action: #selector(self.cleanFromCategory), forControlEvents: .TouchUpInside)
         self.addSubview(btnSubtype)
         
         btnType = UIButton()
@@ -126,7 +126,7 @@ public class NavigationView: UIView {
             lbl.toValue              = -130
             alphaType.toValue        = 1
             alphaLabel.toValue       = 1
-            self.subtype             = nil
+            self.category            = nil
         }else{
             an.toValue               = 0
             lbl.toValue              = 0
@@ -140,11 +140,11 @@ public class NavigationView: UIView {
         btnType.pop_addAnimation(alphaType, forKey: "alphaType")
     }
     
-    func reloadSubtype(){
+    func reloadCategory(){
         let an         = POPSpringAnimation(propertyNamed: kPOPLayoutConstraintConstant)
         let lbl        = POPSpringAnimation(propertyNamed: kPOPLayoutConstraintConstant)
         let alphaType  = POPSpringAnimation(propertyNamed: kPOPViewAlpha)
-        if let _subtype = self.subtype{
+        if let _subtype = self.category{
             let icon = "btn_"+(_subtype.type?.slug)!+"_"+_subtype.slug!
             self.btnSubtype.setBackgroundImage(UIImage(named: icon), forState: .Normal)
             self.lblInformation.text = _subtype.name?.uppercaseString
@@ -164,13 +164,13 @@ public class NavigationView: UIView {
     }
     
     func cleanFromType(){
-        self.subtype = nil
+        self.category = nil
         self.type    = nil
         delegate?.cleanType!()
     }
     
-    func cleanFromSubtype(){
-        self.subtype = nil
+    func cleanFromCategory(){
+        self.category = nil
         delegate?.cleanCategory!()
     }
     

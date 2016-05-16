@@ -7,3 +7,4 @@ pod "Mapbox-iOS-SDK"
 pod 'ESDatePicker'
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 pod 'Alamofire'
+pod 'DGActivityIndicatorView'
